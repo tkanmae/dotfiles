@@ -1,0 +1,40 @@
+[user]
+    name  = Takeshi Kanmae
+    email = tkanmae@gmail.com
+[color]
+    ui = auto
+    status = auto
+    diff = auto
+[difftool.latex]
+    cmd = _git-latexdiff.sh "$LOCAL" "$REMOTE"
+[difftool]
+    prompt = false
+[alias]
+    co = checkout
+    ad = add
+    br = branch
+    st = status
+    sh = show
+    # log
+    ls = log --stat
+    oneline = log --oneline
+    # fetch
+    ft = fetch
+    fo = fetch origin
+    # diff
+    dc = diff --cached
+    dm = diff master
+    dw = diff --color-words
+    d1 = diff HEAD~
+    d2 = diff HEAD~~
+    d3 = diff HEAD~~~
+    d4 = diff HEAD~~~~
+
+    amend = commit --amend
+
+    latexdiff = difftool -t latex
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[merge]
+    tool = vimdiff

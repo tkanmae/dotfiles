@@ -1,0 +1,27 @@
+snippet $
+abbr    inline math
+        $${1:expr}$${0}
+
+snippet beg
+abbr    \begin{env}..\end{env}
+        \begin{${1:env}}
+                ${2:TARGET}
+        \end{$1}
+        ${0}
+
+snippet ref
+abbr    \ref
+        \ref{${1}}
+snippet reff
+abbr    \ref{fig:}
+        \ref{fig:${1}}
+snippet refe
+abbr    \ref{eqn:}
+        \ref{eqn:${1}}
+
+snippet ci
+abbr    \cite
+        \cite{${1}}
+snippet cp
+abbr    \citep
+        \citep{${1}}

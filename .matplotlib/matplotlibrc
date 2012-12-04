@@ -1,0 +1,12 @@
+backend                 : GTKAgg
+mathtext.fontset        : custom
+mathtext.fallback_to_cm : False
+mathtext.cal            : Arev Sans:oblique
+mathtext.it             : Arev Sans:oblique
+mathtext.rm             : Arev Sans
+mathtext.bf             : Arev Sans:bold
+mathtext.sf             : Arev Sans
+axes.titlesize          : medium
+legend.numpoints        : 1
+legend.fontsize         : medium
+svg.image_noscale       : True
