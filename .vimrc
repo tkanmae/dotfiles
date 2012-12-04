@@ -31,10 +31,11 @@ NeoBundle "tpope/vim-fugitive"
 NeoBundle "davidhalter/jedi-vim"
 NeoBundle "vim-scripts/python.vim--Vasiliev"
 NeoBundle "mitechie/pyflakes-pathogen"
-" LaTeX-Box
+" LaTeX
 NeoBundle "LaTeX-Box-Team/LaTeX-Box"
-" Web
+" JavaScript
 NeoBundle "pangloss/vim-javascript"
+NeoBundle "jelera/vim-javascript-syntax"
 " Color scheme
 NeoBundle "vim-scripts/wombat256.vim"
 NeoBundle "altercation/vim-colors-solarized"
