@@ -38,6 +38,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+# autojump
+if [[ $OSTYPE == darwin* ]]; then
+    export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
+    if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
+        . /opt/local/etc/profile.d/autojump.sh
+    fi
+fi
+
 # ------------------------------------------------------------------------------
 # Key binding
 # ------------------------------------------------------------------------------
@@ -69,7 +77,6 @@ alias cp='nocorrect cp -i'
 alias df='df -h'
 alias du='du -h'
 alias h='history'
-alias j='jobs -l'
 alias ll='ls -la'
 alias la='ls -A'
 alias lk="ls -la | grep '^l'"
