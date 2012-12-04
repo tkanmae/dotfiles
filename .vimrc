@@ -263,6 +263,7 @@ au vimrc BufWritePre * :%s/\s\+$//e
 
 augroup file_type_options
   au!
+  au InsertLeave * set nopaste
   au FileType c,cpp setl et ai cin sta sw=2 sts=2
   au FileType Makefile setl noet
   au FileType gitcommit setl spell
@@ -340,5 +341,8 @@ nmap g# g#zz
 
 " Delete highlights
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
+
+" Toggle paste
+set pastetoggle=<F10>
 
 " }}}  Key bindings
