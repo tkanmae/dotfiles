@@ -126,6 +126,7 @@ endif
 
 set virtualedit=block
 set grepprg=grep\ -nH\ $*
+set spellfile=$HOME/Dropbox/home/.vim/spell/en.utf-8.add
 
 " Completion
 set completeopt=longest,menuone
