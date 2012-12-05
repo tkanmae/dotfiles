@@ -58,9 +58,9 @@ export PYTHONUSERBASE=$HOME/.local
 # ------------------------------------------------------------------------------
 # TeX
 # ------------------------------------------------------------------------------
-export TEXINPUTS=.//:$HOME/Dropbox/texmf/tex//:
-export BIBINPUTS=.//:$HOME/Dropbox/texmf/bibtex/bib//:
-export BSTINPUTS=.//:$HOME/Dropbox/texmf/bibtex/bst//:
+export TEXINPUTS=.//:$HOME/Dropbox/home/.texmf/tex//:
+export BSTINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bst//:
+export BIBINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bib//:
 
 # ------------------------------------------------------------------------------
 # Google Test
