@@ -280,6 +280,7 @@ augroup file_type_options
   au FileType pandoc setl spell nocin nosi
   au FileType yaml setl sw=2
   au FileType html setl sw=2
+  au FileType css setl sw=2
   au FileType javascript setl sw=2
 augroup END
 
