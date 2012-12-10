@@ -276,6 +276,7 @@ augroup file_type_options
   au FileType tex setl spell nocin nosi tw=80 sw=2
   au FileType tex setl wrap fo=tcq
   au FileType txt setl spell wrap nocin nosi
+  au FileType bib setl sw=2
   au FileType rest setl spell nocin nosi
   au FileType markdown setl spell nocin nosi
   au FileType pandoc setl spell nocin nosi
