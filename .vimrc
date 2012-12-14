@@ -109,21 +109,6 @@ set statusline+=\ %f%=\ [%<%{fnamemodify(expand('%'),':~:h')}]\ (%l,%c%V)\ %6P
 set background=dark
 colorscheme solarized
 
-" GUI
-if has('gui_running')
-  set guioptions&
-  set guioptions+=a
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=L
-  set guioptions-=e
-endif
-if has("gui_macvim")
-  set guifont=Ricty:h14
-elseif has("gui_gtk")
-  set guifont=Ricty\ 10
-endif
-
 set virtualedit=block
 set grepprg=grep\ -nH\ $*
 set spellfile=$HOME/Dropbox/home/.vim/spell/en.utf-8.add
