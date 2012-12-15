@@ -1,0 +1,17 @@
+source $HOME/Projects/dotfiles/antigen/antigen.zsh
+
+# Load oh-my-zsh's core library.
+antigen-lib
+
+# Bundles from the default repo.
+antigen-bundle git
+antigen-bundle command-not-found
+
+# Syntax highlighting.
+antigen-bundle zsh-users/zsh-syntax-highlighting
+
+# Load a theme.
+antigen-theme gallois
+
+# Tell antigen that I'm done.
+antigen-apply
