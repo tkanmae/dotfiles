@@ -232,6 +232,7 @@ let g:jedi#show_function_definition = 0
 
 " LaTeX-Box
 let g:tex_flavor = "tex"
+let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
 let g:LatexBox_viewer = "open -a Skim.app"
 let g:LatexBox_latexmk_options = '-pvc'
 let g:LatexBox_split_width = 40
