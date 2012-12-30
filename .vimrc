@@ -136,7 +136,6 @@ let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_time_format = ''
 " List file's directory
 nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap [unite]r :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 " List buffers
 nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
 " List recently used files
