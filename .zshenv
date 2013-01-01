@@ -14,6 +14,9 @@ path=(# User
       /opt/local/libexec/gnubin(N-/)
       # Python (MacPorts)
       /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin(N-/)
+      # Go
+      /usr/local/go/bin(N-)
+      $HOME/.local/go/bin(N-)
       # MOSART
       $HOME/.local/MOSART/bin(N-)
       # System
@@ -66,6 +69,11 @@ export BIBINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bib//:
 # Google Test
 # ------------------------------------------------------------------------------
 export GTEST_COLOR=1
+
+# ------------------------------------------------------------------------------
+# Go
+# ------------------------------------------------------------------------------
+export GOPATH=$HOME/.local/go
 
 # ------------------------------------------------------------------------------
 # Platform Specific
