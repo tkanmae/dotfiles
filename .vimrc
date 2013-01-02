@@ -231,8 +231,8 @@ let python_print_as_function = 1
 
 " jedi-vim
 let g:jedi#auto_initialization = 1
+let g:jedi#show_function_definition = 1
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_function_definition = 0
 
 " LaTeX-Box
 let g:tex_flavor = "tex"
