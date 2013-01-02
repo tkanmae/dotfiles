@@ -11,7 +11,7 @@ highlight Search guibg=DarkBlue guifg=NONE
 " Platform specific settings
 if has("gui_macvim")
   set columns=90 lines=90
-  set gfn=Ricty:h12
+  set gfn=Ricty:h14
 elseif has("gui_gtk")
   winpos 0 0
   set columns=90 lines=95
