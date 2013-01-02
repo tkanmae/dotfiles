@@ -168,9 +168,7 @@ nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_enable_camel_case_completion = 0
+let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_max_list = 20
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -203,10 +201,6 @@ if !exists("g:neosnippet#snippets_directory")
     let g:neosnippet#snippets_directory=""
 endif
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
-if g:neocomplcache_enable_at_startup
-  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  vmap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : "\<Tab>"
-endif
 
 " YankRing
 set viminfo+=!
