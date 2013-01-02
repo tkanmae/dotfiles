@@ -188,6 +188,10 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
@@ -260,6 +264,7 @@ augroup file_type_options
   au FileType gitcommit setl spell
   au FileType python setl et sw=4 sts=4 tw=80
   au FileType python setl ai si cinwords=if,elif,else,for,while,try,except,finally,def,class
+  au FileType python let b:did_ftplugin = 1
   au FileType vim setl sw=2
   au FileType tex setl spell nocin nosi tw=80 sw=2
   au FileType tex setl wrap fo=tcq
