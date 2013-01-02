@@ -272,6 +272,7 @@ augroup file_type_options
   au FileType html setl sw=2
   au FileType css setl sw=2
   au FileType javascript setl sw=2
+  au FileType go setl ts=4
 augroup END
 
 " }}}  Auto commands
