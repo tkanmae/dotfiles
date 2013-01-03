@@ -202,9 +202,11 @@ let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
 
 " neosnippet
 if !exists("g:neosnippet#snippets_directory")
-    let g:neosnippet#snippets_directory=""
+  let g:neosnippet#snippets_directory = '~/.vim/snippets'
 endif
-let g:neosnippet#snippets_directory = '~/.vim/snippets'
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " YankRing
 set viminfo+=!
