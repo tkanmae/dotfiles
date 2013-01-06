@@ -8,4 +8,5 @@ augroup filetpedetect
   autocmd BufRead,BufNewFile *.go    set filetype go
   autocmd BufRead,BufNewFile *.pxi   set filetype pyrex
   autocmd BufRead,BufNewFile *.map   set filetype map
+  autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* set filetype=tmux
 augroup END
