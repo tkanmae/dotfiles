@@ -56,6 +56,8 @@ NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "godlygeek/tabular"
 
+NeoBundle "scrooloose/syntastic"
+
 " C/C++
 NeoBundleLazy 'Rip-Rip/clang_complete', {
       \ 'autoload' : {
@@ -66,9 +68,6 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
 " Python
 NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
       \ 'filetypes' : ['python', 'python3'],
-      \ }}
-NeoBundleLazy "mitechie/pyflakes-pathogen", { 'autoload' : {
-      \ 'filetypes' : ['python']
       \ }}
 
 " JavaScript
@@ -376,6 +375,13 @@ smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" 
 " YankRing
 set viminfo+=!
 let g:yankring_history_file='.yankring_history'
+
+" syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_auto_jump = 1
+let g:syntastic_python_checker = 'flake8'
+let g:syntastic_python_checker_args='--ignore=E231,E221 --max-line-length=80'
+let g:syntastic_javascript_checker = 'jshint'
 
 " NERD_comments.vim
 let NERDShutUp=1
