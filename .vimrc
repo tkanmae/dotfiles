@@ -394,9 +394,9 @@ nmap b  <Plug>(smartword-b)
 nmap ge <Plug>(smartword-ge)
 xmap w  <Plug>(smartword-w)
 xmap b  <Plug>(smartword-b)
-omap w  <Plug>(smartword-w)
-omap b  <Plug>(smartword-b)
-omap ge <Plug>(smartword-ge)
+" omap w  <Plug>(smartword-w)
+" omap b  <Plug>(smartword-b)
+" omap ge <Plug>(smartword-ge)
 
 " Gundo.vim
 nnoremap U :<C-u>GundoToggle<CR>
