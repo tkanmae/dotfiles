@@ -1,136 +1,265 @@
+" Initialization:  "{{{
+"
+" Diable vim compatible mode.
 set nocompatible
-filetype off
+
+" Use ',' instead of '\'.
+let mapleader=','
+" Use <Leader> in global plugins.
+let g:mapleader=','
+" Use <LocalLeader> in filetype plugins.
+let g:maplocalleader=','
+
+" Reset augroup.
+augroup vimrc
+  autocmd!
+augroup END
+
+" Set spellfile location.
+set spellfile=$HOME/Dropbox/home/.vim/spell/en.utf-8.add
 
 if has("vim_starting")
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 call neobundle#rc(expand("~/.vim/bundle"))
 
+" neobundle.vim  "{{{
 NeoBundle "Shougo/neobundle.vim"
-NeoBundle "Shougo/vimproc"
-NeoBundle "Shougo/vimfiler"
 NeoBundle "Shougo/neocomplcache"
 NeoBundle "Shougo/neosnippet"
-NeoBundle "tpope/vim-surround"
-NeoBundle "tpope/vim-repeat"
-NeoBundle "vim-scripts/YankRing.vim"
-NeoBundle "scrooloose/nerdcommenter"
-NeoBundle "kana/vim-fakeclip"
-NeoBundle "tsaleh/vim-matchit"
-NeoBundle "kana/vim-smartword"
-NeoBundle "godlygeek/tabular"
-NeoBundle "majutsushi/tagbar"
-NeoBundle "vim-pandoc/vim-pandoc"
-" Unite
 NeoBundle "Shougo/unite.vim"
+NeoBundle "Shougo/vimfiler"
 NeoBundle "h1mesuke/unite-outline"
-" Git
-NeoBundle "tpope/vim-git"
-NeoBundle "tpope/vim-fugitive"
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundleLazy "tpope/vim-surround"
+NeoBundleLazy "tpope/vim-repeat", { 'autoload' : {
+      \ 'mappings': '.',
+      \ }}
+NeoBundle "kana/vim-fakeclip"
+NeoBundleLazy "tsaleh/vim-matchit", '', 'same', { 'autoload' : {
+      \ 'mappings' : '%',
+      \ }}
+NeoBundleLazy 'kana/vim-smartword', '', 'same', { 'autoload' : {
+      \ 'mappings' : [
+      \   '<Plug>(smartword-w)', '<Plug>(smartword-b)', '<Plug>(smartword-ge)']
+      \ }}
+NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
+      \ 'commands' : 'GundoToggle'
+      \ }}
+NeoBundle "scrooloose/nerdcommenter"
+NeoBundle "godlygeek/tabular"
+
 " Python
-NeoBundle "davidhalter/jedi-vim"
-NeoBundle "vim-scripts/python.vim--Vasiliev"
-NeoBundle "mitechie/pyflakes-pathogen"
-" LaTeX
-NeoBundle "LaTeX-Box-Team/LaTeX-Box"
+NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
+      \ 'filetypes' : ['python', 'python3'],
+      \ }}
+NeoBundleLazy "mitechie/pyflakes-pathogen", { 'autoload' : {
+      \ 'filetypes' : ['python']
+      \ }}
+
 " JavaScript
-NeoBundle "pangloss/vim-javascript"
-NeoBundle "jelera/vim-javascript-syntax"
+NeoBundleLazy "pangloss/vim-javascript", { 'autoload' : {
+      \ 'filetypes' : ['javascript']
+      \ }}
+NeoBundleLazy "jelera/vim-javascript-syntax", { 'autoload' : {
+      \ 'filetypes' : ['javascript']
+      \ }}
+
 " Go
-NeoBundle "fsouza/go.vim"
+NeoBundleLazy "fsouza/go.vim", { 'autoload' : {
+      \ 'filetypes' : ['go'],
+      \ }}
+
+" LaTeX
+NeoBundleLazy "LaTeX-Box-Team/LaTeX-Box", { 'autoload' : {
+      \ 'filetypes' : ['tex']
+      \ }}
+
+" Pandoc
+NeoBundle "vim-pandoc/vim-pandoc"
+
 " Color scheme
 NeoBundle "vim-scripts/wombat256.vim"
 NeoBundle "altercation/vim-colors-solarized"
 
-filetype plugin on
-filetype indent off
+"}}}  neobundle.vim
 
-augroup vimrc
-  autocmd!
-augroup END
+filetype plugin indent on
+syntax enable
+"
+" }}} Initialization
 
 
-" Basic
-set shortmess&
-set shortmess+=I
-set backspace=indent,eol,start
-set scrolloff=3
-set sidescrolloff=5
-set noswapfile
-set history=128
-set hidden
-set autoread
-set autochdir
-set wildmenu
-set wildignore=*.o,*.a,*.so,*.pyc
-set cmdheight=1
-set laststatus=2
-set lazyredraw
-set clipboard=unnamed
-set showmode
-
-set t_Co=256
-
-set textwidth=0
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set smarttab
-set expandtab
-set autoindent
-
-set timeoutlen=500
-set title
-set ruler
-set cursorline
-set showmatch
-set matchtime=3
-set noequalalways
-set splitbelow
-set splitright
-
-set hlsearch
-set incsearch
-set wrapscan
-
-let mapleader=","
-let maplocalleader=","
-
-" Encoding
+" Encoding:  "{{{
+"
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932
 set fileformat=unix
 set fileformats=unix,dos,mac
 set ambiwidth=double
+"
+" }}} Encoding
 
-" Status line
-set statusline=[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}
-set statusline+=%{fugitive#statusline()}
-set statusline+=\ %f%=\ [%<%{fnamemodify(expand('%'),':~:h')}]\ (%l,%c%V)\ %6P
 
-set background=dark
-colorscheme solarized
+" Search:  "{{{
+"
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set wrapscan
+"
+"}}} Search
 
+
+" Edit:  "{{{
+"
+set noswapfile
+
+set clipboard& clipboard+=unnamed
+
+" Re-load if files are modified.
+set autoread
+
+set backspace=indent,eol,start
+
+set smarttab
+set expandtab
+set shiftround
+set hidden
+set foldmethod=syntax
 set virtualedit=block
 set grepprg=grep\ -nH\ $*
-set spellfile=$HOME/Dropbox/home/.vim/spell/en.utf-8.add
 
-" Completion
-set completeopt=longest,menuone
-set complete=.,w,b,t
-set pumheight=20                " Set the pop-up menu height to 20 lines.
-" IME
+set showmatch
+set matchtime=3
+set matchpairs+=<:>
+
 set imdisable
 set iminsert=0
 set imsearch=0
-" Appearance
-syntax on
-set linebreak                   " Wrap at 'breakat' instead of the last char
-set foldmethod=syntax           " Fold text according to syntax.
+
+" Key mapping timeout.
+set timeout timeoutlen=3000 ttimeoutlen=100
+
+" Disable paste when leaving insert mode.
+autocmd vimrc InsertLeave * if &paste | set nopaste | endif
+
+" Delete trailing white spaces in buffer.
+autocmd vimrc BufWritePre * :%s/\s\+$//e
+
+" Set up backup.
+set backup
+set backupdir=$HOME/.vim-backup
+autocmd vimrc BufWritePre,FileWritePre,FileAppendPre * call UpdateBackupFile()
+function! UpdateBackupFile()
+  let basedir = "$HOME/.vim-backup"
+  let dir = strftime(basedir . "/%Y-%m/%d", localtime())
+  if !isdirectory(dir)
+    let retval = system("mkdir -p " . dir)
+    let retval = system("chown takeshi:staff " . dir)
+  endif
+  exe "set backupdir=" . dir
+  let time = strftime("%H%M", localtime())
+  exe "set backupext=." . time
+endfunction
+"
+"}}} Edit
 
 
-" Plugins {{{
+" View:  "{{{
+"
+set shortmess&
+set shortmess+=I
 
+set linebreak
+set showbreak=>>>
+set breakat=\ \	;:,!?
+
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<
+
+set wrap
+set whichwrap+=h,l,<,>,[,],b,s,~
+
+set laststatus=2
+set cmdheight=2
+set cmdwinheight=5
+set showcmd
+set ruler
+set cursorline
+set title
+set lazyredraw
+
+set scrolloff=3
+set sidescrolloff=5
+
+set nowildmenu
+set wildmode=list:longest,full
+set history=128
+
+" Completion
+set completeopt=menuone
+" Dont't complete from other buffers.
+set complete=.
+" Set pop-up menu height
+set pumheight=20
+
+set splitbelow
+set splitright
+set noequalalways
+
+set statusline=[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}
+set statusline+=\ %f%=\ [%<%{fnamemodify(expand('%'),':~:h')}]\ (%l,%c%V)\ %6P
+
+set t_Co=256
+
+set background=dark
+colorscheme solarized
+"
+"}}} View
+
+
+" Syntax:  "{{{
+"
+set autoindent
+set smartindent
+
+augroup vimrc
+  autocmd FileType c,cpp setlocal cindent shiftwidth=2
+  autocmd FileType Makefile setlocal noexpandtab
+  autocmd FileType gitcommit setlocal spell
+  autocmd FileType python setlocal shiftwidth=4 textwidth=80
+  autocmd FileType python setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
+  autocmd FileType vim setlocal shiftwidth=2
+  autocmd FileType yaml setlocal shiftwidth=2
+  autocmd FileType html setlocal shiftwidth=2
+  autocmd FileType css setlocal shiftwidth=2
+  autocmd FileType javascript setlocal shiftwidth=2
+  autocmd FileType go setlocal tabstop=4
+  autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell wrap nosmartindent
+  autocmd FileType tex setlocal shiftwidth=2 textwidth=80 noautoindent formatoptions=tcq
+  autocmd FileType bib setlocal shiftwidth=2
+augroup END
+
+" Python
+let g:python_highlight_all = 1
+
+" Close the help window by typing q.
+au vimrc FileType help nnoremap <buffer> q <C-w>c
+"
+" }}}  Syntax
+
+
+" Plugins:  "{{{
+"
 " unite
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
@@ -192,13 +321,19 @@ endif
 if !exists('g:neocomplcache_omni_functions')
   let g:neocomplcache_omni_functions = {}
 endif
-let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.go =  '\h\w*\%.'
 let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
+
+" For jedi-vim
+let g:jedi#auto_initialization = 1
+let g:jedi#popup_on_dot = 0
+autocmd vimrc FileType python*
+    \ NeoBundleSource jedi-vim | let b:did_ftplugin = 1
+let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
 " neosnippet
 if !exists("g:neosnippet#snippets_directory")
@@ -216,25 +351,25 @@ let g:yankring_history_file='.yankring_history'
 let NERDShutUp=1
 let NERDSpaceDelims=1
 
+" smartword.vim
+" Replace w and others with smartword-mappings
+nmap w  <Plug>(smartword-w)
+nmap b  <Plug>(smartword-b)
+nmap ge <Plug>(smartword-ge)
+xmap w  <Plug>(smartword-w)
+xmap b  <Plug>(smartword-b)
+omap w  <Plug>(smartword-w)
+omap b  <Plug>(smartword-b)
+omap ge <Plug>(smartword-ge)
+
+" Gundo.vim
+nnoremap U :<C-u>GundoToggle<CR>
+
 " tabular
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
-
-" tagbar
-let g:tagbar_width = 35
-let g:tagbar_sort = 0
-nnoremap <silent> <F8> :TagbarToggle<CR>
-
-" python.vim
-let python_highlight_all = 1
-let python_print_as_function = 1
-
-" jedi-vim
-let g:jedi#auto_initialization = 1
-let g:jedi#show_function_definition = 1
-let g:jedi#popup_on_dot = 0
 
 " LaTeX-Box
 let g:tex_flavor = "tex"
@@ -245,69 +380,12 @@ let g:LatexBox_split_width = 40
 let g:LatexBox_split_side = "rightbelow"
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
 \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>""")"'')
-
-" }}} Plugins
-
-
-" Auto commands {{{
-
-" Close the help window by typing q.
-au vimrc FileType help nnoremap <buffer> q <C-w>c
-" Delete trailing white spaces in buffer.
-au vimrc BufWritePre * :%s/\s\+$//e
-
-augroup file_type_options
-  au!
-  au InsertLeave * set nopaste
-  au FileType c,cpp setl et ai cin sta sw=2 sts=2
-  au FileType Makefile setl noet
-  au FileType gitcommit setl spell
-  au FileType python setl et sw=4 sts=4 tw=80
-  au FileType python setl ai si cinwords=if,elif,else,for,while,try,except,finally,def,class
-  au FileType python let b:did_ftplugin = 1
-  au FileType vim setl sw=2
-  au FileType tex setl spell nocin nosi tw=80 sw=2
-  au FileType tex setl wrap fo=tcq
-  au FileType txt setl spell wrap nocin nosi
-  au FileType bib setl sw=2
-  au FileType rest setl spell nocin nosi
-  au FileType markdown setl spell nocin nosi
-  au FileType pandoc setl spell nocin nosi
-  au FileType yaml setl sw=2
-  au FileType html setl sw=2
-  au FileType css setl sw=2
-  au FileType javascript setl sw=2
-  au FileType go setl ts=4
-augroup END
-
-" }}}  Auto commands
-
-" ==============================================================================
-" Backup
-" ==============================================================================
-" {{{
-set backup
-set backupdir=$HOME/.vim-backup
-
-autocmd vimrc BufWritePre,FileWritePre,FileAppendPre * call UpdateBackupFile()
-
-function! UpdateBackupFile()
-  let basedir = "$HOME/.vim-backup"
-  let dir = strftime(basedir . "/%Y-%m/%d", localtime())
-  if !isdirectory(dir)
-    let retval = system("mkdir -p " . dir)
-    let retval = system("chown takeshi:staff " . dir)
-  endif
-  exe "set backupdir=" . dir
-  let time = strftime("%H%M", localtime())
-  exe "set backupext=." . time
-endfunction
-" }}}
-" ==============================================================================
+"
+"}}}  Plugins
 
 
-" Key bindings {{{
-
+" Key mapping:  "{{{
+"
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -323,6 +401,16 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
 inoremap <C-k> <Esc>lc$
+
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Del>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-y> <C-r>*
 
 inoremap ( ()<Left>
 inoremap [ []<Left>
@@ -343,5 +431,8 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 " Toggle paste
 set pastetoggle=<F10>
+"
+"}}}  Key bindings
 
-" }}}  Key bindings
+
+" vim: foldmethod=marker :
