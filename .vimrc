@@ -56,6 +56,13 @@ NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "godlygeek/tabular"
 
+" C/C++
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+      \ 'autoload' : {
+      \     'filetypes' : ['c', 'cpp'],
+      \    },
+      \ }
+
 " Python
 NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
       \ 'filetypes' : ['python', 'python3'],
@@ -251,6 +258,75 @@ au vimrc FileType help nnoremap <buffer> q <C-w>c
 
 " Plugins:  "{{{
 "
+" neocomplcache.vim  "{{{
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 0
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 0
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 0
+" Use fuzzy completion.
+let g:neocomplcache_enable_fuzzy_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+" Set auto completion length.
+let g:neocomplcache_auto_completion_start_length = 2
+" Set manual completion length.
+let g:neocomplcache_manual_completion_start_length = 0
+" Set minimum keyword length.
+let g:neocomplcache_min_keyword_length = 3
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_cursor_hold_i = 0
+let g:neocomplcache_cursor_hold_i_time = 300
+let g:neocomplcache_enable_insert_char_pre = 0
+let g:neocomplcache_enable_prefetch = 0
+let g:neocomplcache_skip_auto_completion_time = '0.6'
+let g:neocomplcache_max_list = 100
+
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+if !exists('g:neocomplcache_omni_functions')
+  let g:neocomplcache_omni_functions = {}
+endif
+
+let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.'
+let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
+
+" For clang_complete
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
+
+" For jedi-vim
+let g:jedi#auto_initialization = 1
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_function_definition = 0
+autocmd vimrc FileType python*
+    \ NeoBundleSource jedi-vim | let b:did_ftplugin = 1
+let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
+
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+
+" mappings
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+"}}}  neocomplcache.vim
+
 " unite
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
@@ -284,47 +360,6 @@ endfunction
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
-"
-
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_max_list = 20
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-l> neocomplcache#complete_common_string()
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-if !exists('g:neocomplcache_omni_functions')
-  let g:neocomplcache_omni_functions = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-let g:neocomplcache_omni_patterns.go =  '\h\w*\%.'
-let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
-
-" For jedi-vim
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
-autocmd vimrc FileType python*
-    \ NeoBundleSource jedi-vim | let b:did_ftplugin = 1
-let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
 " neosnippet
 if !exists("g:neosnippet#snippets_directory")
