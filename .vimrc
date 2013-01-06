@@ -236,8 +236,6 @@ augroup vimrc
   autocmd FileType c,cpp setlocal cindent shiftwidth=2
   autocmd FileType Makefile setlocal noexpandtab
   autocmd FileType gitcommit setlocal spell
-  autocmd FileType python setlocal shiftwidth=4 textwidth=80
-  autocmd FileType python setlocal cinwords=if,elif,else,for,while,try,except,finally,def,class
   autocmd FileType vim setlocal shiftwidth=2
   autocmd FileType yaml setlocal shiftwidth=2
   autocmd FileType html setlocal shiftwidth=2
