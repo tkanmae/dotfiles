@@ -199,7 +199,7 @@ set wrap
 set whichwrap+=h,l,<,>,[,],b,s,~
 
 set laststatus=2
-set cmdheight=2
+set cmdheight=1
 set cmdwinheight=5
 set showcmd
 set ruler
