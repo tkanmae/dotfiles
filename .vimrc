@@ -371,6 +371,9 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
+" python.vim
+let python_highlight_all = 1
+
 " LaTeX-Box
 let g:tex_flavor = "tex"
 let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
