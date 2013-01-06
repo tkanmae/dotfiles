@@ -129,21 +129,23 @@ set wrapscan
 " Edit:  "{{{
 "
 set noswapfile
+set backspace=indent,eol,start
 
 set clipboard& clipboard+=unnamed
 
 " Re-load if files are modified.
 set autoread
-
-set backspace=indent,eol,start
+set hidden
 
 set smarttab
 set expandtab
 set shiftround
-set hidden
-set foldmethod=syntax
+
 set virtualedit=block
+
 set grepprg=grep\ -nH\ $*
+
+set foldmethod=syntax
 
 set showmatch
 set matchtime=3
@@ -245,13 +247,14 @@ augroup vimrc
   autocmd FileType gitcommit setlocal spell
   autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell nosmartindent
   autocmd FileType tex setlocal formatoptions=tcq
+
+  " Close the help window by typing q.
+  autocmd vimrc FileType help nnoremap <buffer> q <C-w>c
 augroup END
 
 " Python
 let g:python_highlight_all = 1
 
-" Close the help window by typing q.
-au vimrc FileType help nnoremap <buffer> q <C-w>c
 "
 " }}}  Syntax
 
