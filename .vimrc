@@ -372,10 +372,6 @@ endif
 imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" YankRing
-set viminfo+=!
-let g:yankring_history_file='.yankring_history'
-
 " syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 1
