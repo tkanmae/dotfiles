@@ -345,6 +345,7 @@ nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
 nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
 " List buffers and recently used files
 nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
+nnoremap [unite]y :<C-u>Unite -buffer-name=register register<CR>
 " List outline
 nnoremap [unite]o :<C-u>Unite outline<CR>
 " Key mapping in unite.vim
