@@ -236,15 +236,8 @@ augroup vimrc
   autocmd FileType c,cpp setlocal cindent shiftwidth=2
   autocmd FileType Makefile setlocal noexpandtab
   autocmd FileType gitcommit setlocal spell
-  autocmd FileType vim setlocal shiftwidth=2
-  autocmd FileType yaml setlocal shiftwidth=2
-  autocmd FileType html setlocal shiftwidth=2
-  autocmd FileType css setlocal shiftwidth=2
-  autocmd FileType javascript setlocal shiftwidth=2
-  autocmd FileType go setlocal tabstop=4
-  autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell wrap nosmartindent
-  autocmd FileType tex setlocal shiftwidth=2 textwidth=80 noautoindent formatoptions=tcq
-  autocmd FileType bib setlocal shiftwidth=2
+  autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell nosmartindent
+  autocmd FileType tex setlocal formatoptions=tcq
 augroup END
 
 " Python
