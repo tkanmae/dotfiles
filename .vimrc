@@ -410,7 +410,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 let python_highlight_all = 1
 
 " LaTeX-Box
-let g:tex_flavor = "tex"
+let g:tex_flavor = "latex"
 let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
 let g:LatexBox_viewer = "open -a Skim.app"
 let g:LatexBox_latexmk_options = '-pvc'
