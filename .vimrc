@@ -38,7 +38,7 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundleLazy "tpope/vim-surround"
+NeoBundle "tpope/vim-surround", '', 'same'
 NeoBundleLazy "tpope/vim-repeat", { 'autoload' : {
       \ 'mappings': '.',
       \ }}
