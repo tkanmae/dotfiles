@@ -50,6 +50,10 @@ NeoBundleLazy 'kana/vim-smartword', '', 'same', { 'autoload' : {
       \ 'mappings' : [
       \   '<Plug>(smartword-w)', '<Plug>(smartword-b)', '<Plug>(smartword-ge)']
       \ }}
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent', {
+      \ 'depends' : 'vim-textobj-user',
+      \ }
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
       \ 'commands' : 'GundoToggle'
       \ }}
