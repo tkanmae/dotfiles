@@ -10,19 +10,22 @@ import argparse
 import glob
 import os
 
+
 TOP  = '.'
 HOME = os.path.expandvars('$HOME')
 CWD  = os.path.dirname(__file__)
 
 
+EXCLUDE = ['.git', '.gitmodules', '.DS_Store']
+
+
 class Installer(object):
-    _excludes = set(['.git', '.gitmodules', '.DS_Store'])
 
     def __init__(self, dotfiles, excludes=None):
         if not isinstance(excludes, (list, set, tuple)):
-            excludes = self._excludes
+            excludes = set(EXCLUDE)
         else:
-            excludes = set(excludes) | self._excludes
+            excludes = set(excludes) | EXCLUDE
         self._dotfiles = set(dotfiles) - excludes
         self._init_print_symlink()
 
