@@ -42,7 +42,7 @@ export LANG=ja_JP.UTF-8
 export LC_TIME=C
 export EDITOR=vim
 export PAGER=less
-export LESS='--tabs=4 --ignore-case --LONG-PROMPT --RAW-CONTROL-CHARS'
+export LESS='--tabs=4 --ignore-case --clear-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
 export LESSCHARSET='utf-8'
 
 # ------------------------------------------------------------------------------
