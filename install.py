@@ -52,9 +52,11 @@ class Installer(object):
     def _init_print_symlink(self):
         n = max([len(item) for item in self._dotfiles])
         fmt = "{{0:<{0}s}} -> {{1}}".format(n + 2)
+
         def _print(src, dst):
             print(fmt.format('~/' + os.path.relpath(dst, HOME),
                              '~/' + os.path.relpath(src, HOME)))
+
         self._print_symlink = _print
 
 
