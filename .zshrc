@@ -14,6 +14,20 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 # ------------------------------------------------------------------------------
+# less
+# ------------------------------------------------------------------------------
+export LESS='--tabs=4 --ignore-case --clear-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
+export LESSCHARSET='utf-8'
+
+# ------------------------------------------------------------------------------
+# grep
+# ------------------------------------------------------------------------------
+export GREP_OPTIONS
+GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
+GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
+GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
+
+# ------------------------------------------------------------------------------
 # Node
 # ------------------------------------------------------------------------------
 if [[ -f $HOME/.nvm/nvm.sh ]]; then

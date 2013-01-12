@@ -42,16 +42,6 @@ export LANG=ja_JP.UTF-8
 export LC_TIME=C
 export EDITOR=vim
 export PAGER=less
-export LESS='--tabs=4 --ignore-case --clear-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
-export LESSCHARSET='utf-8'
-
-# ------------------------------------------------------------------------------
-# grep
-# ------------------------------------------------------------------------------
-export GREP_OPTIONS
-GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
-GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
-GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 
 # ------------------------------------------------------------------------------
 # Python
