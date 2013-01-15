@@ -1,5 +1,4 @@
-Installation
-------------
+# Installation
 
 After cloning this repository, you need to initialize submodules:
 
@@ -10,10 +9,13 @@ and then install the configuration files:
 
     $ ./install.py
 
-This command will create symbolic links in $HOME pointing to the configuration
+This command creates symbolic links in $HOME pointing to the configuration
 files.
 
-If upstream changes were made on the submoduled projects, you can pull the
-changes by:
 
-    $ ./update-submodules.sh
+# Updating submodules
+
+If upstream changes were made on the submoduled projects, you can pull the
+changes by
+
+    $ git submodule foreach --recursive 'git pull origin master'
