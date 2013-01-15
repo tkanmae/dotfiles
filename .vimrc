@@ -333,23 +333,24 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 "}}}  neocomplcache.vim
 
-" unite
+" unite  {{{
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 let g:unite_enable_start_insert = 1
 let g:unite_source_file_mru_time_format = ''
-" List file's directory
+" List file's directory.
 nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" List buffers
+" List buffers.
 nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
-" List recently used files
+" List recently used files.
 nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
-" List current directory
+" List registers.
+nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
+" List current directory.
 nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
-" List buffers and recently used files
+" List buffers and recently used files.
 nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
-nnoremap [unite]y :<C-u>Unite -buffer-name=register register<CR>
-" List outline
+" List outline.
 nnoremap [unite]o :<C-u>Unite outline<CR>
 " Key mapping in unite.vim
 autocmd Filetype unite call s:unite_settings()
