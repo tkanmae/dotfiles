@@ -24,12 +24,14 @@ endif
 call neobundle#rc(expand("~/.vim/bundle"))
 
 " neobundle.vim  "{{{
-NeoBundle "Shougo/neobundle.vim"
-NeoBundle "Shougo/neocomplcache"
-NeoBundle "Shougo/neosnippet"
-NeoBundle "Shougo/unite.vim"
-NeoBundle "Shougo/vimfiler"
-NeoBundle "h1mesuke/unite-outline"
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'ujihisa/neco-look', '', 'same'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -38,12 +40,13 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle "tpope/vim-surround", '', 'same'
-NeoBundleLazy "tpope/vim-repeat", { 'autoload' : {
+
+NeoBundle 'tpope/vim-surround', '', 'same'
+NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
       \ 'mappings': '.',
       \ }}
-NeoBundle "kana/vim-fakeclip"
-NeoBundleLazy "tsaleh/vim-matchit", '', 'same', { 'autoload' : {
+NeoBundle 'kana/vim-fakeclip'
+NeoBundleLazy 'tsaleh/vim-matchit', '', 'same', { 'autoload' : {
       \ 'mappings' : '%',
       \ }}
 NeoBundleLazy 'kana/vim-smartword', '', 'same', { 'autoload' : {
@@ -57,10 +60,10 @@ NeoBundle 'kana/vim-textobj-indent', {
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
       \ 'commands' : 'GundoToggle'
       \ }}
-NeoBundle "scrooloose/nerdcommenter"
-NeoBundle "godlygeek/tabular"
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'godlygeek/tabular'
 
-NeoBundle "scrooloose/syntastic"
+NeoBundle 'scrooloose/syntastic'
 
 " C/C++
 NeoBundleLazy 'Rip-Rip/clang_complete', {
@@ -75,29 +78,29 @@ NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
       \ }}
 
 " JavaScript
-NeoBundleLazy "pangloss/vim-javascript", { 'autoload' : {
+NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
-NeoBundleLazy "jelera/vim-javascript-syntax", { 'autoload' : {
+NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
 
 " Go
-NeoBundleLazy "fsouza/go.vim", { 'autoload' : {
+NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
       \ 'filetypes' : ['go'],
       \ }}
 
 " LaTeX
-NeoBundleLazy "LaTeX-Box-Team/LaTeX-Box", { 'autoload' : {
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
       \ 'filetypes' : ['tex']
       \ }}
 
 " Pandoc
-NeoBundle "vim-pandoc/vim-pandoc"
+NeoBundle 'vim-pandoc/vim-pandoc'
 
 " Color scheme
-NeoBundle "vim-scripts/wombat256.vim"
-NeoBundle "altercation/vim-colors-solarized"
+NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 
 "}}}  neobundle.vim
 
@@ -287,7 +290,7 @@ let g:neocomplcache_enable_cursor_hold_i = 0
 let g:neocomplcache_cursor_hold_i_time = 300
 let g:neocomplcache_enable_insert_char_pre = 0
 let g:neocomplcache_enable_prefetch = 0
-let g:neocomplcache_skip_auto_completion_time = '0.6'
+let g:neocomplcache_skip_auto_completion_time = '0.5'
 let g:neocomplcache_max_list = 100
 
 if !exists('g:neocomplcache_omni_patterns')
@@ -322,6 +325,14 @@ let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
+
+let g:neocomplcache_text_mode_filetypes = {
+      \ 'text': 1,
+      \ 'tex': 1,
+      \ 'markdown': 1,
+      \ 'pandoc': 1,
+      \ 'gitcommit': 1
+      \ }
 
 " mappings
 inoremap <expr><C-g> neocomplcache#undo_completion()
