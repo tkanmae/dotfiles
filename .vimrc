@@ -362,12 +362,14 @@ function! s:unite_settings()
   nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
   inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
 endfunction
+" }}} unite
 
-" vimfiler
+" vimfiler  {{{
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
-nnoremap <silent> <Leader>fb :<C-u>VimFilerBufferDir -quit<CR>
-nnoremap <silent> <Leader>fe :<C-u>VimFilerExplorer -quit<CR>
+nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer -quit<CR>
+" }}} vimfiler
 
 " neosnippet
 if !exists("g:neosnippet#snippets_directory")
