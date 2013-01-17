@@ -397,7 +397,6 @@ let g:syntastic_auto_jump = 1
 let g:syntastic_c_compiler = 'clang'
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_python_checker = 'flake8'
-let g:syntastic_python_checker_args='--ignore=E231,E221 --max-line-length=80'
 let g:syntastic_javascript_checker = 'jshint'
 
 " NERD_comments.vim
