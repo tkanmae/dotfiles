@@ -1,3 +1,8 @@
 *
-!pep8
+!*/
+
 !.gitignore
+
+!pep8
+!pudb/pudb.cfg
+
