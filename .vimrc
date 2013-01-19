@@ -31,7 +31,7 @@ NeoBundle 'ujihisa/neco-look', '', 'same'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'tkanmae/unite-outline', { 'rev': 'tex-headings' }
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
