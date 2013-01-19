@@ -396,7 +396,7 @@ smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" 
 
 " syntastic
 let g:syntastic_check_on_open = 1
-let g:syntastic_auto_jump = 1
+let g:syntastic_auto_jump = 0
 let g:syntastic_c_compiler = 'clang'
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_python_checker = 'flake8'
