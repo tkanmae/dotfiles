@@ -76,6 +76,9 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
 NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
       \ 'filetypes' : ['python', 'python3'],
       \ }}
+NeoBundleLazy 'hynek/vim-python-pep8-indent', { 'autoload' : {
+      \ 'filetypes' : ['python', 'python3'],
+      \ }}
 
 " JavaScript
 NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
