@@ -1,0 +1,14 @@
+div.text_cell_render {
+  font-family: STIX, serif;
+  font-size: 14pt;
+}
+
+.rendered_html h1 {font-size: 153.9%; margin: 0.65em 0; font-weight: bold;}
+.rendered_html h2 {font-size: 123.1%; margin: 0.65em 0; font-weight: bold;}
+.rendered_html h3 {font-size:   100%; margin: 0.55em 0; font-weight: bold;}
+.rendered_html h4 {font-size:    85%; margin: 1.50em 0; font-weight: bold;}
+.rendered_html h5 {font-size:    77%; margin: 1.65em 0; font-weight: bold;}
+
+.CodeMirror {
+  line-height: 1em;
+}
