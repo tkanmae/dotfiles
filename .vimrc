@@ -27,7 +27,7 @@ call neobundle#rc(expand("~/.vim/bundle"))
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/neco-look', '', 'same'
+NeoBundle 'ujihisa/neco-look'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/unite.vim'
@@ -41,15 +41,15 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
-NeoBundle 'tpope/vim-surround', '', 'same'
+NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
       \ 'mappings': '.',
       \ }}
 NeoBundle 'kana/vim-fakeclip'
-NeoBundleLazy 'tsaleh/vim-matchit', '', 'same', { 'autoload' : {
+NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
       \ 'mappings' : '%',
       \ }}
-NeoBundleLazy 'kana/vim-smartword', '', 'same', { 'autoload' : {
+NeoBundleLazy 'kana/vim-smartword', { 'autoload' : {
       \ 'mappings' : [
       \   '<Plug>(smartword-w)', '<Plug>(smartword-b)', '<Plug>(smartword-ge)']
       \ }}
