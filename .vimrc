@@ -25,11 +25,41 @@ call neobundle#rc(expand("~/.vim/bundle"))
 
 " neobundle.vim  "{{{
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache', '', 'default'
+call neobundle#config('neocomplcache', {
+      \ 'lazy': 1,
+      \ 'autoload' : {
+      \  'insert': 1,
+      \ }})
+NeoBundle 'Shougo/unite.vim', '', 'default'
+call neobundle#config('unite.vim',{
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'commands' : [{'name' : 'Unite',
+      \                  'complete' : 'customlist,unite#complete_source'},
+      \                  'UniteWithCursorWord', 'UniteWithInput']
+      \ }})
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimfiler', '', 'default'
+call neobundle#config('vimfiler', {
+      \ 'lazy' : 1,
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'autoload' : {
+      \    'commands' : [
+      \                  {'name' : 'VimFiler',
+      \                   'complete' : 'customlist,vimfiler#complete' },
+      \                  {'name' : 'VimFilerExplorer',
+      \                   'complete' : 'customlist,vimfiler#complete' },
+      \                  {'name' : 'Edit',
+      \                   'complete' : 'customlist,vimfiler#complete' },
+      \                  {'name' : 'Write',
+      \                   'complete' : 'customlist,vimfiler#complete' },
+      \                  'Read', 'Source'],
+      \    'mappings' : ['<Plug>(vimfiler_switch)'],
+      \    'explorer' : 1,
+      \ }
+      \ })
 NeoBundle 'tkanmae/unite-outline', { 'rev': 'tex-headings' }
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
