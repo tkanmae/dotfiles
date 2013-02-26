@@ -1,9 +1,9 @@
 div.cell {
-  max-width: 760px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.CodeMirror {
-  line-height: 1em;
+div.text_cell_render{
+  line-height: 145%;
 }
