@@ -30,7 +30,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tkanmae/unite-outline', { 'rev': 'tex-headings' }
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
