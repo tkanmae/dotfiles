@@ -37,7 +37,7 @@ call neobundle#config('unite.vim',{
       \ 'autoload' : {
       \   'commands' : [{'name' : 'Unite',
       \                  'complete' : 'customlist,unite#complete_source'},
-      \                  'UniteWithCursorWord', 'UniteWithInput']
+      \                  'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
       \ }})
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'Shougo/neosnippet'
