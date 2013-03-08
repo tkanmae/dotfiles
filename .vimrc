@@ -93,6 +93,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-fugitive'
 
 " C/C++
 NeoBundleLazy 'Rip-Rip/clang_complete', {
