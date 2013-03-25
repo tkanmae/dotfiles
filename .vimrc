@@ -432,6 +432,10 @@ let g:syntastic_c_compiler = 'clang'
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_python_checker = 'flake8'
 let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_mode_map = { 'mode': 'active',
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['tex'] }
+
 
 " NERD_comments.vim
 let NERDShutUp=1
