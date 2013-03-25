@@ -245,7 +245,7 @@ set cursorline
 set title
 set lazyredraw
 
-set scrolloff=3
+set scrolloff=2
 set sidescrolloff=5
 
 set nowildmenu
