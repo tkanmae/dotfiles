@@ -19,6 +19,8 @@ path=(# User
       $HOME/.local/go/bin(N-)
       # MOSART
       $HOME/.local/MOSART/bin(N-)
+      # MacTeX
+      /usr/local/texlive/2012/bin/x86_64-darwin(N-/)
       # System
       /usr/sbin(N-/)
       /usr/bin(N-/)
