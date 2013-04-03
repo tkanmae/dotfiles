@@ -471,6 +471,7 @@ let g:LatexBox_viewer = "open -a Skim.app"
 let g:LatexBox_latexmk_options = '-pvc'
 let g:LatexBox_split_width = 40
 let g:LatexBox_split_side = "rightbelow"
+let g:LatexBox_complete_inlineMath = 1
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
 \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>""")"'')
 "
