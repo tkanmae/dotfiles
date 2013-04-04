@@ -8,6 +8,8 @@
 *.la
 # Dynamic libraries
 *.so
+# Debug symbols
+*.dSYM/
 
 # ----------------------------------------------------------------------
 # Python
