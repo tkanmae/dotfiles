@@ -26,6 +26,7 @@
     ft = fetch
     fo = fetch origin
     # diff
+    df = diff
     dc = diff --cached
     dm = diff master
     dw = diff --color-words
