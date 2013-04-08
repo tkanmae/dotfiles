@@ -51,13 +51,6 @@ export PAGER=less
 export PYTHONUSERBASE=$HOME/.local
 
 # ------------------------------------------------------------------------------
-# TeX
-# ------------------------------------------------------------------------------
-export TEXINPUTS=.//:$HOME/Dropbox/home/.texmf/tex//:
-export BSTINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bst//:
-export BIBINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bib//:
-
-# ------------------------------------------------------------------------------
 # Google Test
 # ------------------------------------------------------------------------------
 export GTEST_COLOR=1
@@ -90,6 +83,10 @@ if [[ $OSTYPE == linux* ]]; then
     if [[ `whoami` = 'ldm' ]]; then
         path=($path $HOME/ldm-6.9.7/bin(N-))
     fi
+
+    # TeX
+    export TEXINPUTS=.//:$HOME/Dropbox/home/.texmf/tex//:
+    export BSTINPUTS=.//:$HOME/Dropbox/home/.texmf/bibtex/bst//:
 
 elif [[ $OSTYPE == darwin* ]]; then
     # GNU Source Highlight
