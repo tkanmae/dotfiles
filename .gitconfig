@@ -16,6 +16,8 @@
     co = checkout
     sh = show
     st = status -sb
+    amend = commit --amend
+
     # log
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -23,9 +25,11 @@
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     oneline = log --oneline
+
     # fetch
     ft = fetch
     fo = fetch origin
+
     # diff
     df = diff
     dc = diff --cached
@@ -36,7 +40,8 @@
     d3 = diff HEAD~~~
     d4 = diff HEAD~~~~
 
-    amend = commit --amend
+    # http://d.hatena.ne.jp/thinca/20120924/1348491052
+    cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 
     latexdiff = difftool -t latex
 [core]
