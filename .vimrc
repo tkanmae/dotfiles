@@ -117,6 +117,9 @@ NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
 NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
+NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
+      \ 'filetypes' : ['less']
+      \ }}
 
 " Go
 NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
