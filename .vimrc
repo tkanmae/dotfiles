@@ -110,6 +110,15 @@ NeoBundleLazy 'hynek/vim-python-pep8-indent', { 'autoload' : {
       \ 'filetypes' : ['python', 'python3'],
       \ }}
 
+" CSS
+NeoBundleLazy 'hail2u/vim-css3-syntax', { 'autoload' : {
+      \ 'filetypes' : ['css', 'html', 'less']
+      \ }}
+" LESS
+NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
+      \ 'filetypes' : ['less']
+      \ }}
+
 " JavaScript
 NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
       \ 'filetypes' : ['javascript']
@@ -117,8 +126,6 @@ NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
 NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
-NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
-      \ 'filetypes' : ['less']
       \ }}
 
 " Go
