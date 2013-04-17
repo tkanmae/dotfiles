@@ -126,6 +126,10 @@ NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
 NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
+
+" Jinja2
+NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload' : {
+      \ 'filetypes' : ['html']
       \ }}
 
 " Go
