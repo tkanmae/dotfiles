@@ -502,6 +502,8 @@ map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/d
 
 " Key mapping:  "{{{
 "
+nnoremap Q <Nop>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
