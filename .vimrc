@@ -32,7 +32,7 @@ call neobundle#config('neocomplcache', {
       \  'insert': 1,
       \ }})
 NeoBundle 'Shougo/unite.vim', '', 'default'
-call neobundle#config('unite.vim',{
+call neobundle#config('unite.vim', {
       \ 'lazy' : 1,
       \ 'autoload' : {
       \   'commands' : [{'name' : 'Unite',
@@ -60,7 +60,14 @@ call neobundle#config('vimfiler', {
       \    'explorer' : 1,
       \ }
       \ })
-NeoBundle 'tkanmae/unite-outline', { 'rev': 'tex-headings' }
+
+NeoBundle 'Shougo/unite-outline', '', 'default'
+call neobundle#config('unite-outline', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'unite_sources' : 'outline'},
+      \ })
+
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
