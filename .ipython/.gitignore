@@ -1,2 +1,12 @@
+README
 Crash_report_ipython.txt
+
 cython/
+
+profile_*/*.sqlite
+profile_*/db/
+profile_*/log/
+profile_*/pid/
+profile_*/security/
+profile_*/startup/
+profile_*/static/mathjax/

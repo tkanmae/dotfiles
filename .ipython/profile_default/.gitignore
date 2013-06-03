@@ -1,7 +1,0 @@
-db/
-log/
-pid/
-security/
-startup/
-static/mathjax/
-*.sqlite
