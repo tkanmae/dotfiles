@@ -104,3 +104,28 @@ if [[ -f $HOME/.nvm/nvm.sh ]]; then
     source $HOME/.nvm/nvm.sh
     nvm alias default "v0.10.5" >/dev/null
 fi
+
+
+# ------------------------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------------------------
+
+# Call ipython with a per-project profile.  It assumes that .ipython directory
+# is in the top level directory of a project managed by git.
+function ipython() {
+    local project_root_dir
+
+    # If the user specifies `IPYTHONDIR` either by giving --ipython-dir
+    # option or by an environmental variable IPYTHONDIR, then the specified
+    # directory should have precedence over per-project `IPYTHONDIR`.
+    if [[ $* =~ --ipython-dir || -n $IPYTHONDIR ]]; then
+        command ipython $*
+    else
+        project_root_dir=$(git rev-parse --show-toplevel 2>/dev/null)
+        if [[ -d "$project_root_dir/.ipython" ]]; then
+            command ipython $* --ipython-dir="$project_root_dir/.ipython"
+        else
+            command ipython $*
+        fi
+    fi
+}
