@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
 # antigen
 # ------------------------------------------------------------------------------
-source $HOME/.zshrc.antigen
+source ~/.zshrc.antigen
 
 # ------------------------------------------------------------------------------
 # autojump
 # ------------------------------------------------------------------------------
-if [[ $OSTYPE == darwin* ]]; then
+if [[ "$OSTYPE" == darwin* ]]; then
     export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
     if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
         . /opt/local/etc/profile.d/autojump.sh
