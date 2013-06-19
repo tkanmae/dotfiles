@@ -1,0 +1,45 @@
+# ------------------------------------------------------------------------------
+# PATH
+# ------------------------------------------------------------------------------
+typeset -U path
+path=(# User
+      $HOME/.local/bin(N-/)
+      # System
+      /usr/local/bin(N-/)
+      # MacPorts
+      /opt/local/bin(N-/)
+      # GNU tools (MacPorts)
+      /opt/local/libexec/gnubin(N-/)
+      # Python (MacPorts)
+      /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin(N-/)
+      # Go
+      /usr/local/go/bin(N-)
+      $HOME/.local/go/bin(N-)
+      # MacTeX
+      /usr/local/texlive/2012/bin/x86_64-darwin(N-/)
+      # System
+      /usr/sbin(N-/)
+      /usr/bin(N-/)
+      /sbin(N-)
+      /bin(N-))
+
+# ------------------------------------------------------------------------------
+# MANPATH
+# ------------------------------------------------------------------------------
+typeset -U manpath
+manpath=(# system
+         /usr/local/share/man(N-/)
+         # MacPorts
+         /opt/local/share/man(N-/)
+         # system
+         /usr/share/man(N-/))
+
+# ------------------------------------------------------------------------------
+# Python
+# ------------------------------------------------------------------------------
+export PIP_DOWNLOAD_CACHE=~/Library/Caches/pip
+
+# ------------------------------------------------------------------------------
+# Go
+# ------------------------------------------------------------------------------
+export GOPATH=$HOME/.local/go
