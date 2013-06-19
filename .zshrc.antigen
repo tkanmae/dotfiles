@@ -1,11 +1,10 @@
-source $HOME/Documents/Development/dotfiles/antigen/antigen.zsh
+source ~/Developer/Dotfiles/antigen/antigen.zsh
 
 # Load oh-my-zsh's core library.
 antigen-use oh-my-zsh
 
 # Bundles from the default repo.
 antigen-bundle git
-antigen-bundle command-not-found
 
 # Syntax highlighting.
 antigen-bundle zsh-users/zsh-syntax-highlighting
