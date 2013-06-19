@@ -427,14 +427,14 @@ function! s:unite_settings()
   nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
   inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
 endfunction
-let s:file_ignore_pattern = (unite#sources#file_rec#define()[0]['ignore_pattern']) .
-      \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|log\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
-      \ '\|\.\%(pyc\|pyo\)$' .
-      \ '\|\<target\>'
-call unite#custom_source('file', 'ignore_pattern', s:file_ignore_pattern)
-call unite#custom_source('file_mru', 'ignore_pattern', s:file_ignore_pattern)
-call unite#custom_source('file_rec', 'ignore_pattern', s:file_ignore_pattern)
-call unite#custom_source('grep', 'ignore_pattern', s:file_ignore_pattern)
+" let s:file_ignore_pattern = (unite#sources#file_rec#define()[0]['ignore_pattern']) .
+"       \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|log\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
+"       \ '\|\.\%(pyc\|pyo\)$' .
+"       \ '\|\<target\>'
+" call unite#custom_source('file', 'ignore_pattern', s:file_ignore_pattern)
+" call unite#custom_source('file_mru', 'ignore_pattern', s:file_ignore_pattern)
+" call unite#custom_source('file_rec', 'ignore_pattern', s:file_ignore_pattern)
+" call unite#custom_source('grep', 'ignore_pattern', s:file_ignore_pattern)
 " }}} unite
 
 " vimfiler  {{{
