@@ -4,6 +4,9 @@
 typeset -U path
 path=(# User
       $HOME/.local/bin(N-/)
+      # Go
+      /usr/local/go/bin(N-)
+      $HOME/.local/go/bin(N-)
       # System
       /usr/local/bin(N-/)
       # MacPorts
@@ -12,9 +15,6 @@ path=(# User
       /opt/local/libexec/gnubin(N-/)
       # Python (MacPorts)
       /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin(N-/)
-      # Go
-      /usr/local/go/bin(N-)
-      $HOME/.local/go/bin(N-)
       # MacTeX
       /usr/local/texlive/2012/bin/x86_64-darwin(N-/)
       # System
