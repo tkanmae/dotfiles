@@ -24,7 +24,9 @@ endif
 call neobundle#rc(expand("~/.vim/bundle"))
 
 " neobundle.vim  "{{{
-NeoBundle 'Shougo/neobundle.vim'
+" Let neobundle manage neobundle itself.
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 NeoBundle 'Shougo/neocomplcache', '', 'default'
 call neobundle#config('neocomplcache', {
       \ 'lazy': 1,
@@ -40,6 +42,12 @@ call neobundle#config('unite.vim', {
       \                  'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
       \ }})
 NeoBundle 'ujihisa/neco-look'
+NeoBundle 'Shougo/unite-outline', '', 'default'
+call neobundle#config('unite-outline', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'unite_sources' : 'outline'},
+      \ })
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimfiler', '', 'default'
 call neobundle#config('vimfiler', {
@@ -61,21 +69,15 @@ call neobundle#config('vimfiler', {
       \ }
       \ })
 
-NeoBundle 'Shougo/unite-outline', '', 'default'
-call neobundle#config('unite-outline', {
-      \ 'lazy' : 1,
-      \ 'autoload' : {
-      \   'unite_sources' : 'outline'},
-      \ })
-
-NeoBundle 'Shougo/vimproc', {
+NeoBundle 'Shougo/vimproc', '', 'default'
+call neobundle#config('vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
       \    },
-      \ }
+      \ })
 
 NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
@@ -160,6 +162,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 syntax enable
+NeoBundleCheck
 "
 " }}} Initialization
 
@@ -187,7 +190,6 @@ set wrapscan
 
 " Edit:  "{{{
 "
-set noswapfile
 set backspace=indent,eol,start
 
 set clipboard& clipboard+=unnamed
@@ -195,6 +197,7 @@ set clipboard& clipboard+=unnamed
 " Re-load if files are modified.
 set autoread
 set hidden
+set switchbuf=useopen
 
 set smarttab
 set expandtab
@@ -224,6 +227,7 @@ autocmd vimrc InsertLeave * if &paste | set nopaste | endif
 autocmd vimrc BufWritePre * :%s/\s\+$//e
 
 " Set up backup.
+set noswapfile
 set backup
 set backupdir=$HOME/.vim-backup
 autocmd vimrc BufWritePre,FileWritePre,FileAppendPre * call UpdateBackupFile()
@@ -274,6 +278,7 @@ set wildmode=list:longest,full
 set history=128
 
 " Completion
+set completeopt-=preview
 set completeopt=menuone
 " Dont't complete from other buffers.
 set complete=.
