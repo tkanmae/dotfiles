@@ -104,6 +104,8 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
 
+NeoBundle 'vim-scripts/sudo.vim', '', 'default'
+
 " C/C++
 NeoBundleLazy 'Rip-Rip/clang_complete', {
       \ 'autoload' : {
