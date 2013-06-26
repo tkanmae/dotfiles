@@ -1,0 +1,15 @@
+if [[ -d /opt/local/share/zsh/site-functions ]]; then
+    export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
+fi
+
+# ------------------------------------------------------------------------------
+# autojump
+# ------------------------------------------------------------------------------
+if [[ -f /opt/local/etc/profile.d/autojump.sh ]]; then
+    . /opt/local/etc/profile.d/autojump.sh
+fi
+
+# ------------------------------------------------------------------------------
+# Aliases
+# ------------------------------------------------------------------------------
+[[ -x /opt/local/bin ]] && alias ls='gls -F --color=auto'

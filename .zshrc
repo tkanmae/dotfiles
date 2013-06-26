@@ -4,16 +4,6 @@
 source ~/.zshrc.antigen
 
 # ------------------------------------------------------------------------------
-# autojump
-# ------------------------------------------------------------------------------
-if [[ "$OSTYPE" == darwin* ]]; then
-    export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
-    if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-        . /opt/local/etc/profile.d/autojump.sh
-    fi
-fi
-
-# ------------------------------------------------------------------------------
 # Override some of the settings that oh-my-zsh sets
 # ------------------------------------------------------------------------------
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>''})]'
@@ -50,15 +40,6 @@ bindkey '^S' history-incremental-pattern-search-forward
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-if [[ $OSTYPE == darwin* ]]; then
-    # Add aliases for Mac OS X here.
-    [[ -x /opt/local/bin ]] && alias ls='gls -F --color=auto'
-    alias gvim='open -a /Applications/MacVim.app'
-elif [[ $OSTYPE == linux* ]]; then
-    # Add aliases for Linux here.
-    alias ls='ls -F --color=auto'
-fi
-
 alias rm='nocorrect rm -i'
 alias mv='nocorrect mv -i -v'
 alias cp='nocorrect cp -i'
@@ -113,8 +94,8 @@ source `which virtualenvwrapper.sh`
 # ------------------------------------------------------------------------------
 # rbenv
 # ------------------------------------------------------------------------------
-if [[ -d $HOME/.rbenv/bin ]]; then
-    export PATH=$HOME/.rbenv/bin:$PATH
+if [[ -d $HOME/.rbenv ]]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
 
@@ -141,3 +122,15 @@ function ipython() {
         fi
     fi
 }
+
+# ------------------------------------------------------------------------------
+# Platform specific settings
+# ------------------------------------------------------------------------------
+case "$OSTYPE" in
+    darwin*)
+        source ~/.zsh/.zshrc.macosx
+        ;;
+    linux*)
+        source ~/.zsh/.zshrc.linux
+        ;;
+esac
