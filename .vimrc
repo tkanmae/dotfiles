@@ -449,7 +449,7 @@ endfunction
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
-nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer -quit<CR>
+nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
 " }}} vimfiler
 
 " neosnippet
