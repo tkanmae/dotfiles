@@ -99,6 +99,7 @@ NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
       \ 'commands' : 'GundoToggle'
       \ }}
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'scrooloose/syntastic'
@@ -487,6 +488,10 @@ xmap b  <Plug>(smartword-b)
 " omap w  <Plug>(smartword-w)
 " omap b  <Plug>(smartword-b)
 " omap ge <Plug>(smartword-ge)
+
+" YankRing
+set viminfo+=!
+let g:yankring_history_file='.yankring_history'
 
 " Gundo.vim
 nnoremap U :<C-u>GundoToggle<CR>
