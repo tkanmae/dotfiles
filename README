@@ -8,8 +8,8 @@ After cloning this repository, you need to initialize submodules:
 
 Then, you need to set up NeoBundle, a Vim plugin manager:
 
-    $ mkdir -p ~/.vim/bundle
-    $ git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+    $ mkdir .vim/bundle
+    $ git clone https://github.com/Shougo/neobundle.vim .vim/bundle/neobundle.vim
 
 Finally, you can install the configuration files:
 
