@@ -1,4 +1,4 @@
-source ~/Developer/Dotfiles/antigen/antigen.zsh
+source ~/.dotfiles/antigen/antigen.zsh
 
 # Load oh-my-zsh's core library.
 antigen-use oh-my-zsh
