@@ -139,6 +139,11 @@ NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
 
+" YAML
+NeoBundleLazy 'avakhov/vim-yaml', { 'autoload' : {
+      \ 'filetypes' : ['yaml']
+      \ }}
+
 " Jinja2
 NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload' : {
       \ 'filetypes' : ['html']
