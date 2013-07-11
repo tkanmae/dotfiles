@@ -574,7 +574,12 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 " Toggle paste
 set pastetoggle=<F10>
-"
+
+" Open the current buffer with Marked.app
+if has('macunix')
+  nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+endif
+
 "}}}  Key bindings
 
 
