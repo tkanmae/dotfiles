@@ -1,6 +1,8 @@
 [user]
     name  = Takeshi Kanmae
     email = tkanmae@gmail.com
+[url "https://"]
+    insteadOf = git://
 [color]
     ui = auto
     status = auto
