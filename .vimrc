@@ -49,6 +49,13 @@ call neobundle#config('unite-outline', {
       \   'unite_sources' : 'outline'},
       \ })
 NeoBundle 'Shougo/neosnippet'
+call neobundle#config('neosnippet', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'insert' : 1,
+      \   'filetypes' : 'snippet',
+      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
+      \ }})
 NeoBundle 'Shougo/vimfiler', '', 'default'
 call neobundle#config('vimfiler', {
       \ 'lazy' : 1,
