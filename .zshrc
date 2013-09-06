@@ -83,7 +83,7 @@ GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
 # ------------------------------------------------------------------------------
 if [[ -f $HOME/.nvm/nvm.sh ]]; then
     source $HOME/.nvm/nvm.sh
-    nvm alias default "v0.10.12" >/dev/null
+    nvm alias default "v0.10.18" >/dev/null
 fi
 
 # ------------------------------------------------------------------------------
