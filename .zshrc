@@ -41,7 +41,7 @@ bindkey '^S' history-incremental-pattern-search-forward
 # Aliases
 # ------------------------------------------------------------------------------
 alias rm='nocorrect rm -i'
-alias mv='nocorrect mv -i -v'
+alias mv='nocorrect mv -i'
 alias cp='nocorrect cp -i'
 alias df='df -h'
 alias du='du -h'
