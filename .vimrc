@@ -71,7 +71,7 @@ call neobundle#config('vimfiler', {
       \                  {'name' : 'Write',
       \                   'complete' : 'customlist,vimfiler#complete' },
       \                  'Read', 'Source'],
-      \    'mappings' : ['<Plug>(vimfiler_switch)'],
+      \    'mappings' : ['<Plug>(vimfiler_)'],
       \    'explorer' : 1,
       \ }
       \ })
@@ -96,7 +96,7 @@ NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
       \ }}
 NeoBundleLazy 'kana/vim-smartword', { 'autoload' : {
       \ 'mappings' : [
-      \   '<Plug>(smartword-w)', '<Plug>(smartword-b)', '<Plug>(smartword-ge)']
+      \   '<Plug>(smartword-']
       \ }}
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent', {
