@@ -1,15 +1,14 @@
-if [[ -d /opt/local/share/zsh/site-functions ]]; then
-    export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
-fi
+# ------------------------------------------------------------------------------
+# Homebrew's zsh-completions
+# ------------------------------------------------------------------------------
+fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
 
 # ------------------------------------------------------------------------------
 # autojump
 # ------------------------------------------------------------------------------
-if [[ -f /opt/local/etc/profile.d/autojump.sh ]]; then
-    . /opt/local/etc/profile.d/autojump.sh
-fi
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-[[ -x /opt/local/bin ]] && alias ls='gls -F --color=auto'
+alias ls="ls -GF"
