@@ -423,8 +423,6 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 " unite  {{{
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
-let g:unite_enable_start_insert = 1
-let g:unite_source_file_mru_time_format = ''
 " List file's directory.
 nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 " List buffers.
@@ -439,25 +437,39 @@ nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
 nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
 " List outline.
 nnoremap [unite]o :<C-u>Unite outline<CR>
-" Key mapping in unite.vim
-autocmd Filetype unite call s:unite_settings()
-function! s:unite_settings()
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  nnoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
-  inoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
-  nnoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
-  inoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
-  nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
-  inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+
+let s:hooks = neobundle#get_hooks('unite.vim')
+function! s:hooks.on_source(bundle)
+  let g:unite_enable_start_insert = 1
+  let g:unite_source_file_mru_time_format = ''
+
+  let s:file_ignore_pattern = (unite#sources#rec#define()[0]['ignore_pattern']) .
+        \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
+        \ '\|\.\%(pyc\|pyo\)$' .
+        \ '\|\<target\>'
+  call unite#custom#source('file', 'ignore_pattern', s:file_ignore_pattern)
+  call unite#custom#source('file_mru', 'ignore_pattern', s:file_ignore_pattern)
+  call unite#custom#source('file_rec', 'ignore_pattern', s:file_ignore_pattern)
+  call unite#custom#source('grep', 'ignore_pattern', s:file_ignore_pattern)
+
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+
+  autocmd Filetype unite call s:unite_settings()
+  function! s:unite_settings()
+    " Key mapping in unite.vim
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    nnoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+    inoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+    nnoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+    inoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+    nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+    inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+  endfunction
 endfunction
-" let s:file_ignore_pattern = (unite#sources#file_rec#define()[0]['ignore_pattern']) .
-"       \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|log\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
-"       \ '\|\.\%(pyc\|pyo\)$' .
-"       \ '\|\<target\>'
-" call unite#custom_source('file', 'ignore_pattern', s:file_ignore_pattern)
-" call unite#custom_source('file_mru', 'ignore_pattern', s:file_ignore_pattern)
-" call unite#custom_source('file_rec', 'ignore_pattern', s:file_ignore_pattern)
-" call unite#custom_source('grep', 'ignore_pattern', s:file_ignore_pattern)
 " }}} unite
 
 " vimfiler  {{{
