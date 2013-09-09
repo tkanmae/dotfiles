@@ -327,6 +327,7 @@ augroup vimrc
   autocmd FileType gitcommit setlocal spell
   autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell nosmartindent
   autocmd FileType tex setlocal formatoptions=tcq
+  autocmd FileType python setlocal omnifunc=jedi#completions
 
   " Close the help window by typing q.
   autocmd vimrc FileType help nnoremap <buffer> q <C-w>c
@@ -389,11 +390,10 @@ let g:clang_auto_select = 0
 let g:clang_use_library = 1
 
 " For jedi-vim
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_function_definition = 0
-autocmd vimrc FileType python*
-    \ NeoBundleSource jedi-vim | let b:did_ftplugin = 1
+let g:jedi#auto_initialization = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#popup_select_first = 0
 let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
 if !exists('g:neocomplcache_keyword_patterns')
