@@ -66,6 +66,8 @@ call neobundle#config('vimfiler', {
       \                   'complete' : 'customlist,vimfiler#complete' },
       \                  {'name' : 'VimFilerExplorer',
       \                   'complete' : 'customlist,vimfiler#complete' },
+      \                  {'name' : 'VimFilerBufferDir',
+      \                   'complete' : 'customlist,vimfiler#complete' },
       \                  {'name' : 'Edit',
       \                   'complete' : 'customlist,vimfiler#complete' },
       \                  {'name' : 'Write',
@@ -459,10 +461,15 @@ endfunction
 " }}} unite
 
 " vimfiler  {{{
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
+
+let s:hooks = neobundle#get_hooks('vimfiler')
+function! s:hooks.on_source(bundle)
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_enable_auto_cd = 1
+endfunction
 " }}} vimfiler
 
 " neosnippet
