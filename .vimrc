@@ -484,15 +484,19 @@ function! s:hooks.on_source(bundle)
 endfunction
 " }}} vimfiler
 
-" neosnippet
-if !exists("g:neosnippet#snippets_directory")
-  let g:neosnippet#snippets_directory = '~/.vim/snippets'
-endif
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" neosnippet {{{
+let s:hooks = neobundle#get_hooks('neosnippet')
+function! s:hooks.on_source(bundle)
+  if !exists("g:neosnippet#snippets_directory")
+    let g:neosnippet#snippets_directory = '~/.vim/snippets'
+  endif
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+endfunction
+" }}} neosnippet
 
 " syntastic
 let g:syntastic_check_on_open = 1
