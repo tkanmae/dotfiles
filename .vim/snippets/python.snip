@@ -3,7 +3,7 @@ abbr    shebang
 options head
 	#!/usr/bin/env python
 	# -*- coding: utf-8 -*-
-        ${1}
+	${1}
 
 snippet imp
 abbr    import
@@ -18,32 +18,47 @@ options head
 snippet from
 abbr    from package import module
 options head
-        from ${1:package} import ${2:module}
+	from ${1:package} import ${2:module}
 
 snippet fut
 abbr    from __future__ import module
 options head
 	from __future__ import ${1:module}
 
+snippet fut
+abbr    from __future__ import absolute_import
+options head
+	from __future__ import absolute_import
+
+snippet fut
+abbr    from __future__ import division
+options head
+	from __future__ import division
+
+snippet fut
+abbr    from __future__ import absolute_import, division
+options head
+	from __future__ import division
+
 snippet __
 abbr    __magic__
-        __${1}__${2}
+	__${1}__${2}
 
 snippet el
 abbr    else
-        else:
-                ${1:statements}
+	else:
+		${1:#:statements}
 
 snippet with
 abbr    with statement
-        with ${1:expr} as ${2:var}:
-                ${3:statements}
+	with ${1:#:expr} as ${2:#:var}:
+		${3:#:statements}
 
 snippet ifmain
 abbr    if __name__ == '__main__':
 options head
-        if __name__ == '__main__':
-                ${1:main()}
+	if __name__ == '__main__':
+		${1:main()}
 
 snippet '.fo
 abbr    format
