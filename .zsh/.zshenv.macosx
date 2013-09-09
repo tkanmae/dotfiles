@@ -9,6 +9,8 @@ path=(# User
       $HOME/.local/go/bin(N-)
       # System
       /usr/local/bin(N-/)
+      # GNU coreutils via Homebrew
+      /usr/local/opt/coreutils/libexec/gnubin(N/)
       # MacTeX
       /usr/local/texlive/2012/bin/x86_64-darwin(N-/)
       # System
@@ -23,8 +25,8 @@ path=(# User
 typeset -U manpath
 manpath=(# system
          /usr/local/share/man(N-/)
-         # MacPorts
-         /opt/local/share/man(N-/)
+         # GNU coreutils via Homebrew
+         /usr/local/opt/coreutils/libexec/gnuman
          # system
          /usr/share/man(N-/))
 
