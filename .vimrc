@@ -274,7 +274,7 @@ set showbreak=>>>
 set breakat=\ \	;:,!?
 
 set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 
 set wrap
 set whichwrap+=h,l,<,>,[,],b,s,~
