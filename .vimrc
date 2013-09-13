@@ -596,9 +596,13 @@ endfunction
 " neosnippet {{{
 let s:hooks = neobundle#get_hooks('neosnippet')
 function! s:hooks.on_source(bundle)
+  let g:neosnippet#disable_runtime_snippets = {
+        \ '_': 1,
+        \}
   if !exists("g:neosnippet#snippets_directory")
     let g:neosnippet#snippets_directory = '~/.vim/snippets'
   endif
+
   " SuperTab like snippets behavior.
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
