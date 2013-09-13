@@ -112,10 +112,6 @@ NeoBundle 'kana/vim-fakeclip'
 NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
       \ 'mappings' : '%',
       \ }}
-NeoBundleLazy 'kana/vim-smartword', { 'autoload' : {
-      \ 'mappings' : [
-      \   '<Plug>(smartword-']
-      \ }}
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent', {
       \ 'depends' : 'vim-textobj-user',
@@ -622,21 +618,9 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['tex'] }
 
-
 " NERD_comments.vim
 let NERDShutUp=1
 let NERDSpaceDelims=1
-
-" smartword.vim
-" Replace w and others with smartword-mappings
-nmap w  <Plug>(smartword-w)
-nmap b  <Plug>(smartword-b)
-nmap ge <Plug>(smartword-ge)
-xmap w  <Plug>(smartword-w)
-xmap b  <Plug>(smartword-b)
-" omap w  <Plug>(smartword-w)
-" omap b  <Plug>(smartword-b)
-" omap ge <Plug>(smartword-ge)
 
 " YankRing
 set viminfo+=!
