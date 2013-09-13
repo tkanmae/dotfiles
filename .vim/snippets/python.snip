@@ -25,21 +25,6 @@ abbr    from __future__ import module
 options head
 	from __future__ import ${1:module}
 
-snippet fut
-abbr    from __future__ import absolute_import
-options head
-	from __future__ import absolute_import
-
-snippet fut
-abbr    from __future__ import division
-options head
-	from __future__ import division
-
-snippet fut
-abbr    from __future__ import absolute_import, division
-options head
-	from __future__ import division
-
 snippet __
 abbr    __magic__
 	__${1}__${2}
@@ -62,11 +47,11 @@ options head
 
 snippet '.fo
 abbr    format
-	'.format(${1})
+	'.format(${1:#:expr})
 
 snippet ".fo
 abbr    format
-	".format(${1})
+	".format(${1:#:expr})
 
 snippet osp
 abbr    os.path.
