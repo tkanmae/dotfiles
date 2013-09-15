@@ -103,7 +103,7 @@ call neobundle#config('vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ })
-
+NeoBundle 'bling/vim-airline'
 NeoBundle 'tpope/vim-surround'
 NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
       \ 'mappings': '.',
@@ -318,9 +318,6 @@ set pumheight=20
 set splitbelow
 set splitright
 set noequalalways
-
-set statusline=[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']['.&ft.']'}
-set statusline+=\ %f%=\ [%<%{fnamemodify(expand('%'),':~:h')}]\ (%l,%c%V)\ %6P
 
 set t_Co=256
 
@@ -548,6 +545,7 @@ let s:hooks = neobundle#get_hooks('unite.vim')
 function! s:hooks.on_source(bundle)
   let g:unite_enable_start_insert = 1
   let g:unite_source_file_mru_time_format = ''
+  let g:unite_force_overwrite_statusline = 0
 
   let s:file_ignore_pattern = (unite#sources#rec#define()[0]['ignore_pattern']) .
         \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
@@ -586,6 +584,7 @@ let s:hooks = neobundle#get_hooks('vimfiler')
 function! s:hooks.on_source(bundle)
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_safe_mode_by_default = 0
+  let g:vimfiler_force_overwrite_statusline = 0
 endfunction
 " }}} vimfiler
 
@@ -607,7 +606,15 @@ function! s:hooks.on_source(bundle)
 endfunction
 " }}} neosnippet
 
-" syntastic
+" vim-airline {{{
+let g:airline_theme = "solarized"
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
+let g:airline_inactive_collapse = 0
+let g:airline#extensions#syntastic#enabled = 0
+" }}} vim-airline
+
+" syntastic {{
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_c_compiler = 'clang'
