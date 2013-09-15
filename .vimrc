@@ -193,7 +193,7 @@ filetype plugin indent on
 syntax enable
 NeoBundleCheck
 "
-" }}} Initialization
+"}}} Initialization
 
 
 " Encoding:  "{{{
@@ -204,10 +204,10 @@ set fileformat=unix
 set fileformats=unix,dos,mac
 set ambiwidth=double
 "
-" }}} Encoding
+"}}} Encoding
 
 
-" Search:  "{{{
+" Search: "{{{
 "
 set ignorecase
 set smartcase
@@ -348,7 +348,7 @@ augroup END
 let g:python_highlight_all = 1
 
 "
-" }}}  Syntax
+"}}}  Syntax
 
 
 " Plugins:  "{{{
@@ -416,7 +416,7 @@ if s:meet_neocomplete_requirements()
           \ 'gitcommit': 1
           \ }
 
-    " mappings {{{
+    " mappings "{{{
     " <C-f>, <C-b>: page move.
     inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
     inoremap <expr><C-b> pumvisible() ? "\<PageUp>"   : "\<Left>"
@@ -438,11 +438,11 @@ if s:meet_neocomplete_requirements()
     inoremap <expr><C-x><C-f>
           \ neocomplete#start_manual_complete('file')
 
-    " }}} mapping
+    "}}} mappings
   endfunction
-  " }}}  neocomplete.vim
+  "}}}  neocomplete.vim
 else
-  " neocomplcache "{{{
+  " neocomplcache  "{{{
   let g:neocomplcache_enable_at_startup = 1
 
   let s:hooks = neobundle#get_hooks('neocomplcache')
@@ -520,10 +520,10 @@ else
     inoremap <expr><C-y> neocomplcache#close_popup()
     inoremap <expr><C-e> neocomplcache#cancel_popup()
   endfunction
-  " }}}  neocomplcache.vim
+  "}}}  neocomplcache.vim
 endif
 
-" unite  {{{
+" unite.vim  "{{{
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
 " List file's directory.
@@ -574,9 +574,9 @@ function! s:hooks.on_source(bundle)
     inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
   endfunction
 endfunction
-" }}} unite
+" }}}  unite.vim
 
-" vimfiler  {{{
+" vimfiler  "{{{
 nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
 
@@ -586,9 +586,9 @@ function! s:hooks.on_source(bundle)
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_force_overwrite_statusline = 0
 endfunction
-" }}} vimfiler
+"}}}  vimfiler
 
-" neosnippet {{{
+" neosnippet  "{{{
 let s:hooks = neobundle#get_hooks('neosnippet')
 function! s:hooks.on_source(bundle)
   let g:neosnippet#disable_runtime_snippets = {
@@ -604,17 +604,17 @@ function! s:hooks.on_source(bundle)
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 endfunction
-" }}} neosnippet
+"}}}  neosnippet
 
-" vim-airline {{{
+" vim-airline  "{{{
 let g:airline_theme = "solarized"
 let g:airline_left_sep = ""
 let g:airline_right_sep = ""
 let g:airline_inactive_collapse = 0
 let g:airline#extensions#syntastic#enabled = 0
-" }}} vim-airline
+"}}}  vim-airline
 
-" syntastic {{
+" syntastic  "{{{
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_c_compiler = 'clang'
@@ -624,6 +624,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['tex'] }
+"}}}  syntastic
 
 " NERD_comments.vim
 let NERDShutUp=1
@@ -645,7 +646,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 " python.vim
 let python_highlight_all = 1
 
-" LaTeX-Box
+" LaTeX-Box  "{{{
 let g:tex_flavor = "latex"
 let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
 let g:LatexBox_viewer = "open -a Skim.app"
@@ -655,7 +656,7 @@ let g:LatexBox_split_side = "rightbelow"
 let g:LatexBox_complete_inlineMath = 1
 map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
 \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>""")"'')
-"
+"}}}  LaTeX-Box
 "}}}  Plugins
 
 
@@ -714,7 +715,7 @@ if has('macunix')
   nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
 endif
 
-"}}}  Key bindings
+"}}}  Key mapping
 
 
 " vim: foldmethod=marker :
