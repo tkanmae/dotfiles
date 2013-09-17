@@ -585,6 +585,9 @@ function! s:hooks.on_source(bundle)
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_force_overwrite_statusline = 0
+  let g:vimfiler_ignore_pattern = '^\.' .
+        \ '\|\.\%(pyc|pyo\)$' .
+        \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$'
 endfunction
 "}}}  vimfiler
 
