@@ -9,6 +9,8 @@ path=(# User
       $HOME/.local/go/bin(N-)
       # Haskell
       $HOME/.cabal/bin(N-)
+      # MOSART
+      /usr/local/MOSART/V1.70/bin(N-/)
       # System
       /usr/local/bin(N-/)
       # GNU coreutils via Homebrew
