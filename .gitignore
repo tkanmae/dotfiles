@@ -39,7 +39,6 @@ __pycache__/
 *.ist
 *.lo[fgt]
 *.nlo
-*.out
 *.toc
 *.pdfsync
 *.synctex.gz
