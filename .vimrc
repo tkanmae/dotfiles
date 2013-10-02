@@ -335,7 +335,7 @@ set smartindent
 augroup vimrc
   autocmd FileType c,cpp setlocal cindent shiftwidth=2
   autocmd FileType Makefile setlocal noexpandtab
-  autocmd FileType gitcommit setlocal spell
+  autocmd FileType gitcommit setlocal spell textwidth=72
   autocmd FileType txt,tex,rest,markdown,pandoc setlocal spell nosmartindent
   autocmd FileType tex setlocal formatoptions=tcq
   autocmd FileType python setlocal omnifunc=jedi#completions
