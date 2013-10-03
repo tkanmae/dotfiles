@@ -8,7 +8,7 @@
     status = auto
     diff = auto
 [difftool.latex]
-    cmd = _git-latexdiff.sh "$LOCAL" "$REMOTE"
+    cmd = git-latexdiff "$LOCAL" "$REMOTE"
 [difftool]
     prompt = false
 [alias]
