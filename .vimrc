@@ -654,12 +654,15 @@ let python_highlight_all = 1
 let g:tex_flavor = "latex"
 let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
 let g:LatexBox_viewer = "open -a Skim.app"
-let g:LatexBox_latexmk_options = '-pvc'
+let g:LatexBox_latexmk_preview_continuously = 1
+" let g:LatexBox_latexmk_options = '-pvc'
 let g:LatexBox_split_width = 40
 let g:LatexBox_split_side = "rightbelow"
 let g:LatexBox_complete_inlineMath = 1
-map <silent> <Leader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
-\ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>""")"'')
+map <silent> <Leader>ls :silent
+      \ !/Applications/Skim.app/Contents/SharedSupport/displayline
+      \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
+      \ "%:p" <CR>
 "}}}  LaTeX-Box
 "}}}  Plugins
 
