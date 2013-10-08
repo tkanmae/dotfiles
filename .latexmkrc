@@ -5,7 +5,7 @@
 #
 # --------------------------------------------------------------------------------
 $latex = 'latex -src-specials -parse-first-line';
-$pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
+$pdflatex = 'pdflatex -synctex=1 %O %S';
 $bibtex = 'bibtex';
 $makeindex = 'mendex';
 
@@ -19,5 +19,6 @@ elsif ($^O eq 'darwin') {
     $pdf_previewer = 'open -a /Applications/Skim.app';
     $pdf_update_method = 0;
 }
+
 
 # vim: ft=perl
