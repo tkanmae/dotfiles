@@ -1,4 +1,4 @@
-backend                 : QT4Agg
+backend                 : GTKAgg
 mathtext.fontset        : custom
 mathtext.fallback_to_cm : False
 mathtext.cal            : Arev Sans:oblique
