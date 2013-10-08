@@ -282,7 +282,7 @@ set shortmess&
 set shortmess+=I
 
 set linebreak
-set showbreak=>>>
+set showbreak=...
 set breakat=\ \	;:,!?
 
 set list
