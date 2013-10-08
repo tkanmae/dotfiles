@@ -538,6 +538,8 @@ nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
 " List buffers and recently used files.
 nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
+" Grep
+nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " List outline.
 nnoremap [unite]o :<C-u>Unite outline<CR>
 
