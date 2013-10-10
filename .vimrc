@@ -16,7 +16,7 @@ augroup vimrc
 augroup END
 
 " Set spellfile location.
-set spellfile=$HOME/Dropbox/home/.vim/spell/en.utf-8.add
+set spellfile=$HOME/.vim/spell/en.utf-8.add
 
 if has("vim_starting")
   set runtimepath+=$HOME/.vim/bundle/neobundle.vim
