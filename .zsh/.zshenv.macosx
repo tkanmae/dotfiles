@@ -13,8 +13,9 @@ path=(# User
       /usr/local/MOSART/V1.70/bin(N-/)
       # System
       /usr/local/bin(N-/)
-      # GNU coreutils via Homebrew
+      # GNU tools via Homebrew
       /usr/local/opt/coreutils/libexec/gnubin(N/)
+      /usr/local/opt/gnu-tar/libexec/gnubin(N/)
       # MacTeX
       /usr/local/texlive/2013/bin/x86_64-darwin(N-/)
       # System
