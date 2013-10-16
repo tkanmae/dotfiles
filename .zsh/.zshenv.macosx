@@ -7,8 +7,6 @@ path=(# User
       # Go
       /usr/local/go/bin(N-)
       $HOME/.local/go/bin(N-)
-      # Haskell
-      $HOME/.cabal/bin(N-)
       # MOSART
       /usr/local/MOSART/V1.70/bin(N-/)
       # System
@@ -28,9 +26,7 @@ path=(# User
 # MANPATH
 # ------------------------------------------------------------------------------
 typeset -U manpath
-manpath=(# Haskell
-         $HOME/.cabal/share/man(N-)
-         # system
+manpath=(# system
          /usr/local/share/man(N-/)
          # GNU coreutils via Homebrew
          /usr/local/opt/coreutils/libexec/gnuman
