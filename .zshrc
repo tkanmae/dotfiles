@@ -95,7 +95,6 @@ which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh
 # rbenv
 # ------------------------------------------------------------------------------
 if [[ -d $HOME/.rbenv ]]; then
-    export PATH="$HOME/.rbenv/shims:$PATH"
     eval "$(rbenv init -)"
 fi
 
