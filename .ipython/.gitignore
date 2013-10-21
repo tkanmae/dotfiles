@@ -2,6 +2,7 @@ README
 Crash_report_ipython.txt
 
 cython/
+nbextensions/
 
 profile_*/*.sqlite
 profile_*/db/
