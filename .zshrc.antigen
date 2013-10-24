@@ -9,8 +9,8 @@ antigen-bundle git
 # Syntax highlighting.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
-# Load a theme.
-antigen-theme gallois
-
 # Tell antigen that I'm done.
 antigen-apply
+
+# Load custom theme.
+source ~/.zsh/gallois.zsh-theme
