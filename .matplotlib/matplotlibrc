@@ -7,6 +7,8 @@ mathtext.rm             : Arev Sans
 mathtext.bf             : Arev Sans:bold
 mathtext.sf             : Arev Sans
 axes.titlesize          : medium
+axes.color_cycle        : E41A1C, 377EB8, 4DAF4A, 984EA3, FF7F00, FFFF33, A65628, F781BF, 999999
 legend.numpoints        : 1
 legend.fontsize         : medium
 svg.image_noscale       : True
+
