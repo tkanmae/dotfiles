@@ -31,7 +31,9 @@ typeset -U manpath
 manpath=(# system
          /usr/local/share/man(N-/)
          # GNU coreutils via Homebrew
-         /usr/local/opt/coreutils/libexec/gnuman
+         /usr/local/opt/coreutils/libexec/gnuman(N-/)
+         # MacTeX
+         /usr/local/texlive/2013/texmf-dist/doc/man(N-/)
          # system
          /usr/share/man(N-/))
 
