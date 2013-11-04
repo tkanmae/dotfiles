@@ -1,14 +1,14 @@
-backend                 : GTKAgg
-mathtext.fontset        : custom
-mathtext.fallback_to_cm : False
-mathtext.cal            : Arev Sans:oblique
-mathtext.it             : Arev Sans:oblique
-mathtext.rm             : Arev Sans
-mathtext.bf             : Arev Sans:bold
-mathtext.sf             : Arev Sans
-axes.titlesize          : medium
-axes.color_cycle        : E41A1C, 377EB8, 4DAF4A, 984EA3, FF7F00, FFFF33, A65628, F781BF, 999999
-legend.numpoints        : 1
-legend.fontsize         : medium
-svg.image_noscale       : True
-
+backend          : GTKAgg
+font.family      : serif
+font.serif       : Charis SIL
+text.color       : 262626
+axes.color_cycle : E41A1C, 377EB8, 4DAF4A, 984EA3, FF7F00, FFFF33, A65628, F781BF, 999999
+axes.linewidth   : 0.50
+axes.labelcolor  : 262626
+axes.edgecolor   : 262626
+patch.linewidth  : 0.75
+xtick.color      : 262626
+ytick.color      : 262626
+legend.numpoints : 1
+legend.fontsize  : medium
+svg.image_noscale: True
