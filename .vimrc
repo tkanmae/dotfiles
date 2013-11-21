@@ -120,7 +120,7 @@ NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
       \ 'commands' : 'GundoToggle'
       \ }}
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'vim-scripts/YankRing.vim'
+NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'scrooloose/syntastic'
@@ -636,9 +636,11 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let NERDShutUp=1
 let NERDSpaceDelims=1
 
-" YankRing
-set viminfo+=!
-let g:yankring_history_file='.yankring_history'
+" yankround.vim
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 
 " Gundo.vim
 nnoremap U :<C-u>GundoToggle<CR>
