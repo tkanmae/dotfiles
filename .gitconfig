@@ -1,16 +1,26 @@
 [user]
     name  = Takeshi Kanmae
     email = tkanmae@gmail.com
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
 [url "https://"]
     insteadOf = git://
+[merge]
+    tool = vimdiff
+[pager]
+    # Make sure git/contrib/diff-highlight is in PATH.
+    log = diff-highlight | less
+    diff = diff-highlight | less
+    show = diff-highlight | less
+[difftool]
+    prompt = false
+[difftool.latex]
+    cmd = git-latexdiff "$LOCAL" "$REMOTE"
 [color]
     ui = auto
     status = auto
     diff = auto
-[difftool.latex]
-    cmd = git-latexdiff "$LOCAL" "$REMOTE"
-[difftool]
-    prompt = false
 [alias]
     ad = add
     br = branch
@@ -46,8 +56,3 @@
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 
     latexdiff = difftool -t latex
-[core]
-    excludesfile = ~/.gitignore
-    editor = vim
-[merge]
-    tool = vimdiff
