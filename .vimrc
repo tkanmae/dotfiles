@@ -185,6 +185,7 @@ NeoBundle 'vim-pandoc/vim-pandoc'
 
 " Color scheme
 NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'altercation/vim-colors-solarized'
 
 "}}}  neobundle.vim

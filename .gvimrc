@@ -19,4 +19,4 @@ elseif has("gui_gtk")
 endif
 
 set background=dark
-colorscheme solarized
+colorscheme hybrid
