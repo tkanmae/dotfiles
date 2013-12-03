@@ -12,3 +12,4 @@ fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
 # Aliases
 # ------------------------------------------------------------------------------
 alias ls="ls -GF"
+alias julia="exec '/Applications/Julia-0.2.0.app/Contents/Resources/julia/bin/julia'"
