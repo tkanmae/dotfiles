@@ -129,6 +129,11 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/sudo.vim', '', 'default'
 
 " C/C++
+NeoBundleLazy 'vim-jp/cpp-vim', {
+      \ 'autoload' : {
+      \     'filetypes' : ['c','cpp']
+      \    },
+      \ }
 NeoBundleLazy 'Rip-Rip/clang_complete', {
       \ 'autoload' : {
       \     'filetypes' : ['c', 'cpp'],
