@@ -126,6 +126,8 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
 
+NeoBundle 'jiangmiao/auto-pairs'
+
 NeoBundle 'vim-scripts/sudo.vim', '', 'default'
 
 " C/C++
@@ -694,6 +696,7 @@ inoremap <C-b> <Left>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-d> <Del>
+inoremap <C-h> <BS>
 inoremap <C-k> <Esc>lc$
 
 cnoremap <C-f> <Right>
@@ -705,12 +708,6 @@ cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-y> <C-r>*
-
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap ' ''<Left>
-inoremap " ""<Left>
 
 " Move the cursor at the center of window during search.
 nmap n nzz
