@@ -5,7 +5,7 @@ typeset -U path
 path=(# User
       $HOME/.local/bin(N-/)
       # Anaconda
-      $HOME/.anaconda/bin
+      # $HOME/.anaconda/bin
       # Go
       /usr/local/go/bin(N-)
       $HOME/.local/go/bin(N-)

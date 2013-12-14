@@ -27,7 +27,7 @@
     ci = commit
     co = checkout
     sh = show
-    st = status -sb
+    st = status
     amend = commit --amend
 
     # log

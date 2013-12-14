@@ -1,4 +1,4 @@
-backend          : GTKAgg
+backend          : MacOSX
 font.family      : serif
 font.serif       : Charis SIL
 text.color       : 262626
