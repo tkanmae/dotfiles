@@ -671,6 +671,13 @@ map <silent> <Leader>ls :silent
       \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
       \ "%:p" <CR>
 "}}}  LaTeX-Box
+
+" clang_complete
+if has("mac")
+  " This variable have to be set outside neobundle's hooks._on_source().
+  let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
+endif
+
 "}}}  Plugins
 
 
