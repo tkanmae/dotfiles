@@ -404,10 +404,6 @@ if s:meet_neocomplete_requirements()
           \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
     " For jedi-vim
-    let g:jedi#auto_initialization = 0
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#popup_select_first = 0
     let g:neocomplete#force_omni_patterns.python =
           \ '\h\w*\|[^. \t]\.\w*'
 
@@ -501,10 +497,6 @@ else
     let g:clang_use_library = 1
 
     " For jedi-vim
-    let g:jedi#auto_initialization = 0
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_on_dot = 1
-    let g:jedi#popup_select_first = 0
     let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
     if !exists('g:neocomplcache_keyword_patterns')
@@ -636,6 +628,17 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['tex'] }
 "}}}  syntastic
+"
+" jedi-vim  "{{{
+let s:hooks = neobundle#get_hooks('jedi-vim')
+function! s:hooks.on_source(bundle)
+  let g:jedi#auto_vim_configuration = 0
+  let g:jedi#documentation_command = '<Leader>k'
+  let g:jedi#use_tabs_not_buffers = 0
+  let g:jedi#popup_on_dot = 0
+  let g:jedi#popup_select_first = 0
+endfunction
+"}}} jedi-vim
 
 " NERD_comments.vim
 let NERDShutUp=1
