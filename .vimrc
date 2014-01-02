@@ -223,6 +223,7 @@ set incsearch
 set wrapscan
 "
 "}}} Search
+"
 
 
 " Edit:  "{{{
@@ -621,6 +622,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 0
 let g:syntastic_c_compiler = 'clang'
 let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11'
 let g:syntastic_cpp_config_file = '.clang_complete'
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -681,6 +683,7 @@ if has("mac")
   " This variable have to be set outside neobundle's hooks._on_source().
   let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
 endif
+let g:clang_user_options = '-std=c++11'
 
 "}}}  Plugins
 
