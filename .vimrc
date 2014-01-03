@@ -125,6 +125,7 @@ NeoBundle 'godlygeek/tabular'
 
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'thinca/vim-quickrun'
 
 NeoBundle 'jiangmiao/auto-pairs'
 
@@ -223,7 +224,6 @@ set incsearch
 set wrapscan
 "
 "}}} Search
-"
 
 
 " Edit:  "{{{
@@ -630,7 +630,14 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['tex'] }
 "}}}  syntastic
-"
+
+" vim-quickrun  " {{{
+let g:quickrun_config = {}
+let g:quickrun_config['cpp'] = {
+      \   'cmdopt': '-Wall -Wextra -pedantic -std=c++11'
+      \ }
+" }}}  vim-quickrun
+
 " jedi-vim  "{{{
 let s:hooks = neobundle#get_hooks('jedi-vim')
 function! s:hooks.on_source(bundle)
