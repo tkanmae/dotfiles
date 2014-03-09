@@ -57,6 +57,7 @@ call neobundle#config('unite.vim', {
       \                  'complete' : 'customlist,unite#complete_source'},
       \                  'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
       \ }})
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'Shougo/unite-outline', '', 'default'
 call neobundle#config('unite-outline', {
@@ -194,7 +195,6 @@ NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
 " Pandoc
 NeoBundle 'vim-pandoc/vim-pandoc'
 
-" Color scheme
 NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'altercation/vim-colors-solarized'
