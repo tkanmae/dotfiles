@@ -278,7 +278,8 @@ set timeout timeoutlen=3000 ttimeoutlen=100
 
 " Disable paste when leaving insert mode.
 autocmd vimrc InsertLeave * if &paste | set nopaste | endif
-
+" Update diff.
+autocmd vimrc InsertLeave * if &l:diff | diffupdate | endif
 " Delete trailing white spaces in buffer.
 autocmd vimrc BufWritePre * :%s/\s\+$//e
 
