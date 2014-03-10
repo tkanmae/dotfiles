@@ -23,8 +23,7 @@ if has("vim_starting")
 endif
 call neobundle#rc(expand("$HOME/.vim/bundle"))
 
-" neobundle.vim  "{{{
-" Let neobundle manage neobundle itself.
+" NeoBundle  "{{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 function! s:meet_neocomplete_requirements()
@@ -32,16 +31,129 @@ function! s:meet_neocomplete_requirements()
 endfunction
 
 if s:meet_neocomplete_requirements()
-  NeoBundle 'Shougo/neocomplete.vim', '', 'default'
+  NeoBundle 'Shougo/neocomplete.vim'
+  NeoBundleFetch 'Shougo/neocomplcache'
+else
+  NeoBundleFetch 'Shougo/neocomplete.vim'
+  NeoBundle 'Shougo/neocomplcache'
+endif
+
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'ujihisa/neco-look'
+
+NeoBundle 'Shougo/vimfiler.vim'
+
+NeoBundle 'Shougo/vimproc.vim'
+
+NeoBundle 'tpope/vim-surround'
+NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
+      \ 'mappings': '.',
+      \ }}
+
+NeoBundle 'LeafCage/yankround.vim'
+
+NeoBundle 'kana/vim-fakeclip'
+
+NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
+      \ 'mappings' : '%',
+      \ }}
+
+NeoBundle 'jiangmiao/auto-pairs'
+
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent', {
+      \ 'depends' : 'vim-textobj-user',
+      \ }
+
+NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
+      \ 'commands' : 'GundoToggle'
+      \ }}
+
+NeoBundle 'scrooloose/nerdcommenter'
+
+NeoBundle 'godlygeek/tabular'
+
+NeoBundle 'scrooloose/syntastic'
+
+NeoBundle 'tpope/vim-fugitive'
+
+NeoBundle 'thinca/vim-quickrun'
+
+NeoBundle 'vim-scripts/sudo.vim',
+
+NeoBundleLazy 'vim-jp/cpp-vim', {
+      \ 'autoload' : {
+      \     'filetypes' : ['c','cpp']
+      \    },
+      \ }
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+      \ 'autoload' : {
+      \     'filetypes' : ['c', 'cpp'],
+      \    },
+      \ }
+
+NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
+      \ 'filetypes' : ['python', 'python3'],
+      \ }}
+NeoBundleLazy 'hynek/vim-python-pep8-indent', { 'autoload' : {
+      \ 'filetypes' : ['python', 'python3'],
+      \ }}
+
+NeoBundleLazy 'hail2u/vim-css3-syntax', { 'autoload' : {
+      \ 'filetypes' : ['css', 'html', 'less']
+      \ }}
+NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
+      \ 'filetypes' : ['less']
+      \ }}
+
+NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
+      \ 'filetypes' : ['javascript']
+      \ }}
+NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
+      \ 'filetypes' : ['javascript']
+      \ }}
+
+NeoBundleLazy 'avakhov/vim-yaml', { 'autoload' : {
+      \ 'filetypes' : ['yaml']
+      \ }}
+NeoBundleLazy 'stephpy/vim-yaml', { 'autoload' : {
+      \ 'filetypes' : ['yaml']
+      \ }}
+
+NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload' : {
+      \ 'filetypes' : ['html']
+      \ }}
+
+NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
+      \ 'filetypes' : ['go'],
+      \ }}
+
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
+      \ 'filetypes' : ['tex']
+      \ }}
+
+NeoBundleLazy 'vim-pandoc/vim-pandoc', { 'autoload' : {
+      \ 'filetypes' : ['pandoc']
+      \ }}
+
+NeoBundle 'bling/vim-airline'
+
+NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'altercation/vim-colors-solarized'
+
+
+if s:meet_neocomplete_requirements()
   call neobundle#config('neocomplete.vim', {
           \ 'lazy': 1,
           \ 'autoload' : {
           \  'insert': 1,
           \ }})
-  NeoBundleFetch 'Shougo/neocomplcache'
 else
-  NeoBundleFetch 'Shougo/neocomplete.vim'
-  NeoBundle 'Shougo/neocomplcache', '', 'default'
   call neobundle#config('neocomplcache', {
           \ 'lazy': 1,
           \ 'autoload' : {
@@ -49,7 +161,6 @@ else
           \ }})
 endif
 
-NeoBundle 'Shougo/unite.vim', '', 'default'
 call neobundle#config('unite.vim', {
       \ 'lazy' : 1,
       \ 'autoload' : {
@@ -57,15 +168,11 @@ call neobundle#config('unite.vim', {
       \                  'complete' : 'customlist,unite#complete_source'},
       \                  'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
       \ }})
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'ujihisa/neco-look'
-NeoBundle 'Shougo/unite-outline', '', 'default'
 call neobundle#config('unite-outline', {
       \ 'lazy' : 1,
       \ 'autoload' : {
       \   'unite_sources' : 'outline'},
       \ })
-NeoBundle 'Shougo/neosnippet.vim'
 call neobundle#config('neosnippet.vim', {
       \ 'lazy' : 1,
       \ 'autoload' : {
@@ -73,7 +180,6 @@ call neobundle#config('neosnippet.vim', {
       \   'filetypes' : 'snippet',
       \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
       \ }})
-NeoBundle 'Shougo/vimfiler.vim', '', 'default'
 call neobundle#config('vimfiler.vim', {
       \ 'lazy' : 1,
       \ 'depends' : 'Shougo/unite.vim',
@@ -94,8 +200,6 @@ call neobundle#config('vimfiler.vim', {
       \    'explorer' : 1,
       \ }
       \ })
-
-NeoBundle 'Shougo/vimproc.vim', '', 'default'
 call neobundle#config('vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -104,102 +208,8 @@ call neobundle#config('vimproc.vim', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ })
-NeoBundle 'bling/vim-airline'
-NeoBundle 'tpope/vim-surround'
-NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
-      \ 'mappings': '.',
-      \ }}
-NeoBundle 'kana/vim-fakeclip'
-NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
-      \ 'mappings' : '%',
-      \ }}
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent', {
-      \ 'depends' : 'vim-textobj-user',
-      \ }
-NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
-      \ 'commands' : 'GundoToggle'
-      \ }}
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'godlygeek/tabular'
 
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'thinca/vim-quickrun'
-
-NeoBundle 'jiangmiao/auto-pairs'
-
-NeoBundle 'vim-scripts/sudo.vim', '', 'default'
-
-" C/C++
-NeoBundleLazy 'vim-jp/cpp-vim', {
-      \ 'autoload' : {
-      \     'filetypes' : ['c','cpp']
-      \    },
-      \ }
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-      \ 'autoload' : {
-      \     'filetypes' : ['c', 'cpp'],
-      \    },
-      \ }
-
-" Python
-NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
-      \ 'filetypes' : ['python', 'python3'],
-      \ }}
-NeoBundleLazy 'hynek/vim-python-pep8-indent', { 'autoload' : {
-      \ 'filetypes' : ['python', 'python3'],
-      \ }}
-
-" CSS
-NeoBundleLazy 'hail2u/vim-css3-syntax', { 'autoload' : {
-      \ 'filetypes' : ['css', 'html', 'less']
-      \ }}
-" LESS
-NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
-      \ 'filetypes' : ['less']
-      \ }}
-
-" JavaScript
-NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
-      \ 'filetypes' : ['javascript']
-      \ }}
-NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
-      \ 'filetypes' : ['javascript']
-      \ }}
-
-" YAML
-NeoBundleLazy 'avakhov/vim-yaml', { 'autoload' : {
-      \ 'filetypes' : ['yaml']
-      \ }}
-NeoBundleLazy 'stephpy/vim-yaml', { 'autoload' : {
-      \ 'filetypes' : ['yaml']
-      \ }}
-
-" Jinja2
-NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload' : {
-      \ 'filetypes' : ['html']
-      \ }}
-
-" Go
-NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
-      \ 'filetypes' : ['go'],
-      \ }}
-
-" LaTeX
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
-      \ 'filetypes' : ['tex']
-      \ }}
-
-" Pandoc
-NeoBundle 'vim-pandoc/vim-pandoc'
-
-NeoBundle 'vim-scripts/wombat256.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'altercation/vim-colors-solarized'
-
-"}}}  neobundle.vim
+"}}} NeoBundle
 
 filetype plugin indent on
 syntax enable
