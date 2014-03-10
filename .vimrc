@@ -65,16 +65,16 @@ call neobundle#config('unite-outline', {
       \ 'autoload' : {
       \   'unite_sources' : 'outline'},
       \ })
-NeoBundle 'Shougo/neosnippet'
-call neobundle#config('neosnippet', {
+NeoBundle 'Shougo/neosnippet.vim'
+call neobundle#config('neosnippet.vim', {
       \ 'lazy' : 1,
       \ 'autoload' : {
       \   'insert' : 1,
       \   'filetypes' : 'snippet',
       \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
       \ }})
-NeoBundle 'Shougo/vimfiler', '', 'default'
-call neobundle#config('vimfiler', {
+NeoBundle 'Shougo/vimfiler.vim', '', 'default'
+call neobundle#config('vimfiler.vim', {
       \ 'lazy' : 1,
       \ 'depends' : 'Shougo/unite.vim',
       \ 'autoload' : {
@@ -95,8 +95,8 @@ call neobundle#config('vimfiler', {
       \ }
       \ })
 
-NeoBundle 'Shougo/vimproc', '', 'default'
-call neobundle#config('vimproc', {
+NeoBundle 'Shougo/vimproc.vim', '', 'default'
+call neobundle#config('vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
       \     'cygwin' : 'make -f make_cygwin.mak',
