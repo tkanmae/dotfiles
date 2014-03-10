@@ -601,7 +601,7 @@ endfunction
 nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
 
-let s:hooks = neobundle#get_hooks('vimfiler')
+let s:hooks = neobundle#get_hooks('vimfiler.vim')
 function! s:hooks.on_source(bundle)
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_safe_mode_by_default = 0
@@ -613,7 +613,7 @@ endfunction
 "}}}  vimfiler
 
 " neosnippet  "{{{
-let s:hooks = neobundle#get_hooks('neosnippet')
+let s:hooks = neobundle#get_hooks('neosnippet.vim')
 function! s:hooks.on_source(bundle)
   if !exists("g:neosnippet#snippets_directory")
     let g:neosnippet#snippets_directory = '~/.vim/snippets'
