@@ -243,7 +243,12 @@ set wrapscan
 "
 set backspace=indent,eol,start
 
-set clipboard& clipboard+=unnamed
+" Use clipboard register.
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus
+else
+  set clipboard& clipboard+=unnamed
+endif
 
 " Re-load if files are modified.
 set autoread
