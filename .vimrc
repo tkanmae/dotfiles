@@ -257,7 +257,6 @@ set switchbuf=useopen
 
 set smarttab
 set expandtab
-set shiftwidth=4
 set shiftround
 
 set virtualedit=block
