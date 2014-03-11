@@ -58,7 +58,7 @@ NeoBundle 'LeafCage/yankround.vim'
 
 NeoBundle 'kana/vim-fakeclip'
 
-NeoBundleLazy 'tsaleh/vim-matchit', { 'autoload' : {
+NeoBundleLazy 'tolecnal/vim-matchit', { 'autoload' : {
       \ 'mappings' : '%',
       \ }}
 
