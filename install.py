@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 """Install all the dotfiles.
 
-Create symlinks in `HOME` pointing to dotfiles in `TOP`.  Files/directories that
-have names starting with '.' are considered to be dotfiles.  Any dotfiles to be
-ignored from the installation must be listed in a global variable `EXCLUDE`.  If
-any of the dotfiles already exist in `HOME` and they are not symlinks, they will
-be saved as their file names appended with a ".orig".
+Create symlinks in `HOME` pointing to dotfiles in `TOP`.  Files and directories
+with names starting with '.' are considered to be dotfiles.  Any dotfiles to be
+ignored must be listed in a global variable `EXCLUDE`.  If any dotfiles already
+exist in `HOME` and are not symlinks, they will be saved as their file names
+appended with a ".orig".
 """
 import argparse
 import glob
