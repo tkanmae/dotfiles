@@ -116,6 +116,9 @@ NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
 NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
       \ 'filetypes' : ['javascript']
       \ }}
+NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload' : {
+      \ 'filetypes' : ['javascript']
+      \ }}
 
 NeoBundleLazy 'avakhov/vim-yaml', { 'autoload' : {
       \ 'filetypes' : ['yaml']
@@ -206,6 +209,12 @@ call neobundle#config('vimproc.vim', {
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ })
+
+call neobundle#config('tern_for_vim', {
+      \ 'build' : {
+      \   'others' : 'npm install',
       \    },
       \ })
 
