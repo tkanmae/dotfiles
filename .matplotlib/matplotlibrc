@@ -9,6 +9,9 @@ axes.edgecolor   : 262626
 patch.linewidth  : 0.75
 xtick.color      : 262626
 ytick.color      : 262626
+grid.linewidth   : 0.50
+grid.linestyle   : -
+grid.color       : f0f0f0
 legend.numpoints : 1
 legend.fontsize  : medium
 svg.image_noscale: True
