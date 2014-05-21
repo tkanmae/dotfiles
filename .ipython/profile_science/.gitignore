@@ -1,0 +1,8 @@
+*.py[co]
+
+*.sqlite
+db/
+log/
+pid/
+security/
+static/mathjax/
