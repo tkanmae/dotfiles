@@ -1,10 +1,38 @@
+div#notebook-container {
+  width: 105ex;
+}
+
 div.cell {
-  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-div.text_cell_render{
-  font-family: STIX, serif;
+div.text_cell_render {
+  font-family: "Charis SIL", "STIX", serif;
+  font-size: 120%;
   line-height: 145%;
+}
+
+.rendered_html code {
+  font-size: 81.3%;
+}
+
+.rendered_html h1 {
+  text-align: center;
+}
+
+.rendered_html h2 {
+}
+
+.rendered_html li {
+  margin-top: 0.25em;
+}
+
+.rendered_html table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.CodeMirror {
+  font-family: "Source Code Pro", "Inconsolata", monospace;
 }
