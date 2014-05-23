@@ -9,6 +9,9 @@ antigen-bundle git
 # Syntax highlighting.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
+# zsh-bd
+antigen-bundle Tarrasch/zsh-bd
+
 # Tell antigen that I'm done.
 antigen-apply
 
