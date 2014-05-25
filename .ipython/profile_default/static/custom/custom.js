@@ -1,5 +1,8 @@
 "use strict";
 
+// Load CodeMirror Add-ons.
+$.getScript("/static/components/codemirror/addons/edit/closebrackets.js");
+
 // Use Vim key bindings.
 $.getScript("/static/components/codemirror/keymap/vim.js", function() {
   if (IPython.Cell) {
