@@ -1,23 +1,14 @@
 # ------------------------------------------------------------------------------
-# Override some of the settings that oh-my-zsh sets
+# Prezto
 # ------------------------------------------------------------------------------
-export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>''})]'
-unsetopt correct_all
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # ------------------------------------------------------------------------------
 # History
 # ------------------------------------------------------------------------------
-setopt extended_history
-setopt hist_ignore_all_dups
-setopt hist_ignore_dups
-setopt hist_save_no_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-setopt hist_no_store
-setopt hist_verify
-setopt inc_append_history
-setopt share_history
-setopt no_flow_control
+setopt HIST_REDUCE_BLANKS
 
 # ------------------------------------------------------------------------------
 # Key binding
@@ -35,21 +26,8 @@ bindkey '^S' history-incremental-pattern-search-forward
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-alias rm='nocorrect rm -i'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
-alias df='df -h'
-alias du='du -h'
-alias h='history'
-alias ll='ls -la'
-alias la='ls -A'
-alias lk="ls -la | grep '^l'"
-alias lf="ls -la | grep '^-'"
-alias lx="ls -la | grep '^-..x'"
 alias diff='colordiff -urpN'
-alias vi='vim'
 alias man='LANG=C man'
-alias tgif='LANG=C tgif'
 alias latex='latex --shell-escape $@'
 
 # Global aliases
@@ -57,7 +35,6 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g L='| less'
-alias -g W='| wc'
 
 # ------------------------------------------------------------------------------
 # less
@@ -70,15 +47,13 @@ export LESSCHARSET='utf-8'
 # ------------------------------------------------------------------------------
 export GREP_OPTIONS
 GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
-GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn"
-GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.git"
+GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn --exclude-dir=.git"
 
 # ------------------------------------------------------------------------------
 # Node
 # ------------------------------------------------------------------------------
 if [[ -f $HOME/.nvm/nvm.sh ]]; then
     source $HOME/.nvm/nvm.sh
-    nvm alias default "v0.10.28" >/dev/null
 fi
 
 # ------------------------------------------------------------------------------
