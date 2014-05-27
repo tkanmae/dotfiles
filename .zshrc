@@ -5,7 +5,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-
 # ------------------------------------------------------------------------------
 # Directory
 # ------------------------------------------------------------------------------
@@ -19,7 +18,6 @@ setopt AUTO_NAME_DIRS
 setopt MULTIOS
 setopt EXTENDED_GLOB
 unsetopt CLOBBER
-
 
 # ------------------------------------------------------------------------------
 # History
@@ -79,25 +77,6 @@ export LESSCHARSET='utf-8'
 export GREP_OPTIONS
 GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
 GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn --exclude-dir=.git"
-
-# ------------------------------------------------------------------------------
-# Node
-# ------------------------------------------------------------------------------
-if [[ -f $HOME/.nvm/nvm.sh ]]; then
-    source $HOME/.nvm/nvm.sh
-fi
-
-# ------------------------------------------------------------------------------
-# virtualenvwrapper
-# ------------------------------------------------------------------------------
-which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh`
-
-# ------------------------------------------------------------------------------
-# rbenv
-# ------------------------------------------------------------------------------
-if [[ -d $HOME/.rbenv ]]; then
-    eval "$(rbenv init -)"
-fi
 
 # ------------------------------------------------------------------------------
 # Functions
