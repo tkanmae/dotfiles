@@ -5,6 +5,22 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+
+# ------------------------------------------------------------------------------
+# Directory
+# ------------------------------------------------------------------------------
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt PUSHD_TO_HOME
+setopt CDABLE_VARS
+setopt AUTO_NAME_DIRS
+setopt MULTIOS
+setopt EXTENDED_GLOB
+unsetopt CLOBBER
+
+
 # ------------------------------------------------------------------------------
 # History
 # ------------------------------------------------------------------------------
