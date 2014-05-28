@@ -264,6 +264,7 @@ set autoread
 set hidden
 set switchbuf=useopen
 
+set shiftwidth=4
 set smarttab
 set expandtab
 set shiftround
