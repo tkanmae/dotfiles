@@ -545,7 +545,7 @@ c.PromptManager.in_template = '{color.Yellow}\Y5\n{color.Green}In [\\#]: '
 # InlineBackend configuration
 #------------------------------------------------------------------------------
 c.InlineBackend.rc.update({
-    'font.family': 'sans serif',
+    'font.family': 'sans-serif',
     'font.size': 12,
     'figure.figsize': (10.0, 10.0 / 1.618)
 })
