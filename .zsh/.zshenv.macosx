@@ -1,56 +1,20 @@
 # ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-typeset -U path
-path=(# User
-      $HOME/.local/bin(N-/)
-      # Anaconda
-      # $HOME/.anaconda/bin
-      # Go
-      /usr/local/go/bin(N-)
-      $HOME/.local/go/bin(N-)
-      # MOSART
-      /usr/local/MOSART/V1.70/bin(N-/)
-      # System
-      /usr/local/bin(N-/)
-      # GNU tools via Homebrew
-      /usr/local/opt/coreutils/libexec/gnubin(N/)
-      /usr/local/opt/gnu-tar/libexec/gnubin(N/)
-      # MacTeX
-      /usr/local/texlive/2013/bin/x86_64-darwin(N-/)
-      # System
-      /usr/sbin(N-/)
-      /usr/bin(N-/)
-      /sbin(N-)
-      /bin(N-))
-
-# ------------------------------------------------------------------------------
-# MANPATH
-# ------------------------------------------------------------------------------
-typeset -U manpath
-manpath=(# system
-         /usr/local/share/man(N-/)
-         # GNU coreutils via Homebrew
-         /usr/local/opt/coreutils/libexec/gnuman(N-/)
-         # MacTeX
-         /usr/local/texlive/2013/texmf-dist/doc/man(N-/)
-         # system
-         /usr/share/man(N-/))
-
-# ------------------------------------------------------------------------------
 # Python
 # ------------------------------------------------------------------------------
 export PIP_DOWNLOAD_CACHE=~/Library/Caches/pip
+
 
 # ------------------------------------------------------------------------------
 # Go
 # ------------------------------------------------------------------------------
 export GOPATH=$HOME/.local/go
 
+
 # ------------------------------------------------------------------------------
 # pkg-config
 # ------------------------------------------------------------------------------
 export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+
 
 # ------------------------------------------------------------------------------
 # zsh-notify
