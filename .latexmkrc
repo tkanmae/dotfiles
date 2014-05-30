@@ -15,8 +15,8 @@ if ($^O eq 'linux') {
     $pdf_update_method = 0;
 }
 elsif ($^O eq 'darwin') {
-    $dvi_previewer = 'open -a /Applications/Skim.app';
-    $pdf_previewer = 'open -a /Applications/Skim.app';
+    $dvi_previewer = 'open -a Skim.app';
+    $pdf_previewer = 'open -a Skim.app';
     $pdf_update_method = 0;
 }
 
