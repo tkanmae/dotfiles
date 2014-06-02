@@ -10,7 +10,7 @@ fi
 # Percol
 # ------------------------------------------------------------------------------
 if [[ -s "${HOME}/.zsh/percol.zsh" ]]; then
-    source "${HOME}/.zsh/percol.zsh"
+    which percol >/dev/null 2>&1 && source "${HOME}/.zsh/percol.zsh"
 fi
 bindkey '^X^R' percol-select-history
 
