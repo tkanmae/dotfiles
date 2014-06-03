@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# Print checmsums of a file using MD5, SHA1, and RMD160.
+#
+
+\unalias -a
+
+function print_usage_and_die() {
+    cat <<EOF
+Usage: checksum [-h|--help] file
+
+Print checksums of a file using MD5, SHA1, and RMD160.
+EOF
+    exit 1
+} >&2
+
+
+function print_error() {
+    printf "$@"
+} >&2
+
+
+function get_md5() {
+    local checksum=$(openssl md5 $1)
+    echo ${checksum##*= }
+}
+
+
+function get_sha1() {
+    local checksum=$(openssl sha1 $1)
+    echo ${checksum##*= }
+}
+
+
+function get_rmd160() {
+    local checksum=$(openssl rmd160 $1)
+    echo ${checksum##*= }
+}
+
+ON_SUCCESS=0
+
+
+(( $# == 0 )) && print_usage_and_die
+
+while (( $# > 0 )); do
+    case "$1" in
+        -h|--help) print_usage_and_die ;;
+        *) break ;;
+    esac
+done
+
+
+if [[ -f "$1" ]]; then
+    echo "$1:"
+    echo "md5    = "$(get_md5 "$1")
+    echo "sha1   = "$(get_sha1 "$1")
+    echo "rmd160 = "$(get_rmd160 "$1")
+else
+    print_error "File foes not exits: $1\n"
+    exit -1
+fi
+
+exit $ON_SUCCESS
+
+
+# vim: ft=sh

@@ -1,0 +1,171 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""Take screenshots of a movie using MPlayer.
+
+Usage:
+    mplayer-screenshots [options] [--] <file>
+    mplayer-screenshots -h | --help
+
+Options:
+    -o <output>, --output=<output>
+        Output directory [default: ./]
+    -b <brightness>, --brightness=<brightness>
+        Set brightness [default: 0].
+    -c <contrast>, --contrast=<contrast>
+        Set contrast [default: 0].
+    -p <prefix>, --prefix=<prefix>
+        Set prefix of output file name [default: shot-].
+    -f <filetype>, --filetype=<filetype>
+        Set output file type (png, bmp, and tif) [default: png]
+    -h, --help
+        Show this message.
+
+Keyboard Control:
+    All the keyboard controls are the same as those of MPlayer.  Below is a
+    short list of normally used keyboard controls:
+
+    s
+        Take a screenshot.
+    S
+        Start/stop taking screenshots.
+    1 and 2
+        Adjust contrast.
+    3 and 4
+        Adjust brightness.
+
+See `man mplayer` for details.
+
+"""
+from __future__ import division, print_function
+
+import glob
+import os
+import multiprocessing
+import shutil
+import signal
+import subprocess
+import sys
+import tempfile
+
+import docopt
+from PIL import Image
+
+
+_REQUIRED_EXTERNAL_COMMANDS = {
+    'MPlayer': 'mplayer',
+}
+_CPU_COUNT = multiprocessing.cpu_count()
+
+
+def print_error_and_die(msg, err_code=-1):
+    print(msg, file=sys.stderr)
+    sys.exit(err_code)
+
+
+def normalize_path(path):
+    """Return a normalized path."""
+    return os.path.abspath(os.path.normpath(os.path.expanduser(path)))
+
+
+def check_external_commands():
+    for name, command in _REQUIRED_EXTERNAL_COMMANDS.items():
+        with open(os.devnull, 'w') as devnull:
+            ret = subprocess.call(['which', command], stdout=devnull)
+        if ret != 0:
+            print_error_and_die('Command not found: {0}'.format(command))
+
+
+def convert_image(args):
+    src, dst = args
+    # Take a red channel of the input image and save it as a grayscale image.
+    im = Image.open(src).split()[0]
+    im.save(dst)
+
+
+class App(object):
+
+    def __init__(self, args):
+        check_external_commands()
+
+        movie_file = normalize_path(args['<file>'])
+        if not os.path.isfile(movie_file):
+            print_error_and_die('File not found: %s' % movie_file, -1)
+        self.movie_file = movie_file
+
+        dest_dir = normalize_path(args['--output'])
+        if not os.path.isdir(dest_dir):
+            print_error_and_die('Directory not found: %s' % dest_dir, -1)
+        self.dest_dir = dest_dir
+
+        self.prefix = args['--prefix']
+
+        b = int(args['--brightness'])
+        if -100 < b < 100:
+            self.brightness = b
+        else:
+            self.brightness = 0
+        c = int(args['--contrast'])
+        if -100 < self.contrast < 100:
+            self.contrast = c
+        else:
+            self.contrast = 0
+
+        filetype = args['--filetype'].lower()
+        if filetype not in ('png', 'bmp', 'tif'):
+            print_error_and_die('File type not supported: %s' % filetype)
+        self.filetype = filetype
+
+        self._create_working_dir()
+
+    def run(self):
+        pool = multiprocessing.Pool(_CPU_COUNT)
+        # Changes the current working directory to a temporary working
+        # directory where MPlayer saves screenshots.
+        os.chdir(self._working_dir)
+        try:
+            self._play_movie()
+            # Converts the screenshots to the requested file type and saves them
+            # in the destination directory.
+            pool.map(convert_image, self._args_to_convert_image(), chunksize=1)
+        finally:
+            # Clean up the working directory.
+            self._cleanup()
+
+    def _play_movie(self):
+        """Play a movie with MPlayer."""
+        # Sets options for MPlayer.  This fixes the output image size to 640x480
+        # pixels.
+        vf_opt = ('eq=%d:%s,scale=640:480,screenshot'
+                  % (self.brightness, self.contrast))
+        subprocess.call(['mplayer', '-vf', vf_opt, self.movie_file])
+
+    def _args_to_convert_image(self):
+        ext = '.' + self.filetype
+        # MPlayer saves screenshots as PNG images.
+        for src_file in glob.glob(os.path.join(self._temp_dir, 'shot*.png')):
+            fname = self.prefix + os.path.basename(src_file)[4:8] + ext
+            dest_file = os.path.join(self.dest_dir, fname)
+            yield src_file, dest_file
+
+    def _create_working_dir(self):
+        # Creates a temporary working directory and does stuff there.
+        self._working_dir = tempfile.mkdtemp(prefix='mplayer-screenshots-')
+        # Registers a cleanup fucntion as a signal handler.
+        cleanup = lambda signum, frame: self._cleanup()
+        signal.signal(signal.SIGABRT, cleanup)
+        signal.signal(signal.SIGINT,  cleanup)
+        signal.signal(signal.SIGTERM, cleanup)
+
+    def _cleanup(self):
+        if os.path.isdir(self._working_dir):
+            shutil.rmtree(self._working_dir)
+
+
+def main(args):
+    app = App(args)
+    app.run()
+
+
+if __name__ == '__main__':
+    args = docopt.docopt(__doc__)
+    main(args)

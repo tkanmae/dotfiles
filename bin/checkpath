@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# Check if ${PATH} contains writable or missing directories.
+#
+
+\unalias -a
+
+print_usage_and_die() {
+    cat <<EOF
+Usage: checkpath [-h|--help]
+
+Check if \${PATH} contains writable or missing directories.
+EOF
+    exit 1
+} >&2
+
+
+case "$1" in
+    -h|--help) print_usage_and_die ;;
+    *) ;;
+esac
+
+
+EXIT_CODE=0
+
+for dir in ${PATH//:/ }; do
+    [ -L "$dir" ] && printf "%b" "symlink, "
+    if [ ! -d "$dir" ]; then
+        printf "%b" "missing  "
+        (( exit_code++ ))
+    else
+        stat=$(ls -lLd $dir | awk '{print $1, $3, $4}')
+        if [ "$(echo $stat | grep '^d.......w. ')" ]; then
+            printf "%b" "WRITABLE  $stat"
+            (( exit_code++ ))
+        else
+            printf "%b" "ok        $stat"
+        fi
+    fi
+    printf " %b" "$dir\n"
+done
+
+exit $EXIT_CODE
+
+
+# vim: ft=sh sw=4 ts=4
