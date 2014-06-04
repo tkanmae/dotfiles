@@ -25,6 +25,3 @@ Updating submodules
 If changes were made on the submoduled projects, you can pull the changes by
 
     $ git submodule foreach --recursive 'git pull origin master'
-
-
-<!-- vim: ft=markdown: -->
