@@ -5,6 +5,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+
+# ------------------------------------------------------------------------------
+# Percol
+# ------------------------------------------------------------------------------
+if [[ -s "${HOME}/.zsh/percol.zsh" ]]; then
+    which percol >/dev/null 2>&1 && source "${HOME}/.zsh/percol.zsh"
+fi
+bindkey '^X^R' percol-select-history
+
 # ------------------------------------------------------------------------------
 # Directory
 # ------------------------------------------------------------------------------
@@ -100,3 +109,5 @@ case "$OSTYPE" in
         source ~/.zsh/.zshrc.linux
         ;;
 esac
+
+
