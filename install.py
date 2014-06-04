@@ -13,56 +13,52 @@ import glob
 import os
 
 
-TOP  = '.'
 HOME = os.path.expandvars('$HOME')
-CWD  = os.path.dirname(__file__)
+HERE = os.path.abspath(os.path.dirname(__file__))
 
 
-EXCLUDE = ['.git', '.gitmodules', '.DS_Store']
+def is_exe(filename):
+    return os.path.isfile(filename) and os.access(filename, os.X_OK)
 
 
-class Installer(object):
+def create_symlink(src, dst):
+    if not os.path.exists(src):
+        raise ValueError('File not found: %s' % src)
 
-    def __init__(self, dotfiles, excludes=None):
-        if not isinstance(excludes, (list, set, tuple)):
-            excludes = set(EXCLUDE)
-        else:
-            excludes = set(excludes) | EXCLUDE
-        self._dotfiles = set(dotfiles) - excludes
-        self._init_print_symlink()
+    if os.path.islink(dst):
+        os.remove(dst)
+    elif os.path.exists(dst):
+        os.rename(dst, dst + '.orig')
+    os.symlink(src, dst)
 
-    def run(self, is_dryrun):
-        try:
-            for f in self._dotfiles:
-                self._create_symlink(f, is_dryrun)
-        except ValueError, e:
-            print e
 
-    def _create_symlink(self, target, is_dryrun):
-        src = os.path.join(TOP, target)
-        if not os.path.exists(src):
-            raise ValueError("File not found: {0}".format(src))
-        dst = os.path.join(HOME, os.path.basename(src))
+def create_symlinks(srcs, dsts, dryrun):
+    num = max([len(os.path.relpath(_, HOME)) for _ in dsts])
+    fmt = '{{0:<{0}s}} -> {{1}}'.format(num + 2)
 
-        self._print_symlink(src, dst)
+    def display(src, dst):
+        print(fmt.format('~/' + os.path.relpath(dst, HOME),
+                         '~/' + os.path.relpath(src, HOME)))
 
-        if not is_dryrun:
-            if os.path.islink(dst):
-                os.remove(dst)
-            elif os.path.exists(dst):
-                os.rename(dst, dst + '.orig')
-            # Use a relative path for a symlink.
-            os.symlink(os.path.relpath(src, HOME), dst)
+    for src, dst in zip(srcs, dsts):
+        display(src, dst)
+        if not dryrun:
+            create_symlink(src, dst)
 
-    def _init_print_symlink(self):
-        n = max([len(item) for item in self._dotfiles])
-        fmt = "{{0:<{0}s}} -> {{1}}".format(n + 2)
 
-        def _print(src, dst):
-            print(fmt.format('~/' + os.path.relpath(dst, HOME),
-                             '~/' + os.path.relpath(src, HOME)))
+def install_dotfiles(dotfiles, dryrun):
+    srcs = [os.path.join(HERE, f) for f in dotfiles]
+    dsts = [os.path.join(HOME, os.path.basename(f)) for f in dotfiles]
+    create_symlinks(srcs, dsts, dryrun)
 
-        self._print_symlink = _print
+
+def install_binfiles(binfiles, dryrun):
+    dst_dir = os.path.join(HOME, '.local/bin')
+    if not os.path.isdir(dst_dir):
+        os.makedirs(dst_dir)
+    srcs = [os.path.join(HERE, f) for f in binfiles]
+    dsts = [os.path.join(dst_dir, os.path.basename(f)) for f in binfiles]
+    create_symlinks(srcs, dsts, dryrun)
 
 
 def setup_argparser():
@@ -75,15 +71,22 @@ def setup_argparser():
     return parser
 
 
-def main():
-    parser = setup_argparser()
-    args = parser.parse_args()
-
+def main(args):
+    excludes = ['.git', '.gitmodules', '.DS_Store']
     dotfiles = sorted(glob.glob('.*'))
+    dotfiles = sorted(list(set(dotfiles) - set(excludes)))
 
-    installer = Installer(dotfiles)
-    installer.run(args.dryrun)
+    print('dotfiles:')
+    install_dotfiles(dotfiles, args.dryrun)
+    print('')
+
+    binfiles = [_ for _ in glob.glob('bin/*') if is_exe(_)]
+    binfiles = sorted(binfiles)
+
+    print('binfiles:')
+    install_binfiles(binfiles, args.dryrun)
 
 
 if __name__ == '__main__':
-    main()
+    parser = setup_argparser()
+    main(parser.parse_args())
