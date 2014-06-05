@@ -14,8 +14,6 @@ path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
 path=(
     # local
     ${HOME}/.local/bin(N-/)
-    # MOSART
-    /usr/local/MOSART/V1.70/bin(N-/)
     # GNU tools via Homebrew
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
