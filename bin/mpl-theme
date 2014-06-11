@@ -36,7 +36,7 @@ def normalize_path(path):
 
 def create_symlink(src, dst):
     if not os.path.exists(src):
-        raise ValueError('File not found: %s' % src)
+        print_error_and_die('File not found: %s' % src)
 
     if os.path.islink(dst):
         os.remove(dst)
@@ -68,7 +68,7 @@ def list_themes():
 def use_theme(theme):
     filename = os.path.join(normalize_path(THEME_DIR), theme)
     if not os.path.isfile(filename):
-        raise ValueError('File not found: %s', filename)
+        print_error_and_die('File not found: %s' % filename)
     rc_file = normalize_path('~/.matplotlib/matplotlibrc')
 
     create_symlink(filename, rc_file)
