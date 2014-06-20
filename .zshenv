@@ -18,7 +18,7 @@ path=(
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # MacTeX
-    /usr/local/texlive/2013/bin/x86_64-darwin(N-/)
+    /usr/local/texlive/2014/bin/x86_64-darwin(N-/)
     ${path}
 )
 path=(${HOME}/.rbenv/bin(N-/) ${path})
@@ -32,7 +32,7 @@ manpath=(
     # GNU coreutils via Homebrew
     /usr/local/opt/coreutils/libexec/gnuman(N-/)
     # MacTeX
-    /usr/local/texlive/2013/texmf-dist/doc/man(N-/)
+    /usr/local/texlive/2014/texmf-dist/doc/man(N-/)
     ${manpath}
 )
 
