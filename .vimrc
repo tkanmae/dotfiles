@@ -143,6 +143,10 @@ NeoBundleLazy 'vim-pandoc/vim-pandoc', { 'autoload' : {
       \ 'filetypes' : ['pandoc']
       \ }}
 
+NeoBundleLazy 'honza/dockerfile.vim', { 'autoload' : {
+      \ 'filetypes' : ['dockerfile']
+      \ }}
+
 NeoBundle 'bling/vim-airline'
 
 NeoBundle 'vim-scripts/wombat256.vim'
