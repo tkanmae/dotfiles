@@ -3,8 +3,7 @@ Installation
 
 After cloning this repository, you need to initialize submodules:
 
-    $ git submodule init
-    $ git submodule update
+    $ git submodule update --init --recursive
 
 Then, you need to set up NeoBundle, a Vim plugin manager:
 
