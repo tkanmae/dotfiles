@@ -360,10 +360,11 @@ set splitbelow
 set splitright
 set noequalalways
 
-set t_Co=256
-
-set background=dark
-colorscheme solarized
+if !has("gui_running")
+  set t_Co=256
+  set background=dark
+  colorscheme solarized
+endif
 "
 "}}} View
 
