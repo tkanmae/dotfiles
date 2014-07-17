@@ -28,7 +28,6 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'editor' \
   'spectrum' \
-  'fasd' \
   'utility' \
   'completion' \
   'homebrew' \
