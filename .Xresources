@@ -1,7 +1,23 @@
-! Solarized color scheme for the X Window System
-!
-! http://ethanschoonover.com/solarized
+!-------------------------------------------------------------------------------
+! Xft
+!-------------------------------------------------------------------------------
+xft.dpi: 96
+xft.antialias: true
+xft.hinting: true
+xft.hintstyle: hintslight
 
+
+!-------------------------------------------------------------------------------
+! rxvt-unicode
+!-------------------------------------------------------------------------------
+urxvt.scrollBar: false
+urxvt*font: xft:Monospace:size=10
+
+
+!-------------------------------------------------------------------------------
+! Solarized color scheme for the X Window System
+!-------------------------------------------------------------------------------
+! http://ethanschoonover.com/solarized
 
 ! Common
 
@@ -14,7 +30,6 @@
 #define S_cyan          #2aa198
 #define S_green         #859900
 
-
 ! Dark
 
 #define S_base03        #002b36
@@ -26,7 +41,6 @@
 #define S_base2         #eee8d5
 #define S_base3         #fdf6e3
 
-
 ! Light
 
 ! #define S_base03        #fdf6e3
@@ -37,12 +51,6 @@
 ! #define S_base1         #586e75
 ! #define S_base2         #073642
 ! #define S_base3         #002b36
-
-
-! To only apply colors to your terminal, for example, prefix
-! the color assignment statement with its name. Example:
-!
-! URxvt*background:            S_base03
 
 *background:              S_base03
 *foreground:              S_base0
@@ -68,11 +76,3 @@
 *color13:                 S_violet
 *color14:                 S_base1
 *color15:                 S_base3
-
-
-xft.dpi: 96
-xft.antialias: true
-xft.hinting: true
-xft.hintstyle: hintslight
-
-urxvt*font: xft:Monospace:size=10
