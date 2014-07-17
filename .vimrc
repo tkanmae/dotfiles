@@ -139,6 +139,10 @@ NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
       \ 'filetypes' : ['tex']
       \ }}
 
+NeoBundleLazy 'tpope/vim-markdown', { 'autoload' : {
+      \ 'filetypes' : ['markdown']
+      \ }}
+
 NeoBundleLazy 'vim-pandoc/vim-pandoc', { 'autoload' : {
       \ 'filetypes' : ['pandoc']
       \ }}
