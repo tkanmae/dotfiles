@@ -779,7 +779,7 @@ set pastetoggle=<F10>
 
 " Open the current buffer with Marked.app
 if has('macunix')
-  nnoremap <leader>m :silent !open -a Marked.app '%:p'<cr>
+  nnoremap <leader>m :silent !open -a Marked\ 2.app '%:p'<cr>
 endif
 
 "}}}  Key mapping
