@@ -386,6 +386,13 @@ augroup vimrc
   autocmd FileType tex setlocal formatoptions=tcq
   autocmd FileType python setlocal omnifunc=jedi#completions
 
+  let g:markdown_fenced_languages = [
+        \ 'python',
+        \ 'css',
+        \ 'javascript',
+        \ 'yaml',
+        \ ]
+
   " Close the help window by typing q.
   autocmd vimrc FileType help nnoremap <buffer> q <C-w>c
 augroup END
