@@ -12,7 +12,6 @@ tap caskroom/homebre-cask || true
 # Shell
 install autojump || true
 install zsh || true
-install zsh-completions || true
 install bash || true
 install bash-completion2 || true
 
@@ -58,18 +57,6 @@ install zeromq || true
 install brew-cask || true
 
 # .dmg
-cask install appcleaner || true
-cask install dropbox || true
-cask install flux || true
-cask install firefox || true
-cask install google-chrome || true
-cask install google-japanese-ime || true
-cask install latexit || true
-cask install mactex || true
-cask install omnioutliner || true
-cask install onyx || true
-cask install iterm2 || true
-cask install skim || true
 cask install vagrant || true
 cask install virtualbox || true
 cask install xquatrz || true
