@@ -135,6 +135,10 @@ NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
       \ 'filetypes' : ['go'],
       \ }}
 
+NeoBundleLazy 'JuliaLang/julia-vim', { 'autoload' : {
+      \ 'filetypes' : ['julia'],
+      \ }}
+
 NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
       \ 'filetypes' : ['tex']
       \ }}
