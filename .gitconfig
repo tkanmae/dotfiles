@@ -56,3 +56,6 @@
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 
     latexdiff = difftool -t latex
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
