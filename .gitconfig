@@ -1,26 +1,37 @@
 [user]
     name  = Takeshi Kanmae
     email = tkanmae@gmail.com
+
 [core]
     excludesfile = ~/.gitignore
     editor = vim
+
 [url "https://"]
     insteadOf = git://
+
 [merge]
     tool = vimdiff
+
 [pager]
     # Make sure git/contrib/diff-highlight is in PATH.
     log = diff-highlight | less
-    diff = diff-highlight | less
     show = diff-highlight | less
+    diff = diff-highlight | less
+
 [difftool]
     prompt = false
 [difftool.latex]
     cmd = git-latexdiff "$LOCAL" "$REMOTE"
+
 [color]
     ui = auto
     status = auto
     diff = auto
+
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+
 [alias]
     ad = add
     br = branch
@@ -29,7 +40,6 @@
     sh = show
     st = status
     amend = commit --amend
-
     # log
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -37,11 +47,9 @@
     lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
     lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     oneline = log --oneline
-
     # fetch
     ft = fetch
     fo = fetch origin
-
     # diff
     df = diff
     dc = diff --cached
@@ -51,11 +59,6 @@
     d2 = diff HEAD~~
     d3 = diff HEAD~~~
     d4 = diff HEAD~~~~
-
     # http://d.hatena.ne.jp/thinca/20120924/1348491052
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
-
     latexdiff = difftool -t latex
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
