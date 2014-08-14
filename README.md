@@ -5,7 +5,7 @@ dotfiles
 
 After cloning this repository, you need to initialize submodules:
 
-  $ git submodule update --init --recursive
+    $ git submodule update --init --recursive
 
 Then, you set up NeoBundle, a plugin manager for Vim:
 
