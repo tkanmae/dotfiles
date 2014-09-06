@@ -1,0 +1,4 @@
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[version=3]{mhchem}
+\usepackage{siunitx}

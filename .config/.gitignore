@@ -6,3 +6,5 @@
 !pep8
 !pudb/pudb.cfg
 
+!inkscape/extensions/**/*
+
