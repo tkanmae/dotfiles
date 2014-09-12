@@ -598,14 +598,10 @@ function! s:hooks.on_source(bundle)
   let g:unite_source_file_mru_time_format = ''
   let g:unite_force_overwrite_statusline = 0
 
-  let s:file_ignore_pattern = (unite#sources#rec#define()[0]['ignore_pattern']) .
+  call unite#custom#source('file,file_mru,file_rec', 'ignore_pattern',
+        \ '\%(^\|/\)\.\.\?$\|\~$\|\.\%(o|a|exe|dll|bak|DS_Store|zwc|sw[po]\)$' .
         \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
-        \ '\|\.\%(pyc\|pyo\)$' .
-        \ '\|\<target\>'
-  call unite#custom#source('file', 'ignore_pattern', s:file_ignore_pattern)
-  call unite#custom#source('file_mru', 'ignore_pattern', s:file_ignore_pattern)
-  call unite#custom#source('file_rec', 'ignore_pattern', s:file_ignore_pattern)
-  call unite#custom#source('grep', 'ignore_pattern', s:file_ignore_pattern)
+        \ '\|\.\%(pyc\|pyo\)$')
 
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
