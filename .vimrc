@@ -410,190 +410,180 @@ let g:python_highlight_all = 1
 
 " Plugins:  "{{{
 "
-if s:meet_neocomplete_requirements()
-  " neocomplete.vim  "{{{
+if neobundle#tap('neocomplete.vim')  "{{{
   let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_fuzzy_completion = 0
+  let g:neocomplete#auto_completion_start_length = 2
+  let g:neocomplete#manual_completion_start_length = 0
+  let g:neocomplete#min_keyword_length = 3
+  let g:neocomplete#syntax#min_length = 3
+  let g:neocomplete#enable_cursor_hold_i = 0
+  let g:neocomplete#enable_insert_char_pre = 0
+  let g:neocomplete#skip_auto_completion_time = '0.5'
+  let g:neocomplete#enable_auto_delimiter = 1
+  let g:neocomplete#max_list = 100
 
-  let s:hooks = neobundle#get_hooks('neocomplete.vim')
-  function! s:hooks.on_source(bundle)
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_fuzzy_completion = 0
-    let g:neocomplete#auto_completion_start_length = 2
-    let g:neocomplete#manual_completion_start_length = 0
-    let g:neocomplete#min_keyword_length = 3
-    let g:neocomplete#syntax#min_length = 3
-    let g:neocomplete#enable_cursor_hold_i = 0
-    let g:neocomplete#enable_insert_char_pre = 0
-    let g:neocomplete#skip_auto_completion_time = '0.5'
-    let g:neocomplete#enable_auto_delimiter = 1
-    let g:neocomplete#max_list = 100
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  let g:neocomplete#force_overwrite_completefunc = 1
+  if !exists('g:neocomplete#force_omni_patterns')
+    let g:neocomplete#force_omni_patterns = {}
+  endif
+  if !exists('g:neocomplete#sources#omni#functions')
+    let g:neocomplete#sources#omni#functions = {}
+  endif
 
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-      let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#force_overwrite_completefunc = 1
-    if !exists('g:neocomplete#force_omni_patterns')
-      let g:neocomplete#force_omni_patterns = {}
-    endif
-    if !exists('g:neocomplete#sources#omni#functions')
-      let g:neocomplete#sources#omni#functions = {}
-    endif
+  let g:neocomplete#sources#omni#functions.go = 'gocomplete#Complete'
+  let g:neocomplete#sources#omni#input_patterns.go =
+        \ '[^.[:digit:] *\t]\.'
 
-    let g:neocomplete#sources#omni#functions.go = 'gocomplete#Complete'
-    let g:neocomplete#sources#omni#input_patterns.go =
-          \ '[^.[:digit:] *\t]\.'
+  " For clang_complete
+  let g:clang_complete_auto = 0
+  let g:clang_auto_select = 0
+  let g:clang_use_library = 1
+  let g:neocomplete#force_omni_patterns.c =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplete#force_omni_patterns.cpp =
+        \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-    " For clang_complete
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_use_library = 1
-    let g:neocomplete#force_omni_patterns.c =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplete#force_omni_patterns.cpp =
-          \ '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  " For jedi-vim
+  let g:neocomplete#force_omni_patterns.python =
+        \ '\h\w*\|[^. \t]\.\w*'
 
-    " For jedi-vim
-    let g:neocomplete#force_omni_patterns.python =
-          \ '\h\w*\|[^. \t]\.\w*'
+  if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+  endif
+  let g:neocomplete#keyword_patterns._ = '\h\w*'
 
-    if !exists('g:neocomplete#keyword_patterns')
-      let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns._ = '\h\w*'
+  let g:neocomplete#text_mode_filetypes = {
+        \ 'text': 1,
+        \ 'tex': 1,
+        \ 'markdown': 1,
+        \ 'pandoc': 1,
+        \ 'gitcommit': 1
+        \ }
 
-    let g:neocomplete#text_mode_filetypes = {
-          \ 'text': 1,
-          \ 'tex': 1,
-          \ 'markdown': 1,
-          \ 'pandoc': 1,
-          \ 'gitcommit': 1
-          \ }
+  " mappings "{{{
+  " <C-f>, <C-b>: page move.
+  inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
+  inoremap <expr><C-b> pumvisible() ? "\<PageUp>"   : "\<Left>"
 
-    " mappings "{{{
-    " <C-f>, <C-b>: page move.
-    inoremap <expr><C-f> pumvisible() ? "\<PageDown>" : "\<Right>"
-    inoremap <expr><C-b> pumvisible() ? "\<PageUp>"   : "\<Left>"
+  inoremap <expr><C-y> pumvisible() ? neocomplete#close_popup() :  "\<C-r>\""
+  inoremap <expr><C-e> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
+  inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
+  inoremap <expr><BS>  neocomplete#smart_close_popup() . "\<C-h>"
 
-    inoremap <expr><C-y> pumvisible() ? neocomplete#close_popup() :  "\<C-r>\""
-    inoremap <expr><C-e> pumvisible() ? neocomplete#cancel_popup() : "\<End>"
-    inoremap <expr><C-h> neocomplete#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS>  neocomplete#smart_close_popup() . "\<C-h>"
+  inoremap <expr><C-g> neocomplete#undo_completion()
+  inoremap <expr><C-l> neocomplete#complete_common_string()
 
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
-
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-      return neocomplete#smart_close_popup() . "\<CR>"
-    endfunction
-
-    inoremap <expr><C-x><C-f>
-          \ neocomplete#start_manual_complete('file')
-
-    "}}} mappings
+  " <CR>: close popup and save indent.
+  inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+  function! s:my_cr_function()
+    return neocomplete#smart_close_popup() . "\<CR>"
   endfunction
-  "}}}  neocomplete.vim
-else
-  " neocomplcache  "{{{
+
+  inoremap <expr><C-x><C-f>
+        \ neocomplete#start_manual_complete('file')
+
+  call neobundle#untap()
+endif  "}}}
+
+if neobundle#tap('neocomplcache') "{{{
   let g:neocomplcache_enable_at_startup = 1
+  " Use smartcase.
+  let g:neocomplcache_enable_smart_case = 0
+  " Use camel case completion.
+  let g:neocomplcache_enable_camel_case_completion = 0
+  " Use underbar completion.
+  let g:neocomplcache_enable_underbar_completion = 0
+  " Use fuzzy completion.
+  let g:neocomplcache_enable_fuzzy_completion = 1
+  " Set minimum syntax keyword length.
+  let g:neocomplcache_min_syntax_length = 3
+  " Set auto completion length.
+  let g:neocomplcache_auto_completion_start_length = 2
+  " Set manual completion length.
+  let g:neocomplcache_manual_completion_start_length = 0
+  " Set minimum keyword length.
+  let g:neocomplcache_min_keyword_length = 3
+  let g:neocomplcache_min_syntax_length = 3
+  let g:neocomplcache_enable_cursor_hold_i = 0
+  let g:neocomplcache_cursor_hold_i_time = 300
+  let g:neocomplcache_enable_insert_char_pre = 0
+  let g:neocomplcache_enable_prefetch = 0
+  let g:neocomplcache_skip_auto_completion_time = '0.5'
+  let g:neocomplcache_max_list = 100
 
-  let s:hooks = neobundle#get_hooks('neocomplcache')
-  function! s:hooks.on_source(bundle)
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 0
-    " Use camel case completion.
-    let g:neocomplcache_enable_camel_case_completion = 0
-    " Use underbar completion.
-    let g:neocomplcache_enable_underbar_completion = 0
-    " Use fuzzy completion.
-    let g:neocomplcache_enable_fuzzy_completion = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 3
-    " Set auto completion length.
-    let g:neocomplcache_auto_completion_start_length = 2
-    " Set manual completion length.
-    let g:neocomplcache_manual_completion_start_length = 0
-    " Set minimum keyword length.
-    let g:neocomplcache_min_keyword_length = 3
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_enable_cursor_hold_i = 0
-    let g:neocomplcache_cursor_hold_i_time = 300
-    let g:neocomplcache_enable_insert_char_pre = 0
-    let g:neocomplcache_enable_prefetch = 0
-    let g:neocomplcache_skip_auto_completion_time = '0.5'
-    let g:neocomplcache_max_list = 100
+  if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+  endif
+  if !exists('g:neocomplcache_force_omni_patterns')
+    let g:neocomplcache_force_omni_patterns = {}
+  endif
+  if !exists('g:neocomplcache_omni_functions')
+    let g:neocomplcache_omni_functions = {}
+  endif
 
-    if !exists('g:neocomplcache_omni_patterns')
-      let g:neocomplcache_omni_patterns = {}
-    endif
-    if !exists('g:neocomplcache_force_omni_patterns')
-      let g:neocomplcache_force_omni_patterns = {}
-    endif
-    if !exists('g:neocomplcache_omni_functions')
-      let g:neocomplcache_omni_functions = {}
-    endif
+  let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.'
+  let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
 
-    let g:neocomplcache_omni_patterns.go = '[^.[:digit:] *\t]\.'
-    let g:neocomplcache_omni_functions.go = 'gocomplete#Complete'
+  " For clang_complete
+  let g:neocomplcache_force_overwrite_completefunc = 1
+  let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+  let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+  let g:clang_complete_auto = 0
+  let g:clang_auto_select = 0
+  let g:clang_use_library = 1
 
-    " For clang_complete
-    let g:neocomplcache_force_overwrite_completefunc = 1
-    let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-    let g:clang_complete_auto = 0
-    let g:clang_auto_select = 0
-    let g:clang_use_library = 1
+  " For jedi-vim
+  let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
 
-    " For jedi-vim
-    let g:neocomplcache_force_omni_patterns.python = '[^. \t]\.\w*'
+  if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+  endif
 
-    if !exists('g:neocomplcache_keyword_patterns')
-      let g:neocomplcache_keyword_patterns = {}
-    endif
+  let g:neocomplcache_text_mode_filetypes = {
+        \ 'text': 1,
+        \ 'tex': 1,
+        \ 'markdown': 1,
+        \ 'pandoc': 1,
+        \ 'gitcommit': 1
+        \ }
 
-    let g:neocomplcache_text_mode_filetypes = {
-          \ 'text': 1,
-          \ 'tex': 1,
-          \ 'markdown': 1,
-          \ 'pandoc': 1,
-          \ 'gitcommit': 1
-          \ }
+  " mappings
+  inoremap <expr><C-g> neocomplcache#undo_completion()
+  inoremap <expr><C-l> neocomplcache#complete_common_string()
+  inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+  inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+  inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
+  inoremap <expr><C-y> neocomplcache#close_popup()
+  inoremap <expr><C-e> neocomplcache#cancel_popup()
 
-    " mappings
-    inoremap <expr><C-g> neocomplcache#undo_completion()
-    inoremap <expr><C-l> neocomplcache#complete_common_string()
-    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-    inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><BS>  neocomplcache#smart_close_popup() . "\<C-h>"
-    inoremap <expr><C-y> neocomplcache#close_popup()
-    inoremap <expr><C-e> neocomplcache#cancel_popup()
-  endfunction
-  "}}}  neocomplcache.vim
-endif
+  call neobundle#untap()
+endif "}}}
 
-" unite.vim  "{{{
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
-" List file's directory.
-nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" List buffers.
-nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
-" List recently used files.
-nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
-" List registers.
-nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
-" List current directory.
-nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
-" List buffers and recently used files.
-nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
-" Grep
-nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-" List outline.
-nnoremap [unite]o :<C-u>Unite outline<CR>
+if neobundle#tap('unite.vim')  "{{{
+  nnoremap [unite] <Nop>
+  nmap <Leader>u [unite]
+  " List file's directory.
+  nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  " List buffers.
+  nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
+  " List recently used files.
+  nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
+  " List registers.
+  nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
+  " List current directory.
+  nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
+  " List buffers and recently used files.
+  nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
+  " Grep
+  nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+  " List outline.
+  nnoremap [unite]o :<C-u>Unite outline<CR>
 
-let s:hooks = neobundle#get_hooks('unite.vim')
-function! s:hooks.on_source(bundle)
   let g:unite_enable_start_insert = 1
   let g:unite_source_file_mru_time_format = ''
   let g:unite_force_overwrite_statusline = 0
@@ -620,27 +610,25 @@ function! s:hooks.on_source(bundle)
     nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
     inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
   endfunction
-endfunction
-" }}}  unite.vim
 
-" vimfiler  "{{{
-nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
-nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
+  call neobundle#untap()
+endif  "}}}
 
-let s:hooks = neobundle#get_hooks('vimfiler.vim')
-function! s:hooks.on_source(bundle)
+if neobundle#tap('vimfiler.vim') "{{{
+  nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+  nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
+
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_safe_mode_by_default = 0
   let g:vimfiler_force_overwrite_statusline = 0
   let g:vimfiler_ignore_pattern = '^\.' .
         \ '\|\.\%(pyc|pyo\)$' .
         \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$'
-endfunction
-"}}}  vimfiler
 
-" neosnippet  "{{{
-let s:hooks = neobundle#get_hooks('neosnippet.vim')
-function! s:hooks.on_source(bundle)
+  call neobundle#untap()
+endif "}}}
+
+if neobundle#tap('neosnippet') "{{{
   if !exists("g:neosnippet#snippets_directory")
     let g:neosnippet#snippets_directory = '~/.vim/snippets'
   endif
@@ -649,8 +637,9 @@ function! s:hooks.on_source(bundle)
         \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-endfunction
-"}}}  neosnippet
+
+  call neobundle#untap()
+endif  "}}}
 
 " vim-airline  "{{{
 let g:airline_theme = "solarized"
@@ -675,33 +664,37 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'passive_filetypes': ['tex'] }
 "}}}  syntastic
 
-" vim-quickrun  " {{{
-let g:quickrun_config = {}
-let g:quickrun_config['cpp'] = {
-      \   'cmdopt': '-Wall -Wextra -pedantic -std=c++11'
-      \ }
-" }}}  vim-quickrun
+if neobundle#tap('vim-quickrun')  "{{{
+  let g:quickrun_config = {}
+  let g:quickrun_config['cpp'] = {
+        \   'cmdopt': '-Wall -Wextra -pedantic -std=c++11'
+        \ }
 
-" jedi-vim  "{{{
-let s:hooks = neobundle#get_hooks('jedi-vim')
-function! s:hooks.on_source(bundle)
+  call neobundle#untap()
+endif  "}}}
+
+if neobundle#tap('jedi-vim')  "{{{
   let g:jedi#auto_vim_configuration = 0
   let g:jedi#documentation_command = '<Leader>k'
   let g:jedi#use_tabs_not_buffers = 0
   let g:jedi#popup_on_dot = 0
   let g:jedi#popup_select_first = 0
-endfunction
-"}}} jedi-vim
+
+  call neobundle#untap()
+endif  "}}}
 
 " NERD_comments.vim
 let NERDShutUp=1
 let NERDSpaceDelims=1
 
-" yankround.vim
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
+if neobundle#tap('yankround.vim')
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+
+  call neobundle#untap()
+endif
 
 " Gundo.vim
 nnoremap U :<C-u>GundoToggle<CR>
@@ -715,19 +708,21 @@ vmap <Leader>a: :Tabularize /:<CR>
 " python.vim
 let python_highlight_all = 1
 
-" LaTeX-Box  "{{{
-let g:tex_flavor = "latex"
-let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
-let g:LatexBox_viewer = "open -a Skim.app"
-let g:LatexBox_latexmk_preview_continuously = 1
-let g:LatexBox_split_width = 40
-let g:LatexBox_split_side = "rightbelow"
-let g:LatexBox_complete_inlineMath = 1
-map <silent> <Leader>ls :silent
-      \ !/Applications/Skim.app/Contents/SharedSupport/displayline
-      \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
-      \ "%:p" <CR>
-"}}}  LaTeX-Box
+if neobundle#tap('LaTeX-Box')  "{{{
+  let g:tex_flavor = "latex"
+  let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
+  let g:LatexBox_viewer = "open -a Skim.app"
+  let g:LatexBox_latexmk_preview_continuously = 1
+  let g:LatexBox_split_width = 40
+  let g:LatexBox_split_side = "rightbelow"
+  let g:LatexBox_complete_inlineMath = 1
+  map <silent> <Leader>ls :silent
+        \ !/Applications/Skim.app/Contents/SharedSupport/displayline
+        \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
+        \ "%:p" <CR>
+
+  call neobundle#untap()
+endif "}}}
 
 " clang_complete
 if has("mac")
