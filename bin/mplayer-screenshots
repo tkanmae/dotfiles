@@ -105,7 +105,7 @@ class App(object):
         else:
             self.brightness = 0
         c = int(args['--contrast'])
-        if -100 < self.contrast < 100:
+        if -100 < c < 100:
             self.contrast = c
         else:
             self.contrast = 0
@@ -142,7 +142,7 @@ class App(object):
     def _args_to_convert_image(self):
         ext = '.' + self.filetype
         # MPlayer saves screenshots as PNG images.
-        for src_file in glob.glob(os.path.join(self._temp_dir, 'shot*.png')):
+        for src_file in glob.glob(os.path.join(self._working_dir, 'shot*.png')):
             fname = self.prefix + os.path.basename(src_file)[4:8] + ext
             dest_file = os.path.join(self.dest_dir, fname)
             yield src_file, dest_file
