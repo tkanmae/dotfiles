@@ -21,7 +21,8 @@ set spellfile=$HOME/Dropbox/Apps/Vim/spell/en.utf-8.add
 if has("vim_starting")
   set runtimepath+=$HOME/.vim/bundle/neobundle.vim
 endif
-call neobundle#rc(expand("$HOME/.vim/bundle"))
+
+call neobundle#begin(expand("$HOME/.vim/bundle"))
 
 " NeoBundle  "{{{
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -229,6 +230,8 @@ call neobundle#config('tern_for_vim', {
       \   'others' : 'npm install',
       \    },
       \ })
+
+call neobundle#end()
 
 "}}} NeoBundle
 
