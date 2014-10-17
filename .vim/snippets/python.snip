@@ -21,9 +21,9 @@ options head
 	from ${1:package} import ${2:module}
 
 snippet fut
-abbr    from __future__ import module
+abbr    from __future__ import ..
 options head
-	from __future__ import ${1:module}
+	from __future__ import absolute_import, division, print_function
 
 snippet __
 abbr    __magic__
