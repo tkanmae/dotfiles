@@ -191,10 +191,10 @@ NeoBundleLazy 'fsouza/go.vim', {
       \   'filetypes' : ['go'],
       \ }}
 
-NeoBundleLazy 'JuliaLang/julia-vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['julia'],
-      \ }}
+" NeoBundleLazy 'JuliaLang/julia-vim', {
+"       \ 'autoload' : {
+"       \   'filetypes' : ['julia'],
+"       \ }}
 
 NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
       \ 'autoload' : {
