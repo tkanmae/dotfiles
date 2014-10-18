@@ -59,8 +59,9 @@ NeoBundle 'LeafCage/yankround.vim'
 
 NeoBundle 'kana/vim-fakeclip'
 
-NeoBundleLazy 'tolecnal/vim-matchit', { 'autoload' : {
-      \ 'mappings' : '%',
+NeoBundleLazy 'tolecnal/vim-matchit', {
+      \ 'autoload' : {
+      \   'mappings' : '%',
       \ }}
 
 NeoBundle 'jiangmiao/auto-pairs'
@@ -70,8 +71,9 @@ NeoBundle 'kana/vim-textobj-indent', {
       \ 'depends' : 'vim-textobj-user',
       \ }
 
-NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {
-      \ 'commands' : 'GundoToggle'
+NeoBundleLazy 'sjl/gundo.vim', {
+      \ 'autoload' : {
+      \   'commands' : 'GundoToggle'
       \ }}
 
 NeoBundle 'scrooloose/nerdcommenter'
@@ -97,63 +99,79 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
       \    },
       \ }
 
-NeoBundleLazy 'davidhalter/jedi-vim', { 'autoload' : {
-      \ 'filetypes' : ['python', 'python3'],
+NeoBundleLazy 'davidhalter/jedi-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['python', 'python3'],
       \ }}
-NeoBundleLazy 'hynek/vim-python-pep8-indent', { 'autoload' : {
-      \ 'filetypes' : ['python', 'python3'],
-      \ }}
-
-NeoBundleLazy 'hail2u/vim-css3-syntax', { 'autoload' : {
-      \ 'filetypes' : ['css', 'html', 'less']
-      \ }}
-NeoBundleLazy 'groenewege/vim-less', { 'autoload' : {
-      \ 'filetypes' : ['less']
+NeoBundleLazy 'hynek/vim-python-pep8-indent', {
+      \ 'autoload' : {
+      \   'filetypes' : ['python', 'python3'],
       \ }}
 
-NeoBundleLazy 'pangloss/vim-javascript', { 'autoload' : {
-      \ 'filetypes' : ['javascript']
+NeoBundleLazy 'hail2u/vim-css3-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['css', 'html', 'less']
       \ }}
-NeoBundleLazy 'jelera/vim-javascript-syntax', { 'autoload' : {
-      \ 'filetypes' : ['javascript']
-      \ }}
-NeoBundleLazy 'marijnh/tern_for_vim', { 'autoload' : {
-      \ 'filetypes' : ['javascript']
-      \ }}
-
-NeoBundleLazy 'avakhov/vim-yaml', { 'autoload' : {
-      \ 'filetypes' : ['yaml']
-      \ }}
-NeoBundleLazy 'stephpy/vim-yaml', { 'autoload' : {
-      \ 'filetypes' : ['yaml']
+NeoBundleLazy 'groenewege/vim-less', {
+      \ 'autoload' : {
+      \   'filetypes' : ['less']
       \ }}
 
-NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', { 'autoload' : {
-      \ 'filetypes' : ['html']
+NeoBundleLazy 'pangloss/vim-javascript', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript']
+      \ }}
+NeoBundleLazy 'jelera/vim-javascript-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript']
+      \ }}
+NeoBundleLazy 'marijnh/tern_for_vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript']
       \ }}
 
-NeoBundleLazy 'fsouza/go.vim', { 'autoload' : {
-      \ 'filetypes' : ['go'],
+NeoBundleLazy 'avakhov/vim-yaml', {
+      \ 'autoload' : {
+      \   'filetypes' : ['yaml']
+      \ }}
+NeoBundleLazy 'stephpy/vim-yaml', {
+      \ 'autoload' : {
+      \   'filetypes' : ['yaml']
       \ }}
 
-NeoBundleLazy 'JuliaLang/julia-vim', { 'autoload' : {
-      \ 'filetypes' : ['julia'],
+NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['html']
       \ }}
 
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', { 'autoload' : {
-      \ 'filetypes' : ['tex']
+NeoBundleLazy 'fsouza/go.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['go'],
       \ }}
 
-NeoBundleLazy 'tpope/vim-markdown', { 'autoload' : {
-      \ 'filetypes' : ['markdown']
+NeoBundleLazy 'JuliaLang/julia-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['julia'],
       \ }}
 
-NeoBundleLazy 'vim-pandoc/vim-pandoc', { 'autoload' : {
-      \ 'filetypes' : ['pandoc']
+NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
+      \ 'autoload' : {
+      \   'filetypes' : ['tex']
       \ }}
 
-NeoBundleLazy 'honza/dockerfile.vim', { 'autoload' : {
-      \ 'filetypes' : ['dockerfile']
+NeoBundleLazy 'tpope/vim-markdown', {
+      \ 'autoload' : {
+      \   'filetypes' : ['markdown']
+      \ }}
+
+NeoBundleLazy 'vim-pandoc/vim-pandoc', {
+      \ 'autoload' : {
+      \   'filetypes' : ['pandoc']
+      \ }}
+
+NeoBundleLazy 'honza/dockerfile.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['dockerfile']
       \ }}
 
 NeoBundle 'bling/vim-airline'
