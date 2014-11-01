@@ -10,9 +10,9 @@ Options:
     -o <output>, --output=<output>
         Output directory [default: ./]
     -b <brightness>, --brightness=<brightness>
-        Set brightness [default: 0].
+        Set brightness (-1.0 -- 1.0) [default: 0.0].
     -c <contrast>, --contrast=<contrast>
-        Set contrast [default: 0].
+        Set contrast (-2.0 -- 2.0) [default: 1.0].
     -p <prefix>, --prefix=<prefix>
         Set prefix of output file name [default: shot-].
     -f <filetype>, --filetype=<filetype>
@@ -99,16 +99,16 @@ class App(object):
 
         self.prefix = args['--prefix']
 
-        b = int(args['--brightness'])
-        if -100 < b < 100:
+        b = float(args['--brightness'])
+        if b < -1.0 or b > 1.0:
+            self.brightness = 0.0
+        else:
             self.brightness = b
+        c = float(args['--contrast'])
+        if c < -2.0 or b > 2.0:
+            self.contrast = 1.0
         else:
-            self.brightness = 0
-        c = int(args['--contrast'])
-        if -100 < c < 100:
             self.contrast = c
-        else:
-            self.contrast = 0
 
         filetype = args['--filetype'].lower()
         if filetype not in ('png', 'bmp', 'tif'):
@@ -135,8 +135,8 @@ class App(object):
         """Play a movie with MPlayer."""
         # Sets options for MPlayer.  This fixes the output image size to 640x480
         # pixels.
-        vf_opt = ('eq=%d:%s,scale=640:480,screenshot'
-                  % (self.brightness, self.contrast))
+        vf_opt = ('eq2=1.0:%g:%g,scale=640:480,screenshot'
+                  % (self.contrast, self.brightness))
         subprocess.call(['mplayer', '-vf', vf_opt, self.movie_file])
 
     def _args_to_convert_image(self):
