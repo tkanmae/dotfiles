@@ -135,7 +135,7 @@ class App(object):
         """Play a movie with mpv."""
         # Sets options for mpv.  This fixes the output image size to 640x480
         # pixels.
-        opt = '--screenshot-format=png'
+        opt = '--screenshot-format=png -screenshot-png-compression=0'
         vf_opt = ('eq=1.0:%g:%g,scale=640:480'
                   % (self.contrast, self.brightness))
         subprocess.call(['mpv', opt, '-vf', vf_opt, self.movie_file])
