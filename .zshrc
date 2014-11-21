@@ -110,10 +110,10 @@ function ipython() {
 # ------------------------------------------------------------------------------
 case "$OSTYPE" in
     darwin*)
-        source ~/.zsh/.zshrc.macosx
+        source ~/.zshrc.osx
         ;;
     linux*)
-        source ~/.zsh/.zshrc.linux
+        source ~/.zshrc.linux
         ;;
 esac
 
