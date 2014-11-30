@@ -1,7 +1,4 @@
 " Initialization:  "{{{
-"
-" Diable vim compatible mode.
-set nocompatible
 
 " Use ',' instead of '\'.
 let mapleader=','
