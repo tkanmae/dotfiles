@@ -1,5 +1,7 @@
 " Initialization:  "{{{
 
+scriptencoding utf-8
+
 " Use ',' instead of '\'.
 let mapleader=','
 " Use <Leader> in global plugins.
