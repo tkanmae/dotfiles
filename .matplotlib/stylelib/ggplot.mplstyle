@@ -1,0 +1,43 @@
+lines.linewidth: 1.0
+
+patch.linewidth: 0.50
+patch.facecolor: 348abd
+patch.edgecolor: eeeeee
+patch.antialiased: True
+
+font.size: 10.0
+
+axes.facecolor: e5e5e5
+axes.edgecolor: ffffff
+axes.linewidth: 0.0
+axes.grid: True
+axes.titlesize: x-large
+axes.labelsize: large
+axes.labelcolor: 555555
+axes.axisbelow: True
+axes.color_cycle: 348abd, 7a68a6, a60628, 467821, cf4457, 188487, e24a33, 4b3e6a, 26678c
+
+xtick.major.size: 0
+xtick.minor.size: 0
+xtick.major.pad: 6
+xtick.minor.pad: 6
+xtick.color: 555555
+
+ytick.major.size: 0
+ytick.minor.size: 0
+ytick.major.pad: 6
+ytick.minor.pad: 6
+ytick.color: 555555
+
+grid.color: ffffff
+grid.linestyle: -
+grid.linewidth: 1.50
+
+legend.fancybox: True
+
+legend.numpoints: 1
+legend.fontsize: large
+
+figure.figsize: 10, 6.2
+figure.facecolor: ffffff
+figure.edgecolor: ffffff
