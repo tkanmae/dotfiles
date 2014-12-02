@@ -14,4 +14,4 @@ with open(os.devnull, 'wb') as DEVNULL:
                             stdout=subprocess.PIPE)
     stdout, _ = proc.communicate()
     if proc.returncode == 0:
-        sys.path.insert(0, stdout.strip())
+        sys.path.insert(0, stdout.decode().strip())
