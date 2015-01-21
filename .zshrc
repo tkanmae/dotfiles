@@ -71,7 +71,11 @@ bindkey -e
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
+GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
+GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn --exclude-dir=.git"
+
 alias diff='colordiff -urpN'
+alias grep='grep $GREP_OPTIONS'
 alias man='LANG=C man'
 alias latex='latex --shell-escape $@'
 
@@ -80,6 +84,9 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g L='| less'
+
+# Clean up
+unset GREP_OPTIONS
 
 # ------------------------------------------------------------------------------
 # Functions
