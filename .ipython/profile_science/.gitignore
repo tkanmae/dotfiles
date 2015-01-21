@@ -5,4 +5,5 @@ db/
 log/
 pid/
 security/
+nbconfig/
 static/mathjax/
