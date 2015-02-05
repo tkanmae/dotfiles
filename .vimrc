@@ -139,13 +139,15 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
       \    },
       \ }
 
-NeoBundleLazy 'davidhalter/jedi-vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['python', 'python3'],
-      \ }}
 NeoBundleLazy 'hynek/vim-python-pep8-indent', {
       \ 'autoload' : {
       \   'filetypes' : ['python', 'python3'],
+      \ }}
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundleLazy 'lambdalisue/vim-pyenv', {
+      \ 'depends': ['davidhalter/jedi-vim'],
+      \ 'autoload': {
+      \   'filetypes': ['python', 'python3'],
       \ }}
 
 NeoBundleLazy 'hail2u/vim-css3-syntax', {
