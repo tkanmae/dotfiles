@@ -9,10 +9,10 @@ fi
 # ------------------------------------------------------------------------------
 # Percol
 # ------------------------------------------------------------------------------
-if [[ -s "${HOME}/.zsh/percol.zsh" ]]; then
-    which percol >/dev/null 2>&1 && source "${HOME}/.zsh/percol.zsh"
+if [[ -s "${HOME}/.zsh/peco.zsh" ]]; then
+    which peco >/dev/null 2>&1 && source "${HOME}/.zsh/peco.zsh"
 fi
-bindkey '^X^R' percol-select-history
+bindkey '^X^R' peco-select-history
 
 
 # ------------------------------------------------------------------------------
