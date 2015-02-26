@@ -12,7 +12,7 @@ fi
 if [[ -s "${HOME}/.zsh/peco.zsh" ]]; then
     which peco >/dev/null 2>&1 && source "${HOME}/.zsh/peco.zsh"
 fi
-bindkey '^X^R' peco-select-history
+bindkey '^R' peco-select-history
 
 
 # ------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^S' history-incremental-pattern-search-forward
+# bindkey '^R' history-incremental-pattern-search-backward
+# bindkey '^S' history-incremental-pattern-search-forward
 
 # ------------------------------------------------------------------------------
 # Key binding
