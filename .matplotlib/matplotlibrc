@@ -1,4 +1,5 @@
-backend: MacOSX
+# backend: MacOSX
+backend: Qt5Agg
 
 figure.max_open_warning: 50
 
