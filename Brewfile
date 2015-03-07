@@ -32,13 +32,10 @@ install hdf5 --enable-parallel || true
 install libyaml || true
 install macvim --with-luajit --override-system-vim --HEAD || true
 install netcdf || true
-install py2cairo || true
-install py3cairo || true
-install pygobject3 || true
 install python || true
 install python3 || true
-install pyqt --with-python3 || true
-install pyqt5 --with-python3 || true
+install qt || true
+install qt5 || true
 install rbenv || true
 install reattach-to-user-namespace || true
 install rsync || true
