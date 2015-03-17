@@ -21,19 +21,19 @@ function print_error() {
 
 
 function get_md5() {
-    local checksum=$(openssl md5 $1)
+    local checksum=$(openssl md5 "$1")
     echo ${checksum##*= }
 }
 
 
 function get_sha1() {
-    local checksum=$(openssl sha1 $1)
+    local checksum=$(openssl sha1 "$1")
     echo ${checksum##*= }
 }
 
 
 function get_rmd160() {
-    local checksum=$(openssl rmd160 $1)
+    local checksum=$(openssl rmd160 "$1")
     echo ${checksum##*= }
 }
 
