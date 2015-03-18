@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Print checmsums of a file using MD5, SHA1, and RMD160.
+# Print checmsums of a file using MD5, SHA1 and RMD160.
 #
 
 \unalias -a
@@ -9,7 +9,7 @@ function print_usage_and_die() {
     cat <<EOF
 Usage: checksum [-h|--help] file
 
-Print checksums of a file using MD5, SHA1, and RMD160.
+Print checksums of a file using MD5, SHA1 and RMD160.
 EOF
     exit 1
 } >&2
