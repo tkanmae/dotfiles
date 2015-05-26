@@ -19,6 +19,8 @@ path=(
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # MacTeX
     /usr/local/texlive/2014/bin/x86_64-darwin(N-/)
+    # Linuxbrew
+    ${HOME}/.linuxbrew/bin(N-/)
     ${path}
 )
 path=(${HOME}/.rbenv/bin(N-/) ${path})
@@ -33,6 +35,8 @@ manpath=(
     /usr/local/opt/coreutils/libexec/gnuman(N-/)
     # MacTeX
     /usr/local/texlive/2014/texmf-dist/doc/man(N-/)
+    # Linuxbrew
+    ${HOME}/.linuxbrew/share/man(N-/)
     ${manpath}
 )
 
