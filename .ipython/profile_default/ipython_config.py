@@ -50,7 +50,7 @@ c.InteractiveShellApp.exec_lines = [
 # c.InteractiveShellApp.pylab_import_all = True
 
 # A list of dotted module names of IPython extensions to load.
-c.InteractiveShellApp.extensions = ['autoreload']
+# c.InteractiveShellApp.extensions = ['autoreload']
 
 try:
     import msgpackk
