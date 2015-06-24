@@ -174,10 +174,12 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
       \ }}
 
 NeoBundleLazy 'avakhov/vim-yaml', {
+      \ 'name' : 'vim-yaml-indent',
       \ 'autoload' : {
       \   'filetypes' : ['yaml']
       \ }}
 NeoBundleLazy 'stephpy/vim-yaml', {
+      \ 'name' : 'vim-yaml-syntax',
       \ 'autoload' : {
       \   'filetypes' : ['yaml']
       \ }}
