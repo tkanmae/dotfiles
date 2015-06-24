@@ -173,7 +173,7 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
       \   'filetypes' : ['javascript']
       \ }}
 
-NeoBundleLazy 'avakhov/vim-yaml', {
+NeoBundleLazy 'mrk21/yaml-vim', {
       \ 'name' : 'vim-yaml-indent',
       \ 'autoload' : {
       \   'filetypes' : ['yaml']
