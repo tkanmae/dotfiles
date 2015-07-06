@@ -18,7 +18,7 @@ path=(
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # MacTeX
-    /usr/local/texlive/2014/bin/x86_64-darwin(N-/)
+    /usr/local/texlive/2015/bin/x86_64-darwin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
     ${path}
