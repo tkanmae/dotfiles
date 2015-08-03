@@ -102,22 +102,15 @@ install_pyqt() {
 
 
 qt_install_dir() {
-    local install_dir
-    install_dir=$(brew info qt5 | grep "$(brew --prefix)" | tail -n 1)
-    install_dir=${install_dir%% \(*}
-    if ! [[ "$install_dir" ]]; then
-        print_error "please insatll qt5"
-        exit -1
-    fi
+    local install_dir="/usr/local/opt/qt5"
     echo "$install_dir"
 }
 
 
-SIP_VERSION="4.16.6"
-PYQT_VERSION="5.4.1"
+SIP_VERSION="4.16.9"
+PYQT_VERSION="5.5"
 
 QT_INSTALL_DIR=$(qt_install_dir)
-QT_VERSION=${QT_INSTALL_DIR##*/}
 
 DOWNLOAD_CACHE_DIR="$HOME/Library/Caches/pip"
 [[ -d "$DOWNLOAD_CACHE_DIR" ]] || mkdir -p "$DOWNLOAD_CACHE_DIR"
