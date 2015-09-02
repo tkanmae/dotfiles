@@ -44,7 +44,7 @@ else
         \ }}
 endif
 
-NeoBundleLazy 'Shougo/unite.vim', {
+NeoBundle 'Shougo/unite.vim', {
       \   'commands' : [{'name' : 'Unite',
       \                  'complete' : 'customlist,unite#complete_source'},
       \                 'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
