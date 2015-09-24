@@ -7,6 +7,8 @@ patch.antialiased: True
 
 font.size: 10.0
 
+text.color: 555555
+
 axes.facecolor: e5e5e5
 axes.edgecolor: ffffff
 axes.linewidth: 0.0
