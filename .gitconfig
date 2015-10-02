@@ -68,3 +68,7 @@
     # http://d.hatena.ne.jp/thinca/20120924/1348491052
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
     latexdiff = difftool -t latex
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
