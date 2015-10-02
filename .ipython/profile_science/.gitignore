@@ -1,9 +1,0 @@
-*.py[co]
-
-*.sqlite
-db/
-log/
-pid/
-security/
-nbconfig/
-static/mathjax/
