@@ -14,4 +14,4 @@ source ~/.zsh/zsh-notify/notify.plugin.zsh
 # Aliases
 # ------------------------------------------------------------------------------
 alias ls="ls -GF"
-alias julia="exec '/Applications/Julia-0.3.10.app/Contents/Resources/julia/bin/julia'"
+alias julia="exec '/Applications/Julia-0.3.11.app/Contents/Resources/julia/bin/julia'"
