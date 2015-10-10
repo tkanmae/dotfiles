@@ -1,0 +1,5 @@
+channels:
+  - https://conda.binstar.org/scitools
+  - defaults
+
+show_channel_urls: True
