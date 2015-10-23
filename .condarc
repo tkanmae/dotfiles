@@ -1,5 +1,6 @@
 channels:
-  - https://conda.binstar.org/scitools
+  - https://conda.anaconda.org/scitools
+  - https://conda.anaconda.org/menpo
   - defaults
 
 show_channel_urls: True
