@@ -67,6 +67,7 @@ which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh
 if [[ -d ${HOME}/.pyenv ]]; then
     path=(${HOME}/.pyenv/bin(N-/) ${path})
     eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
 fi
 
 
