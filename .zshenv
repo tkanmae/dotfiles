@@ -1,5 +1,3 @@
-typeset -U path cdpath fpath manpath
-
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
@@ -8,76 +6,10 @@ export PAGER=less
 
 
 # ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-path=(/usr/local/bin(N-/) /usr/local/sbin(N-/) ${path})
-path=(
-    # local
-    ${HOME}/.local/bin(N-/)
-    # GNU tools via Homebrew
-    /usr/local/opt/coreutils/libexec/gnubin(N-/)
-    /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
-    # MacTeX
-    /usr/local/texlive/2015/bin/x86_64-darwin(N-/)
-    # Linuxbrew
-    ${HOME}/.linuxbrew/bin(N-/)
-    ${path}
-)
-
-
-# ------------------------------------------------------------------------------
-# MANPATH
-# ------------------------------------------------------------------------------
-manpath=(/usr/local/share/man(N-/) /usr/share/man(N-/) ${manpath})
-manpath=(
-    # GNU coreutils via Homebrew
-    /usr/local/opt/coreutils/libexec/gnuman(N-/)
-    # MacTeX
-    /usr/local/texlive/2014/texmf-dist/doc/man(N-/)
-    # Linuxbrew
-    ${HOME}/.linuxbrew/share/man(N-/)
-    ${manpath}
-)
-
-
-# ------------------------------------------------------------------------------
 # less
 # ------------------------------------------------------------------------------
 export LESS='--tabs=4 --ignore-case --clear-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
 export LESSCHARSET='utf-8'
-
-
-# ------------------------------------------------------------------------------
-# Node
-# ------------------------------------------------------------------------------
-if [[ -f ${HOME}/.nvm/nvm.sh ]]; then
-    source ${HOME}/.nvm/nvm.sh
-fi
-
-
-# ------------------------------------------------------------------------------
-# virtualenvwrapper
-# ------------------------------------------------------------------------------
-which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh`
-
-
-# ------------------------------------------------------------------------------
-# pyenv
-# ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.pyenv ]]; then
-    path=(${HOME}/.pyenv/bin(N-/) ${path})
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-
-# ------------------------------------------------------------------------------
-# rbenv
-# ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.rbenv ]]; then
-    path=(${HOME}/.rbenv/bin(N-/) ${path})
-    eval "$(rbenv init -)"
-fi
 
 
 # ------------------------------------------------------------------------------
