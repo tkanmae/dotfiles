@@ -23,7 +23,6 @@ path=(
     ${HOME}/.linuxbrew/bin(N-/)
     ${path}
 )
-path=(${HOME}/.rbenv/bin(N-/) ${path})
 
 
 # ------------------------------------------------------------------------------
@@ -65,13 +64,16 @@ which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh
 # ------------------------------------------------------------------------------
 # pyenv
 # ------------------------------------------------------------------------------
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if [[ -d ${HOME}/.pyenv ]]; then
+    eval "$(pyenv init -)"
+fi
 
 
 # ------------------------------------------------------------------------------
 # rbenv
 # ------------------------------------------------------------------------------
 if [[ -d ${HOME}/.rbenv ]]; then
+    path=(${HOME}/.rbenv/bin(N-/) ${path})
     eval "$(rbenv init -)"
 fi
 
