@@ -24,7 +24,7 @@ manpath=(
     # GNU coreutils via Homebrew
     /usr/local/opt/coreutils/libexec/gnuman(N-/)
     # MacTeX
-    /usr/local/texlive/2014/texmf-dist/doc/man(N-/)
+    /usr/local/texlive/2015/texmf-dist/doc/man(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/share/man(N-/)
     # System-wide
