@@ -65,6 +65,8 @@ if [[ -d ${HOME}/.pyenv ]]; then
     eval "$(pyenv virtualenv-init -)"
 fi
 
+typeset -U path manpath
+
 
 # ------------------------------------------------------------------------------
 # virtualenvwrapper
