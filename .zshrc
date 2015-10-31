@@ -13,7 +13,10 @@ path=(
     /usr/local/texlive/2015/bin/x86_64-darwin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
-    ${path}
+    # Sytem-wide
+    /usr/local/bin(N-/)
+    /usr/bin(N-/)
+    /bin(N-/)
 )
 
 
@@ -30,10 +33,9 @@ manpath=(
     # System-wide
     /usr/local/share/man(N-)
     /usr/share/man(N-/)
-    # System-wide on Mac OS X.
+    # System-wide on OS X.
     /opt/X11/share/man(N-/)
     /Library/TeX/Distributions/.DefaultTeX/Contents/Man(N-)
-    ${manpath}
 )
 
 
@@ -68,6 +70,7 @@ fi
 # virtualenvwrapper
 # ------------------------------------------------------------------------------
 which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh`
+
 
 # ------------------------------------------------------------------------------
 # Prezto
@@ -194,5 +197,3 @@ case "$OSTYPE" in
         source ~/.zshrc.linux
         ;;
 esac
-
-
