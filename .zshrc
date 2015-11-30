@@ -17,6 +17,9 @@ path=(
     /usr/local/bin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
+    /usr/sbin(N-/)
+    /sbin(N-/)
+    /opt/X11/bin(N-/)
 )
 
 
