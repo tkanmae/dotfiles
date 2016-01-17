@@ -189,6 +189,11 @@ NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
       \   'filetypes' : ['html']
       \ }}
 
+NeoBundleLazy 'zaiste/tmux.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['tmux']
+      \ }}
+
 NeoBundleLazy 'fsouza/go.vim', {
       \ 'autoload' : {
       \   'filetypes' : ['go'],
