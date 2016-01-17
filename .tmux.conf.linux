@@ -1,0 +1,4 @@
+set-option -g default-command '[ -x ${HOME}/.linuxbrew/bin/zsh ] && ${HOME}/.linuxbrew/bin/zsh || $SHELL'
+
+
+# vim: ft=tmux:
