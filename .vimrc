@@ -702,6 +702,7 @@ if neobundle#tap('yankround.vim')
 endif
 
 " Gundo.vim
+let g:gundo_prefer_python3 = 1
 nnoremap U :<C-u>GundoToggle<CR>
 
 " tabular
