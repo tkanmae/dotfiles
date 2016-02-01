@@ -224,7 +224,8 @@ NeoBundleLazy 'honza/dockerfile.vim', {
       \   'filetypes' : ['dockerfile']
       \ }}
 
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'w0ng/vim-hybrid'
