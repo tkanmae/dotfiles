@@ -55,7 +55,7 @@ fi
 # ------------------------------------------------------------------------------
 if [[ -d ${HOME}/.rbenv ]]; then
     path=(${HOME}/.rbenv/bin(N-/) ${path})
-    eval "$(rbenv init -)"
+    eval "$(rbenv init --no-rehash -)"
 fi
 
 
@@ -64,7 +64,7 @@ fi
 # ------------------------------------------------------------------------------
 if [[ -d ${HOME}/.pyenv ]]; then
     path=(${HOME}/.pyenv/bin(N-/) ${path})
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --no-rehash -)"
     eval "$(pyenv virtualenv-init -)"
 fi
 
