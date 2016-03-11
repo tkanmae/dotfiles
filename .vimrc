@@ -288,7 +288,7 @@ set virtualedit=block
 
 set grepprg=grep\ -nH\ $*
 
-set foldmethod=syntax
+" set foldmethod=syntax
 
 set showmatch
 set matchtime=3
