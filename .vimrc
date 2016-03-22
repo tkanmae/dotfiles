@@ -368,6 +368,8 @@ set completeopt=menuone
 set complete=.
 " Set pop-up menu height
 set pumheight=20
+" Ignore the case of matching text.
+set infercase
 
 set splitbelow
 set splitright
