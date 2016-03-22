@@ -95,6 +95,8 @@ NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
       \ 'mappings': '.',
       \ }}
 
+NeoBundle 'Konfekt/FastFold'
+
 NeoBundle 'LeafCage/yankround.vim'
 
 NeoBundle 'kana/vim-fakeclip'
