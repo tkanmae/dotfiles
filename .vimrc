@@ -9,225 +9,111 @@ let g:mapleader=','
 " Use <LocalLeader> in filetype plugins.
 let g:maplocalleader=','
 
+" Set spellfile location.
+set spellfile=$HOME/Dropbox/Apps/Vim/spell/en.utf-8.add
+
 " Reset augroup.
 augroup vimrc
   autocmd!
 augroup END
 
-" Set spellfile location.
-set spellfile=$HOME/Dropbox/Apps/Vim/spell/en.utf-8.add
+" Set up dein.vim
+augroup PluginInstall
+  autocmd!
+  autocmd VimEnter * if dein#check_install() | call dein#install() | endif
+augroup END
 
-if has("vim_starting")
-  set runtimepath+=$HOME/.vim/bundle/neobundle.vim
+let s:plugin_dir = expand('~/.vim/bundle/')
+let s:dein_dir = s:plugin_dir . 'repos/github.com/Shougo/dein.vim'
+execute 'set runtimepath+=' . s:dein_dir
+
+if !isdirectory(s:dein_dir)
+  call mkdir(s:dein_dir, 'p')
+  silent execute printf('!git clone %s %s', 'https://github.com/Shougo/dein.vim', s:dein_dir)
 endif
 
-call neobundle#begin(expand("$HOME/.vim/bundle"))
+if dein#load_state(s:plugin_dir)
+  call dein#begin(s:plugin_dir)
 
-" NeoBundle  "{{{
-NeoBundleFetch 'Shougo/neobundle.vim'
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-NeoBundleLazy 'Shougo/neocomplete.vim', {
-      \ 'autoload': {
-      \   'insert': 1,
-      \ }}
-NeoBundleFetch 'Shougo/neocomplcache'
+  call dein#add('Shougo/neocomplete.vim', { 'if' : has('lua'), 'on_i' : 1, 'lazy': 1})
+  call dein#add('ujihisa/neco-look', {'depends': ['neocomplete.vim']})
 
-NeoBundle 'Shougo/unite.vim', {
-      \   'commands' : [{'name' : 'Unite',
-      \                  'complete' : 'customlist,unite#complete_source'},
-      \                 'UniteWithCursorWord', 'UniteWithInput', 'UniteWithBufferDir']
-      \ }
-NeoBundleLazy 'Shougo/unite-outline', {
-      \ 'autoload' : {
-      \   'unite_sources' : 'outline'
-      \ }}
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets', {'depends': ['neosnippet']})
 
-NeoBundleLazy 'Shougo/neosnippet.vim', {
-      \ 'autoload' : {
-      \   'insert' : 1,
-      \   'filetypes' : 'snippet',
-      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
-      \ }}
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'ujihisa/neco-look'
+  call dein#add('Shougo/unite.vim', {'depends': ['vimproc.vim'], 'on_cmd': ['Unite'], 'lazy': 1})
+  call dein#add('Shougo/neomru.vim', {'depends': ['unite.vim']})
+  call dein#add('Shougo/unite-outline', {'depends': ['unite.vim']})
+  call dein#add('Shougo/vimfiler.vim')
 
-NeoBundleLazy 'Shougo/vimfiler.vim', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'commands' : [
-      \         {'name' : 'VimFiler',
-      \          'complete' : 'customlist,vimfiler#complete' },
-      \         {'name' : 'VimFilerExplorer',
-      \          'complete' : 'customlist,vimfiler#complete' },
-      \         {'name' : 'VimFilerBufferDir',
-      \          'complete' : 'customlist,vimfiler#complete' },
-      \         {'name' : 'Edit',
-      \          'complete' : 'customlist,vimfiler#complete' },
-      \         {'name' : 'Write',
-      \          'complete' : 'customlist,vimfiler#complete' },
-      \         'Read', 'Source'],
-      \ 'mappings' : ['<Plug>(vimfiler_)'],
-      \ 'explorer' : 1,
-      \ }
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('kana/vim-fakeclip')
+  call dein#add('Konfekt/FastFold')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('LeafCage/yankround.vim')
+  call dein#add('tolecnal/vim-matchit', {'lazy': 1, 'on_map': ['%']})
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('godlygeek/tabular')
+  call dein#add('kana/vim-textobj-user')
+  call dein#add('kana/vim-textobj-indent', {'depends': 'vim-textobj-user'})
+  call dein#add('sudo.vim')
 
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
+  call dein#add('scrooloose/syntastic')
 
-NeoBundle 'tpope/vim-surround'
-NeoBundleLazy 'tpope/vim-repeat', { 'autoload' : {
-      \ 'mappings': '.',
-      \ }}
+  call dein#add('tpope/vim-fugitive')
 
-NeoBundle 'Konfekt/FastFold'
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
 
-NeoBundle 'LeafCage/yankround.vim'
+  call dein#add('vim-scripts/wombat256.vim')
+  call dein#add('w0ng/vim-hybrid')
+  call dein#add('altercation/vim-colors-solarized')
 
-NeoBundle 'kana/vim-fakeclip'
+  call dein#add('vim-jp/cpp-vim', {'on_ft': ['c', 'cpp']})
+  call dein#add('Rip-Rip/clang_complete', {'on_ft': ['c', 'cpp']})
 
-NeoBundleLazy 'tolecnal/vim-matchit', {
-      \ 'autoload' : {
-      \   'mappings' : '%',
-      \ }}
+  call dein#add('fsouza/go.vim', {'on_ft': ['go']})
 
-NeoBundle 'jiangmiao/auto-pairs'
+  call dein#add('davidhalter/jedi-vim', {'on_ft': ['python', 'python3']})
+  call dein#add('hynek/vim-python-pep8-indent', {'on_ft' : ['python', 'python3']})
+  call dein#add('lambdalisue/vim-pyenv', {'depends': ['jedi-vim'], 'on_ft': ['python', 'python3']})
 
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent', {
-      \ 'depends' : 'vim-textobj-user',
-      \ }
+  call dein#add('zaiste/tmux.vim', {'on_ft': ['tmux']})
 
-NeoBundleLazy 'sjl/gundo.vim', {
-      \ 'autoload' : {
-      \   'commands' : 'GundoToggle'
-      \ }}
+  call dein#add('honza/dockerfile.vim', {'on_ft': ['dockerfile']})
 
-NeoBundle 'scrooloose/nerdcommenter'
+  call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript']})
+  call dein#add('jelera/vim-javascript-syntax', {'on_ft': ['javascript']})
+  call dein#add('marijnh/tern_for_vim', {'build' : {'others': 'npm install'}, 'on_ft' : ['javascript']})
 
-NeoBundle 'godlygeek/tabular'
+  call dein#add('Glench/Vim-Jinja2-Syntax', {'on_ft': ['html']})
+  call dein#add('hail2u/vim-css3-syntax', {'on_ft' : ['css', 'html', 'less']})
+  call dein#add('groenewege/vim-less', {'on_ft': ['less']})
 
-NeoBundle 'scrooloose/syntastic'
+  call dein#add('mrk21/yaml-vim', {'name': 'yaml-indent', 'on_ft': ['yaml']})
+  call dein#add('stephpy/vim-yaml', {'name': 'yaml-syntax', 'on_ft': ['yaml']})
 
-NeoBundle 'tpope/vim-fugitive'
+  call dein#add('LaTeX-Box-Team/LaTeX-Box', {'on_ft': ['tex']})
 
-NeoBundle 'thinca/vim-quickrun'
+  call dein#add('tpope/vim-markdown', {'on_ft': ['markdown']})
 
-NeoBundle 'vim-scripts/sudo.vim',
+  call dein#add('vim-pandoc/vim-pandoc', {'on_ft': ['pandoc']})
 
-NeoBundleLazy 'vim-jp/cpp-vim', {
-      \ 'autoload' : {
-      \     'filetypes' : ['c','cpp']
-      \    },
-      \ }
-NeoBundleLazy 'Rip-Rip/clang_complete', {
-      \ 'autoload' : {
-      \     'filetypes' : ['c', 'cpp'],
-      \    },
-      \ }
+  call dein#end()
+  call dein#save_state()
+endif
 
-NeoBundleLazy 'hynek/vim-python-pep8-indent', {
-      \ 'autoload' : {
-      \   'filetypes' : ['python', 'python3'],
-      \ }}
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundleLazy 'lambdalisue/vim-pyenv', {
-      \ 'depends': ['davidhalter/jedi-vim'],
-      \ 'autoload': {
-      \   'filetypes': ['python', 'python3'],
-      \ }}
-
-NeoBundleLazy 'hail2u/vim-css3-syntax', {
-      \ 'autoload' : {
-      \   'filetypes' : ['css', 'html', 'less']
-      \ }}
-NeoBundleLazy 'groenewege/vim-less', {
-      \ 'autoload' : {
-      \   'filetypes' : ['less']
-      \ }}
-
-NeoBundleLazy 'pangloss/vim-javascript', {
-      \ 'autoload' : {
-      \   'filetypes' : ['javascript']
-      \ }}
-NeoBundleLazy 'jelera/vim-javascript-syntax', {
-      \ 'autoload' : {
-      \   'filetypes' : ['javascript']
-      \ }}
-NeoBundleLazy 'marijnh/tern_for_vim', {
-      \ 'build' : { 'others' : 'npm install' },
-      \ 'autoload' : {
-      \   'filetypes' : ['javascript']
-      \ }}
-
-NeoBundleLazy 'mrk21/yaml-vim', {
-      \ 'name' : 'vim-yaml-indent',
-      \ 'autoload' : {
-      \   'filetypes' : ['yaml']
-      \ }}
-NeoBundleLazy 'stephpy/vim-yaml', {
-      \ 'name' : 'vim-yaml-syntax',
-      \ 'autoload' : {
-      \   'filetypes' : ['yaml']
-      \ }}
-
-NeoBundleLazy 'Glench/Vim-Jinja2-Syntax', {
-      \ 'autoload' : {
-      \   'filetypes' : ['html']
-      \ }}
-
-NeoBundleLazy 'zaiste/tmux.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['tmux']
-      \ }}
-
-NeoBundleLazy 'fsouza/go.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['go'],
-      \ }}
-
-" NeoBundleLazy 'JuliaLang/julia-vim', {
-"       \ 'autoload' : {
-"       \   'filetypes' : ['julia'],
-"       \ }}
-
-NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {
-      \ 'autoload' : {
-      \   'filetypes' : ['tex']
-      \ }}
-
-NeoBundleLazy 'tpope/vim-markdown', {
-      \ 'autoload' : {
-      \   'filetypes' : ['markdown']
-      \ }}
-
-NeoBundleLazy 'vim-pandoc/vim-pandoc', {
-      \ 'autoload' : {
-      \   'filetypes' : ['pandoc']
-      \ }}
-
-NeoBundleLazy 'honza/dockerfile.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['dockerfile']
-      \ }}
-
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-
-NeoBundle 'vim-scripts/wombat256.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'altercation/vim-colors-solarized'
-
-call neobundle#end()
-
-"}}} NeoBundle
 
 filetype plugin indent on
 syntax enable
-NeoBundleCheck
+
+if dein#check_install()
+  call dein#install()
+endif
 "
 "}}} Initialization
 
@@ -405,7 +291,7 @@ let g:python_highlight_all = 1
 
 " Plugins:  "{{{
 "
-if neobundle#tap('neocomplete.vim')  "{{{
+if dein#tap('neocomplete.vim')  "{{{
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
   let g:neocomplete#enable_fuzzy_completion = 0
@@ -481,63 +367,57 @@ if neobundle#tap('neocomplete.vim')  "{{{
 
   inoremap <expr><C-x><C-f>
         \ neocomplete#start_manual_complete('file')
-
-  call neobundle#untap()
 endif  "}}}
 
-if neobundle#tap('unite.vim')  "{{{
-  function! neobundle#tapped.hooks.on_source(bundle)
-    nnoremap [unite] <Nop>
-    nmap <Leader>u [unite]
-    " List file's directory.
-    nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-    " List buffers.
-    nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
-    " List recently used files.
-    nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
-    " List registers.
-    nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
-    " List current directory.
-    nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
-    " List buffers and recently used files.
-    nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
-    " Grep
-    nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-    " List outline.
-    nnoremap [unite]o :<C-u>Unite outline<CR>
+if dein#tap('unite.vim')  "{{{
+  nnoremap [unite] <Nop>
+  nmap <Leader>u [unite]
+  " List file's directory.
+  nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  " List buffers.
+  nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
+  " List recently used files.
+  nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
+  " List registers.
+  nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
+  " List current directory.
+  nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
+  " List buffers and recently used files.
+  nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
+  " Grep
+  nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+  " List outline.
+  nnoremap [unite]o :<C-u>Unite outline<CR>
 
-    let g:unite_enable_start_insert = 1
-    let g:unite_source_file_mru_time_format = ''
-    let g:unite_force_overwrite_statusline = 0
+  let g:unite_enable_start_insert = 1
+  let g:unite_source_file_mru_time_format = ''
+  let g:unite_force_overwrite_statusline = 0
 
-    call unite#custom#source('file,file_mru,file_rec', 'ignore_pattern',
-          \ '\%(^\|/\)\.\.\?$\|\~$\|\.\%(o|a|exe|dll|bak|DS_Store|zwc|sw[po]\)$' .
-          \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
-          \ '\|\.\%(pyc\|pyo\)$')
+  " call unite#custom#source('file,file_mru,file_rec', 'ignore_pattern',
+  "       \ '\%(^\|/\)\.\.\?$\|\~$\|\.\%(o|a|exe|dll|bak|DS_Store|zwc|sw[po]\)$' .
+  "       \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
+  "       \ '\|\.\%(pyc\|pyo\)$')
 
-    if executable('ag')
-      let g:unite_source_grep_command = 'ag'
-      let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
-      let g:unite_source_grep_recursive_opt = ''
-    endif
+  if executable('ag')
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nocolor --nogroup --column'
+    let g:unite_source_grep_recursive_opt = ''
+  endif
 
-    autocmd Filetype unite call s:unite_settings()
-    function! s:unite_settings()
-      " Key mapping in unite.vim
-      imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-      nnoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
-      inoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
-      nnoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
-      inoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
-      nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
-      inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
-    endfunction
-
+  autocmd Filetype unite call s:unite_settings()
+  function! s:unite_settings()
+    " Key mapping in unite.vim
+    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+    nnoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+    inoremap <silent><buffer><expr> s unite#smart_map('s', unite#do_action('split'))
+    nnoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+    inoremap <silent><buffer><expr> v unite#smart_map('v', unite#do_action('vsplit'))
+    nnoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
+    inoremap <silent><buffer><expr> f unite#smart_map('f', unite#do_action('vimfiler'))
   endfunction
-  call neobundle#untap()
 endif  "}}}
 
-if neobundle#tap('vimfiler.vim') "{{{
+if dein#tap('vimfiler.vim') "{{{
   nnoremap <silent><Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
   nnoremap <silent><Leader>fi :<C-u>VimFilerExplorer<CR>
 
@@ -547,19 +427,15 @@ if neobundle#tap('vimfiler.vim') "{{{
   let g:vimfiler_ignore_pattern = '^\.' .
         \ '\|\.\%(pyc|pyo\)$' .
         \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$'
-
-  call neobundle#untap()
 endif "}}}
 
-if neobundle#tap('neosnippet.vim') "{{{
+if dein#tap('neosnippet.vim') "{{{
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   " SuperTab like snippets behavior.
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-  call neobundle#untap()
 endif  "}}}
 
 " vim-airline  "{{{
@@ -585,37 +461,31 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'passive_filetypes': ['tex'] }
 "}}}  syntastic
 
-if neobundle#tap('vim-quickrun')  "{{{
+if dein#tap('vim-quickrun')  "{{{
   let g:quickrun_config = {}
   let g:quickrun_config['cpp'] = {
         \   'cmdopt': '-Wall -Wextra -pedantic -std=c++11'
         \ }
-
-  call neobundle#untap()
 endif  "}}}
 
-if neobundle#tap('jedi-vim')  "{{{
+if dein#tap('jedi-vim')  "{{{
   let g:jedi#auto_vim_configuration = 0
   let g:jedi#documentation_command = '<Leader>k'
   let g:jedi#use_tabs_not_buffers = 0
   let g:jedi#popup_on_dot = 0
   let g:jedi#popup_select_first = 0
   let g:jedi#show_all_signatures = "0"
-
-  call neobundle#untap()
 endif  "}}}
 
 " NERD_comments.vim
 let NERDShutUp=1
 let NERDSpaceDelims=1
 
-if neobundle#tap('yankround.vim')
+if dein#tap('yankround.vim')
   nmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
   nmap <C-p> <Plug>(yankround-prev)
   nmap <C-n> <Plug>(yankround-next)
-
-  call neobundle#untap()
 endif
 
 " Gundo.vim
@@ -631,7 +501,7 @@ vmap <Leader>a: :Tabularize /:<CR>
 " python.vim
 let python_highlight_all = 1
 
-if neobundle#tap('LaTeX-Box')  "{{{
+if dein#tap('LaTeX-Box')  "{{{
   let g:tex_flavor = "latex"
   let g:LatexBox_ref_pattern = '\c\\\a*ref\*\?\_\s*{'
   let g:LatexBox_viewer = "open -a Skim.app"
@@ -643,8 +513,6 @@ if neobundle#tap('LaTeX-Box')  "{{{
         \ !/Applications/Skim.app/Contents/SharedSupport/displayline
         \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>"
         \ "%:p" <CR>
-
-  call neobundle#untap()
 endif "}}}
 
 " clang_complete
