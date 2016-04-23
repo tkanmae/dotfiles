@@ -60,6 +60,7 @@ if dein#load_state(s:plugin_dir)
   call dein#add('godlygeek/tabular')
   call dein#add('kana/vim-textobj-user')
   call dein#add('kana/vim-textobj-indent', {'depends': 'vim-textobj-user'})
+  call dein#add('Shougo/context_filetype.vim')
   call dein#add('sudo.vim')
 
   call dein#add('scrooloose/syntastic')
