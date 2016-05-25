@@ -83,6 +83,8 @@ if dein#load_state(s:plugin_dir)
   call dein#add('hynek/vim-python-pep8-indent', {'on_ft' : ['python', 'python3']})
   call dein#add('lambdalisue/vim-pyenv', {'depends': ['jedi-vim'], 'on_ft': ['python', 'python3']})
 
+  call dein#add('jalvesaq/Nvim-R', {'on_ft': ['R']})
+
   call dein#add('zaiste/tmux.vim', {'on_ft': ['tmux']})
 
   call dein#add('honza/dockerfile.vim', {'on_ft': ['dockerfile']})
@@ -395,10 +397,12 @@ if dein#tap('unite.vim')  "{{{
   let g:unite_source_file_mru_time_format = ''
   let g:unite_force_overwrite_statusline = 0
 
-  " call unite#custom#source('file,file_mru,file_rec', 'ignore_pattern',
-  "       \ '\%(^\|/\)\.\.\?$\|\~$\|\.\%(o|a|exe|dll|bak|DS_Store|zwc|sw[po]\)$' .
-  "       \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
-  "       \ '\|\.\%(pyc\|pyo\)$')
+  let s:unite_ignore_pattern = '\.\(gif\|jpe\?g\|png\|webp\)$' .
+        \ '\|\%(^\|/\)\.\.\?$\|\~$\|\.\%(o|a|exe|dll|bak|DS_Store|zwc|sw[po]\)$' .
+        \ '\|\.\%(aux\|bbl\|blg\|loa\|lof\|lot\|fdb_latexmk\|fls\|synctex\.gz\|toc\)$' .
+        \ '\|\.\%(pyc\|pyo\)$'
+  call unite#custom#source('file_rec/async', 'ignore_pattern', s:unite_ignore_pattern)
+  call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_ignore_pattern)
 
   if executable('ag')
     let g:unite_source_grep_command = 'ag'
