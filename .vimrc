@@ -91,7 +91,7 @@ if dein#load_state(s:plugin_dir)
 
   call dein#add('pangloss/vim-javascript', {'on_ft': ['javascript']})
   call dein#add('jelera/vim-javascript-syntax', {'on_ft': ['javascript']})
-  call dein#add('marijnh/tern_for_vim', {'build' : {'others': 'npm install'}, 'on_ft' : ['javascript']})
+  call dein#add('marijnh/tern_for_vim', {'build' : 'npm install', 'on_ft' : ['javascript']})
 
   call dein#add('othree/html5.vim', {'on_ft' : ['html']})
   call dein#add('hail2u/vim-css3-syntax', {'on_ft' : ['css', 'html', 'less']})
