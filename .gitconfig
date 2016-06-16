@@ -21,6 +21,8 @@
     show = diff-highlight | less
     diff = diff-highlight | less
 
+[diff]
+	compactionHeuristic = true
 [difftool]
     prompt = false
 [difftool.latex]
