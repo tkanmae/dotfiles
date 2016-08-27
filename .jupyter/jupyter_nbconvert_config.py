@@ -5,6 +5,15 @@
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
+# LoggingConfigurable configuration
+#------------------------------------------------------------------------------
+
+# A parent class for Configurables that log.
+# 
+# Subclasses have a log trait, and the default behavior is to get the logger
+# from the currently running Application.
+
+#------------------------------------------------------------------------------
 # SingletonConfigurable configuration
 #------------------------------------------------------------------------------
 
@@ -23,11 +32,11 @@
 # The date format used by logging formatters for %(asctime)s
 # c.Application.log_datefmt = '%Y-%m-%d %H:%M:%S'
 
-# Set the log level by value or name.
-# c.Application.log_level = 30
-
 # The Logging format template
 # c.Application.log_format = '[%(name)s]%(highlevel)s %(message)s'
+
+# Set the log level by value or name.
+# c.Application.log_level = 30
 
 #------------------------------------------------------------------------------
 # JupyterApp configuration
@@ -35,8 +44,8 @@
 
 # Base class for Jupyter applications
 
-# Generate default config file.
-# c.JupyterApp.generate_config = False
+# Answer yes to any prompts.
+# c.JupyterApp.answer_yes = False
 
 # Full path of a config file.
 # c.JupyterApp.config_file = ''
@@ -44,8 +53,8 @@
 # Specify a config file to load.
 # c.JupyterApp.config_file_name = ''
 
-# Answer yes to any prompts.
-# c.JupyterApp.answer_yes = False
+# Generate default config file.
+# c.JupyterApp.generate_config = False
 
 #------------------------------------------------------------------------------
 # NbConvertApp configuration
@@ -56,36 +65,31 @@
 # 
 # WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
 
-# PostProcessor class used to write the  results of the conversion
-# c.NbConvertApp.postprocessor_class = ''
+# The export format to be used, either one of the built-in formats, or a dotted
+# object name that represents the import path for an `Exporter` class
+# c.NbConvertApp.export_format = 'html'
+
+# read a single notebook from stdin.
+# c.NbConvertApp.from_stdin = False
+
+# List of notebooks to convert. Wildcards are supported. Filenames passed
+# positionally will be added to the list.
+# c.NbConvertApp.notebooks = []
 
 # overwrite base name use for output files. can only be used when converting one
 # notebook at a time.
 # c.NbConvertApp.output_base = ''
 
-# Writer class used to write the  results of the conversion
-# c.NbConvertApp.writer_class = 'FilesWriter'
-
-# List of notebooks to convert. Wildcards are supported. Filenames passed
-# positionally will be added to the list.
-# c.NbConvertApp.notebooks = traitlets.Undefined
-
-# The export format to be used.
-# c.NbConvertApp.export_format = 'html'
+# PostProcessor class used to write the results of the conversion
+# c.NbConvertApp.postprocessor_class = ''
 
 # Whether to apply a suffix prior to the extension (only relevant when
 # converting to notebook format). The suffix is determined by the exporter, and
 # is usually '.nbconvert'.
 # c.NbConvertApp.use_output_suffix = True
 
-#------------------------------------------------------------------------------
-# LoggingConfigurable configuration
-#------------------------------------------------------------------------------
-
-# A parent class for Configurables that log.
-# 
-# Subclasses have a log trait, and the default behavior is to get the logger
-# from the currently running Application.
+# Writer class used to write the  results of the conversion
+# c.NbConvertApp.writer_class = 'FilesWriter'
 
 #------------------------------------------------------------------------------
 # NbConvertBase configuration
@@ -93,15 +97,15 @@
 
 # Global configurable class for shared config
 # 
-# Useful for display data priority that might be use by many transformers
-
-# An ordered list of preferred output type, the first encountered will usually
-# be used when converting discarding the others.
-# c.NbConvertBase.display_data_priority = traitlets.Undefined
+# Useful for display data priority that might be used by many transformers
 
 # DEPRECATED default highlight language, please use language_info metadata
 # instead
 # c.NbConvertBase.default_language = 'ipython'
+
+# An ordered list of preferred output type, the first encountered will usually
+# be used when converting discarding the others.
+# c.NbConvertBase.display_data_priority = ['text/html', 'application/pdf', 'text/latex', 'image/svg+xml', 'image/png', 'image/jpeg', 'text/markdown', 'text/plain']
 
 #------------------------------------------------------------------------------
 # Exporter configuration
@@ -111,15 +115,15 @@
 # NotebookNode object and then return the modified NotebookNode object and
 # accompanying resources dict.
 
+# List of preprocessors available by default, by name, namespace,  instance, or
+# type.
+# c.Exporter.default_preprocessors = ['nbconvert.preprocessors.ClearOutputPreprocessor', 'nbconvert.preprocessors.ExecutePreprocessor', 'nbconvert.preprocessors.coalesce_streams', 'nbconvert.preprocessors.SVG2PDFPreprocessor', 'nbconvert.preprocessors.CSSHTMLHeaderPreprocessor', 'nbconvert.preprocessors.LatexPreprocessor', 'nbconvert.preprocessors.HighlightMagicsPreprocessor', 'nbconvert.preprocessors.ExtractOutputPreprocessor']
+
 # Extension of the file that should be written to disk
 # c.Exporter.file_extension = '.txt'
 
-# List of preprocessors available by default, by name, namespace,  instance, or
-# type.
-# c.Exporter.default_preprocessors = traitlets.Undefined
-
 # List of preprocessors, by name or namespace, to enable.
-# c.Exporter.preprocessors = traitlets.Undefined
+# c.Exporter.preprocessors = []
 
 #------------------------------------------------------------------------------
 # TemplateExporter configuration
@@ -134,25 +138,25 @@
 # 
 # - add_anchor - add_prompts - ansi2html - ansi2latex - ascii_only -
 # citation2latex - comment_lines - escape_latex - filter_data_type - get_lines -
-# highlight2html - highlight2latex - html2text - indent - ipython2python -
-# markdown2html - markdown2latex - markdown2rst - path2url - posix_path -
-# prevent_list_blocks - strip_ansi - strip_dollars - strip_files_prefix -
-# wrap_text
+# get_metadata - highlight2html - highlight2latex - html2text - indent -
+# ipython2python - markdown2html - markdown2latex - markdown2rst - path2url -
+# posix_path - prevent_list_blocks - strip_ansi - strip_dollars -
+# strip_files_prefix - wrap_text
 
-# 
-# c.TemplateExporter.template_path = traitlets.Undefined
+# Dictionary of filters, by name and namespace, to add to the Jinja environment.
+# c.TemplateExporter.filters = {}
+
+# formats of raw cells to be included in this Exporter's output.
+# c.TemplateExporter.raw_mimetypes = []
 
 # 
 # c.TemplateExporter.template_extension = '.tpl'
 
-# Dictionary of filters, by name and namespace, to add to the Jinja environment.
-# c.TemplateExporter.filters = traitlets.Undefined
-
 # Name of the template file to use
 # c.TemplateExporter.template_file = ''
 
-# formats of raw cells to be included in this Exporter's output.
-# c.TemplateExporter.raw_mimetypes = traitlets.Undefined
+# 
+# c.TemplateExporter.template_path = ['.']
 
 #------------------------------------------------------------------------------
 # HTMLExporter configuration
@@ -199,19 +203,19 @@
 # Writer designed to write to PDF files
 
 # Shell command used to run bibtex.
-# c.PDFExporter.bib_command = traitlets.Undefined
-
-# Whether to display the output of latex commands.
-# c.PDFExporter.verbose = False
+# c.PDFExporter.bib_command = ['bibtex', '{filename}']
 
 # Shell command used to compile latex.
-# c.PDFExporter.latex_command = traitlets.Undefined
-
-# File extensions of temp files to remove after running.
-# c.PDFExporter.temp_file_exts = traitlets.Undefined
+# c.PDFExporter.latex_command = ['pdflatex', '{filename}']
 
 # How many times latex will be called.
 # c.PDFExporter.latex_count = 3
+
+# File extensions of temp files to remove after running.
+# c.PDFExporter.temp_file_exts = ['.aux', '.bbl', '.blg', '.idx', '.log', '.out']
+
+# Whether to display the output of latex commands.
+# c.PDFExporter.verbose = False
 
 #------------------------------------------------------------------------------
 # PythonExporter configuration
@@ -226,10 +230,20 @@
 # Exports restructured text documents.
 
 #------------------------------------------------------------------------------
+# ScriptExporter configuration
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
 # SlidesExporter configuration
 #------------------------------------------------------------------------------
 
 # Exports HTML slides with reveal.js
+
+# The URL prefix for reveal.js. This can be a a relative URL for a local copy of
+# reveal.js, or point to a CDN.
+# 
+# For speaker notes to work, a local reveal.js prefix must be used.
+# c.SlidesExporter.reveal_url_prefix = ''
 
 #------------------------------------------------------------------------------
 # Preprocessor configuration
@@ -287,17 +301,34 @@
 
 # Executes all the cells in a notebook
 
-# If execution of a cell times out, interrupt the kernel and  continue executing
-# other cells rather than throwing an error and  stopping.
+# If `False` (default), when a cell raises an error the execution is stoppped
+# and a `CellExecutionError` is raised. If `True`, execution errors are ignored
+# and the execution is continued until the end of the notebook. Output from
+# exceptions is included in the cell output in both cases.
+# c.ExecutePreprocessor.allow_errors = False
+
+# If execution of a cell times out, interrupt the kernel and continue executing
+# other cells rather than throwing an error and stopping.
 # c.ExecutePreprocessor.interrupt_on_timeout = False
 
-# The time to wait (in seconds) for output from executions.
-# c.ExecutePreprocessor.timeout = 30
+# Name of kernel to use to execute the cells. If not set, use the kernel_spec
+# embedded in the notebook.
+# c.ExecutePreprocessor.kernel_name = ''
 
-# If `True`, a `CellExecutionError` is raised if any of the notebook cells
-# raises an exception during execution. Otherwise, execution is continued and
-# the output from the exception is included in the cell output.
-# c.ExecutePreprocessor.allow_errors = False
+# If `False` (default), then the kernel will continue waiting for iopub messages
+# until it receives a kernel idle message, or until a timeout occurs, at which
+# point the currently executing cell will be skipped. If `True`, then an error
+# will be raised after the first timeout. This option generally does not need to
+# be used, but may be useful in contexts where there is the possibility of
+# executing notebooks with memory-consuming infinite loops.
+# c.ExecutePreprocessor.raise_on_iopub_timeout = False
+
+# The time to wait (in seconds) for output from executions. If a cell execution
+# takes longer, an exception (TimeoutError on python 3+, RuntimeError on python
+# 2) is raised.
+# 
+# `None` or `-1` will disable the timeout.
+# c.ExecutePreprocessor.timeout = 30
 
 #------------------------------------------------------------------------------
 # ExtractOutputPreprocessor configuration
@@ -307,7 +338,7 @@
 # are returned in the 'resources' dictionary.
 
 # 
-# c.ExtractOutputPreprocessor.extract_output_types = traitlets.Undefined
+# c.ExtractOutputPreprocessor.extract_output_types = {'image/png', 'image/jpeg', 'application/pdf', 'image/svg+xml'}
 
 # 
 # c.ExtractOutputPreprocessor.output_filename_template = '{unique_key}_{cell_index}_{index}{extension}'
@@ -320,7 +351,7 @@
 
 # Syntax highlighting for magic's extension languages. Each item associates a
 # language magic extension such as %%R, with a pygments lexer such as r.
-# c.HighlightMagicsPreprocessor.languages = traitlets.Undefined
+# c.HighlightMagicsPreprocessor.languages = {}
 
 #------------------------------------------------------------------------------
 # LatexPreprocessor configuration
@@ -330,16 +361,6 @@
 # 
 # Mainly populates the `latex` key in the resources dict, adding definitions for
 # pygments highlight styles.
-
-#------------------------------------------------------------------------------
-# RevealHelpPreprocessor configuration
-#------------------------------------------------------------------------------
-
-# The URL prefix for reveal.js. This can be a a relative URL for a local copy of
-# reveal.js, or point to a CDN.
-# 
-# For speaker notes to work, a local reveal.js prefix must be used.
-# c.RevealHelpPreprocessor.url_prefix = 'reveal.js'
 
 #------------------------------------------------------------------------------
 # SVG2PDFPreprocessor configuration
@@ -368,7 +389,7 @@
 
 # List of the files that the notebook references.  Files will be  included with
 # written output.
-# c.WriterBase.files = traitlets.Undefined
+# c.WriterBase.files = []
 
 #------------------------------------------------------------------------------
 # DebugWriter configuration
@@ -416,14 +437,14 @@
 # The IP address to listen on.
 # c.ServePostProcessor.ip = '127.0.0.1'
 
-# URL for reveal.js CDN.
-# c.ServePostProcessor.reveal_cdn = 'https://cdn.jsdelivr.net/reveal.js/2.6.2'
-
 # Should the browser be opened automatically?
 # c.ServePostProcessor.open_in_browser = True
 
 # port for the server to listen on.
 # c.ServePostProcessor.port = 8000
+
+# URL for reveal.js CDN.
+# c.ServePostProcessor.reveal_cdn = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.1.0'
 
 # URL prefix for reveal.js
 # c.ServePostProcessor.reveal_prefix = 'reveal.js'

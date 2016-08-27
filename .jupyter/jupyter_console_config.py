@@ -1,4 +1,4 @@
-# Configuration file for jupyter-qtconsole.
+# Configuration file for jupyter-console.
 
 #------------------------------------------------------------------------------
 # Configurable configuration
@@ -113,192 +113,93 @@
 # c.JupyterApp.generate_config = False
 
 #------------------------------------------------------------------------------
-# JupyterQtConsoleApp configuration
-#------------------------------------------------------------------------------
-
-# Whether to display a banner upon starting the QtConsole.
-# c.JupyterQtConsoleApp.display_banner = True
-
-# Start the console window with the menu bar hidden.
-# c.JupyterQtConsoleApp.hide_menubar = False
-
-# Start the console window maximized.
-# c.JupyterQtConsoleApp.maximize = False
-
-# Use a plaintext widget instead of rich text (plain can't print/save).
-# c.JupyterQtConsoleApp.plain = False
-
-# path to a custom CSS stylesheet
-# c.JupyterQtConsoleApp.stylesheet = ''
-
-#------------------------------------------------------------------------------
-# NewBase configuration
+# ZMQTerminalIPythonApp configuration
 #------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------
-# ConsoleWidget configuration
+# ZMQTerminalInteractiveShell configuration
 #------------------------------------------------------------------------------
 
-# An abstract base class for console-type widgets. This class has functionality
-# for:
-# 
-#     * Maintaining a prompt and editing region
-#     * Providing the traditional Unix-style console keyboard shortcuts
-#     * Performing tab completion
-#     * Paging text
-#     * Handling ANSI escape codes
-# 
-# ConsoleWidget also provides a number of utility methods that will be
-# convenient to implementors of a console-style widget.
+# Text to display before the first prompt. Will be formatted with variables
+# {version} and {kernel_banner}.
+# c.ZMQTerminalInteractiveShell.banner = 'Jupyter console {version}\n\n{kernel_banner}'
 
-# Whether to process ANSI escape codes.
-# c.ConsoleWidget.ansi_codes = True
+# Callable object called via 'callable' image handler with one argument, `data`,
+# which is `msg["content"]["data"]` where `msg` is the message from iopub
+# channel.  For exmaple, you can find base64 encoded PNG data as
+# `data['image/png']`. If your function can't handle the data supplied, it
+# should return `False` to indicate this.
+# c.ZMQTerminalInteractiveShell.callable_image_handler = None
 
-# The maximum number of lines of text before truncation. Specifying a non-
-# positive number disables text truncation (not recommended).
-# c.ConsoleWidget.buffer_size = 500
+# Shortcut style to use at the prompt. 'vi' or 'emacs'.
+# c.ZMQTerminalInteractiveShell.editing_mode = 'emacs'
 
-# Whether to automatically execute on syntactically complete input.
-# 
-# If False, Shift-Enter is required to submit each execution. Disabling this is
-# mainly useful for non-Python kernels, where the completion check would be
-# wrong.
-# c.ConsoleWidget.execute_on_complete_input = True
+# The name of a Pygments style to use for syntax highlighting
+# c.ZMQTerminalInteractiveShell.highlighting_style = ''
 
-# The font family to use for the console. On OSX this defaults to Monaco, on
-# Windows the default is Consolas with fallback of Courier, and on other
-# platforms the default is Monospace.
-# c.ConsoleWidget.font_family = ''
+# Override highlighting format for specific tokens
+# c.ZMQTerminalInteractiveShell.highlighting_style_overrides = {}
 
-# The font size. If unconfigured, Qt will be entrusted with the size of the
-# font.
-# c.ConsoleWidget.font_size = 0
+# How many history items to load into memory
+# c.ZMQTerminalInteractiveShell.history_load_length = 1000
 
-# The type of completer to use. Valid values are:
-# 
-# 'plain'   : Show the available completion as a text list
-#             Below the editing area.
-# 'droplist': Show the completion in a drop down list navigable
-#             by the arrow keys, and from which you can select
-#             completion by pressing Return.
-# 'ncurses' : Show the completion as a text list which is navigable by
-#             `tab` and arrow keys.
-# c.ConsoleWidget.gui_completion = 'ncurses'
-
-# The height of the console at start time in number of characters (will double
-# with `vsplit` paging)
-# c.ConsoleWidget.height = 25
+# Handler for image type output.  This is useful, for example, when connecting
+# to the kernel in which pylab inline backend is activated.  There are four
+# handlers defined.  'PIL': Use Python Imaging Library to popup image; 'stream':
+# Use an external program to show the image.  Image will be fed into the STDIN
+# of the program.  You will need to configure `stream_image_handler`;
+# 'tempfile': Use an external program to show the image.  Image will be saved in
+# a temporally file and the program is called with the temporally file.  You
+# will need to configure `tempfile_image_handler`; 'callable': You can set any
+# Python callable which is called with the image data.  You will need to
+# configure `callable_image_handler`.
+# c.ZMQTerminalInteractiveShell.image_handler = 'PIL'
 
 # Whether to include output from clients other than this one sharing the same
 # kernel.
 # 
 # Outputs are not displayed until enter is pressed.
-# c.ConsoleWidget.include_other_output = False
+# c.ZMQTerminalInteractiveShell.include_other_output = False
 
-# The type of underlying text widget to use. Valid values are 'plain', which
-# specifies a QPlainTextEdit, and 'rich', which specifies a QTextEdit.
-# c.ConsoleWidget.kind = 'plain'
-
-# The type of paging to use. Valid values are:
+# Timeout (in seconds) for giving up on a kernel's is_complete response.
 # 
-# 'inside'
-#    The widget pages like a traditional terminal.
-# 'hsplit'
-#    When paging is requested, the widget is split horizontally. The top
-#    pane contains the console, and the bottom pane contains the paged text.
-# 'vsplit'
-#    Similar to 'hsplit', except that a vertical splitter is used.
-# 'custom'
-#    No action is taken by the widget beyond emitting a
-#    'custom_page_requested(str)' signal.
-# 'none'
-#    The text is written directly to the console.
-# c.ConsoleWidget.paging = 'inside'
+# If the kernel does not respond at any point within this time, the kernel will
+# no longer be asked if code is complete, and the console will default to the
+# built-in is_complete test.
+# c.ZMQTerminalInteractiveShell.kernel_is_complete_timeout = 1
 
-# The width of the console at start time in number of characters (will double
-# with `hsplit` paging)
-# c.ConsoleWidget.width = 81
-
-#------------------------------------------------------------------------------
-# HistoryConsoleWidget configuration
-#------------------------------------------------------------------------------
-
-# A ConsoleWidget that keeps a history of the commands that have been executed
-# and provides a readline-esque interface to this history.
-
+# Timeout for giving up on a kernel (in seconds).
 # 
-# c.HistoryConsoleWidget.history_lock = False
+# On first connect and restart, the console tests whether the kernel is running
+# and responsive by sending kernel_info_requests. This sets the timeout in
+# seconds for how long the kernel can take before being presumed dead.
+# c.ZMQTerminalInteractiveShell.kernel_timeout = 60
 
-#------------------------------------------------------------------------------
-# FrontendWidget configuration
-#------------------------------------------------------------------------------
+# Preferred object representation MIME type in order.  First matched MIME type
+# will be used.
+# c.ZMQTerminalInteractiveShell.mime_preference = ['image/png', 'image/jpeg', 'image/svg+xml']
 
-# A Qt frontend for a generic Python kernel.
-
+# Prefix to add to outputs coming from clients other than this one.
 # 
-# c.FrontendWidget.banner = ''
+# Only relevant if include_other_output is True.
+# c.ZMQTerminalInteractiveShell.other_output_prefix = '[remote] '
 
-# Whether to clear the console when the kernel is restarted
-# c.FrontendWidget.clear_on_kernel_restart = True
+# Command to invoke an image viewer program when you are using 'stream' image
+# handler.  This option is a list of string where the first element is the
+# command itself and reminders are the options for the command.  Raw image data
+# is given as STDIN to the program.
+# c.ZMQTerminalInteractiveShell.stream_image_handler = []
 
-# Whether to ask for user confirmation when restarting kernel
-# c.FrontendWidget.confirm_restart = True
+# Command to invoke an image viewer program when you are using 'tempfile' image
+# handler.  This option is a list of string where the first element is the
+# command itself and reminders are the options for the command.  You can use
+# {file} and {format} in the string to represent the location of the generated
+# image file and image format.
+# c.ZMQTerminalInteractiveShell.tempfile_image_handler = []
 
-# Whether to draw information calltips on open-parentheses.
-# c.FrontendWidget.enable_calltips = True
-
-# Seconds to wait for is_complete replies from the kernel.
-# c.FrontendWidget.is_complete_timeout = 0.25
-
-# The pygments lexer class to use.
-# c.FrontendWidget.lexer_class = traitlets.Undefined
-
-#------------------------------------------------------------------------------
-# IPythonWidget configuration
-#------------------------------------------------------------------------------
-
-# Dummy class for config inheritance. Destroyed below.
-
-#------------------------------------------------------------------------------
-# JupyterWidget configuration
-#------------------------------------------------------------------------------
-
-# A FrontendWidget for a Jupyter kernel.
-
-# A command for invoking a system text editor. If the string contains a
-# {filename} format specifier, it will be used. Otherwise, the filename will be
-# appended to the end the command.
-# c.JupyterWidget.editor = ''
-
-# The editor command to use when a specific line number is requested. The string
-# should contain two format specifiers: {line} and {filename}. If this parameter
-# is not specified, the line number option to the %edit magic will be ignored.
-# c.JupyterWidget.editor_line = ''
-
-# 
-# c.JupyterWidget.in_prompt = 'In [<span class="in-prompt-number">%i</span>]: '
-
-# 
-# c.JupyterWidget.input_sep = '\n'
-
-# 
-# c.JupyterWidget.out_prompt = 'Out[<span class="out-prompt-number">%i</span>]: '
-
-# 
-# c.JupyterWidget.output_sep = ''
-
-# 
-# c.JupyterWidget.output_sep2 = ''
-
-# A CSS stylesheet. The stylesheet can contain classes for:
-#     1. Qt: QPlainTextEdit, QFrame, QWidget, etc
-#     2. Pygments: .c, .k, .o, etc. (see PygmentsHighlighter)
-#     3. QtConsole: .error, .in-prompt, .out-prompt, etc
-# c.JupyterWidget.style_sheet = ''
-
-# If not empty, use this Pygments style for syntax highlighting. Otherwise, the
-# style sheet is queried for Pygments style information.
-# c.JupyterWidget.syntax_style = ''
+# Whether to use the kernel's is_complete message handling. If False, then the
+# frontend will use its own is_complete handler.
+# c.ZMQTerminalInteractiveShell.use_kernel_is_complete = True
 
 #------------------------------------------------------------------------------
 # KernelManager configuration
