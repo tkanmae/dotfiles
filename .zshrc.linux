@@ -1,8 +1,11 @@
 # ------------------------------------------------------------------------------
 # autojump
 # ------------------------------------------------------------------------------
-if [[ -s `brew --prefix`/etc/autojump.sh ]]; then
-    source `brew --prefix`/etc/autojump.sh
+which brew >/dev/null 2>&1
+if [[ $? -eq 0 ]]; then
+    [[ -s `brew --prefix`/etc/autojump.sh ]] && source `brew --prefix`/etc/autojump.sh
+else
+    [[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 fi
 
 # ------------------------------------------------------------------------------
