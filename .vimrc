@@ -71,9 +71,9 @@ if dein#load_state(s:plugin_dir)
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
 
-  call dein#add('vim-scripts/wombat256.vim')
-  call dein#add('w0ng/vim-hybrid')
-  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('vim-scripts/wombat256.vim', {'script_type': 'colors'})
+  call dein#add('w0ng/vim-hybrid', {'script_type': 'colors'})
+  call dein#add('altercation/vim-colors-solarized', {'script_type': 'colors'})
 
   call dein#add('vim-jp/cpp-vim', {'on_ft': ['c', 'cpp']})
   call dein#add('Rip-Rip/clang_complete', {'on_ft': ['c', 'cpp']})
