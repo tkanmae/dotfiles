@@ -76,11 +76,6 @@ typeset -U path manpath
 # ------------------------------------------------------------------------------
 which virtualenvwrapper.sh >/dev/null 2>&1 && source `which virtualenvwrapper.sh`
 
-# ------------------------------------------------------------------------------
-# AWS
-# ------------------------------------------------------------------------------
-which aws_zsh_completer.sh >/dev/null 2>&1 && source $(which aws_zsh_completer.sh)
-
 
 # ------------------------------------------------------------------------------
 # Prezto
@@ -88,6 +83,13 @@ which aws_zsh_completer.sh >/dev/null 2>&1 && source $(which aws_zsh_completer.s
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+
+# ------------------------------------------------------------------------------
+# AWS
+# ------------------------------------------------------------------------------
+# Note that aws_zsh_completer.sh should be loaded AFTER prezto is initialized.
+which aws_zsh_completer.sh >/dev/null 2>&1 && source $(which aws_zsh_completer.sh)
 
 
 # ------------------------------------------------------------------------------
