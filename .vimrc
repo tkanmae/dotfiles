@@ -227,27 +227,6 @@ let g:python_highlight_all = 1
 "}}}  Syntax
 
 
-" Plugins:  "{{{
-"
-
-if dein#tap('vim-quickrun')  "{{{
-  let g:quickrun_config = {}
-  let g:quickrun_config['cpp'] = {
-        \   'cmdopt': '-Wall -Wextra -pedantic -std=c++11'
-        \ }
-endif  "}}}
-
-
-" Gundo.vim
-let g:gundo_prefer_python3 = 1
-nnoremap U :<C-u>GundoToggle<CR>
-
-
-" python.vim
-let python_highlight_all = 1
-"}}}  Plugins
-
-
 " Key mapping:  "{{{
 "
 nnoremap Q <Nop>
