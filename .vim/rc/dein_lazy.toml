@@ -112,6 +112,13 @@ on_ft = ['javascript']
 repo = 'othree/yajs.vim'
 on_ft = ['javascript']
 
+# Syntax for JSX
+[[plugins]]
+repo = 'mxw/vim-jsx'
+hook_add = '''
+  let g:jsx_ext_required = 0
+'''
+
 [[plugins]]
 repo = 'marijnh/tern_for_vim'
 build = 'npm install'
