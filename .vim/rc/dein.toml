@@ -35,6 +35,7 @@ let g:airline#extensions#whitespace#enabled = 0
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+depends = ['vim-airline']
 hook_add = '''
 let g:airline_theme = 'solarized'
 '''

@@ -42,6 +42,8 @@ if dein#load_state(s:plugin_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
+  call dein#add('vim-airline/vim-airline-themes')
+
   call dein#end()
   call dein#save_state()
 endif
