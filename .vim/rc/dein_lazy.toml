@@ -107,9 +107,8 @@ on_ft = ['R']
 repo = 'pangloss/vim-javascript'
 on_ft = ['javascript']
 
-# Syntax for Javascript
 [[plugins]]
-repo = 'othree/yajs.vim'
+repo = 'jelera/vim-javascript-syntax'
 on_ft = ['javascript']
 
 # Syntax for JSX
