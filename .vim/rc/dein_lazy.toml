@@ -127,6 +127,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'mustache/vim-mustache-handlebars'
+on_ft = ['handlebars']
+
+[[plugins]]
 repo = 'othree/html5.vim'
 
 [[plugins]]
