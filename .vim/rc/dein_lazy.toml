@@ -120,6 +120,13 @@ build = 'npm install'
 on_ft = ['javascript']
 
 [[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
+hook_add = '''
+  let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
 repo = 'othree/html5.vim'
 
 [[plugins]]
