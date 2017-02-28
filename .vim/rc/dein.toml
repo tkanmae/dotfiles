@@ -120,6 +120,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'scrooloose/syntastic'
+if = 'v:version < 800'
 hook_add = '''
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 0
@@ -133,6 +134,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['tex'] }
 '''
+
+[[plugins]]
+repo = 'w0rp/ale'
+if = 'v:version >= 800'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
