@@ -138,6 +138,13 @@ let g:syntastic_mode_map = { 'mode': 'active',
 [[plugins]]
 repo = 'w0rp/ale'
 if = 'v:version >= 800'
+hook_add = '''
+let g:ale_linters = {
+\   'python': ['flake8'],
+\   'javascript': ['eslint']
+\}
+let g:ale_javascript_eslint_executable = 'eslint_d'
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
