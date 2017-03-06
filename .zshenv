@@ -28,10 +28,10 @@ export GTEST_COLOR=1
 # ------------------------------------------------------------------------------
 case ${OSTYPE} in
     darwin*)
-        source ~/.zshenv.osx
+        source ${HOME}/.zsh/.zshenv.osx
         ;;
     linux*)
-        source ~/.zshenv.linux
+        source ${HOME}/.zsh/.zshenv.linux
         ;;
 esac
 
