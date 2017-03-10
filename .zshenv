@@ -38,6 +38,6 @@ esac
 # ------------------------------------------------------------------------------
 # Local settings
 # ------------------------------------------------------------------------------
-if [[ -f ~/.zshenv.local ]]; then
-    source ~/.zshenv.local
+if [[ -f ${HOME}/.zsh/.zshenv.local ]]; then
+    source ${HOME}/.zsh/.zshenv.local
 fi

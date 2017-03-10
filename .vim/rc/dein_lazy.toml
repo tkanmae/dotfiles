@@ -55,10 +55,6 @@ let g:vimfiler_ignore_pattern = '^\.' .
 '''
 
 [[plugins]]
-repo = 'tolecnal/vim-matchit'
-on_map = ['%']
-
-[[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = ['python', 'python3']
 hook_add = '''
@@ -72,6 +68,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
+on_ft = ['python', 'python3']
+
+[[plugins]]
+repo = 'fisadev/vim-isort'
 on_ft = ['python', 'python3']
 
 [[plugins]]
@@ -139,6 +139,10 @@ repo = 'hail2u/vim-css3-syntax'
 [[plugins]]
 repo = 'groenewege/vim-less'
 on_ft = ['less']
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'handlebars']
 
 [[plugins]]
 repo = 'Glench/Vim-Jinja2-Syntax'
