@@ -141,6 +141,10 @@ repo = 'groenewege/vim-less'
 on_ft = ['less']
 
 [[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'handlebars']
+
+[[plugins]]
 repo = 'Glench/Vim-Jinja2-Syntax'
 on_ft = ['html']
 
