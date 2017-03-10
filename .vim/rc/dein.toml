@@ -81,6 +81,9 @@ repo = 'thinca/vim-visualstar'
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
+repo = 'tmhedberg/matchit'
+
+[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]

@@ -55,10 +55,6 @@ let g:vimfiler_ignore_pattern = '^\.' .
 '''
 
 [[plugins]]
-repo = 'tolecnal/vim-matchit'
-on_map = ['%']
-
-[[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = ['python', 'python3']
 hook_add = '''
