@@ -34,8 +34,10 @@ on_source = ['unite.vim']
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 if = "has('lua')"
-on_i = 1
-hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  source ~/.vim/rc/plugins/neocomplete.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
