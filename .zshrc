@@ -123,7 +123,7 @@ setopt MAGIC_EQUAL_SUBST
 # ------------------------------------------------------------------------------
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=10000
-SAVEHIST=$HISTSIZE
+SAVEHIST=100000
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
