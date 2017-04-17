@@ -155,6 +155,10 @@ on_ft = ['tmux']
 repo = 'honza/dockerfile.vim'
 on_ft = ['dockerfile']
 
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = ['terraform']
+
 # Indentation and syntax for YAML
 [[plugins]]
 repo = 'mrk21/yaml-vim'
