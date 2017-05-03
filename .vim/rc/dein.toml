@@ -153,4 +153,4 @@ let g:ale_javascript_eslint_executable = 'eslint_d'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'sudo.vim'
+repo = 'vim-scripts/sudo.vim'
