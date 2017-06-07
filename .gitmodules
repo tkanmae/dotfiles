@@ -1,6 +1,8 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
+        ignore = dirty
 [submodule ".zsh/zsh-notify"]
 	path = .zsh/zsh-notify
 	url = https://github.com/marzocchi/zsh-notify.git
+        ignore = dirty
