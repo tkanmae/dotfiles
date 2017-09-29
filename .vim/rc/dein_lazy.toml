@@ -76,10 +76,10 @@ on_ft = ['python', 'python3']
 repo = 'fisadev/vim-isort'
 on_ft = ['python', 'python3']
 
-[[plugins]]
-repo = 'lambdalisue/vim-pyenv'
-depends = ['jedi-vim']
-on_ft = ['python', 'python3']
+# [[plugins]]
+# repo = 'lambdalisue/vim-pyenv'
+# depends = ['jedi-vim']
+# on_ft = ['python', 'python3']
 
 [[plugins]]
 repo = 'vim-jp/cpp-vim'
@@ -103,6 +103,10 @@ on_ft = ['go']
 [[plugins]]
 repo = 'jalvesaq/Nvim-R'
 on_ft = ['R']
+
+[[plugins]]
+repo = 'maverickg/stan.vim'
+on_ft = ['stan']
 
 # Indentation and syntax for Javascript
 [[plugins]]
