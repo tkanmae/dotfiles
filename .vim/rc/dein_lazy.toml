@@ -69,7 +69,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'hynek/vim-python-pep8-indent'
+repo = 'Vimjas/vim-python-pep8-indent'
 on_ft = ['python', 'python3']
 
 [[plugins]]
