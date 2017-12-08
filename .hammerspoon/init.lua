@@ -56,10 +56,6 @@ remapKey({'ctrl'}, 'w', keyCode('delete', {'option'}))
 remapKey({'ctrl'}, 'y', keyCode('v', {'cmd'}))
 remapKey({'ctrl'}, 'd', keyCode('forwarddelete'))
 remapKey({'ctrl'}, 'h', keyCode('delete'))
-remapKey({'ctrl'}, 'k', keyCodeSet({
-  keyCode('right', {'cmd', 'shift'}),
-  keyCode('x', {'cmd'})
-}))
 
 remapKey({'ctrl'}, 's', keyCode('f', {'cmd'}))
 remapKey({'ctrl'}, '/', keyCode('z', {'cmd'}))
