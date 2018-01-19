@@ -3,6 +3,7 @@
 # ------------------------------------------------------------------------------
 path+=(
     ${HOME}/.miniconda3/bin(N-/)
+    /usr/local/cuda/bin(N-/)
     /usr/cuda/bin(N-/)
     /opt/intel/bin(N-/)
 )
