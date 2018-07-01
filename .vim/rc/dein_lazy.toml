@@ -97,7 +97,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'fsouza/go.vim'
+repo = 'fatih/vim-go'
 on_ft = ['go']
 
 [[plugins]]
