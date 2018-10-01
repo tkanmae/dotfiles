@@ -40,6 +40,7 @@ hook_add = '''
 let g:airline_theme = 'solarized'
 '''
 
+[[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
   set background=dark
