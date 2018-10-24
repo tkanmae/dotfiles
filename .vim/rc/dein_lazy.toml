@@ -41,6 +41,11 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+on_source = ['vimfiler.vim']
+
+[[plugins]]
 repo = 'Shougo/vimfiler.vim'
 if = "!has('nvim')"
 depends = ['unite.vim']
