@@ -1,7 +1,30 @@
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+if = "has('nvim') || (v:version >= 800)"
+on_cmd = ['Denite']
+hook_source = 'source ~/.vim/rc/plugins/denite.rc.vim'
+hook_add = '''
+nnoremap [denite] <Nop>
+nmap <Leader>u [denite]
+" List file's directory.
+nnoremap [denite]f :<C-u>Denite `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+" List buffers.
+nnoremap [denite]b :<C-u>Denite buffer -buffer-name=buffer<CR>
+" List recently used files.
+nnoremap [denite]m :<C-u>Denite file_mru -buffer-name=file_mru<CR>
+" List current directory.
+nnoremap [denite]c :<C-u>Denite file -buffer-name=file<CR>
+" List buffers and recently used files.
+nnoremap [denite]u :<C-u>Denite buffer file_mru `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
+" Grep
+nnoremap [denite]g :<C-u>Denite grep:. -buffer-name=search-buffer<CR>
+'''
+
+[[plugins]]
 repo = 'Shougo/unite.vim'
-if = "!has('nvim')"
+if = "v:version < 800"
 on_cmd = ['Unite']
+hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
 nnoremap [unite] <Nop>
 nmap <Leader>u [unite]
@@ -22,11 +45,19 @@ nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " List outline.
 nnoremap [unite]o :<C-u>Unite outline<CR>
 '''
-hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
+
+
+[[plugins]]
+repo = 'raghur/fruzzy'
+on_source = ['denite.nvim']
+hook_source = '''
+let g:fruzzy#sortonempty = 0
+'''
+hook_post_update = 'call fruzzy#install()'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
+on_source = ['unite.vim', 'denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
