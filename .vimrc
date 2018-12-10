@@ -36,7 +36,7 @@ if !isdirectory(expand($CACHE))
   call mkdir(expand($CACHE), 'p')
 endif
 
-let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = $HOME . '/.miniconda3/envs/neovim/bin/python'
 
 " Load dein.
 let s:dein_dir = finddir('dein.vim', '.;')

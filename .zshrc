@@ -57,6 +57,7 @@ if [[ -d ${HOME}/.yarn/bin ]]; then
     path=(${HOME}/.yarn/bin(N-/) ${path})
 fi
 
+
 # ------------------------------------------------------------------------------
 # rbenv
 # ------------------------------------------------------------------------------
@@ -67,13 +68,13 @@ fi
 
 
 # ------------------------------------------------------------------------------
-# pyenv
+# Conda
 # ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.pyenv ]]; then
-    path=(${HOME}/.pyenv/bin(N-/) ${path})
-    eval "$(pyenv init --no-rehash -)"
-    eval "$(pyenv virtualenv-init -)"
+if [[ -f ${HOME}/.miniconda3/etc/profile.d/conda.sh ]]; then
+    . ${HOME}/.miniconda3/etc/profile.d/conda.sh
+    eval "$(rbenv init --no-rehash -)"
 fi
+
 
 typeset -U path manpath
 
