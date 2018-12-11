@@ -40,6 +40,20 @@ repo = 'ujihisa/neco-look'
 depends = ['neocomplete.vim']
 
 [[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+set hidden
+let g:LanguageClient_serverCommands = {
+\ 'python': ['pyls'],
+\ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+'''
+
+[[plugins]]
 repo = 'Shougo/neosnippet'
 hook_add = '''
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
@@ -106,6 +120,14 @@ hook_add = '''
   nmap <C-p> <Plug>(yankround-prev)
   nmap <C-n> <Plug>(yankround-next)
 '''
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+on_if = "!has('nvim')"
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+on_if = "!has('nvim')"
 
 [[plugins]]
 repo = 'scrooloose/syntastic'

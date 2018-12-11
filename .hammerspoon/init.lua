@@ -32,9 +32,11 @@ local function enableAllHotkeys()
 end
 
 local function handleGlobalAppEvent(name, event, app)
+   if name == "Visual Studio Code" then
+       disableAllHotkeys()
+   end
    if event == hs.application.watcher.activated then
-      -- hs.alert.show(name)
-      if name == "iTerm2" or name == "MacVim" then
+      if name == "iTerm2" or name == "MacVim" or name == "Visual Studio Code" then
          disableAllHotkeys()
       else
          enableAllHotkeys()

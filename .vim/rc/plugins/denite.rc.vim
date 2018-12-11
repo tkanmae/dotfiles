@@ -14,7 +14,6 @@ call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-
 call denite#custom#map('normal', '<C-N>',
       \ '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-P>',
