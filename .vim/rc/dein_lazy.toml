@@ -64,11 +64,12 @@ repo = 'Shougo/unite-outline'
 on_source = ['unite.vim']
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-if = "!has('nvim') && has('lua')"
+repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
-  source ~/.vim/rc/plugins/neocomplete.rc.vim
+source ~/.vim/rc/plugins/deoplete.rc.vim
+call deoplete#enable()
 '''
 
 [[plugins]]
