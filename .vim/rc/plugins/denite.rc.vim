@@ -14,13 +14,13 @@ call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-call denite#custom#map('normal', '<C-N>',
+call denite#custom#map('normal', '<C-j>',
       \ '<denite:move_to_next_line>')
-call denite#custom#map('normal', '<C-P>',
+call denite#custom#map('normal', '<C-k>',
       \ '<denite:move_to_previous_line>')
-call denite#custom#map('insert', '<C-N>',
+call denite#custom#map('insert', '<C-j>',
       \ '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-P>',
+call denite#custom#map('insert', '<C-k>',
       \ '<denite:move_to_previous_line>')
 call denite#custom#map('insert', '<BS>',
       \ '<denite:smart_delete_char_before_caret>', 'noremap')
