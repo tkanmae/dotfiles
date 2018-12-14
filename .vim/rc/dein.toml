@@ -146,19 +146,36 @@ let g:syntastic_mode_map = { 'mode': 'active',
       \ 'passive_filetypes': ['tex'] }
 '''
 
-[[plugins]]
-repo = 'w0rp/ale'
-if = 'v:version >= 800'
+# [[plugins]]
+# repo = 'w0rp/ale'
+# if = 'v:version >= 800'
+# hook_add = '''
+# let g:ale_linters = {
+# \   'python': ['flake8'],
+# \   'javascript': ['eslint']
+# \}
+# let g:ale_javascript_eslint_executable = 'eslint_d'
+# '''
+
+[[pulgins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next',
+build = 'bash install.sh'
 hook_add = '''
-let g:ale_linters = {
-\   'python': ['flake8'],
-\   'javascript': ['eslint']
-\}
-let g:ale_javascript_eslint_executable = 'eslint_d'
+set hidden
+let g:LanguageClient_serverCommands = {
+\ 'python': ['pyls'],
+\ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
