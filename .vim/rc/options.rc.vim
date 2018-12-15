@@ -109,7 +109,6 @@ set ruler
 set cursorline
 set title
 set lazyredraw
-set updatetime=100
 
 set scrolloff=2
 set sidescrolloff=5
