@@ -9,28 +9,15 @@ depends = ['context_filetype.vim']
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_inactive_collapse = 0
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
-'''
-
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-depends = ['vim-airline']
-hook_add = '''
-let g:airline_theme = 'solarized'
-'''
-
-[[plugins]]
 repo = 'altercation/vim-colors-solarized'
 hook_add = '''
   set background=dark
   au vimrc VimEnter * nested colorscheme solarized
 '''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_source = 'source ~/.vim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
