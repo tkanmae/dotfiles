@@ -163,6 +163,9 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+let g:gitgutter_sign_removed = '-'
+'''
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
