@@ -27,20 +27,6 @@ repo = 'ujihisa/neco-look'
 depends = ['neocomplete.vim']
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_add = '''
-set hidden
-let g:LanguageClient_serverCommands = {
-\ 'python': ['pyls'],
-\ }
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-'''
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 hook_add = '''
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
@@ -135,7 +121,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 
 [[plugins]]
 repo = 'w0rp/ale'
-if = 'v:version >= 800'
 hook_add = '''
 let g:ale_linters = {
 \   'python': ['flake8'],
