@@ -18,6 +18,8 @@ nnoremap [denite]c :<C-u>Denite file -buffer-name=file<CR>
 nnoremap [denite]u :<C-u>Denite buffer file_mru `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
 " Grep
 nnoremap [denite]g :<C-u>Denite grep:. -buffer-name=search-buffer<CR>
+" Outline
+nnoremap [denite]o :<C-u>Denite outline -no-quit<CR>
 '''
 
 [[plugins]]
