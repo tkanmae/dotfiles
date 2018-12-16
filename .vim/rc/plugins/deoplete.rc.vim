@@ -22,16 +22,15 @@ call deoplete#custom#source('_', 'converters', [
       \ 'converter_auto_delimiter',
       \ ])
 
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <C-j>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>check_back_space() ? "\<C-j>" :
       \ deoplete#manual_complete()
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>"
 
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
