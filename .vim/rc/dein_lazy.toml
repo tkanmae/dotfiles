@@ -48,7 +48,6 @@ nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 nnoremap [unite]o :<C-u>Unite outline<CR>
 '''
 
-
 [[plugins]]
 repo = 'raghur/fruzzy'
 on_source = ['denite.nvim']
@@ -145,6 +144,19 @@ on_ft = ['python', 'python3']
 repo = 'fisadev/vim-isort'
 on_ft = ['python', 'python3']
 
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = ['python', 'python3']
+hook_add = '''
+  let g:jedi#auto_vim_configuration = 0
+  let g:jedi#completions_command = 0
+  let g:jedi#documentation_command = ''
+  let g:jedi#use_tabs_not_buffers = 0
+  let g:jedi#goto_command = "<Leader>d"
+  let g:jedi#rename_command = "<Leader>r"
+'''
+
 [[plugins]]
 repo = 'vim-jp/cpp-vim'
 on_ft = ['c', 'cpp']
@@ -157,7 +169,6 @@ hook_add = '''
     let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
   endif
   let g:clang_user_options = '-std=c++11'
-
 '''
 
 [[plugins]]
