@@ -1,3 +1,5 @@
+call denite#custom#option('_', 'prompt', '>')
+
 if executable('rg')
   call denite#custom#var('file/rec', 'command',
         \ ['rg', '--files', '--glob', '!.git'])
