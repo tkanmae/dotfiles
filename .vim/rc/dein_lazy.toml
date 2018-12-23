@@ -144,6 +144,9 @@ on_ft = ['python', 'python3']
 repo = 'fisadev/vim-isort'
 on_ft = ['python', 'python3']
 
+[[plugins]]
+repo = 'tmhedberg/SimpylFold'
+on_ft = ['python', 'python3']
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'

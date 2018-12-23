@@ -46,8 +46,6 @@ set virtualedit=block
 
 set grepprg=grep\ -nH\ $*
 
-" set foldmethod=syntax
-
 set showmatch
 set matchtime=3
 set matchpairs+=<:>
@@ -168,7 +166,3 @@ let g:python_highlight_all = 1
 
 " Set spellfile location.
 set spellfile=$HOME/Dropbox/Apps/Vim/spell/en.utf-8.add
-
-
-" vim: foldmethod=marker :
-
