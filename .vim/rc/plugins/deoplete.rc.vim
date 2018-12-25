@@ -4,7 +4,7 @@ call deoplete#custom#option('auto_refresh_delay', 10)
 call deoplete#custom#option('camel_case', v:true)
 call deoplete#custom#option('refresh_always', v:true)
 call deoplete#custom#option('ignore_sources',
-      \ {'_': ['around', 'buffer']})
+      \ {'_': ['buffer']})
 call deoplete#custom#option('keyword_patterns', {
       \ '_': '[a-zA-Z_]\k*\(?',
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
