@@ -83,7 +83,7 @@ nnoremap <silent> <Leader>fe
 defx = '''
 " Define mappings
 nnoremap <silent><buffer><expr> <CR>
-\ defx#async_action('open')
+\ defx#async_action('drop')
 nnoremap <silent><buffer><expr> l
 \ defx#async_action('open')
 nnoremap <silent><buffer><expr> E
