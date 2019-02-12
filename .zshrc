@@ -15,6 +15,7 @@ path=(
     ${HOME}/.linuxbrew/bin(N-/)
     # Sytem-wide
     /usr/local/bin(N-/)
+    /usr/local/sbin(N-/)
     /usr/bin(N-/)
     /bin(N-/)
     /usr/sbin(N-/)
