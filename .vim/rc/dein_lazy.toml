@@ -149,18 +149,6 @@ repo = 'tmhedberg/SimpylFold'
 on_ft = ['python', 'python3']
 
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = ['python', 'python3']
-hook_add = '''
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#completions_enabled = 0
-  let g:jedi#documentation_command = ''
-  let g:jedi#use_tabs_not_buffers = 0
-  let g:jedi#goto_command = "<Leader>d"
-  let g:jedi#rename_command = "<Leader>r"
-'''
-
-[[plugins]]
 repo = 'vim-jp/cpp-vim'
 on_ft = ['c', 'cpp']
 
