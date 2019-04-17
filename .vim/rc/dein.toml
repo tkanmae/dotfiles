@@ -230,8 +230,8 @@ let g:LanguageClient_serverCommands = {
 \ 'python': ['pyls'],
 \ }
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <Leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <Leader>r :call LanguageClient#textDocument_rename()<CR>
 '''
 
 [[plugins]]
