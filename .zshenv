@@ -1,7 +1,7 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export EDITOR=vim
+command -v nvim >/dev/null 2>&1 && export EDITOR=nvim || export EDITOR=vim
 export PAGER=less
 
 
