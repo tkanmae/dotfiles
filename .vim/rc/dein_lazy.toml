@@ -77,7 +77,7 @@ call deoplete#enable()
 repo = 'Shougo/defx.nvim'
 hook_add = '''
 nnoremap <silent> <Leader>fe
-\ :<C-u>Defx -listed -resume -direction=topleft -split=vertical -winwidth=50<CR>
+\ :<C-u>Defx -listed -resume -toggle -direction=topleft -split=vertical -winwidth=50<CR>
 '''
 [plugins.ftplugin]
 defx = '''
