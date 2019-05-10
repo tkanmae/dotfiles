@@ -65,15 +65,6 @@ repo = 'Shougo/unite-outline'
 on_source = ['unite.vim']
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-source ~/.vim/rc/plugins/deoplete.rc.vim
-call deoplete#enable()
-'''
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
 nnoremap <silent> <Leader>fe
