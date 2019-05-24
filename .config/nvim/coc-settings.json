@@ -1,0 +1,7 @@
+{
+    "diagnostic.errorSign": "✘",
+
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true
+}
