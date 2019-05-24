@@ -56,9 +56,3 @@ call s:source_rc('dein.rc.vim')
 
 syntax on
 filetype plugin indent on
-
-if !has("gui_running")
-  set t_Co=256
-  set background=dark
-  colorscheme solarized
-endif

@@ -6,17 +6,19 @@ repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'altercation/vim-colors-solarized'
+depends = ['coc.nvim']
 hook_add = '''
-  set background=dark
-  au vimrc VimEnter * nested colorscheme solarized
+set background=dark
+colorscheme solarized
 '''
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
+depends = ['coc.nvim', 'vim-colors-solarized']
 hook_add = '''
 let g:lightline = {
 \ 'colorscheme': 'solarized',
@@ -208,28 +210,27 @@ repo = 'neoclide/coc.nvim'
 merge = 0
 build = './install.sh nightly'
 hook_add = '''
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
-  " Remap for rename current word
-  nmap <leader>r <Plug>(coc-rename)
-  " Remap for format selected region
-  vmap <leader>f  <Plug>(coc-format-selected)
-  nmap <leader>f  <Plug>(coc-format-selected)
-  " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  " Use K for show documentation in preview window
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
-  function! s:show_documentation()
-    if &filetype == 'vim'
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Remap for rename current word
+nmap <leader>r <Plug>(coc-rename)
+" Remap for format selected region
+vmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+else
+    call CocAction('doHover')
+endif
+endfunction
 '''
-
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
