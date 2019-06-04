@@ -227,12 +227,14 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
-if &filetype == 'vim'
+  if &filetype == 'vim'
     execute 'h '.expand('<cword>')
-else
+  else
     call CocAction('doHover')
-endif
+  endif
 endfunction
+" Use `:Fold` to fold the current buffer
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 '''
 
 [[plugins]]
