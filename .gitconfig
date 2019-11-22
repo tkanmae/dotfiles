@@ -72,6 +72,7 @@
     # http://d.hatena.ne.jp/thinca/20120924/1348491052
     cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
     latexdiff = difftool -t latex
+	show-pr = "!f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request #' | head -n 1; }; f"
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
