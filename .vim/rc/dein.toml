@@ -233,6 +233,8 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` to fold the current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 '''
