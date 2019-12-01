@@ -10,7 +10,7 @@ path=(
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # MacTeX
-    /usr/local/texlive/2016/bin/x86_64-darwin(N-/)
+    /usr/local/texlive/2019/bin/x86_64-darwin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
     # Sytem-wide
