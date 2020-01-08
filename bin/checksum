@@ -32,6 +32,12 @@ function get_sha1() {
 }
 
 
+function get_sha256() {
+    local checksum=$(openssl sha256 "$1")
+    echo ${checksum##*= }
+}
+
+
 function get_rmd160() {
     local checksum=$(openssl rmd160 "$1")
     echo ${checksum##*= }
@@ -54,6 +60,7 @@ if [[ -f "$1" ]]; then
     echo "$1:"
     echo "md5    = "$(get_md5 "$1")
     echo "sha1   = "$(get_sha1 "$1")
+    echo "sha256 = "$(get_sha256 "$1")
     echo "rmd160 = "$(get_rmd160 "$1")
 else
     print_error "File foes not exits: $1\n"
