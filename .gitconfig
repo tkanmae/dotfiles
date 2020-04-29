@@ -3,7 +3,7 @@
     email = tkanmae@gmail.com
 
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore_global
 
 [url "https://"]
     insteadOf = git://
