@@ -1,5 +1,4 @@
 channels:
-  - https://conda.anaconda.org/scitools
   - defaults
 
 show_channel_urls: True
