@@ -42,6 +42,38 @@ manpath=(
     /Library/TeX/Distributions/.DefaultTeX/Contents/Man(N-)
 )
 
+# ------------------------------------------------------------------------------
+# Zinit
+# ------------------------------------------------------------------------------
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+zinit snippet "PZT::modules/environment/init.zsh"
+zinit snippet "PZT::modules/editor/init.zsh"
+zinit snippet "PZT::modules/completion/init.zsh"
+
+zinit ice wait blockf atpull"zinit creinstall -q ." lucid
+zinit light "zsh-users/zsh-completions"
+zinit ice wait"1" atload"_zsh_autosuggest_start" lucid
+zinit light "zsh-users/zsh-autosuggestions"
+
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light "sindresorhus/pure"
+
+zinit ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
+zinit light "zdharma/fast-syntax-highlighting"
+
 
 # ------------------------------------------------------------------------------
 # Node
@@ -49,7 +81,6 @@ manpath=(
 if [[ -f ${HOME}/.nvm/nvm.sh ]]; then
     source ${HOME}/.nvm/nvm.sh
 fi
-
 
 # ------------------------------------------------------------------------------
 # Yarn
@@ -77,6 +108,14 @@ fi
 
 
 typeset -U path manpath
+
+
+# ------------------------------------------------------------------------------
+# zsh-autosuggestions
+# ------------------------------------------------------------------------------
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 
 # ------------------------------------------------------------------------------
@@ -149,6 +188,9 @@ bindkey -e
 GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
 GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn --exclude-dir=.git"
 
+alias ll='ls -lh'
+alias la='ll -A'
+
 alias diff='colordiff -urpN'
 alias grep='grep $GREP_OPTIONS'
 alias man='LANG=C man'
@@ -187,12 +229,6 @@ function ipython() {
     fi
 }
 
-# ------------------------------------------------------------------------------
-# Kubernetes
-# ------------------------------------------------------------------------------
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
 
 # ------------------------------------------------------------------------------
 # Platform specific settings
