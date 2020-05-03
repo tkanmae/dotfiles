@@ -82,6 +82,8 @@ zinit light "sindresorhus/pure"
 zinit ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
 zinit light "zdharma/fast-syntax-highlighting"
 
+zinit ice wait"1" blockf as"completion" lucid
+zinit snippet "OMZ::plugins/pip/_pip"
 zinit ice wait"1" blockf atpull"zinit creinstall -q" lucid
 zinit light "esc/conda-zsh-completion"
 
