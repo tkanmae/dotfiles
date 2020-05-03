@@ -71,6 +71,11 @@ zinit light "zsh-users/zsh-autosuggestions"
 zinit ice wait'0' lucid
 zinit light "lukechilds/zsh-nvm"
 
+zinit ice from"gh-r" as"program"
+zinit load "junegunn/fzf-bin"
+zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
+zinit light -b "junegunn/fzf"
+
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light "sindresorhus/pure"
 
@@ -118,16 +123,19 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 
 # ------------------------------------------------------------------------------
-# Percol
+# fzf
 # ------------------------------------------------------------------------------
-which peco >/dev/null 2>&1
-if [[ $? -eq 0 ]] && [[ -s "${HOME}/.zsh/peco.zsh" ]]; then
-  source "${HOME}/.zsh/peco.zsh"
-  bindkey '^R' peco-select-history
-else
-  bindkey '^R' history-incremental-pattern-search-backward
-  bindkey '^S' history-incremental-pattern-search-forward
-fi
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
+
+function fzf_history() {
+    BUFFER=$(history -nr 1 | \
+        FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --tiebreak=index --query ${(qqq)LBUFFER} +m" fzf)
+    CURSOR=${#BUFFER}
+    zle reset-prompt
+}
+zle -N fzf_history
+bindkey '^r' fzf_history
 
 
 # ------------------------------------------------------------------------------
@@ -175,6 +183,7 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
+
 
 # ------------------------------------------------------------------------------
 # Key binding
