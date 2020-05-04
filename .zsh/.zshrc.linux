@@ -27,8 +27,3 @@ if [[ $? -eq 0 ]]; then
 else
     [[ -s /usr/share/autojump/autojump.sh ]] && source /usr/share/autojump/autojump.sh
 fi
-
-# ------------------------------------------------------------------------------
-# Aliases
-# ------------------------------------------------------------------------------
-alias ls='ls -F --color=auto'

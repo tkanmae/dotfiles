@@ -79,6 +79,9 @@ zinit light -b "junegunn/fzf"
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light "sindresorhus/pure"
 
+zinit ice atclone"dircolors -b LS_COLORS > ls_colors.zsh" atpull'%atclone' pick"ls_colors.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS
+
 zinit ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
 zinit light "zdharma/fast-syntax-highlighting"
 
@@ -198,6 +201,7 @@ bindkey -e
 GREP_OPTIONS="--color=auto -D skip --binary-files=without-match"
 GREP_OPTIONS="$GREP_OPTIONS --exclude-dir=.svn --exclude-dir=.git"
 
+alias ls='ls -F --color=auto'
 alias ll='ls -lh'
 alias la='ll -A'
 
