@@ -78,6 +78,9 @@ zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
 zinit light -b "junegunn/fzf"
 
+zinit ice wait lucid
+zinit light -b "b4b4r07/enhancd"
+
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light "sindresorhus/pure"
 
@@ -143,6 +146,14 @@ function fzf_history() {
 }
 zle -N fzf_history
 bindkey '^r' fzf_history
+
+
+# ------------------------------------------------------------------------------
+# enhancd
+# ------------------------------------------------------------------------------
+export ENHANCD_FILTER="fzf"
+export ENHANCD_HYPHEN_NUM=32
+export ENHANCD_COMPLETION_BEHAVIOR="list"
 
 
 # ------------------------------------------------------------------------------
