@@ -4,6 +4,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
+    pager = diff-so-fancy | less --tabs=4 -RFX
 
 [url "https://"]
     insteadOf = git://
@@ -13,12 +14,6 @@
 
 [merge]
     tool = vimdiff
-
-[pager]
-    # Make sure git/contrib/diff-highlight is in PATH.
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
 
 [diff]
 	compactionHeuristic = true
@@ -77,3 +72,15 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[color "diff-highlight"]
+	oldNormal = 196 bold
+	oldHighlight = 196 bold 52
+	newNormal = 34 bold
+	newHighlight = 34 bold 22
+[color "diff"]
+	meta = 130
+	frag = 33 bold dim
+	commit = 172 bold
+	old = 196 bold
+	new = 34 bold
+	whitespace = 196 reverse

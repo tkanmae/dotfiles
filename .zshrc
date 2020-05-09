@@ -78,6 +78,9 @@ zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
 zinit light -b "junegunn/fzf"
 
+zinit ice wait as"program" pick"bin/git-dsf" lucid
+zinit light "zdharma/zsh-diff-so-fancy"
+
 zinit ice wait lucid
 zinit light -b "b4b4r07/enhancd"
 
