@@ -90,7 +90,7 @@ zinit light "sindresorhus/pure"
 zinit ice atclone"dircolors -b LS_COLORS > ls_colors.zsh" atpull'%atclone' pick"ls_colors.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
 
-zinit ice wait"!0" atinit"zpcompinit; zpcdreplay" lucid
+zinit ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
 zinit light "zdharma/fast-syntax-highlighting"
 
 zinit ice wait"1" blockf as"completion" lucid
