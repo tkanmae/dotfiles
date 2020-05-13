@@ -105,8 +105,6 @@ function! LightlineMode()
 endfunction
 '''
 
-[[plugins]]
-repo = 'Shougo/unite-outline'
 
 [[plugins]]
 repo = 'ujihisa/neco-look'

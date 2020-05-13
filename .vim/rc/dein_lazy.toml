@@ -23,32 +23,6 @@ nnoremap [denite]o :<C-u>Denite outline -no-quit<CR>
 '''
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-if = "v:version < 800"
-on_cmd = ['Unite']
-hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
-hook_add = '''
-nnoremap [unite] <Nop>
-nmap <Leader>u [unite]
-" List file's directory.
-nnoremap [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" List buffers.
-nnoremap [unite]b :<C-u>Unite buffer -buffer-name=buffer<CR>
-" List recently used files.
-nnoremap [unite]m :<C-u>Unite file_mru -buffer-name=file_mru<CR>
-" List registers.
-nnoremap [unite]r :<C-u>Unite -buffer-name=register register<CR>
-" List current directory.
-nnoremap [unite]c :<C-u>Unite file -buffer-name=file<CR>
-" List buffers and recently used files.
-nnoremap [unite]u :<C-u>Unite buffer file_mru file_rec<CR>
-" Grep
-nnoremap [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-" List outline.
-nnoremap [unite]o :<C-u>Unite outline<CR>
-'''
-
-[[plugins]]
 repo = 'raghur/fruzzy'
 on_source = ['denite.nvim']
 hook_source = '''
@@ -58,11 +32,7 @@ hook_post_update = 'call fruzzy#install()'
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_source = ['unite.vim', 'denite.nvim']
-
-[[plugins]]
-repo = 'Shougo/unite-outline'
-on_source = ['unite.vim']
+on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
