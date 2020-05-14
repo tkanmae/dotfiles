@@ -26,7 +26,7 @@ let g:lightline = {
 \ 'active': {
 \   'left': [['mode', 'paste'],
 \            ['fugitive', 'gitgutter', 'filename'],
-\            ['cocstatus']]
+\            ['vista']]
 \ },
 \ 'component_function': {
 \   'modified': 'LightlineModified',
@@ -38,7 +38,7 @@ let g:lightline = {
 \   'filetype': 'LightlineFiletype',
 \   'fileencoding': 'LightlineFileencoding',
 \   'mode': 'LightlineMode',
-\   'cocstatus': 'coc#status'
+\   'vista': 'LightlineNearestMethodOrFunction'
 \ }
 \ }
 
@@ -102,6 +102,10 @@ endfunction
 
 function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightlineNearestMethodOrFunction()
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 '''
 
@@ -219,6 +223,19 @@ command! -nargs=0 Format :call CocAction('format')
 " Use `:Fold` to fold the current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 '''
+
+[[plugins]]
+repo = 'liuchengxu/vista.vim'
+depends = ['coc.nvim', 'lightline.vim']
+hook_add = '''
+let g:vista_sidebar_width = 40
+let g:vista_icon_indent = ["▸ ", ""]
+let g:vista#renderer#enable_icon = 0
+nmap <silent> <Leader>fv :<C-u>Vista coc<CR>
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
