@@ -185,9 +185,9 @@ setopt MAGIC_EQUAL_SUBST
 # ------------------------------------------------------------------------------
 # History
 # ------------------------------------------------------------------------------
-HISTFILE=${HOME}/.zsh_history
-HISTSIZE=10000
-SAVEHIST=100000
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 setopt BANG_HIST
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
