@@ -84,3 +84,5 @@
 	old = 196 bold
 	new = 34 bold
 	whitespace = 196 reverse
+[pager]
+	branch = false
