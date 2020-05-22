@@ -193,7 +193,7 @@ on_if = "!has('nvim')"
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
-build = './install.sh nightly'
+rev = 'release'
 hook_add = '''
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
