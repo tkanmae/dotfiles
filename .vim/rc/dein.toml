@@ -130,6 +130,9 @@ repo = 'Shougo/neosnippet-snippets'
 on_source = ['neosnippet']
 
 [[plugins]]
+repo = 'tpope/vim-abolish'
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 
 [[plugins]]
