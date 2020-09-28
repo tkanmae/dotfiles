@@ -77,9 +77,10 @@ zinit ice from"gh-r" as"program"
 zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
 zinit light -b "junegunn/fzf"
-
+zinit ice  from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+zinit light "sharkdp/bat"
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv" src"zhook.zsh"
-zinit light direnv/direnv
+zinit light "direnv/direnv"
 
 zinit ice wait as"program" pick"bin/git-dsf" lucid
 zinit light "zdharma/zsh-diff-so-fancy"
