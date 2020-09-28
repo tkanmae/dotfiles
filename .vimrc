@@ -118,7 +118,6 @@ set encoding=utf-8
 set fileencodings=utf-8,euc-jp,iso-2022-jp,cp932
 set fileformat=unix
 set fileformats=unix,dos,mac
-set ambiwidth=double
 "
 "}}} Encoding
 
@@ -198,6 +197,8 @@ endfunction
 
 " View:  "{{{
 "
+set termguicolors
+
 set shortmess&
 set shortmess+=I
 
@@ -241,7 +242,6 @@ set infercase
 set splitbelow
 set splitright
 set noequalalways
-
 "
 "}}} View
 

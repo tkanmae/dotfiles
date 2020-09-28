@@ -6,11 +6,10 @@ repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
-depends = ['coc.nvim']
+repo = 'lifepillar/vim-solarized8'
 hook_add = '''
 set background=dark
-colorscheme solarized
+autocmd vimrc VimEnter * nested colorscheme solarized8
 '''
 
 [[plugins]]
@@ -18,7 +17,7 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['coc.nvim', 'vim-colors-solarized']
+depends = ['coc.nvim', 'vim-solarized8']
 hook_add = '''
 let g:lightline = {
 \ 'colorscheme': 'solarized',
