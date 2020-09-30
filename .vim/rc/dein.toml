@@ -238,9 +238,6 @@ nmap <silent> <Leader>fv :<C-u>Vista coc<CR>
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
 let g:gitgutter_sign_removed = '-'
