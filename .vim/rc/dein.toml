@@ -167,12 +167,10 @@ let NERDSpaceDelims=1
 '''
 
 [[plugins]]
-repo = 'godlygeek/tabular'
+repo = 'junegunn/vim-easy-align'
 hook_add = '''
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:<CR>
-  vmap <Leader>a: :Tabularize /:<CR>
+  xmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
 '''
 
 [[plugins]]
