@@ -225,6 +225,8 @@ alias ls='ls -F --color=auto'
 alias ll='ls -lh'
 alias la='ll -A'
 
+alias rm='rm -i'
+
 alias diff='colordiff -urpN'
 alias grep='grep $GREP_OPTIONS'
 alias man='LANG=C man'
