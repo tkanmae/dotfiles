@@ -4,11 +4,12 @@ build = './install'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
-on_cmd = ['Files', 'GFiles','Buffers', 'History']
+on_cmd = ['Files', 'GFiles','Buffers', 'History', 'Rg']
 hook_add = '''
 nnoremap <silent> <Leader>uf :Files<CR>
 nnoremap <silent> <Leader>ub :Buffers<CR>
 nnoremap <silent> <Leader>um :History<CR>
+nnoremap <silent> <Leader>ug :Rg<CR>
 '''
 
 [[plugins]]
