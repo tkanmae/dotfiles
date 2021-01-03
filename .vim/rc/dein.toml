@@ -244,6 +244,17 @@ let g:gitgutter_sign_removed = '-'
 '''
 
 [[plugins]]
+repo = 'christoomey/vim-tmux-navigator'
+hook_add = '''
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-t>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-t>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-t>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-t>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-t>\ :TmuxNavigatePrevious<cr>
+'''
+
+[[plugins]]
 repo = 'rizzatti/dash.vim'
 if = "has('mac')"
 hook_add = '''

@@ -15,7 +15,7 @@ EOF
 } >&2
 
 
-case "$1" in
+case "${1:-}" in
     -h|--help) print_usage_and_die ;;
     *) ;;
 esac
