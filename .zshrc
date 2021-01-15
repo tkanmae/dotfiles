@@ -128,6 +128,17 @@ if [[ -f ${HOME}/.miniconda3/etc/profile.d/conda.sh ]]; then
 fi
 
 
+# ------------------------------------------------------------------------------
+# pyenv
+# ------------------------------------------------------------------------------
+if [[ -d ${HOME}/.pyenv ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    path=($PYENV_ROOT/bin(N-/) ${path})
+    eval "$(pyenv init  -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+
 typeset -U path manpath
 
 
@@ -161,6 +172,13 @@ bindkey '^r' fzf_history
 export ENHANCD_FILTER="fzf"
 export ENHANCD_HYPHEN_NUM=32
 export ENHANCD_COMPLETION_BEHAVIOR="list"
+
+
+# ------------------------------------------------------------------------------
+# bat
+# ------------------------------------------------------------------------------
+export BAT_THEME="Solarized (dark)"
+export BAT_STYLE="plain"
 
 
 # ------------------------------------------------------------------------------
