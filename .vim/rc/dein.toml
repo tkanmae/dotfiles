@@ -6,13 +6,6 @@ repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 
 [[plugins]]
-repo = 'lifepillar/vim-solarized8'
-hook_add = '''
-set background=dark
-autocmd vimrc VimEnter * nested colorscheme solarized8
-'''
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -20,7 +13,7 @@ repo = 'itchyny/lightline.vim'
 depends = ['coc.nvim', 'vim-solarized8']
 hook_add = '''
 let g:lightline = {
-\ 'colorscheme': 'solarized',
+\ 'colorscheme': 'iceberg',
 \ 'mode_map': {'c': 'NORMAL'},
 \ 'active': {
 \   'left': [['mode', 'paste'],
@@ -265,3 +258,13 @@ let g:dash_map = {
 
 [[plugins]]
 repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'lifepillar/vim-solarized8'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+set background=dark
+autocmd vimrc VimEnter * nested colorscheme iceberg
+'''
