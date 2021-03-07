@@ -4,7 +4,7 @@ typeset -U path cdpath fpath manpath
 # PATH
 # ------------------------------------------------------------------------------
 path=(
-    # local
+    # Local
     ${HOME}/.local/bin(N-/)
     # GNU tools via Homebrew (Apple Silicon)
     /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
@@ -12,8 +12,6 @@ path=(
     # GNU tools via Homebrew
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
-    # MacTeX
-    /usr/local/texlive/2019/bin/x86_64-darwin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
     # Homebrew (Apple Silicon)
@@ -25,7 +23,6 @@ path=(
     /bin(N-/)
     /usr/sbin(N-/)
     /sbin(N-/)
-    /opt/X11/bin(N-/)
 )
 
 
@@ -33,10 +30,6 @@ path=(
 # MANPATH
 # ------------------------------------------------------------------------------
 manpath=(
-    # GNU coreutils via Homebrew
-    /usr/local/opt/coreutils/libexec/gnuman(N-/)
-    # MacTeX
-    /usr/local/texlive/2019/texmf-dist/doc/man(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/share/man(N-/)
     # Homebrew (Apple Silicon)
@@ -44,9 +37,6 @@ manpath=(
     # System-wide
     /usr/local/share/man(N-)
     /usr/share/man(N-/)
-    # System-wide on OS X.
-    /opt/X11/share/man(N-/)
-    /Library/TeX/Distributions/.DefaultTeX/Contents/Man(N-)
 )
 
 # ------------------------------------------------------------------------------
