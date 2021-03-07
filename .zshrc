@@ -34,7 +34,14 @@ manpath=(
     # Linuxbrew
     ${HOME}/.linuxbrew/share/man(N-/)
     # Homebrew (Apple Silicon)
+    /opt/homebrew/opt/coreutils/libexec/gnuman(N-/)
+    /opt/homebrew/opt/findutils/libexec/gnuman(N-/)
+    /opt/homebrew/opt/gnu-tar/libexec/gnuman(N-/)
     /opt/homebrew/share/man(N-)
+    # Homebrew
+    /usr/local/opt/coreutils/share/man(N-)
+    /usr/local/opt/findutils/share/man(N-)
+    /usr/local/opt/gnu-tar/share/man(N-)
     # System-wide
     /usr/local/share/man(N-)
     /usr/share/man(N-/)
