@@ -8,9 +8,11 @@ path=(
     ${HOME}/.local/bin(N-/)
     # GNU tools via Homebrew (Apple Silicon)
     /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
+    /opt/homebrew/opt/findutils/libexec/gnubin(N-/)
     /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
     # GNU tools via Homebrew
     /usr/local/opt/coreutils/libexec/gnubin(N-/)
+    /usr/local/opt/findutils/libexec/gnubin(N-/)
     /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
