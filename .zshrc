@@ -6,18 +6,17 @@ typeset -U path cdpath fpath manpath
 path=(
     # Local
     ${HOME}/.local/bin(N-/)
-    # GNU tools via Homebrew (Apple Silicon)
-    /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
-    /opt/homebrew/opt/findutils/libexec/gnubin(N-/)
-    /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
-    # GNU tools via Homebrew
-    /usr/local/opt/coreutils/libexec/gnubin(N-/)
-    /usr/local/opt/findutils/libexec/gnubin(N-/)
-    /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # Linuxbrew
     ${HOME}/.linuxbrew/bin(N-/)
     # Homebrew (Apple Silicon)
     /opt/homebrew/bin(N-/)
+    /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
+    /opt/homebrew/opt/findutils/libexec/gnubin(N-/)
+    /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
+    # Homebrew
+    /usr/local/opt/coreutils/libexec/gnubin(N-/)
+    /usr/local/opt/findutils/libexec/gnubin(N-/)
+    /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
     # Sytem-wide
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
