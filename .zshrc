@@ -75,9 +75,6 @@ zinit light "zsh-users/zsh-autosuggestions"
 zinit ice wait lucid
 zinit light -b "hlissner/zsh-autopair"
 
-zinit ice wait'0' lucid
-zinit light "lukechilds/zsh-nvm"
-
 zinit ice from"gh-r" as"program"
 zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
@@ -115,32 +112,12 @@ if [[ -d ${HOME}/.yarn/bin ]]; then
     path=(${HOME}/.yarn/bin(N-/) ${path})
 fi
 
-
 # ------------------------------------------------------------------------------
-# rbenv
+# anyenv
 # ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.rbenv ]]; then
-    path=(${HOME}/.rbenv/bin(N-/) ${path})
-    eval "$(rbenv init --no-rehash -)"
-fi
-
-
-# ------------------------------------------------------------------------------
-# Conda
-# ------------------------------------------------------------------------------
-if [[ -f ${HOME}/.miniconda3/etc/profile.d/conda.sh ]]; then
-    . ${HOME}/.miniconda3/etc/profile.d/conda.sh
-fi
-
-
-# ------------------------------------------------------------------------------
-# pyenv
-# ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.pyenv ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    path=($PYENV_ROOT/bin(N-/) ${path})
-    eval "$(pyenv init  -)"
-    eval "$(pyenv virtualenv-init -)"
+if [[ -d ${HOME}/.anyenv ]]; then
+    path=(${HOME}/.anyenv/bin(N-/) ${path})
+    eval "$(anyenv init -)"
 fi
 
 
