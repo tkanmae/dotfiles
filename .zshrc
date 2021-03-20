@@ -81,7 +81,7 @@ zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings
 zinit light -b "junegunn/fzf"
 zinit ice  from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
 zinit light "sharkdp/bat"
-zinit ice from"gh-r" as"program" mv"direnv* -> direnv" atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' pick"direnv" src"zhook.zsh"
+zinit ice from"gh-r" as"program" mv"direnv* -> direnv" pick"direnv"
 zinit light "direnv/direnv"
 
 zinit ice wait as"program" pick"bin/git-dsf" lucid
@@ -118,6 +118,14 @@ fi
 if [[ -d ${HOME}/.anyenv ]]; then
     path=(${HOME}/.anyenv/bin(N-/) ${path})
     eval "$(anyenv init -)"
+fi
+
+
+# ------------------------------------------------------------------------------
+# direnv
+# ------------------------------------------------------------------------------
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook zsh)"
 fi
 
 
