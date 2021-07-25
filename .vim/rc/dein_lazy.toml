@@ -66,20 +66,8 @@ nnoremap <silent><buffer><expr> q
 '''
 
 [[plugins]]
-repo = 'Vimjas/vim-python-pep8-indent'
-on_ft = ['python', 'python3']
-
-[[plugins]]
 repo = 'fisadev/vim-isort'
 on_ft = ['python', 'python3']
-
-[[plugins]]
-repo = 'tmhedberg/SimpylFold'
-on_ft = ['python', 'python3']
-
-[[plugins]]
-repo = 'vim-jp/cpp-vim'
-on_ft = ['c', 'cpp']
 
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -93,11 +81,6 @@ on_ft = ['R']
 repo = 'maverickg/stan.vim'
 on_ft = ['stan']
 
-# Indentation and syntax for Javascript
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['javascript']
-
 # Syntax for JSX
 [[plugins]]
 repo = 'mxw/vim-jsx'
@@ -108,21 +91,8 @@ build = 'npm install'
 on_ft = ['javascript']
 
 [[plugins]]
-repo = 'elzr/vim-json'
-on_ft = ['json']
-hook_add = '''
-  let g:vim_json_syntax_conceal = 0
-'''
-
-[[plugins]]
 repo = 'mustache/vim-mustache-handlebars'
 on_ft = ['handlebars']
-
-[[plugins]]
-repo = 'othree/html5.vim'
-
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
 
 [[plugins]]
 repo = 'groenewege/vim-less'
@@ -141,30 +111,12 @@ repo = 'zaiste/tmux.vim'
 on_ft = ['tmux']
 
 [[plugins]]
-repo = 'honza/dockerfile.vim'
-on_ft = ['dockerfile']
-
-[[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = ['terraform']
 hook_add = '''
   let g:terraform_fmt_on_save = 1
   let g:terraform_align = 1
 '''
-
-# Indentation and syntax for YAML
-[[plugins]]
-repo = 'mrk21/yaml-vim'
-on_ft = ['toml']
-
-# Syntax for YAML
-[[plugins]]
-repo = 'stephpy/vim-yaml'
-on_ft = ['yaml']
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = ['toml']
 
 [[plugins]]
 repo = 'tpope/vim-markdown'

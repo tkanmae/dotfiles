@@ -9,6 +9,24 @@ depends = ['context_filetype.vim']
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+merged = 0
+hook_post_update = 'TSUpdate'
+hook_add = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true
+  },
+  indent = {
+    true
+  }
+}
+EOF
+'''
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
 depends = ['coc.nvim', 'vim-solarized8']
 hook_add = '''
