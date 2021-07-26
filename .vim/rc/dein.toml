@@ -261,6 +261,9 @@ nnoremap <leader>ub <cmd>lua require('telescope.builtin').buffers()<cr>
 '''
 
 [[plugins]]
+repo = 'kyazdani42/nvim-web-devicons'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
