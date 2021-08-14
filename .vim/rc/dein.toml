@@ -119,11 +119,6 @@ function! LightlineNearestMethodOrFunction()
 endfunction
 '''
 
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
-depends = ['neocomplete.vim']
-
 [[plugins]]
 repo = 'Shougo/neosnippet'
 hook_add = '''
