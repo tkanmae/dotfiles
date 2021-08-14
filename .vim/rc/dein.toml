@@ -28,7 +28,7 @@ EOF
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-depends = ['coc.nvim', 'vim-solarized8']
+depends = ['vim-solarized8']
 hook_add = '''
 let g:lightline = {
 \ 'colorscheme': 'iceberg',
@@ -202,47 +202,81 @@ repo = 'roxma/nvim-yarp'
 on_if = "!has('nvim')"
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-merge = 0
-rev = 'release'
+repo = "neovim/nvim-lspconfig"
 hook_add = '''
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Remap for navigating diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-" Remap for rename current word
-nmap <leader>r <Plug>(coc-rename)
-" Remap for format selected region
-vmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-" Use `:Fold` to fold the current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
+lua <<EOF
+local nvim_lsp = require('lspconfig')
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap("n", "fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '[c', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']c', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+end
+
+nvim_lsp.pyright.setup{
+  on_attach = on_attach
+}
+nvim_lsp.diagnosticls.setup{
+  on_attach = on_attach
+}
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+}
+EOF
+'''
+
+[[plugins]]
+repo = 'glepnir/lspsaga.nvim'
+hook_add = '''
+nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+nnoremap <silent><C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+nnoremap <silent>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent>[c <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+nnoremap <silent>]c <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+'''
+
+[[plugins]]
+repo = 'nvim-lua/completion-nvim'
+hook_add = '''
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+'''
+
+[[plugins]]
+repo = 'sbdchd/neoformat'
+hook_add = '''
+augroup Format
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
 '''
 
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
-depends = ['coc.nvim', 'lightline.vim']
+depends = ['lightline.vim']
 hook_add = '''
 let g:vista_sidebar_width = 40
 let g:vista_icon_indent = ["▸ ", ""]
 let g:vista#renderer#enable_icon = 0
-nmap <silent> <Leader>fv :<C-u>Vista coc<CR>
 '''
 
 [[plugins]]
