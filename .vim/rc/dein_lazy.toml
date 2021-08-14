@@ -1,8 +1,4 @@
 [[plugins]]
-repo = 'junegunn/fzf'
-build = './install'
-
-[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add = '''
 nnoremap <silent> <Leader>fe
