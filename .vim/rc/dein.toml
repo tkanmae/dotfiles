@@ -333,7 +333,14 @@ repo = 'lifepillar/vim-solarized8'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'rktjmp/lush.nvim'
+
+[[plugins]]
+repo = 'npxbr/gruvbox.nvim'
+depends = ['rktjmp/lush.nvim']
 hook_add = '''
 set background=dark
-autocmd vimrc VimEnter * nested colorscheme iceberg
+autocmd vimrc VimEnter * nested colorscheme gruvbox
 '''
