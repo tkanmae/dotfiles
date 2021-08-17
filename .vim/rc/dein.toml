@@ -291,6 +291,7 @@ nnoremap <leader>uf <cmd>lua require('telescope.builtin').find_files({ find_comm
 nnoremap <leader>um <cmd>lua require('telescope.builtin').oldfiles()<cr>
 nnoremap <leader>ug <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>ub <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>us <cmd>lua require('telescope.builtin').treesitter()<cr>
 '''
 
 [[plugins]]
