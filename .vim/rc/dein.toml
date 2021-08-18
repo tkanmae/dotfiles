@@ -27,96 +27,47 @@ EOF
 '''
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-depends = ['vim-solarized8']
+repo = 'hoob3rt/lualine.nvim'
 hook_add = '''
-let g:lightline = {
-\ 'colorscheme': 'iceberg',
-\ 'mode_map': {'c': 'NORMAL'},
-\ 'active': {
-\   'left': [['mode', 'paste'],
-\            ['fugitive', 'gitgutter', 'filename'],
-\            ['vista']]
-\ },
-\ 'component_function': {
-\   'modified': 'LightlineModified',
-\   'readonly': 'LightlineReadonly',
-\   'fugitive': 'LightlineFugitive',
-\   'gitgutter': 'LightlineGitGutter',
-\   'filename': 'LightlineFilename',
-\   'fileformat': 'LightlineFileformat',
-\   'filetype': 'LightlineFiletype',
-\   'fileencoding': 'LightlineFileencoding',
-\   'mode': 'LightlineMode',
-\   'vista': 'LightlineNearestMethodOrFunction'
-\ }
-\ }
-
-function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-    \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-    \  &ft == 'unite' ? unite#get_status_string() :
-    \  &ft == 'vimshell' ? vimshell#get_status_string() :
-    \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-    \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
-
-function! LightlineGitGutter()
-  if ! exists('*GitGutterGetHunkSummary')
-        \ || ! get(g:, 'gitgutter_enabled', 0)
-        \ || winwidth('.') <= 90
-    return ''
-  endif
-  let symbols = [
-        \ g:gitgutter_sign_added,
-        \ g:gitgutter_sign_modified,
-        \ g:gitgutter_sign_removed,
-        \ ]
-  let hunks = GitGutterGetHunkSummary()
-  let ret = []
-  for i in [0, 1, 2]
-    if hunks[i] > 0
-      call add(ret, symbols[i] . hunks[i])
-    endif
-  endfor
-  return join(ret, ' ')
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! LightlineNearestMethodOrFunction()
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
+lua <<EOF
+require('lualine').setup{
+  options = {
+    theme = 'gruvbox',
+    section_separators = {'', ''},
+    component_separators = {'|', '|'},
+    disabled_filetypes = {},
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {
+      {
+        'filename',
+        file_status = true,
+        path = 0
+      },
+    },
+    lualine_x = {
+      {
+        'diagnostics',
+        sources = {"nvim_lsp"},
+        symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+      },
+    },
+    lualine_y = {'diff'},
+    lualine_z = {'location'},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {},
+  },
+  extensions = {'fugitive'},
+  }
+EOF
 '''
 
 [[plugins]]
