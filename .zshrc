@@ -79,8 +79,9 @@ zinit ice from"gh-r" as"program"
 zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
 zinit light -b "junegunn/fzf"
-zinit ice  from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
-zinit light "sharkdp/bat"
+zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+zinit light "sharkdp/fd"
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" pick"direnv"
 zinit light "direnv/direnv"
 
