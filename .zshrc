@@ -177,7 +177,7 @@ export ENHANCD_COMPLETION_BEHAVIOR="list"
 # ------------------------------------------------------------------------------
 # bat
 # ------------------------------------------------------------------------------
-export BAT_THEME="gruvbox"
+export BAT_THEME="gruvbox-dark"
 export BAT_STYLE="plain"
 
 
