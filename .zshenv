@@ -8,7 +8,7 @@ export PAGER=less
 # ------------------------------------------------------------------------------
 # less
 # ------------------------------------------------------------------------------
-export LESS='--tabs=4 --ignore-case --clear-screen --LONG-PROMPT --RAW-CONTROL-CHARS'
+export LESS='--tabs=4 --ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS'
 export LESSCHARSET='utf-8'
 
 
