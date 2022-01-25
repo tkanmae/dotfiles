@@ -187,7 +187,7 @@ EOF
 '''
 
 [[plugins]]
-repo = 'glepnir/lspsaga.nvim'
+repo = 'tami5/lspsaga.nvim'
 hook_add = '''
 nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
