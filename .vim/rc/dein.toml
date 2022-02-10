@@ -244,6 +244,7 @@ lua <<EOF
   }
 EOF
 '''
+
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
 depends = ['nvim-cmp']
@@ -261,12 +262,39 @@ repo = 'hrsh7th/cmp-cmdline'
 depends = ['nvim-cmp']
 
 [[plugins]]
-repo = 'sbdchd/neoformat'
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = ['nvim-lspconfig']
 hook_add = '''
-augroup Format
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+lua <<EOF
+  local null_ls = require('null-ls')
+
+  null_ls.setup({
+    debug = true,
+    sources = {
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.diagnostics.flake8.with({
+        extra_args={
+          "--max-line-length",
+          "88",
+          "--extend-ignore",
+          "E203"
+        },
+      }),
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.isort,
+    },
+    on_attach = function(client)
+      if client.resolved_capabilities.document_formatting then
+        vim.cmd([[
+        augroup LspFormatting
+            autocmd! * <buffer>
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        augroup END
+        ]])
+      end
+    end,
+  })
+EOF
 '''
 
 [[plugins]]
