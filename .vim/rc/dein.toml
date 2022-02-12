@@ -192,11 +192,17 @@ EOF
 repo = 'tami5/lspsaga.nvim'
 hook_add = '''
 nnoremap <silent>gh <cmd>lua require('lspsaga.provider').lsp_finder()<CR>
+nnoremap <silent>gx <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent>gx :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-nnoremap <silent><C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-nnoremap <silent>rn <cmd>lua require('lspsaga.rename').rename()<CR>
-nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent>gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+nnoremap <silent><C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent><C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent>gd <cmd>lua require('lspsaga.provider').preview_definition()<CR>
+nnoremap <silent>go <cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>
+nnoremap <silent>gj :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>gk :Lspsaga diagnostic_jump_prev<CR>
 '''
 
 [[plugins]]
