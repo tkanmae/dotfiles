@@ -171,14 +171,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']c', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
-)
 
 nvim_lsp.pyright.setup{
-  on_attach = on_attach
-}
-nvim_lsp.diagnosticls.setup{
   on_attach = on_attach
 }
 nvim_lsp.tsserver.setup {
@@ -301,6 +295,18 @@ lua <<EOF
     end,
   })
 EOF
+'''
+
+[[plugins]]
+repo = 'folke/trouble.nvim'
+depends = ['nvim-web-devicons']
+hook_add = '''
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 '''
 
 [[plugins]]
