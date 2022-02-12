@@ -191,12 +191,12 @@ EOF
 [[plugins]]
 repo = 'tami5/lspsaga.nvim'
 hook_add = '''
-nnoremap <silent>gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent>gh <cmd>lua require('lspsaga.provider').lsp_finder()<CR>
 nnoremap <silent>K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent><C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
 nnoremap <silent>rn <cmd>lua require('lspsaga.rename').rename()<CR>
-nnoremap <silent>[c <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
-nnoremap <silent>]c <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
+nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
 '''
 
 [[plugins]]
