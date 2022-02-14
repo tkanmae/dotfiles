@@ -219,6 +219,7 @@ set showcmd
 set ruler
 set cursorline
 set title
+set signcolumn=yes
 set lazyredraw
 set updatetime=100
 
