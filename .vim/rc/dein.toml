@@ -266,20 +266,7 @@ lua <<EOF
   local null_ls = require('null-ls')
 
   null_ls.setup({
-    debug = true,
-    sources = {
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.diagnostics.flake8.with({
-        extra_args={
-          "--max-line-length",
-          "88",
-          "--extend-ignore",
-          "E203"
-        },
-      }),
-      null_ls.builtins.formatting.black,
-      null_ls.builtins.formatting.isort,
-    },
+    diagnostics_format = "[#{c}] #{m}",
     on_attach = function(client)
       if client.resolved_capabilities.document_formatting then
         vim.cmd([[
@@ -290,6 +277,12 @@ lua <<EOF
         ]])
       end
     end,
+    sources = {
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.diagnostics.flake8,
+      null_ls.builtins.formatting.black,
+      null_ls.builtins.formatting.isort,
+    },
   })
 EOF
 '''
