@@ -329,13 +329,31 @@ repo = 'nvim-lua/plenary.nvim'
 
 [[plugins]]
 repo = 'nvim-telescope/telescope.nvim'
+depends = ['telescope-fzf-native.nvim']
 hook_add = '''
+lua <<EOF
+  require('telescope').setup {
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      }
+    },
+  }
+  require('telescope').load_extension('fzf')
+EOF
 nnoremap <leader>uf <cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>
 nnoremap <leader>um <cmd>lua require('telescope.builtin').oldfiles()<cr>
 nnoremap <leader>ug <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>ub <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>us <cmd>lua require('telescope.builtin').treesitter()<cr>
 '''
+
+[[plugins]]
+repo = 'nvim-telescope/telescope-fzf-native.nvim'
+build = 'make'
 
 [[plugins]]
 repo = 'kyazdani42/nvim-web-devicons'
