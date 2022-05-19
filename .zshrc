@@ -86,8 +86,8 @@ zinit light "sharkdp/fd"
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" pick"direnv"
 zinit light "direnv/direnv"
 
-zinit ice wait as"program" pick"bin/git-dsf" lucid
-zinit light "zdharma-continuum/zsh-diff-so-fancy"
+zinit ice lucid wait"0" as"program" from"gh-r" pick"delta*/delta"
+zinit light 'dandavison/delta'
 
 zinit ice wait lucid
 zinit light -b "b4b4r07/enhancd"

@@ -4,20 +4,31 @@
 
 [core]
     excludesfile = ~/.gitignore_global
+    pager = delta
 
 [url "https://"]
     insteadOf = git://
 
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+    compactionHeuristic = true
+
 [rebase]
     autostash = true
 
-[merge]
-    tool = vimdiff
-
-[diff]
-	compactionHeuristic = true
 [difftool]
     prompt = false
+
 [difftool.latex]
     cmd = git-latexdiff "$LOCAL" "$REMOTE"
 
@@ -71,17 +82,3 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
-[color "diff-highlight"]
-	oldNormal = 196 bold
-	oldHighlight = 196 bold 52
-	newNormal = 34 bold
-	newHighlight = 34 bold 22
-[color "diff"]
-	meta = 130
-	frag = 33 bold
-	commit = 172 bold
-	old = 196 bold
-	new = 34 bold
-	whitespace = 196 reverse
-[pager]
-	diff = diff-so-fancy | less --tabs=4 -RFX
