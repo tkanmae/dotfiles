@@ -4,7 +4,7 @@
 
 !inkscape/extensions/**/*
 !mpv/**/*
-!nvim/init.vim
+!nvim/
 !nvim/coc-settings.json
 !pudb/pudb.cfg
 
