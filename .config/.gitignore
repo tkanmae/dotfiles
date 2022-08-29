@@ -2,9 +2,14 @@
 
 !.gitignore
 
+!nvim/
+!nvim/*
+!nvim/lua/*
+!nvim/lua/user/*
+!nvim/lua/user/plugin_config/*
+!nvim/coc-settings.json
+
 !inkscape/extensions/**/*
 !mpv/**/*
-!nvim/
-!nvim/coc-settings.json
 !pudb/pudb.cfg
 

@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'txt', 'markdown', 'asciidoc', 'rest', 'pandoc' },
   callback = function()
     vim.opt_local.spell = true
-    vim.opt_local.nosmartindent = true
+    vim.opt_local.smartindent = false
     vim.opt_local.wrap = true
   end,
 })

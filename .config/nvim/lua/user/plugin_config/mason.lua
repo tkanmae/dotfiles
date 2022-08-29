@@ -1,25 +1,25 @@
-local ok, mason = pcall(require, "mason")
+local ok, mason = pcall(require, 'mason')
 if not ok then
-  print("Module not found: mason")
+  print('Module not found: mason')
   return
 end
 
-local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+local ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
 if not ok then
-  print("Module not found: mason-lspconfig")
+  print('Module not found: mason-lspconfig')
   return
 end
 
 mason.setup({
   ui = {
     icons = {
-      package_installed = "✓",
-      package_uninstalled = "✗",
-      package_pending = "⟳",
+      package_installed = '✓',
+      package_uninstalled = '✗',
+      package_pending = '⟳',
     },
   },
 })
 
 mason_lspconfig.setup({
-  ensure_installed = { "sumneko_lua", "pyright"},
+  ensure_installed = { 'sumneko_lua', 'pyright' },
 })

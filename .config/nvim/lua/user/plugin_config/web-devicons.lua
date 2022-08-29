@@ -1,7 +1,7 @@
-local ok, devicon = pcall(require, 'nvim-web-devicon')
+local ok, icons = pcall(require, 'nvim-web-devicons')
 if not ok then
-  print('Module not found: nvim-web-devicon')
+  print('Module not found: nvim-web-devicons')
   return
 end
 
-devicon.setup()
+icons.setup()
