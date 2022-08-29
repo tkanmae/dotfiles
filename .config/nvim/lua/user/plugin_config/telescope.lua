@@ -4,9 +4,6 @@ if not ok then
   return
 end
 
-telescope.load_extension('fzf')
-telescope.load_extension('yank_history')
-
 telescope.setup({
   extensions = {
     fzf = {
@@ -17,6 +14,9 @@ telescope.setup({
     },
   },
 })
+
+telescope.load_extension('fzf')
+telescope.load_extension('yank_history')
 
 local builtin = require('telescope.builtin')
 

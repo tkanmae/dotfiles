@@ -19,6 +19,7 @@ vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.spelllang = { 'en', 'cjk' } -- Ignore CJK languages in spell checking
 vim.opt.swapfile = false
 vim.opt.tabstop = 2 -- Two spaces for a tab
 vim.opt.termguicolors = true

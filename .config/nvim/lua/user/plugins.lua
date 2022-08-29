@@ -39,7 +39,9 @@ packer.init({
 
 return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
+
   use('nvim-lua/plenary.nvim')
+  use('nvim-lua/popup.nvim')
 
   -- Colorscheme
   use({ 'ellisonleao/gruvbox.nvim' })
@@ -82,7 +84,8 @@ return require('packer').startup(function(use)
   -- Telescope
   use({
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'gbprod/yanky.nvim' },
+    requires = { 'nvim-lua/plenary.nvim' },
+    after = { 'yanky.nvim' },
     config = [[require("user.plugin_config.telescope")]],
   })
   use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
@@ -100,6 +103,13 @@ return require('packer').startup(function(use)
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
   })
+  use({
+    'lewis6991/spellsitter.nvim',
+    after = 'nvim-treesitter',
+    config = function()
+      require('spellsitter').setup()
+    end,
+  })
 
   -- Git
   use({
@@ -107,13 +117,7 @@ return require('packer').startup(function(use)
     config = [[require("user.plugin_config.gitsigns")]],
   })
 
-  -- Goodies
-  use({
-    'kyazdani42/nvim-web-devicons',
-    event = 'VimEnter',
-    opt = true,
-    config = [[require("user.plugin_config.web-devicons")]],
-  })
+  -- Editing
   use({
     'kylechui/nvim-surround',
     config = [[require("user.plugin_config.surround")]],
@@ -129,7 +133,15 @@ return require('packer').startup(function(use)
   })
   use({
     'numToStr/Comment.nvim',
+    keys = { 'gc', 'gb', 'g<', 'g>' },
     config = [[require("user.plugin_config.comment")]],
+  })
+
+  -- Goodies
+  use({
+    'kyazdani42/nvim-web-devicons',
+    event = 'VimEnter',
+    config = [[require("user.plugin_config.web-devicons")]],
   })
   use({
     'alexghergh/nvim-tmux-navigation',
