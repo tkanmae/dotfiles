@@ -24,3 +24,21 @@ vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
 
 -- Clear highlight
 vim.keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', { remap = true, silent = true })
+
+-- Filetype specific options
+vim.api.nvim_create_augroup('filetype_keymaps', { clear = true })
+-- Open Marked 2 on macOS to preview Markdown files.
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  group = 'filetype_keymaps',
+  pattern = { 'markdown' },
+  callback = function()
+    if vim.fn.has('macunix') then
+      vim.keymap.set(
+        'n',
+        '<leader>m',
+        ":silent !open -a Marked\\ 2.app '%:p'<CR>",
+        { remap = true, silent = true, buffer = true }
+      )
+    end
+  end,
+})

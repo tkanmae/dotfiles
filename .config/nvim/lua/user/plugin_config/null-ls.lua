@@ -8,12 +8,12 @@ local augroup = vim.api.nvim_create_augroup('lsp_formatting', { clear = true })
 
 null_ls.setup({
   diagnostics_format = '[#{c}] #{m}',
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     if client.resolved_capabilities.document_formatting then
-      vim.api.nvim_clear_autocmds({ buffer = 0, group = augroup })
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = augroup,
-        buffer = 0,
+        buffer = bufnr,
         callback = function()
           vim.lsp.buf.formatting_sync()
         end,
