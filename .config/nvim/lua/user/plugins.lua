@@ -149,10 +149,14 @@ return require('packer').startup(function(use)
 
   -- Filer
   use({
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-    tag = 'nightly',
-    config = [[require("user.plugin_config.tree")]],
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'kyazdani42/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
+    config = [[require("user.plugin_config.neo-tree")]],
   })
 
   -- Status bar

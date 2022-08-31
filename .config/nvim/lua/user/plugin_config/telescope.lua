@@ -4,7 +4,25 @@ if not ok then
   return
 end
 
+local actions = require('telescope.actions')
+
 telescope.setup({
+  defaults = {
+    mappings = {
+      n = {
+        ['q'] = actions.close,
+      },
+    },
+  },
+  pickers = {
+    buffers = {
+      mappings = {
+        n = {
+          ['d'] = actions.delete_buffer,
+        },
+      },
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true,
@@ -31,6 +49,9 @@ vim.keymap.set('n', '<leader>ug', function()
 end)
 vim.keymap.set('n', '<leader>ub', function()
   builtin.buffers()
+end)
+vim.keymap.set('n', '<leader>ur', function()
+  builtin.resume()
 end)
 vim.keymap.set('n', '<leader>uy', function()
   telescope.extensions.yank_history.yank_history({})

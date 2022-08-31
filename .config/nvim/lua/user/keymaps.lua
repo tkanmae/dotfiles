@@ -12,7 +12,7 @@ vim.keymap.set({ 'i', 'c' }, '<C-b>', '<Left>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-a>', '<Home>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-e>', '<End>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-d>', '<Del>', { silent = true })
-vim.keymap.set({ 'i', 'c' }, '<C-h>', '<BS>', { silent = true })
+vim.keymap.set({ 'i' }, '<C-h>', '<BS>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-k>', '<Esc>lc$', { silent = true })
 
 -- Move the cursor at the center of window during search
