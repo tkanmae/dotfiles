@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
   -- Completion
   use({
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     config = [[require("user.plugin_config.cmp")]],
   })
   use({ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' })

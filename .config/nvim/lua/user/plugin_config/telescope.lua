@@ -13,6 +13,7 @@ telescope.setup({
         ['q'] = actions.close,
       },
     },
+    multi_icon = ' ',
   },
   pickers = {
     buffers = {
