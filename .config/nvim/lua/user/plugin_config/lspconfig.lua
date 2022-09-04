@@ -49,9 +49,18 @@ local default_config = {
 lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, default_config)
 
 lspconfig.pyright.setup({})
+
 lspconfig.tsserver.setup({
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
+  on_attach = function(client, bufnr)
+    default_config.on_attach(client, bufnr)
+    -- Disable typescript-language-server's formatting capabilities so that
+    -- Prettier provided via null-ls becomes the only formatter.
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
 })
+
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
