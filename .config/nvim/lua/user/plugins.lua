@@ -71,6 +71,7 @@ return require('packer').startup(function(use)
   })
   use({
     'jose-elias-alvarez/null-ls.nvim',
+    event = { 'BufRead', 'BufNewFile' },
     config = [[require("user.plugin_config.null-ls")]],
   })
   use({ 'folke/lsp-colors.nvim', after = 'nvim-lspconfig' })
