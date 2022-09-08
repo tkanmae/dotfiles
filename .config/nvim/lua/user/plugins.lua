@@ -82,6 +82,12 @@ return require('packer').startup(function(use)
     requires = 'kyazdani42/nvim-web-devicons',
     config = [[require("user.plugin_config.trouble")]],
   })
+  use({
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup()
+    end,
+  })
 
   -- Telescope
   use({
