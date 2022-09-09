@@ -166,6 +166,7 @@ return require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     },
+    cmd = 'Neotree',
     config = [[require("user.plugin_config.neo-tree")]],
   })
 

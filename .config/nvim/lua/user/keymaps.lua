@@ -42,3 +42,23 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     end
   end,
 })
+
+-- Plugin specific key mapping
+vim.api.nvim_create_augroup('plugin_keymaps', { clear = true })
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+  group = 'plugin_keymaps',
+  callback = function()
+    local packer_ok, _ = pcall(require, 'packer')
+    if not packer_ok then
+      print('Module not found: packer')
+    end
+
+    local is_available = function(plugin)
+      return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+    end
+
+    if is_available('neo-tree.nvim') then
+      vim.keymap.set('n', '<Leader>fe', ':Neotree toggle reveal<CR>', { silent = true })
+    end
+  end,
+})
