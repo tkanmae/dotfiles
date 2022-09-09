@@ -42,9 +42,6 @@ return require('packer').startup(function(use)
 
   use('lewis6991/impatient.nvim')
 
-  use('nvim-lua/plenary.nvim')
-  use('nvim-lua/popup.nvim')
-
   -- Colorscheme
   use({ 'ellisonleao/gruvbox.nvim' })
 
@@ -149,6 +146,8 @@ return require('packer').startup(function(use)
   })
 
   -- Goodies
+  use('nvim-lua/plenary.nvim')
+  use('nvim-lua/popup.nvim')
   use({
     'kyazdani42/nvim-web-devicons',
     event = 'VimEnter',
