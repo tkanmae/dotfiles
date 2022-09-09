@@ -57,6 +57,27 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
       return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
     end
 
+    if is_available('telescope.nvim') then
+      vim.keymap.set('n', '<leader>uf', function()
+        require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
+      end)
+      vim.keymap.set('n', '<leader>um', function()
+        require('telescope.builtin').oldfiles()
+      end)
+      vim.keymap.set('n', '<leader>ug', function()
+        require('telescope.builtin').live_grep()
+      end)
+      vim.keymap.set('n', '<leader>ub', function()
+        require('telescope.builtin').buffers()
+      end)
+      vim.keymap.set('n', '<leader>ur', function()
+        require('telescope.builtin').resume()
+      end)
+      vim.keymap.set('n', '<leader>uy', function()
+        require('telescope').extensions.yank_history.yank_history({})
+      end)
+    end
+
     if is_available('neo-tree.nvim') then
       vim.keymap.set('n', '<Leader>fe', ':Neotree toggle reveal<CR>', { silent = true })
     end

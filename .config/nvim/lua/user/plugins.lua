@@ -94,6 +94,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     after = { 'yanky.nvim' },
+    module = 'telescope',
     config = [[require("user.plugin_config.telescope")]],
   })
   use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
