@@ -57,6 +57,16 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
       return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
     end
 
+    if is_available('yanky.nvim') then
+      vim.keymap.set({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
+      vim.keymap.set({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
+      vim.keymap.set({ 'n', 'x' }, 'gp', '<Plug>(YankyGPutAfter)')
+      vim.keymap.set({ 'n', 'x' }, 'gP', '<Plug>(YankyGPutBefore)')
+      -- Yank-ring
+      vim.keymap.set('n', '<c-n>', '<Plug>(YankyCycleForward)')
+      vim.keymap.set('n', '<c-p>', '<Plug>(YankyCycleBackward)')
+    end
+
     if is_available('telescope.nvim') then
       vim.keymap.set('n', '<leader>uf', function()
         require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
