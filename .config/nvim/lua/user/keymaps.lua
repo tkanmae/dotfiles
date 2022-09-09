@@ -81,5 +81,13 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     if is_available('neo-tree.nvim') then
       vim.keymap.set('n', '<Leader>fe', ':Neotree toggle reveal<CR>', { silent = true })
     end
+
+    if is_available('trouble.nvim') then
+      vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true })
+      vim.keymap.set('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true })
+      vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true })
+      vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true })
+      vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', { silent = true })
+    end
   end,
 })
