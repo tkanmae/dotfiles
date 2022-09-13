@@ -3,6 +3,7 @@ vim.opt.cmdheight = 1
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.cursorline = true
 vim.opt.expandtab = true
+vim.opt.formatoptions:append({ 'm', 'M' }) -- Enable to format multi-byte strings
 vim.opt.fileencoding = 'utf-8'
 vim.opt.ignorecase = true
 vim.opt.lazyredraw = true
