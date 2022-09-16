@@ -147,7 +147,6 @@ return require('packer').startup(function(use)
 
   -- Goodies
   use('nvim-lua/plenary.nvim')
-  use('nvim-lua/popup.nvim')
   use({
     'kyazdani42/nvim-web-devicons',
     event = 'VimEnter',
@@ -169,6 +168,14 @@ return require('packer').startup(function(use)
     },
     cmd = 'Neotree',
     config = [[require("user.plugin_config.neo-tree")]],
+  })
+
+  -- UI
+  use('nvim-lua/popup.nvim')
+  use({
+    'stevearc/dressing.nvim',
+    event = 'VimEnter',
+    config = [[require("user.plugin_config.dressing")]],
   })
 
   -- Status bar
