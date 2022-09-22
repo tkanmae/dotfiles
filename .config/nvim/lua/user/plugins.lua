@@ -43,7 +43,8 @@ return require('packer').startup(function(use)
   use('lewis6991/impatient.nvim')
 
   -- Colorscheme
-  use({ 'ellisonleao/gruvbox.nvim' })
+  use('ellisonleao/gruvbox.nvim')
+  use('EdenEast/nightfox.nvim')
 
   -- Completion
   use({

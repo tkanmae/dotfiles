@@ -6,7 +6,7 @@ end
 
 lualine.setup({
   options = {
-    theme = 'gruvbox',
+    theme = 'nightfox',
     section_separators = { '', '' },
     component_separators = { '|', '|' },
     disabled_filetypes = {},
