@@ -79,15 +79,8 @@ zinit ice from"gh-r" as"program"
 zinit load "junegunn/fzf-bin"
 zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
 zinit light -b "junegunn/fzf"
-zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
-zinit light "sharkdp/bat"
-zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
-zinit light "sharkdp/fd"
 zinit ice from"gh-r" as"program" mv"direnv* -> direnv" pick"direnv"
 zinit light "direnv/direnv"
-
-zinit ice lucid wait"0" as"program" from"gh-r" pick"delta*/delta"
-zinit light 'dandavison/delta'
 
 zinit ice wait lucid
 zinit light -b "b4b4r07/enhancd"
@@ -106,6 +99,19 @@ zinit snippet "OMZ::plugins/pip/_pip"
 zinit ice wait"1" blockf atpull"zinit creinstall -q" lucid
 zinit light "esc/conda-zsh-completion"
 
+# The following commnds released on GitHub do not provide executables for Apple Silicon.
+if ! type "bat" >/dev/null; then
+  zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
+  zinit light "sharkdp/bat"
+fi
+if ! type "fd" >/dev/null; then
+  zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
+  zinit light "sharkdp/fd"
+fi
+if ! type "delta" >/dev/null; then
+  zinit ice lucid wait"0" as"program" from"gh-r" pick"delta*/delta"
+  zinit light 'dandavison/delta'
+fi
 
 # ------------------------------------------------------------------------------
 # anyenv
