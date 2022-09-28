@@ -1,5 +1,5 @@
 vim.api.nvim_create_augroup('goodies', { clear = true })
--- Delete all trailing spaces
+-- Disable paste when leaving insert mode.
 vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
   group = 'goodies',
   pattern = { '*' },
@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
     end
   end,
 })
+-- Delete all trailing spaces
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = 'goodies',
   pattern = { '*' },
