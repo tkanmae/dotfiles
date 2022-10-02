@@ -12,6 +12,9 @@ treesitter.setup({
     enable = true,
     additional_vim_regex_highlighting = true,
   },
+  autotag = {
+    enable = true,
+  },
   context_commmentstring = {
     enable = true,
     enable_autocmd = true,

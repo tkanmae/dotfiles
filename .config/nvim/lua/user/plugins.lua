@@ -108,6 +108,10 @@ return require('packer').startup(function(use)
     config = [[require("user.plugin_config.treesitter")]],
   })
   use({
+    'windwp/nvim-ts-autotag',
+    after = 'nvim-treesitter',
+  })
+  use({
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
   })
