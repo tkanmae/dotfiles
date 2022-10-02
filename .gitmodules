@@ -1,7 +1,8 @@
 [submodule ".zsh/zsh-notify"]
 	path = .zsh/zsh-notify
 	url = https://github.com/marzocchi/zsh-notify.git
-        ignore = all
+	ignore = all
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+	ignore = all
