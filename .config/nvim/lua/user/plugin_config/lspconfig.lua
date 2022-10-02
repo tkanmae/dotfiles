@@ -52,13 +52,6 @@ lspconfig.pyright.setup({})
 
 lspconfig.tsserver.setup({
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-  on_attach = function(client, bufnr)
-    default_config.on_attach(client, bufnr)
-    -- Disable typescript-language-server's formatting capabilities so that
-    -- Prettier provided via null-ls becomes the only formatter.
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
 })
 
 lspconfig.sumneko_lua.setup({
@@ -77,11 +70,4 @@ lspconfig.sumneko_lua.setup({
       },
     },
   },
-  on_attach = function(client, bufnr)
-    default_config.on_attach(client, bufnr)
-    -- Disable smuneko_lsp's formatting capabilities so that StyLua provided
-    -- via null-ls becomes the only formatter.
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end,
 })
