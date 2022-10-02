@@ -115,14 +115,6 @@ return require('packer').startup(function(use)
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
   })
-  -- TODO: Remove spellsitter.nvim when NeoVim 0.8 is released.
-  use({
-    'lewis6991/spellsitter.nvim',
-    after = 'nvim-treesitter',
-    config = function()
-      require('spellsitter').setup()
-    end,
-  })
 
   -- Git
   use({
