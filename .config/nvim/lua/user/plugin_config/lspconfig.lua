@@ -56,8 +56,8 @@ lspconfig.tsserver.setup({
     default_config.on_attach(client, bufnr)
     -- Disable typescript-language-server's formatting capabilities so that
     -- Prettier provided via null-ls becomes the only formatter.
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end,
 })
 
@@ -81,7 +81,7 @@ lspconfig.sumneko_lua.setup({
     default_config.on_attach(client, bufnr)
     -- Disable smuneko_lsp's formatting capabilities so that StyLua provided
     -- via null-ls becomes the only formatter.
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end,
 })
