@@ -8,6 +8,7 @@ local actions = require('telescope.actions')
 
 telescope.setup({
   defaults = {
+    file_ignore_patterns = { 'node_modules' },
     mappings = {
       n = {
         ['q'] = actions.close,
