@@ -27,6 +27,7 @@ null_ls.setup({
   end,
   sources = {
     null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.diagnostics.textlint.with({ filetypes = { 'markdown', 'asciidoc' } }),
     -- Python
     null_ls.builtins.diagnostics.flake8,
     null_ls.builtins.formatting.black,
