@@ -22,6 +22,10 @@ vim.keymap.set('n', '*', '*zz', { remap = true, silent = true })
 vim.keymap.set('n', '#', '#zz', { remap = true, silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
 
+-- Better indenting in visual mode
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', '>', '>gv', { silent = true })
+
 -- Clear highlight
 vim.keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', { remap = true, silent = true })
 
