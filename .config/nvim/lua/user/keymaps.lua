@@ -26,6 +26,10 @@ vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { silent = true })
 vim.keymap.set('v', '>', '>gv', { silent = true })
 
+-- Move selected lines up and down
+vim.keymap.set('v', 'K', ":move '<-2<CR>gv-gv", { silent = true })
+vim.keymap.set('v', 'J', ":move '>+1<CR>gv-gv", { silent = true })
+
 -- Clear highlight
 vim.keymap.set('n', '<Esc><Esc>', ':nohlsearch<CR><Esc>', { remap = true, silent = true })
 
