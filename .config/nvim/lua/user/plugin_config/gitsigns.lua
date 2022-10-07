@@ -46,4 +46,28 @@ gitsigns.setup({
   yadm = {
     enable = false,
   },
+  on_attach = function(bufnr)
+    -- Navigation
+    vim.keymap.set({ 'n', 'v' }, ']c', function()
+      if vim.wo.diff then
+        return ']c'
+      end
+      vim.schedule(function()
+        gitsigns.next_hunk()
+      end)
+      return '<Ignore>'
+    end, { buffer = bufnr, expr = true })
+    vim.keymap.set({ 'n', 'v' }, '[c', function()
+      if vim.wo.diff then
+        return '[c'
+      end
+      vim.schedule(function()
+        gitsigns.prev_hunk()
+      end)
+      return '<Ignore>'
+    end, { buffer = bufnr, expr = true })
+
+    -- Actions
+    vim.keymap.set('n', 'gh', gitsigns.preview_hunk, { buffer = bufnr })
+  end,
 })
