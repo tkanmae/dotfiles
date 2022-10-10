@@ -21,6 +21,10 @@ vim.api.nvim_create_autocmd({ 'BufWritePre', 'FileWritePre', 'FileAppendPre' }, 
   pattern = { '*' },
   callback = function()
     local root_dir = vim.fs.normalize(os.getenv('HOME') .. '/.vim-backup')
+    if vim.bo.filetype == 'gitcommit' then
+      return
+    end
+
     local dest_dir = root_dir .. vim.fn.strftime('/%Y-%m-%d', vim.fn.localtime())
 
     if not vim.fn.isdirectory(dest_dir) then
