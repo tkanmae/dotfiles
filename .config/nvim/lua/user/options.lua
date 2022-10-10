@@ -1,3 +1,4 @@
+vim.opt.backup = true
 vim.opt.clipboard = 'unnamedplus' -- Allow NeoVim to access the system clipboard
 vim.opt.cmdheight = 1
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

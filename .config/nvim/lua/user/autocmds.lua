@@ -15,3 +15,28 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   pattern = { '*' },
   command = [[%s/\s\+$//e]],
 })
+-- Create back-up files on save.
+vim.api.nvim_create_autocmd({ 'BufWritePre', 'FileWritePre', 'FileAppendPre' }, {
+  group = 'goodies',
+  pattern = { '*' },
+  callback = function()
+    local root_dir = vim.fs.normalize(os.getenv('HOME') .. '/.vim-backup')
+    local dest_dir = root_dir .. vim.fn.strftime('/%Y-%m-%d', vim.fn.localtime())
+
+    if not vim.fn.isdirectory(dest_dir) then
+      vim.fn.system({
+        'mkdir',
+        '-p',
+        dest_dir,
+      })
+      vim.fn.system({
+        'chown',
+        'takeshi:staff',
+        dest_dir,
+      })
+    end
+
+    vim.opt.backupdir = dest_dir
+    vim.opt.backupext = vim.fn.strftime('.%H%M', vim.fn.localtime())
+  end,
+})
