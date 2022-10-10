@@ -1,24 +1,16 @@
-dotfiles
-========
+# dotfiles
 
 ## Installation
 
-After cloning this repository, you need to initialize submodules:
+After cloning this repository, you initialize submodules:
 
     $ git submodule update --init --recursive
 
-Then, you set up NeoBundle, a plugin manager for Vim:
-
-    $ mkdir .vim/bundle
-    $ git clone https://github.com/Shougo/neobundle.vim .vim/bundle/neobundle.vim
-
-Finally, you can install the configuration files:
+Then, you install the configuration files:
 
     $ ./install.py
 
-This command creates symbolic links in $HOME pointing to the configuration
-files.
-
+This command creates symbolic links in $HOME pointing to the configuration files.
 
 ## Updating submodules
 
