@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
   use({ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' })
   use({ 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' })
   use({ 'hrsh7th/cmp-nvim-lsp' })
+  use({ 'saadparwaiz1/cmp_luasnip' })
 
   -- LSP
   use({
@@ -142,6 +143,18 @@ return require('packer').startup(function(use)
     keys = { 'gc', 'gb', 'g<', 'g>' },
     config = [[require("user.plugin_config.comment")]],
   })
+
+  -- Snippet
+  use({
+    'L3MON4D3/LuaSnip',
+    module = 'luasnip',
+    after = 'nvim-cmp',
+    requires = 'friendly-snippets',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
+  })
+  use('rafamadriz/friendly-snippets')
 
   -- Goodies
   use('nvim-lua/plenary.nvim')
