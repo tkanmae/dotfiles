@@ -29,6 +29,13 @@ vim.opt.timeoutlen = 1000 -- Time to wait for a key mapping sequence to complete
 vim.opt.title = true
 vim.opt.updatetime = 100 -- Faster completion (default: 4000)
 
+-- Opt out of the default setting introduced in NeoVim 0.8.
+vim.api.nvim_create_autocmd({ 'LspAttach' }, {
+  callback = function(args)
+    vim.bo[args.buf].formatexpr = nil
+  end,
+})
+
 -- Filetype specific options
 vim.api.nvim_create_augroup('filetype_options', { clear = true })
 vim.api.nvim_create_autocmd({ 'FileType' }, {
