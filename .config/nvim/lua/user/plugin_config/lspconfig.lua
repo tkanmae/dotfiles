@@ -4,17 +4,25 @@ if not lspconfig_ok then
   return
 end
 
-local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-if not cmp_lsp_ok then
-  print('Module not found: cmp_nvim_lsp')
-  return
-end
+-- The following is equivalent to calling require('cmp-nvim-lsp').update_capabilities().
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { 'documentation', 'detail', 'additionalTextEdits' },
+}
 
 local default_config = {
   flags = {
     debounce_text_changes = 150,
   },
-  capabilities = cmp_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><x-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
