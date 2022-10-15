@@ -109,3 +109,37 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     end
   end,
 })
+
+-- LSP
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buffer
+    local client = vim.lsp.get_client_by_id(args.data.clien_id)
+
+    local opts = { silent = true, buffer = bufnr }
+
+    vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.rename, opts)
+
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
+    -- Automatically show diagnostics on hover
+    vim.api.nvim_create_autocmd('CursorHold', {
+      buffer = bufnr,
+      callback = function()
+        local opts = {
+          focusable = false,
+          close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
+          source = 'always',
+          prefix = ' ',
+          scope = 'cursor',
+        }
+        vim.diagnostic.open_float(nil, opts)
+      end,
+    })
+  end,
+})
