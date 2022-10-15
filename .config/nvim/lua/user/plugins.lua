@@ -182,7 +182,6 @@ return require('packer').startup(function(use)
   })
 
   -- UI
-  use('nvim-lua/popup.nvim')
   use({
     'stevearc/dressing.nvim',
     event = 'VimEnter',
