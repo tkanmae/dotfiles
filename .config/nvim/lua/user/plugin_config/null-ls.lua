@@ -27,12 +27,18 @@ null_ls.setup({
   end,
   sources = {
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.textlint.with({ filetypes = { 'markdown', 'asciidoc' } }),
     -- Python
     null_ls.builtins.diagnostics.flake8,
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
     -- Lua
     null_ls.builtins.formatting.stylua,
+    -- Text
+    null_ls.builtins.diagnostics.textlint.with({
+      filetypes = { 'markdown', 'asciidoc' },
+      condition = function(utils)
+        return vim.fn.executable('textlint') > 0 and utils.root_has_file({ '.textlintrc' })
+      end,
+    }),
   },
 })
