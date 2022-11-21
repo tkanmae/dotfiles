@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd({ 'LspAttach' }, {
 vim.api.nvim_create_augroup('filetype_options', { clear = true })
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   group = 'filetype_options',
-  pattern = { 'txt', 'markdown', 'asciidoc', 'rest', 'pandoc' },
+  pattern = { 'txt', 'markdown', 'asciidoc', 'rst', 'pandoc' },
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.smartindent = false
