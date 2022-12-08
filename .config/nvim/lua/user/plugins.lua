@@ -191,7 +191,12 @@ return require('packer').startup(function(use)
   -- Status bar
   use({
     'nvim-lualine/lualine.nvim',
+    event = { 'InsertEnter', 'CursorHold', 'FocusLost', 'BufRead', 'BufNewFile' },
     requires = { 'kyazdani42/nvim-web-devicons' },
+    setup = function()
+      vim.opt.laststatus = 0
+      vim.opt.showtabline = 0
+    end,
     config = [[require("user.plugin_config.lualine")]],
   })
 
