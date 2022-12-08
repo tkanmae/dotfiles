@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
   -- Git
   use({
     'lewis6991/gitsigns.nvim',
-    event = 'BufEnter',
+    event = { 'FocusLost', 'CursorHold' },
     config = [[require("user.plugin_config.gitsigns")]],
   })
 
