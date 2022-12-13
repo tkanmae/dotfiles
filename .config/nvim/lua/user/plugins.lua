@@ -62,12 +62,12 @@ return require('packer').startup(function(use)
   -- LSP
   use({
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPre' },
     config = [[require("user.plugin_config.lspconfig")]],
   })
-  use('williamboman/mason.nvim')
   use({
-    'williamboman/mason-lspconfig.nvim',
-    after = { 'mason.nvim', 'nvim-lspconfig' },
+    'williamboman/mason.nvim',
+    requires = { 'williamboman/mason-lspconfig.nvim' },
     config = [[require("user.plugin_config.mason")]],
   })
   use({
