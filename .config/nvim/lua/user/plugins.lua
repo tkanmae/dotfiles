@@ -150,12 +150,11 @@ return require('packer').startup(function(use)
     'L3MON4D3/LuaSnip',
     module = 'luasnip',
     after = 'nvim-cmp',
-    requires = 'friendly-snippets',
+    requires = 'rafamadriz/friendly-snippets',
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
     end,
   })
-  use('rafamadriz/friendly-snippets')
 
   -- Goodies
   use('nvim-lua/plenary.nvim')
