@@ -98,7 +98,11 @@ return require('packer').startup(function(use)
     module = 'telescope',
     config = [[require("user.plugin_config.telescope")]],
   })
-  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
+  use({
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    cond = vim.fn.executable('make') == 1,
+  })
 
   -- Treesitter
   use({
