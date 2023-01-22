@@ -33,6 +33,8 @@ lspconfig.tsserver.setup({
   filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
 })
 
+lspconfig.cssls.setup({})
+
 lspconfig.sumneko_lua.setup({
   settings = {
     Lua = {
