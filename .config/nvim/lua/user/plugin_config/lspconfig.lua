@@ -34,6 +34,7 @@ lspconfig.tsserver.setup({
 })
 
 lspconfig.cssls.setup({})
+lspconfig.tailwindcss.setup({})
 
 lspconfig.sumneko_lua.setup({
   settings = {
