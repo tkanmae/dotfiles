@@ -121,6 +121,10 @@ return require('packer').startup(function(use)
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
   })
+  use({
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  })
 
   -- Git
   use({
