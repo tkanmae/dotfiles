@@ -34,7 +34,9 @@ lspconfig.tsserver.setup({
 })
 
 lspconfig.cssls.setup({})
-lspconfig.tailwindcss.setup({})
+lspconfig.tailwindcss.setup({
+  root_dir = lspconfig.util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
+})
 
 lspconfig.lua_ls.setup({
   settings = {
