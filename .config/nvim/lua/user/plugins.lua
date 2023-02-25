@@ -125,6 +125,10 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   })
+  use({
+    'andymass/vim-matchup',
+    after = 'nvim-treesitter',
+  })
 
   -- Git
   use({
