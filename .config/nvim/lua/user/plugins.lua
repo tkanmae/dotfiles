@@ -153,6 +153,11 @@ return require('packer').startup(function(use)
     keys = { 'gc', 'gb', 'g<', 'g>' },
     config = [[require("user.plugin_config.comment")]],
   })
+  use({
+    'RRethy/vim-illuminate',
+    event = { 'CursorHold', 'CursorHoldI' },
+    config = [[require("user.plugin_config.vim-illuminate")]],
+  })
 
   -- Snippet
   use({
