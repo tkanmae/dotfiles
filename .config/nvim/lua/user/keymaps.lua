@@ -76,22 +76,22 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     end
 
     if is_available('telescope.nvim') then
-      vim.keymap.set('n', '<leader>uf', function()
+      vim.keymap.set('n', '<leader>sf', function()
         require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
       end, { desc = 'Search files' })
-      vim.keymap.set('n', '<leader>um', function()
+      vim.keymap.set('n', '<leader>sr', function()
         require('telescope.builtin').oldfiles()
       end, { desc = 'Search recently opened files' })
-      vim.keymap.set('n', '<leader>ug', function()
+      vim.keymap.set('n', '<leader>sg', function()
         require('telescope.builtin').live_grep()
       end, { desc = 'Search by Grep' })
-      vim.keymap.set('n', '<leader>ub', function()
+      vim.keymap.set('n', '<leader>sb', function()
         require('telescope.builtin').buffers()
       end, { desc = 'Search buffers' })
-      vim.keymap.set('n', '<leader>ur', function()
+      vim.keymap.set('n', '<leader>sR', function()
         require('telescope.builtin').resume()
       end, { desc = 'Resume' })
-      vim.keymap.set('n', '<leader>uy', function()
+      vim.keymap.set('n', '<leader>sy', function()
         require('telescope').extensions.yank_history.yank_history({})
       end)
     end
