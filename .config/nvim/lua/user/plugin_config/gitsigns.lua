@@ -56,7 +56,7 @@ gitsigns.setup({
         gitsigns.next_hunk()
       end)
       return '<Ignore>'
-    end, { buffer = bufnr, expr = true })
+    end, { buffer = bufnr, expr = true, desc = 'Next hunk' })
     vim.keymap.set({ 'n', 'v' }, '[c', function()
       if vim.wo.diff then
         return '[c'
@@ -65,7 +65,7 @@ gitsigns.setup({
         gitsigns.prev_hunk()
       end)
       return '<Ignore>'
-    end, { buffer = bufnr, expr = true })
+    end, { buffer = bufnr, expr = true, desc = 'Previous hunk' })
 
     -- Actions
     vim.keymap.set('n', 'gh', gitsigns.preview_hunk, { buffer = bufnr })

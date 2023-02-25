@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         'n',
         '<leader>m',
         ":silent !open -a Marked\\ 2.app '%:p'<CR>",
-        { remap = true, silent = true, buffer = true }
+        { remap = true, silent = true, buffer = true, desc = 'Open with Marked 2' }
       )
     end
   end,
@@ -78,34 +78,59 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     if is_available('telescope.nvim') then
       vim.keymap.set('n', '<leader>uf', function()
         require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
-      end)
+      end, { desc = 'Search files' })
       vim.keymap.set('n', '<leader>um', function()
         require('telescope.builtin').oldfiles()
-      end)
+      end, { desc = 'Search recently opened files' })
       vim.keymap.set('n', '<leader>ug', function()
         require('telescope.builtin').live_grep()
-      end)
+      end, { desc = 'Search by Grep' })
       vim.keymap.set('n', '<leader>ub', function()
         require('telescope.builtin').buffers()
-      end)
+      end, { desc = 'Search buffers' })
       vim.keymap.set('n', '<leader>ur', function()
         require('telescope.builtin').resume()
-      end)
+      end, { desc = 'Resume' })
       vim.keymap.set('n', '<leader>uy', function()
         require('telescope').extensions.yank_history.yank_history({})
       end)
     end
 
     if is_available('neo-tree.nvim') then
-      vim.keymap.set('n', '<Leader>fe', ':Neotree toggle reveal<CR>', { silent = true })
+      vim.keymap.set(
+        'n',
+        '<Leader>fe',
+        ':Neotree toggle reveal<CR>',
+        { silent = true, desc = 'Explore the current directory' }
+      )
     end
 
     if is_available('trouble.nvim') then
       vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true })
-      vim.keymap.set('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', { silent = true })
-      vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', { silent = true })
-      vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', { silent = true })
-      vim.keymap.set('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', { silent = true })
+      vim.keymap.set(
+        'n',
+        '<leader>xw',
+        '<cmd>TroubleToggle workspace_diagnostics<cr>',
+        { silent = true, desc = 'Workspace diagnostics' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>xd',
+        '<cmd>TroubleToggle document_diagnostics<cr>',
+        { silent = true, desc = 'Document diagnostics' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>xq',
+        '<cmd>TroubleToggle quickfix<cr>',
+        { silent = true, desc = 'Quickfix List (Trouble)' }
+      )
+      vim.keymap.set(
+        'n',
+        '<leader>xl',
+        '<cmd>TroubleToggle loclist<cr>',
+        { silent = true, desc = 'Location list (Trouble)' }
+      )
     end
   end,
 })
@@ -116,16 +141,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufnr = args.buffer
     local client = vim.lsp.get_client_by_id(args.data.clien_id)
 
-    local opts = { silent = true, buffer = bufnr }
+    local function map(mode, lhs, rhs, desc)
+      vim.keymap.set(mode, lhs, rhs, { silent = true, buffer = bufnr, desc = desc })
+    end
 
-    vim.keymap.set('n', '<leader>lD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>lR', vim.lsp.buf.rename, opts)
+    map('n', '<leader>lD', vim.lsp.buf.declaration, 'Go to declaration')
+    map('n', '<leader>ld', vim.lsp.buf.definition, 'Go to definition')
+    map('n', '<leader>li', vim.lsp.buf.implementation, 'Go to implementation')
+    map('n', '<leader>lr', vim.lsp.buf.references, 'Go to references')
+    map('n', '<leader>lR', vim.lsp.buf.rename, 'Rename')
 
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    map('n', '[d', vim.diagnostic.goto_prev, 'Previous error')
+    map('n', ']d', vim.diagnostic.goto_next, 'Next error')
 
     -- Automatically show diagnostics on hover
     vim.api.nvim_create_autocmd('CursorHold', {

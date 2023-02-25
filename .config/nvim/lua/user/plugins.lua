@@ -186,6 +186,12 @@ return require('packer').startup(function(use)
     'alexghergh/nvim-tmux-navigation',
     config = [[require("user.plugin_config.tmux-navigation")]],
   })
+  use({
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup()
+    end,
+  })
 
   -- Filer
   use({
