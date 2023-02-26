@@ -6,7 +6,7 @@ end
 
 lualine.setup({
   options = {
-    theme = 'nightfox',
+    theme = 'catppuccin',
     section_separators = { '', '' },
     component_separators = { '|', '|' },
     disabled_filetypes = {},
@@ -25,7 +25,7 @@ lualine.setup({
       {
         'diagnostics',
         sources = { 'nvim_diagnostic' },
-        symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+        symbols = { error = ' ', warn = ' ', info = ' ', hint = '' },
       },
     },
     lualine_y = { 'diff' },

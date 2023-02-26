@@ -16,11 +16,11 @@ vim.keymap.set({ 'i' }, '<C-h>', '<BS>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-k>', '<Esc>lc$', { silent = true })
 
 -- Move the cursor at the center of window during search
-vim.keymap.set('n', 'n', 'nzz', { remap = true, silent = true })
-vim.keymap.set('n', 'N', 'Nzz', { remap = true, silent = true })
-vim.keymap.set('n', '*', '*zz', { remap = true, silent = true })
-vim.keymap.set('n', '#', '#zz', { remap = true, silent = true })
-vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
+-- vim.keymap.set('n', 'n', 'nzz', { remap = true, silent = true })
+-- vim.keymap.set('n', 'N', 'Nzz', { remap = true, silent = true })
+-- vim.keymap.set('n', '*', '*zz', { remap = true, silent = true })
+-- vim.keymap.set('n', '#', '#zz', { remap = true, silent = true })
+-- vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
 
 -- Better indenting in visual mode
 vim.keymap.set('v', '<', '<gv', { silent = true })
@@ -48,134 +48,5 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
         { remap = true, silent = true, buffer = true, desc = 'Open with Marked 2' }
       )
     end
-  end,
-})
-
--- Plugin specific key mapping
-vim.api.nvim_create_augroup('plugin_keymaps', { clear = true })
-vim.api.nvim_create_autocmd({ 'VimEnter' }, {
-  group = 'plugin_keymaps',
-  callback = function()
-    local packer_ok, _ = pcall(require, 'packer')
-    if not packer_ok then
-      print('Module not found: packer')
-    end
-
-    local is_available = function(plugin)
-      return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
-    end
-
-    if is_available('yanky.nvim') then
-      vim.keymap.set({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
-      vim.keymap.set({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
-      vim.keymap.set({ 'n', 'x' }, 'gp', '<Plug>(YankyGPutAfter)')
-      vim.keymap.set({ 'n', 'x' }, 'gP', '<Plug>(YankyGPutBefore)')
-      -- Yank-ring
-      vim.keymap.set('n', '<c-n>', '<Plug>(YankyCycleForward)')
-      vim.keymap.set('n', '<c-p>', '<Plug>(YankyCycleBackward)')
-    end
-
-    if is_available('telescope.nvim') then
-      vim.keymap.set('n', '<leader>sf', function()
-        require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } })
-      end, { desc = 'Search files' })
-      vim.keymap.set('n', '<leader>sr', function()
-        require('telescope.builtin').oldfiles()
-      end, { desc = 'Search recently opened files' })
-      vim.keymap.set('n', '<leader>sg', function()
-        require('telescope.builtin').live_grep()
-      end, { desc = 'Search by Grep' })
-      vim.keymap.set('n', '<leader>sb', function()
-        require('telescope.builtin').buffers()
-      end, { desc = 'Search buffers' })
-      vim.keymap.set('n', '<leader>sh', function()
-        require('telescope.builtin').help_tags()
-      end, { desc = 'Search help pages' })
-      vim.keymap.set('n', '<leader>sk', function()
-        require('telescope.builtin').keymaps()
-      end, { desc = 'Search key maps' })
-      vim.keymap.set('n', '<leader>ss', function()
-        require('telescope.builtin').lsp_document_symbols()
-      end, { desc = 'Search document symbols' })
-      vim.keymap.set('n', '<leader>sy', function()
-        require('telescope').extensions.yank_history.yank_history({})
-      end)
-      vim.keymap.set('n', '<leader>sR', function()
-        require('telescope.builtin').resume()
-      end, { desc = 'Resume' })
-    end
-
-    if is_available('neo-tree.nvim') then
-      vim.keymap.set(
-        'n',
-        '<Leader>fe',
-        ':Neotree toggle reveal<CR>',
-        { silent = true, desc = 'Explore the current directory' }
-      )
-    end
-
-    if is_available('trouble.nvim') then
-      vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { silent = true })
-      vim.keymap.set(
-        'n',
-        '<leader>xw',
-        '<cmd>TroubleToggle workspace_diagnostics<cr>',
-        { silent = true, desc = 'Workspace diagnostics' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>xd',
-        '<cmd>TroubleToggle document_diagnostics<cr>',
-        { silent = true, desc = 'Document diagnostics' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>xq',
-        '<cmd>TroubleToggle quickfix<cr>',
-        { silent = true, desc = 'Quickfix List (Trouble)' }
-      )
-      vim.keymap.set(
-        'n',
-        '<leader>xl',
-        '<cmd>TroubleToggle loclist<cr>',
-        { silent = true, desc = 'Location list (Trouble)' }
-      )
-    end
-  end,
-})
-
--- LSP
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local bufnr = args.buffer
-    local client = vim.lsp.get_client_by_id(args.data.clien_id)
-
-    local function map(mode, lhs, rhs, desc)
-      vim.keymap.set(mode, lhs, rhs, { silent = true, buffer = bufnr, desc = desc })
-    end
-
-    map('n', '<leader>lD', vim.lsp.buf.declaration, 'Go to declaration')
-    map('n', '<leader>ld', vim.lsp.buf.definition, 'Go to definition')
-    map('n', '<leader>li', vim.lsp.buf.implementation, 'Go to implementation')
-    map('n', '<leader>lr', vim.lsp.buf.references, 'Go to references')
-    map('n', '<leader>lR', vim.lsp.buf.rename, 'Rename')
-
-    map('n', '[d', vim.diagnostic.goto_prev, 'Previous error')
-    map('n', ']d', vim.diagnostic.goto_next, 'Next error')
-
-    -- Automatically show diagnostics on hover
-    vim.api.nvim_create_autocmd('CursorHold', {
-      buffer = bufnr,
-      callback = function()
-        local opts = {
-          focusable = false,
-          close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-          source = 'always',
-          prefix = ' ',
-          scope = 'cursor',
-        }
-        vim.diagnostic.open_float(nil, opts)
-      end,
-    })
   end,
 })

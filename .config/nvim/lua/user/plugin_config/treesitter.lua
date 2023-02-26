@@ -17,7 +17,7 @@ treesitter.setup({
   },
   context_commmentstring = {
     enable = true,
-    enable_autocmd = true,
+    enable_autocmd = false,
   },
   indent = { enable = true, disable = { 'python', 'yaml' } },
   textobjects = {

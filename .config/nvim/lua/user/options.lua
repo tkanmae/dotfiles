@@ -7,13 +7,15 @@ vim.opt.expandtab = true
 vim.opt.formatoptions:append({ 'm', 'M' }) -- Enable to format multi-byte strings
 vim.opt.fileencoding = 'utf-8'
 vim.opt.ignorecase = true
-vim.opt.lazyredraw = true
+vim.opt.list = true
 vim.opt.listchars = { trail = '-', tab = '»-', extends = '»', precedes = '«', nbsp = '&', eol = '↲' }
 vim.opt.mouse = 'a'
-vim.opt.pumheight = 20 -- Set the pop-up menu height
-vim.opt.scrolloff = 8
+vim.opt.pumblend = 10 -- Set the pop-up menu height
+vim.opt.pumheight = 10 -- Set the pop-up menu height
+vim.opt.scrolloff = 4
 vim.opt.shiftwidth = 2 -- Two spaces inserted on each indentation
 vim.opt.showbreak = '...' -- String to put at the start of lines that have been wrapped
+vim.opt.showmode = false
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = 'yes'
 vim.opt.shiftround = true
@@ -25,9 +27,9 @@ vim.opt.spelllang = { 'en', 'cjk' } -- Ignore CJK languages in spell checking
 vim.opt.swapfile = false
 vim.opt.tabstop = 2 -- Two spaces for a tab
 vim.opt.termguicolors = true
-vim.opt.timeoutlen = 1000 -- Time to wait for a key mapping sequence to complete
+vim.opt.timeoutlen = 300 -- Time to wait for a key mapping sequence to complete
 vim.opt.title = true
-vim.opt.updatetime = 100 -- Faster completion (default: 4000)
+vim.opt.updatetime = 200 -- Faster completion (default: 4000)
 
 -- Opt out of the default setting introduced in NeoVim 0.8.
 vim.api.nvim_create_autocmd({ 'LspAttach' }, {
