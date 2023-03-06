@@ -501,16 +501,6 @@ require('lazy').setup({
         '<cmd>TroubleToggle workspace_diagnostics<cr>',
         desc = 'Workspace diagnostics',
       },
-      {
-        '<leader>x',
-        '<cmd>TroubleToggle quickfix<cr>',
-        desc = 'Quickfix List (Trouble)',
-      },
-      {
-        '<leader>xL',
-        '<cmd>TroubleToggle loclist<cr>',
-        desc = 'Location list (Trouble)',
-      },
     },
   },
   {
