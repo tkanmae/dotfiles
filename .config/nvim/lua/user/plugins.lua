@@ -40,42 +40,6 @@ require('lazy').setup({
       require('user.plugin_config.null-ls')
     end,
   },
-  {
-    'folke/trouble.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
-    cmd = { 'TroubleToggle', 'Trouble' },
-    opts = {
-      signs = {
-        error = 'E',
-        warning = 'W',
-        hint = 'H',
-        information = 'I',
-        other = 'O',
-      },
-    },
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>TroubleToggle document_diagnostics<cr>',
-        desc = 'Document diagnostics',
-      },
-      {
-        '<leader>xX',
-        '<cmd>TroubleToggle workspace_diagnostics<cr>',
-        desc = 'Workspace diagnostics',
-      },
-      {
-        '<leader>x',
-        '<cmd>TroubleToggle quickfix<cr>',
-        desc = 'Quickfix List (Trouble)',
-      },
-      {
-        '<leader>xL',
-        '<cmd>TroubleToggle loclist<cr>',
-        desc = 'Location list (Trouble)',
-      },
-    },
-  },
   -- Completion
   {
     'hrsh7th/nvim-cmp',
@@ -514,13 +478,49 @@ require('lazy').setup({
     },
   },
   {
-    'kyazdani42/nvim-web-devicons',
-    lazy = true,
-    config = function(_, opts)
-      local devicons = require('nvim-web-devicons')
-      devicons.setup(opts)
-      devicons.set_default_icon('', '#6d8086')
-    end,
+    'folke/trouble.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    cmd = { 'TroubleToggle', 'Trouble' },
+    opts = {
+      signs = {
+        error = 'E',
+        warning = 'W',
+        hint = 'H',
+        information = 'I',
+        other = 'O',
+      },
+    },
+    keys = {
+      {
+        '<leader>xx',
+        '<cmd>TroubleToggle document_diagnostics<cr>',
+        desc = 'Document diagnostics',
+      },
+      {
+        '<leader>xX',
+        '<cmd>TroubleToggle workspace_diagnostics<cr>',
+        desc = 'Workspace diagnostics',
+      },
+      {
+        '<leader>x',
+        '<cmd>TroubleToggle quickfix<cr>',
+        desc = 'Quickfix List (Trouble)',
+      },
+      {
+        '<leader>xL',
+        '<cmd>TroubleToggle loclist<cr>',
+        desc = 'Location list (Trouble)',
+      },
+    },
+  },
+  {
+    'folke/todo-comments.nvim',
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    config = true,
+    keys = {
+      { '<leader>xt', '<cmd>TodoTrouble<cr>', desc = 'Todo (Trouble)' },
+      { '<leader>st', '<cmd>TodoTelescope<cr>', desc = 'Search Todos' },
+    },
   },
   {
     'folke/which-key.nvim',
@@ -549,6 +549,15 @@ require('lazy').setup({
         ['<leader>w'] = { name = '+windows' },
         ['<leader>x'] = { name = '+diagnostics/quickfix' },
       })
+    end,
+  },
+  {
+    'kyazdani42/nvim-web-devicons',
+    lazy = true,
+    config = function(_, opts)
+      local devicons = require('nvim-web-devicons')
+      devicons.setup(opts)
+      devicons.set_default_icon('', '#6d8086')
     end,
   },
   -- Colorscheme
