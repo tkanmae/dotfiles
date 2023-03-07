@@ -18,7 +18,7 @@ require('lazy').setup({
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      { 'williamboman/mason-lspconfig.nvim', opts = { ensure_installed = { 'lua_ls', 'pyright' } } },
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
@@ -28,9 +28,15 @@ require('lazy').setup({
   {
     'williamboman/mason.nvim',
     cmd = 'Mason',
-    config = function()
-      require('user.plugin_config.mason')
-    end,
+    opts = {
+      ui = {
+        icons = {
+          package_installed = '✓',
+          package_uninstalled = '✗',
+          package_pending = '⟳',
+        },
+      },
+    },
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
