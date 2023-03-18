@@ -487,15 +487,17 @@ require('lazy').setup({
     'folke/trouble.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     cmd = { 'TroubleToggle', 'Trouble' },
-    opts = {
-      signs = {
-        error = 'E',
-        warning = 'W',
-        hint = 'H',
-        information = 'I',
-        other = 'O',
-      },
-    },
+    opts = function()
+      local icons = require('user.icons')
+      return {
+        signs = {
+          error = icons.diagnostics.error,
+          warning = icons.diagnostics.warn,
+          hint = icons.diagnostics.hint,
+          information = icons.diagnostics.info,
+        },
+      }
+    end,
     keys = {
       {
         '<leader>xx',

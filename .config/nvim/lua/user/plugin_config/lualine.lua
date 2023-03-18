@@ -4,9 +4,11 @@ if not ok then
   return
 end
 
+local icons = require('user.icons')
+
 lualine.setup({
   options = {
-    theme = 'catppuccin',
+    theme = 'auto',
     section_separators = { '', '' },
     component_separators = { '|', '|' },
     disabled_filetypes = {},
@@ -25,10 +27,20 @@ lualine.setup({
       {
         'diagnostics',
         sources = { 'nvim_diagnostic' },
-        symbols = { error = ' ', warn = ' ', info = ' ', hint = '' },
+        symbols = {
+          error = icons.diagnostics.error,
+          warn = icons.diagnostics.warn,
+          info = icons.diagnostics.info,
+          hint = icons.diagnostics.hint,
+        },
       },
     },
-    lualine_y = { 'diff' },
+    lualine_y = {
+      {
+        'diff',
+        symbols = { added = icons.git.added, modified = icons.git.modified, removed = icons.git.removed },
+      },
+    },
     lualine_z = { 'location' },
   },
   inactive_sections = {
@@ -39,5 +51,5 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {},
   },
-  extensions = { 'fugitive' },
+  extensions = { 'neo-tree' },
 })
