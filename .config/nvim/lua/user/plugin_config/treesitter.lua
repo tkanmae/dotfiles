@@ -19,7 +19,7 @@ treesitter.setup({
     enable = true,
     enable_autocmd = false,
   },
-  indent = { enable = true, disable = { 'python', 'yaml' } },
+  indent = { enable = true },
   textobjects = {
     select = {
       enable = true,
