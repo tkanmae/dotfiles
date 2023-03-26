@@ -440,9 +440,22 @@ require('lazy').setup({
         return vim.ui.input(...)
       end
     end,
-    config = function()
-      require('user.plugin_config.dressing')
-    end,
+    opt = {
+      input = {
+        default_prompt = ' ',
+        win_options = {
+          winhighlight = 'Normal:Normal,NormalNC:Normal',
+        },
+      },
+      select = {
+        backend = { 'telescope', 'builtin' },
+        builtin = {
+          win_options = {
+            winhighlight = 'Normal:Normal,NormalNC:Normal',
+          },
+        },
+      },
+    },
   },
   {
     'nvim-lualine/lualine.nvim',
