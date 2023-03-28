@@ -114,12 +114,14 @@ if ! type "delta" >/dev/null; then
 fi
 
 # ------------------------------------------------------------------------------
-# anyenv
+# asdf
 # ------------------------------------------------------------------------------
-if [[ -d ${HOME}/.anyenv ]]; then
-    path=(${HOME}/.anyenv/bin(N-/) ${path})
-    eval "$(anyenv init -)"
+if [[ ! -d ${HOME}/.asdf ]]; then
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 fi
+source "${HOME}/.asdf/asdf.sh"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+fpath=(${ASDF_DIR}/completions ${fpath})
 
 
 # ------------------------------------------------------------------------------
