@@ -79,7 +79,7 @@ def setup_argparser():
 
 
 def main(args):
-    excludes = [".git", ".gitmodules", ".DS_Store"]
+    excludes = [".git", ".gitignore", ".gitmodules", ".DS_Store"]
     dotfiles = sorted(glob.glob(".*"))
     dotfiles = sorted(list(set(dotfiles) - set(excludes)))
 
