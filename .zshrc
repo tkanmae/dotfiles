@@ -1,5 +1,8 @@
 source ~/.zsh/paths.zsh
 
+if [[ $OSTYPE = darwin* ]]; then
+  source ~/.zsh/zsh-notify/notify.plugin.zsh
+fi
 
 # ------------------------------------------------------------------------------
 # Zinit
@@ -245,16 +248,3 @@ function ipython() {
         fi
     fi
 }
-
-
-# ------------------------------------------------------------------------------
-# Platform specific settings
-# ------------------------------------------------------------------------------
-case "$OSTYPE" in
-    darwin*)
-        source ${HOME}/.zsh/.zshrc.osx
-        ;;
-    linux*)
-        source ${HOME}/.zsh/.zshrc.linux
-        ;;
-esac
