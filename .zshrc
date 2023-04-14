@@ -1,51 +1,5 @@
-typeset -U path cdpath fpath manpath
+source ~/.zsh/paths.zsh
 
-# ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-path=(
-    # Local
-    ${HOME}/.local/bin(N-/)
-    # Linuxbrew
-    ${HOME}/.linuxbrew/bin(N-/)
-    # Homebrew (Apple Silicon)
-    /opt/homebrew/bin(N-/)
-    /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
-    /opt/homebrew/opt/findutils/libexec/gnubin(N-/)
-    /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
-    # Homebrew
-    /usr/local/opt/coreutils/libexec/gnubin(N-/)
-    /usr/local/opt/findutils/libexec/gnubin(N-/)
-    /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
-    # Sytem-wide
-    /usr/local/bin(N-/)
-    /usr/local/sbin(N-/)
-    /usr/bin(N-/)
-    /bin(N-/)
-    /usr/sbin(N-/)
-    /sbin(N-/)
-)
-
-
-# ------------------------------------------------------------------------------
-# MANPATH
-# ------------------------------------------------------------------------------
-manpath=(
-    # Linuxbrew
-    ${HOME}/.linuxbrew/share/man(N-/)
-    # Homebrew (Apple Silicon)
-    /opt/homebrew/opt/coreutils/libexec/gnuman(N-/)
-    /opt/homebrew/opt/findutils/libexec/gnuman(N-/)
-    /opt/homebrew/opt/gnu-tar/libexec/gnuman(N-/)
-    /opt/homebrew/share/man(N-)
-    # Homebrew
-    /usr/local/opt/coreutils/share/man(N-)
-    /usr/local/opt/findutils/share/man(N-)
-    /usr/local/opt/gnu-tar/share/man(N-)
-    # System-wide
-    /usr/local/share/man(N-)
-    /usr/share/man(N-/)
-)
 
 # ------------------------------------------------------------------------------
 # Zinit
