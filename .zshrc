@@ -1,4 +1,5 @@
 source ~/.zsh/paths.zsh
+source ~/.zsh/asdf.zsh
 
 if [[ $OSTYPE = darwin* ]]; then
   source ~/.zsh/zsh-notify/notify.plugin.zsh
@@ -32,16 +33,6 @@ zinit light "zsh-users/zsh-autosuggestions"
 zinit ice wait lucid
 zinit light -b "hlissner/zsh-autopair"
 
-zinit ice from"gh-r" as"program"
-zinit load "junegunn/fzf-bin"
-zinit ice as'program' pick'bin/fzf-tmux' multisrc'shell/{completion,key-bindings}.zsh' lucid
-zinit light -b "junegunn/fzf"
-zinit ice from"gh-r" as"program" mv"direnv* -> direnv" pick"direnv"
-zinit light "direnv/direnv"
-
-zinit ice wait lucid
-zinit light -b "b4b4r07/enhancd"
-
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light "sindresorhus/pure"
 
@@ -55,31 +46,6 @@ zinit ice wait"1" blockf as"completion" lucid
 zinit snippet "OMZ::plugins/pip/_pip"
 zinit ice wait"1" blockf atpull"zinit creinstall -q" lucid
 zinit light "esc/conda-zsh-completion"
-
-# The following commnds released on GitHub do not provide executables for Apple Silicon.
-if ! type "bat" >/dev/null; then
-  zinit ice from"gh-r" as"program" mv"bat* -> bat" pick"bat/bat"
-  zinit light "sharkdp/bat"
-fi
-if ! type "fd" >/dev/null; then
-  zinit ice as"command" from"gh-r" mv"fd* -> fd" pick"fd/fd"
-  zinit light "sharkdp/fd"
-fi
-if ! type "delta" >/dev/null; then
-  zinit ice lucid wait"0" as"program" from"gh-r" pick"delta*/delta"
-  zinit light 'dandavison/delta'
-fi
-
-# ------------------------------------------------------------------------------
-# asdf
-# ------------------------------------------------------------------------------
-if [[ ! -d ${HOME}/.asdf ]]; then
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-fi
-source "${HOME}/.asdf/asdf.sh"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-fpath=(${ASDF_DIR}/completions ${fpath})
-
 
 # ------------------------------------------------------------------------------
 # direnv
