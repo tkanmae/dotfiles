@@ -58,6 +58,29 @@ function() {
   if command -v brew >/dev/null; then
     eval $(brew shellenv)
   fi
+
+  # direnv
+  if command -v direnv &>/dev/null; then
+      eval "$(direnv hook zsh)"
+  fi
+
+  # zsh-autosuggestions
+  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
+  export ZSH_AUTOSUGGEST_USE_ASYNC=1
+
+  # enhancd
+  export ENHANCD_FILTER="fzf"
+  export ENHANCD_HYPHEN_NUM=32
+  export ENHANCD_COMPLETION_BEHAVIOR="list"
+
+  # fzf
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+  export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
+
+  # bat
+  export BAT_THEME="Nord"
+  export BAT_STYLE="plain"
 }
 
 unfunction _brew_prefix

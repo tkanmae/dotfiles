@@ -47,28 +47,10 @@ zinit snippet "OMZ::plugins/pip/_pip"
 zinit ice wait"1" blockf atpull"zinit creinstall -q" lucid
 zinit light "esc/conda-zsh-completion"
 
-# ------------------------------------------------------------------------------
-# direnv
-# ------------------------------------------------------------------------------
-if command -v direnv &>/dev/null; then
-    eval "$(direnv hook zsh)"
-fi
-
-
-# ------------------------------------------------------------------------------
-# zsh-autosuggestions
-# ------------------------------------------------------------------------------
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
-export ZSH_AUTOSUGGEST_USE_ASYNC=1
-
 
 # ------------------------------------------------------------------------------
 # fzf
 # ------------------------------------------------------------------------------
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
-
 function fzf_history() {
     BUFFER=$(history -nr 1 | \
         FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --tiebreak=index --query ${(qqq)LBUFFER} +m" fzf)
@@ -77,21 +59,6 @@ function fzf_history() {
 }
 zle -N fzf_history
 bindkey '^r' fzf_history
-
-
-# ------------------------------------------------------------------------------
-# enhancd
-# ------------------------------------------------------------------------------
-export ENHANCD_FILTER="fzf"
-export ENHANCD_HYPHEN_NUM=32
-export ENHANCD_COMPLETION_BEHAVIOR="list"
-
-
-# ------------------------------------------------------------------------------
-# bat
-# ------------------------------------------------------------------------------
-export BAT_THEME="Nord"
-export BAT_STYLE="plain"
 
 
 # ------------------------------------------------------------------------------
