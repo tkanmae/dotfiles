@@ -54,20 +54,16 @@ function() {
     )
   fi
 
-  command -v nvim >/dev/null 2>&1 && export EDITOR=nvim || export EDITOR=vim
+  command -v nvim >/dev/null && export EDITOR=nvim || export EDITOR=vim
   export PAGER=less
   export LESS='--tabs=4 --ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS'
   export LESSCHARSET='utf-8'
 
   # Homebrew or Linuxbrew
-  if command -v brew >/dev/null; then
-    eval $(brew shellenv)
-  fi
+  command -v brew >/dev/null && eval $(brew shellenv)
 
   # direnv
-  if command -v direnv &>/dev/null; then
-    eval "$(direnv hook zsh)"
-  fi
+  command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
   # zsh-autosuggestions
   export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
