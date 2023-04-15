@@ -46,9 +46,9 @@ unsetopt CLOBBER
 # History
 HISTFILE=${HOME}/.zsh_history
 # Maximum number of entries to keep in the history file.
-SAVEHIST=10000
+SAVEHIST=$(( 100 * 1000 ))
 # Maximum number of entries to keep in memory.
-HISTSIZE=10000
+HISTSIZE=$(( 1.2 * SAVEHIST ))
 # Treat the '!' character specially during expansion.
 setopt BANG_HIST
 # Write the history file in the ':start:elapsed;command' format.
