@@ -1,52 +1,49 @@
 typeset -U path manpath
 
+function _brew_prefix() {
+  case $OSTYPE in
+    linux*)
+      echo -n "$HOME/.linuxbrew"
+      ;;
+    darwin*)
+      if [[ $(uname -m) = arm64 ]]; then
+        echo -n "/opt/homebrew"
+      else
+        echo -n "/usr/local"
+      fi
+      ;;
+    *)
+      echo -n "UNKNOWN"
+      ;;
+  esac
+}
+
 function() {
+  local brew_prefix=$(_brew_prefix)
+
   path=(
-      # Local
-      ${HOME}/.local/bin(N-/)
-      # Linuxbrew
-      ${HOME}/.linuxbrew/bin(N-/)
-      # Homebrew (Apple Silicon)
-      /opt/homebrew/bin(N-/)
-      /opt/homebrew/opt/coreutils/libexec/gnubin(N-/)
-      /opt/homebrew/opt/findutils/libexec/gnubin(N-/)
-      /opt/homebrew/opt/gnu-tar/libexec/gnubin(N-/)
-      # Homebrew
-      /usr/local/opt/coreutils/libexec/gnubin(N-/)
-      /usr/local/opt/findutils/libexec/gnubin(N-/)
-      /usr/local/opt/gnu-tar/libexec/gnubin(N-/)
-      # Sytem-wide
-      /usr/local/bin(N-/)
-      /usr/local/sbin(N-/)
-      /usr/bin(N-/)
-      /bin(N-/)
-      /usr/sbin(N-/)
-      /sbin(N-/)
+    # Local
+    $HOME/.local/bin(N-/)
+    # Homebrew or Linuxbrew
+    $brew_prefix/bin(N-/)
+    $brew_prefix/opt/coreutils/libexec/gnubin(N-/)
+    $brew_prefix/opt/findutils/libexec/gnubin(N-/)
+    $brew_prefix/opt/gnu-tar/libexec/gnubin(N-/)
+    # Sytem-wide
+    /usr/local/cuda/bin(N-/)
+    /usr/cuda/bin(N-/)
+    $path
   )
 
   manpath=(
-      # Linuxbrew
-      ${HOME}/.linuxbrew/share/man(N-/)
-      # Homebrew (Apple Silicon)
-      /opt/homebrew/opt/coreutils/libexec/gnuman(N-/)
-      /opt/homebrew/opt/findutils/libexec/gnuman(N-/)
-      /opt/homebrew/opt/gnu-tar/libexec/gnuman(N-/)
-      /opt/homebrew/share/man(N-)
-      # Homebrew
-      /usr/local/opt/coreutils/share/man(N-)
-      /usr/local/opt/findutils/share/man(N-)
-      /usr/local/opt/gnu-tar/share/man(N-)
-      # System-wide
-      /usr/local/share/man(N-)
-      /usr/share/man(N-/)
+    # Homebrew or Linuxbrew
+    $brew_prefix/share/man(N-)
+    # System-wide
+    /usr/local/share/man(N-)
+    /usr/share/man(N-/)
   )
 
   if [[ $OSTYPE = linux* ]]; then
-    path+=(
-      /usr/local/cuda/bin(N-/)
-      /usr/cuda/bin(N-/)
-    )
-
     typeset -Tx LD_LIBRARY_PATH ld_library_path
     typeset -U ld_library_path
     ld_library_path=(
@@ -54,4 +51,10 @@ function() {
       /usr/cuda/lib64(N-/)
     )
   fi
+
+  if command -v brew >/dev/null; then
+    eval $(brew shellenv)
+  fi
 }
+
+unfunction _brew_prefix
