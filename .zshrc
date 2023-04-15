@@ -1,5 +1,6 @@
 source ~/.zsh/asdf.zsh
 source ~/.zsh/env.zsh
+source ~/.zsh/options.zsh
 
 if [[ $OSTYPE = darwin* ]]; then
   source ~/.zsh/zsh-notify/notify.plugin.zsh
@@ -59,47 +60,6 @@ function fzf_history() {
 }
 zle -N fzf_history
 bindkey '^r' fzf_history
-
-
-# ------------------------------------------------------------------------------
-# Directory
-# ------------------------------------------------------------------------------
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-setopt PUSHD_SILENT
-setopt PUSHD_TO_HOME
-setopt CDABLE_VARS
-setopt AUTO_NAME_DIRS
-setopt MULTIOS
-setopt EXTENDED_GLOB
-unsetopt CLOBBER
-
-
-# ------------------------------------------------------------------------------
-# Completion
-# ------------------------------------------------------------------------------
-setopt MAGIC_EQUAL_SUBST
-
-# ------------------------------------------------------------------------------
-# History
-# ------------------------------------------------------------------------------
-export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
-setopt BANG_HIST
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_VERIFY
-setopt HIST_BEEP
-setopt HIST_REDUCE_BLANKS
 
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
