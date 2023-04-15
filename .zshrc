@@ -1,5 +1,5 @@
-source ~/.zsh/paths.zsh
 source ~/.zsh/asdf.zsh
+source ~/.zsh/env.zsh
 
 if [[ $OSTYPE = darwin* ]]; then
   source ~/.zsh/zsh-notify/notify.plugin.zsh
