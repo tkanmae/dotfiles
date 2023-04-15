@@ -24,6 +24,8 @@ function() {
   path=(
     # Local
     $HOME/.local/bin(N-/)
+    # Yarn
+    $HOME/.yarn/bin(N-/)
     # Homebrew or Linuxbrew
     $brew_prefix/bin(N-/)
     $brew_prefix/opt/coreutils/libexec/gnubin(N-/)
