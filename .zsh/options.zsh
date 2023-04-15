@@ -44,7 +44,7 @@ setopt EXTENDED_GLOB
 unsetopt CLOBBER
 
 # History
-HISTFILE=${HOME}/.zsh_history
+HISTFILE=${XDG_DATA_HOME:=~/.local/share}/zsh/history
 # Maximum number of entries to keep in the history file.
 SAVEHIST=$(( 100 * 1000 ))
 # Maximum number of entries to keep in memory.
