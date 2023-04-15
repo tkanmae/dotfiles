@@ -54,6 +54,11 @@ function() {
     )
   fi
 
+  command -v nvim >/dev/null 2>&1 && export EDITOR=nvim || export EDITOR=vim
+  export PAGER=less
+  export LESS='--tabs=4 --ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS'
+  export LESSCHARSET='utf-8'
+
   # Homebrew or Linuxbrew
   if command -v brew >/dev/null; then
     eval $(brew shellenv)
@@ -81,6 +86,9 @@ function() {
   # bat
   export BAT_THEME="Nord"
   export BAT_STYLE="plain"
+
+  # GoogleTest
+  export GTEST_COLOR=1
 }
 
 unfunction _brew_prefix
