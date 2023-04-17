@@ -1,10 +1,3 @@
-source ~/.zsh/plugins.zsh
-source ~/.zsh/env.zsh
-source ~/.zsh/asdf.zsh
-source ~/.zsh/options.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/aliases.zsh
-
 WORDCHARS=''
 
 bindkey -e
@@ -20,3 +13,4 @@ bindkey '^R' fzf_history
 
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
+
