@@ -2,6 +2,7 @@ source ~/.zsh/plugins.zsh
 source ~/.zsh/env.zsh
 source ~/.zsh/asdf.zsh
 source ~/.zsh/options.zsh
+source ~/.zsh/completion.zsh
 source ~/.zsh/aliases.zsh
 
 
