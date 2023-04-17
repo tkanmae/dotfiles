@@ -1,5 +1,5 @@
 function() {
-  local znap_dir=${XDG_CONFIG_HOME:=$HOME/.config}/zsh/plugins/zsh-snap
+  local znap_dir=$ZDOTDIR/plugins/zsh-snap
 
   if [[ ! -f $znap_dir/znap.zsh ]]; then
     git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git $znap_dir

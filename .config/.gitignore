@@ -9,6 +9,9 @@
 !nvim/lua/user/plugin_config/*
 !nvim/coc-settings.json
 
+!zsh/
+!zsh/*
+
 !inkscape/extensions/**/*
 !mpv/**/*
 !pudb/pudb.cfg
