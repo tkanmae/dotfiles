@@ -66,9 +66,6 @@ function() {
   # Homebrew or Linuxbrew
   command -v brew >/dev/null && znap eval brew-shellenv 'brew shellenv'
 
-  # direnv
-  command -v direnv >/dev/null && znap eval direnv-hook 'direnv hook zsh'
-
   # zsh-autosuggestions
   export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"

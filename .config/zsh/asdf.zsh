@@ -51,7 +51,7 @@ function () {
     _install direnv latest
   fi
   source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-  eval "$(direnv hook zsh)"
+  znap eval direnv-hook 'direnv hook zsh'
 
   if [[ -z $installed_plugins[fzf] ]]; then
     _install_plugin fzf https://github.com/kompiro/asdf-fzf.git
