@@ -54,16 +54,20 @@ function() {
     )
   fi
 
+  if [[ $OSTYPE = darwin* ]]; then
+    source ~/.zsh/zsh-notify/notify.plugin.zsh
+  fi
+
   command -v nvim >/dev/null && export EDITOR=nvim || export EDITOR=vim
   export PAGER=less
   export LESS='--tabs=4 --ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS'
   export LESSCHARSET='utf-8'
 
   # Homebrew or Linuxbrew
-  command -v brew >/dev/null && eval $(brew shellenv)
+  command -v brew >/dev/null && znap eval brew-shellenv 'brew shellenv'
 
   # direnv
-  command -v direnv >/dev/null && eval "$(direnv hook zsh)"
+  command -v direnv >/dev/null && znap eval direnv-hook 'direnv hook zsh'
 
   # zsh-autosuggestions
   export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
