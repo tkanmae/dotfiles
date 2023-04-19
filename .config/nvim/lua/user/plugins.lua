@@ -121,7 +121,7 @@ require('lazy').setup({
       { '<c-n>', '<Plug>(YankyCycleForward)' },
       { '<c-p>', '<Plug>(YankyCycleBackward)' },
     },
-    opt = {
+    opts = {
       ring = {
         history_length = 100,
         storage = 'shada',
