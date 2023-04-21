@@ -440,7 +440,7 @@ require('lazy').setup({
         return vim.ui.input(...)
       end
     end,
-    opt = {
+    opts = {
       input = {
         default_prompt = ' ',
         win_options = {
