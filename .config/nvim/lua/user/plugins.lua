@@ -114,12 +114,13 @@ require('lazy').setup({
   {
     'gbprod/yanky.nvim',
     keys = {
-      { 'p', '<Plug>(YankyPutAfter)', mode = { 'n', 'x' } },
-      { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' } },
-      { 'gp', '<Plug>(YankyGPutAfter)', mode = { 'n', 'x' } },
-      { 'gP', '<Plug>(YankyGPutBefore)', mode = { 'n', 'x' } },
-      { '<c-n>', '<Plug>(YankyCycleForward)' },
-      { '<c-p>', '<Plug>(YankyCycleBackward)' },
+      { 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank text' },
+      { 'p', '<Plug>(YankyPutAfter)', mode = { 'n', 'x' }, desc = 'Put yanked text after cursor' },
+      { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Put yanked text before cursor' },
+      { 'gp', '<Plug>(YankyGPutAfter)', mode = { 'n', 'x' }, desc = 'Put yanked text after selection' },
+      { 'gP', '<Plug>(YankyGPutBefore)', mode = { 'n', 'x' }, desc = 'Put yanked text before selection' },
+      { '[y', '<Plug>(YankyCycleForward)', desc = 'Cycle forward through yank history' },
+      { ']y', '<Plug>(YankyCycleBackward)', desc = 'Cycle backward through yank history' },
     },
     opts = {
       ring = {
