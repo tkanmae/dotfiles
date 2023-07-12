@@ -4,7 +4,6 @@ require('user.plugins')
 require('user.colorscheme')
 require('user.autocmds')
 
-
 local function first_to_upper(str)
   return (str:gsub('^%l', string.upper))
 end

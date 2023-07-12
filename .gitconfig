@@ -20,7 +20,7 @@
     conflictstyle = diff3
 
 [diff]
-    colorMoved = default
+	colorMoved = zebra
     compactionHeuristic = true
 
 [rebase]
@@ -83,3 +83,59 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[color "status"]
+	branch = normal
+	added = 10 normal
+	updated = 10 normal
+	localbranch = normal
+	changed = 11 normal
+	header = normal
+	remotebranch = normal
+	nobranch = normal bold
+	unmerged = 9 normal
+	untracked = normal dim
+[color "branch"]
+	plain = normal
+	remote = normal
+	current = normal reverse
+	local = normal
+	upstream = normal
+[color "remote"]
+	hint = normal dim
+	success = 2 normal
+	error = 1 normal
+	warning = 3 normal
+[color "interactive"]
+	header = normal dim bold
+	prompt = 15 4
+	help = normal dim
+	error = normal bold
+[color "diff"]
+	commit = normal
+	newMoved = 11 normal
+	oldMovedAlternativeDimmed = 4 normal dim
+	frag = normal dim italic
+	oldMovedAlternative = 4 normal
+	contextBold = normal bold
+	newBold = 10 normal bold
+	context = normal
+	oldMoved = 3 normal
+	oldBold = 1 normal bold
+	newMovedDimmed = 11 normal dim
+	func = normal dim italic
+	meta = normal dim
+	newDimmed = 10 normal dim
+	newMovedAlternative = 12 normal
+	new = 10 normal
+	newMovedAlternativeDimmed = 12 normal dim
+	whitespace = normal 9
+	oldMovedDimmed = 3 normal dim
+	oldDimmed = 1 normal dim
+	old = 1 normal
+[color "decorate"]
+	branch = normal
+	tag = normal
+	remotebranch = normal
+	stash = normal dim
+	grafted = normal bold
+	HEAD = normal italic

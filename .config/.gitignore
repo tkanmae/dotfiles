@@ -5,6 +5,7 @@
 !nvim/
 !nvim/*
 !nvim/lua/*
+!nvim/lua/plugins/*
 !nvim/lua/user/*
 !nvim/lua/user/plugin_config/*
 !nvim/coc-settings.json
