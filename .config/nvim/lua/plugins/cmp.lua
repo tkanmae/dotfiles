@@ -9,6 +9,8 @@ return {
     'lukas-reineke/cmp-under-comparator',
   },
   opts = function()
+    vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true })
+
     local cmp = require('cmp')
     local luasnip = require('luasnip')
 
@@ -67,6 +69,11 @@ return {
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
+      },
+      experimental = {
+        ghost_text = {
+          hl_group = 'CmpGhostText',
+        },
       },
     }
   end,
