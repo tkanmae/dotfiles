@@ -38,6 +38,7 @@ return {
             return vim.fn.executable('textlint') > 0 and utils.root_has_file({ '.textlintrc' })
           end,
         }),
+        require('typescript.extensions.null-ls.code-actions'),
       },
     }
   end,

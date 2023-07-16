@@ -10,6 +10,7 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
+    'jose-elias-alvarez/typescript.nvim',
   },
   opts = {
     servers = {
@@ -33,9 +34,38 @@ return {
       },
       ['pyright'] = {},
       ['tailwindcss'] = {},
-      ['tsserver'] = {},
+      ['tsserver'] = {
+        keys = {
+          { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
+          { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
+        },
+        settings = {
+          typescript = {
+            format = {
+              indentSize = vim.o.shiftwidth,
+              convertTabsToSpaces = vim.o.expandtab,
+              tabSize = vim.o.tabstop,
+            },
+          },
+          javascript = {
+            format = {
+              indentSize = vim.o.shiftwidth,
+              convertTabsToSpaces = vim.o.expandtab,
+              tabSize = vim.o.tabstop,
+            },
+          },
+          completions = {
+            completeFunctionCalls = true,
+          },
+        },
+      },
     },
-    setup = {},
+    setup = {
+      tsserver = function(_, opts)
+        require('typescript').setup({ server = opts })
+        return true
+      end,
+    },
   },
   config = function(_, opts)
     local lspconfig = require('lspconfig')
