@@ -1,3 +1,8 @@
+local function is_installable_with_mason(server_name)
+  local installable_servers = vim.tbl_keys(require('mason-lspconfig.mappings.server').lspconfig_to_package)
+  return vim.tbl_contains(installable_servers, server_name)
+end
+
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -6,59 +11,64 @@ return {
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
   },
-  config = function()
+  opts = {
+    servers = {
+      ['cssls'] = {},
+      ['lua_ls'] = {
+        settings = {
+          Lua = {
+            format = {
+              -- Use StyLua via null-ls instead
+              enable = false,
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file('', true),
+            },
+          },
+        },
+      },
+      ['pyright'] = {},
+      ['tailwindcss'] = {},
+      ['tsserver'] = {},
+    },
+    setup = {},
+  },
+  config = function(_, opts)
     local lspconfig = require('lspconfig')
+    local mason_lspconfig = require('mason-lspconfig')
 
-    -- The following is equivalent to calling require('cmp-nvim-lsp').update_capabilities().
     local capabilities = vim.tbl_deep_extend(
       'force',
       vim.lsp.protocol.make_client_capabilities(),
       require('cmp_nvim_lsp').default_capabilities()
     )
 
-    lspconfig.util.default_config = vim.tbl_deep_extend(
-      'force',
-      lspconfig.util.default_config,
-      { flags = { debounce_text_changes = 150 }, capabilities = capabilities }
-    )
+    local function setup_server(server_name)
+      local server_opts = vim.tbl_deep_extend('force', {
+        capabilities = vim.deepcopy(capabilities),
+      }, opts.servers[server_name] or {})
 
-    require('mason-lspconfig').setup_handlers({
-      ['cssls'] = function()
-        lspconfig.cssls.setup({})
-      end,
-      ['lua_ls'] = function()
-        lspconfig.lua_ls.setup({
-          settings = {
-            Lua = {
-              format = {
-                -- Use StyLua via null-ls instead
-                enable = false,
-              },
-              diagnostics = {
-                globals = { 'vim' },
-              },
-              workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
-              },
-            },
-          },
-        })
-      end,
-      ['pyright'] = function()
-        lspconfig.pyright.setup({})
-      end,
-      ['tailwindcss'] = function()
-        lspconfig.tailwindcss.setup({
-          root_dir = lspconfig.util.root_pattern('tailwind.config.js', 'tailwind.config.ts'),
-        })
-      end,
-      ['tsserver'] = function()
-        lspconfig.tsserver.setup({
-          filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
-        })
-      end,
-    })
+      if opts.setup[server_name] then
+        if opts.setup[server_name](server_name, server_opts) then
+          return
+        end
+      end
+      lspconfig[server_name].setup(server_opts)
+    end
+
+    local servers_to_install = {}
+    for server_name, _ in pairs(opts.servers) do
+      if is_installable_with_mason(server_name) then
+        servers_to_install[#servers_to_install + 1] = server_name
+      else
+        setup_server(server_name)
+      end
+    end
+    mason_lspconfig.setup({ ensure_installed = servers_to_install, handlers = { setup_server } })
 
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
