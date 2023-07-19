@@ -16,11 +16,11 @@ vim.keymap.set({ 'i' }, '<C-h>', '<BS>', { silent = true })
 vim.keymap.set({ 'i', 'c' }, '<C-k>', '<Esc>lc$', { silent = true })
 
 -- Move the cursor at the center of window during search
--- vim.keymap.set('n', 'n', 'nzz', { remap = true, silent = true })
--- vim.keymap.set('n', 'N', 'Nzz', { remap = true, silent = true })
--- vim.keymap.set('n', '*', '*zz', { remap = true, silent = true })
--- vim.keymap.set('n', '#', '#zz', { remap = true, silent = true })
--- vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
+vim.keymap.set('n', 'n', 'nzz', { remap = true, silent = true })
+vim.keymap.set('n', 'N', 'Nzz', { remap = true, silent = true })
+vim.keymap.set('n', '*', '*zz', { remap = true, silent = true })
+vim.keymap.set('n', '#', '#zz', { remap = true, silent = true })
+vim.keymap.set('n', 'g*', 'g*zz', { remap = true, silent = true })
 
 -- Better indenting in visual mode
 vim.keymap.set('v', '<', '<gv', { silent = true })
