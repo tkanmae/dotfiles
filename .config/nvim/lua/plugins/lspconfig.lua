@@ -122,6 +122,12 @@ return {
 
         map('n', '[d', vim.diagnostic.goto_prev, 'Previous diagnostic')
         map('n', ']d', vim.diagnostic.goto_next, 'Next diagnostic')
+        map('n', '[e', function()
+          vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity['ERROR'] })
+        end, 'Previous error')
+        map('n', ']e', function()
+          vim.diagnostic.goto_next({ severity = vim.diagnostic.severity['ERROR'] })
+        end, 'Next error')
 
         -- Automatically show diagnostics on hover
         vim.api.nvim_create_autocmd('CursorHold', {
