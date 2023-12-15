@@ -7,6 +7,6 @@ return {
       char = '│',
     },
     scope = { enabled = false },
-    exclude = { filetypes = { 'help', 'neo-tree', 'Trouble' } },
+    exclude = { filetypes = { 'help', 'neo-tree', 'Trouble', 'lazy', 'mason', 'notify' } },
   },
 }
