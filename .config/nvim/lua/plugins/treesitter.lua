@@ -3,7 +3,13 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     'windwp/nvim-ts-autotag',
-    'JoosepAlviste/nvim-ts-context-commentstring',
+    {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      lazy = true,
+      opts = {
+        enable_autocmd = false,
+      },
+    },
     'nvim-treesitter/nvim-treesitter-textobjects',
     'andymass/vim-matchup',
   },
