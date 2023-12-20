@@ -10,7 +10,6 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
-    'jose-elias-alvarez/typescript.nvim',
   },
   opts = {
     servers = {
@@ -36,8 +35,19 @@ return {
       ['tailwindcss'] = {},
       ['tsserver'] = {
         keys = {
-          { '<leader>co', '<cmd>TypescriptOrganizeImports<CR>', desc = 'Organize Imports' },
-          { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
+          {
+            '<leader>co',
+            function()
+              vim.lsp.buf.code_action({
+                apply = true,
+                context = {
+                  only = { 'source.organizeImports.ts' },
+                  diagnostics = {},
+                },
+              })
+            end,
+            desc = 'Organize Imports',
+          },
         },
         settings = {
           typescript = {
@@ -60,12 +70,7 @@ return {
         },
       },
     },
-    setup = {
-      tsserver = function(_, opts)
-        require('typescript').setup({ server = opts })
-        return true
-      end,
-    },
+    setup = {},
   },
   config = function(_, opts)
     local lspconfig = require('lspconfig')
