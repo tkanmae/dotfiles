@@ -5,6 +5,7 @@ return {
   opts = {
     indent = {
       char = '│',
+      tab_char = '│',
     },
     scope = { enabled = false },
     exclude = { filetypes = { 'help', 'neo-tree', 'Trouble', 'lazy', 'mason', 'notify' } },
