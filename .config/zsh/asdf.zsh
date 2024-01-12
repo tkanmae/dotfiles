@@ -26,7 +26,7 @@ function _install() {
 function() {
   if [[ ! -d ${HOME}/.asdf ]]; then
     echo "Installing asfd..."
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 >/dev/null
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1 >/dev/null
     echo "Done!"
   fi
   source "${HOME}/.asdf/asdf.sh"
