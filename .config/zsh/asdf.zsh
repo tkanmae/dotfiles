@@ -23,11 +23,11 @@ function _install() {
   echo "Done!"
 }
 
-function () {
+function() {
   if [[ ! -d ${HOME}/.asdf ]]; then
-      echo "Installing asfd..."
-      git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 >/dev/null
-      echo "Done!"
+    echo "Installing asfd..."
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3 >/dev/null
+    echo "Done!"
   fi
   source "${HOME}/.asdf/asdf.sh"
   fpath=(${ASDF_DIR}/completions ${fpath})
