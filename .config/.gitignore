@@ -2,6 +2,11 @@
 
 !.gitignore
 
+!bat/
+!bat/*
+!bat/themes
+!bat/themes/*
+
 !nvim/
 !nvim/*
 !nvim/lua/*
