@@ -19,10 +19,6 @@ vim.keymap.del("n", "<C-Left>")
 vim.keymap.del("n", "<C-Right>")
 
 -- Manipulate windows
-vim.keymap.del("n", "<leader>ww")
-vim.keymap.del("n", "<leader>wd")
-vim.keymap.del("n", "<leader>w-")
-vim.keymap.del("n", "<leader>w|")
 vim.keymap.del("n", "<leader>-")
 vim.keymap.del("n", "<leader>|")
 
