@@ -48,7 +48,9 @@ return {
               cond = function()
                 return package.loaded["dap"] and require("dap").status() ~= ""
               end,
-              color = Util.ui.fg("Debug"),
+              color = function()
+                return { fg = Snacks.util.color("Debug") }
+              end,
             },
             {
               "diff",
