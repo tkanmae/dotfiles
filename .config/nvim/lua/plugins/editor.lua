@@ -28,10 +28,4 @@ return {
       { "<leader>sW", LazyVim.pick("grep_visual", { root = false }), mode = "v", desc = "Selection (cwd)" },
     },
   },
-  {
-    "nvim-pack/nvim-spectre",
-    keys = {
-      { "<leader>sr", false },
-    },
-  },
 }
