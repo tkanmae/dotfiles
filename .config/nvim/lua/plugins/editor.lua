@@ -1,58 +1,31 @@
--- TODO: Figure out a way to search todo comments in a workspace.
-
 return {
   {
-    "nvim-telescope/telescope.nvim",
-    keys = function()
-      return {
-        { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-        { "<leader>sc", LazyVim.pick.config_files(), desc = "NeoVim config files" },
-        { "<leader>sf", LazyVim.pick("auto"), desc = "Files (root dir)" },
-        { "<leader>sF", LazyVim.pick("auto", { root = false }), desc = "Files (cwd)" },
-        { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Recently opened files" },
-        { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
-        { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
-        { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
-        { "<leader>sg", LazyVim.pick("live_grep"), desc = "Grep (root dir)" },
-        { "<leader>sG", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-        { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help pages" },
-        { "<leader>sw", LazyVim.pick("grep_string", { word_match = "-w" }), desc = "Word (root dir)" },
-        { "<leader>sW", LazyVim.pick("grep_string", { root = false, word_match = "-w" }), desc = "Word (cwd)" },
-        { "<leader>sw", LazyVim.pick("grep_string"), mode = "v", desc = "Selection (root dir)" },
-        { "<leader>sW", LazyVim.pick("grep_string", { root = false }), mode = "v", desc = "Selection (cwd)" },
-        { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key maps" },
-        {
-          "<leader>ss",
-          function()
-            require("telescope.builtin").lsp_document_symbols({
-              symbols = require("lazyvim.config").get_kind_filter(),
-            })
-          end,
-          desc = "Symbol",
-        },
-        {
-          "<leader>sS",
-          function()
-            require("telescope.builtin").lsp_dynamic_workspace_symbols({
-              symbols = require("lazyvim.config").get_kind_filter(),
-            })
-          end,
-          desc = "Symbol (Workspace)",
-        },
-      }
-    end,
-    opts = {
-      pickers = {
-        buffers = {
-          mappings = {
-            n = {
-              ["d"] = function(...)
-                require("telescope.actions").delete_buffer(...)
-              end,
-            },
-          },
-        },
-      },
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader>fb", false },
+      { "<leader>fc", false },
+      { "<leader>ff", false },
+      { "<leader>fF", false },
+      { "<leader>fg", false },
+      { "<leader>fr", false },
+      { "<leader>fR", false },
+      { "<leader>sH", false },
+      { "<leader>sb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+      { "<leader>sc", LazyVim.pick.config_files(), desc = "Config Files" },
+      { "<leader>sf", LazyVim.pick("files"), desc = "Files (root)" },
+      { "<leader>sF", LazyVim.pick("files", { root = false }), desc = "Files (cwd)" },
+      { "<leader>sg", "<cmd>FzfLua git_files<cr>", desc = "Files (Git)" },
+      { "<leader>so", "<cmd>FzfLua oldfiles<cr>", desc = "Recent Files " },
+      { "<leader>sO", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent Files (cwd)" },
+      { "<leader>sg", LazyVim.pick("live_grep"), desc = "Grep (root)" },
+      { "<leader>sG", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+      { "<leader>sh", "<cmd>FzfLua help_tags<cr>", desc = "Help Pages" },
+      { "<leader>sm", "<cmd>FzfLua marks<cr>", desc = "Marks" },
+      { "<leader>sR", "<cmd>FzfLua resume<cr>", desc = "Resume" },
+      { "<leader>sw", LazyVim.pick("grep_cword"), desc = "Word (root)" },
+      { "<leader>sW", LazyVim.pick("grep_cword", { root = false }), desc = "Word (cwd)" },
+      { "<leader>sw", LazyVim.pick("grep_visual"), mode = "v", desc = "Selection (root)" },
+      { "<leader>sW", LazyVim.pick("grep_visual", { root = false }), mode = "v", desc = "Selection (cwd)" },
     },
   },
   {
