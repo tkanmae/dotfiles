@@ -1,0 +1,7 @@
+font-family = "PlemolJP Console NF"
+font-size = 14
+
+theme = "catppuccin-macchiato"
+
+cursor-opacity = 0.75
+cursor-style = block
