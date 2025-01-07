@@ -54,10 +54,6 @@ function() {
     )
   fi
 
-  if [[ $OSTYPE = darwin* ]]; then
-    source ~/.zsh/zsh-notify/notify.plugin.zsh
-  fi
-
   command -v nvim >/dev/null && export EDITOR=nvim || export EDITOR=vim
   export PAGER=less
   export LESS='--tabs=4 --ignore-case --quit-if-one-screen --no-init --LONG-PROMPT --RAW-CONTROL-CHARS'
