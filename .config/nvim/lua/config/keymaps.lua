@@ -48,3 +48,7 @@ end, { silent = true })
 vim.keymap.set("n", "<C-t>h", function()
   require("user.tmux").select_pane("left")
 end, { silent = true })
+
+-- Remap LazyVim
+vim.keymap.del("n", "<leader>l")
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
