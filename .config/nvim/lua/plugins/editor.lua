@@ -1,5 +1,64 @@
 return {
   {
+    "folke/flash.nvim",
+    keys = {
+      { "s", mode = { "n", "x", "o" }, false },
+      { "S", false },
+      { "r", false },
+      { "R", false },
+      {
+        "<leader>ls",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "<leader>lS",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "<leader>lr",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+      {
+        "<leader>lR",
+        mode = { "o", "x" },
+        function()
+          require("flash").treesitter_search()
+        end,
+        desc = "Treesitter Search",
+      },
+      {
+        "<leader>lt",
+        mode = { "n" },
+        function()
+          require("flash").toggle()
+        end,
+        desc = "Toggle Flash Search",
+      },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    opts_extend = { "spec" },
+    opts = {
+      spec = {
+        { "<leader>l", group = "flash", icon = { icon = "", color = "yellow" } },
+        { "s", group = "surround" },
+      },
+    },
+  },
+  {
     "ibhagwan/fzf-lua",
     keys = {
       { "<leader>,", false },
