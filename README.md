@@ -45,3 +45,5 @@ tic -x $TERM.ti
 ```
 
 This command creates a new entry under `~/.terminfo`.
+
+df
