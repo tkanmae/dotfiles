@@ -5,3 +5,5 @@ theme = "catppuccin-macchiato"
 
 cursor-opacity = 0.75
 cursor-style = block
+
+mouse-hide-while-typing = true
