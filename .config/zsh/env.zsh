@@ -45,6 +45,8 @@ function() {
     /usr/share/man(N-/)
   )
 
+  fpath=($fpath ~/.config/zsh/completions(N-/))
+
   if [[ $OSTYPE = linux* ]]; then
     typeset -Tx LD_LIBRARY_PATH ld_library_path
     typeset -U ld_library_path
