@@ -77,7 +77,7 @@ function() {
   export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 
   # bat
-  export BAT_THEME="Catppuccin-macchiato"
+  export BAT_THEME="Catppuccin Macchiato"
   export BAT_STYLE="plain"
 
   # GoogleTest
