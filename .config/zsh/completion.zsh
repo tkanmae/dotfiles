@@ -62,4 +62,7 @@ zstyle ':completion:*:*:kill:*' insert-ids single
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
+# Generate and cache completion functions
+command -v uv >/dev/null && znap fpath _uv 'uv --generate-shell-completion zsh'
+
 autoload -Uz compinit && compinit
