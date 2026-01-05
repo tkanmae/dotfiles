@@ -18,11 +18,11 @@ HOME = Path.home()
 HERE = Path(__file__).parent.resolve()
 
 
-def is_exe(filename):
+def is_exe(filename: str) -> bool:
     return Path(filename).is_file() and os.access(filename, os.X_OK)
 
 
-def create_symlink(src, dst):
+def create_symlink(src: Path, dst: Path) -> None:
     src_path = Path(src)
     dst_path = Path(dst)
 
@@ -36,11 +36,11 @@ def create_symlink(src, dst):
     dst_path.symlink_to(src_path)
 
 
-def create_symlinks(srcs, dsts, dryrun):
+def create_symlinks(srcs: list[Path], dsts: list[Path], dryrun: bool) -> None:
     num = max([len(str(Path(_).relative_to(HOME))) for _ in dsts])
     fmt = "{{0:<{0}s}} -> {{1}}".format(num + 2)
 
-    def display(src, dst):
+    def display(src: Path, dst: Path) -> None:
         print(
             fmt.format(
                 "~/" + str(Path(dst).relative_to(HOME)),
@@ -54,13 +54,13 @@ def create_symlinks(srcs, dsts, dryrun):
             create_symlink(src, dst)
 
 
-def install_dotfiles(dotfiles, dryrun):
+def install_dotfiles(dotfiles: list[str], dryrun: bool) -> None:
     srcs = [HERE / f for f in dotfiles]
     dsts = [HOME / Path(f).name for f in dotfiles]
     create_symlinks(srcs, dsts, dryrun)
 
 
-def install_binfiles(binfiles, dryrun):
+def install_binfiles(binfiles: list[str], dryrun: bool) -> None:
     dst_dir = HOME / ".local/bin"
     if not dst_dir.is_dir():
         dst_dir.mkdir(parents=True, exist_ok=True)
@@ -69,7 +69,7 @@ def install_binfiles(binfiles, dryrun):
     create_symlinks(srcs, dsts, dryrun)
 
 
-def setup_argparser():
+def setup_argparser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
 
     # Optional arguments
@@ -84,7 +84,7 @@ def setup_argparser():
     return parser
 
 
-def main(args):
+def main(args: argparse.Namespace) -> None:
     excludes = [".git", ".gitignore", ".gitmodules", ".DS_Store"]
     dotfiles = sorted(glob.glob(".*"))
     dotfiles = sorted(list(set(dotfiles) - set(excludes)))
