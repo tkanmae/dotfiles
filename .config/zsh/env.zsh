@@ -67,10 +67,8 @@ function() {
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=60"
   export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
-  # enhancd
-  export ENHANCD_FILTER="fzf"
-  export ENHANCD_HYPHEN_NUM=32
-  export ENHANCD_COMPLETION_BEHAVIOR="list"
+  # zoxide
+  command -v zoxide >/dev/null && znap eval zoxide-init 'zoxide init zsh'
 
   # fzf
   export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'

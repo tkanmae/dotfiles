@@ -51,6 +51,9 @@ function() {
     if ! command -v fd >/dev/null; then
       echo "$fg[yellow]Please install fd with Homebrew."
     fi
+    if ! command -v zoxide >/dev/null; then
+      echo "$fg[yellow]Please install zoxide with Homebrew."
+    fi
   else
     if [[ -z $installed_plugins[bat] ]]; then
       _install_plugin bat https://gitlab.com/wt0f/asdf-bat.git
@@ -59,6 +62,10 @@ function() {
     if [[ -z $installed_plugins[fd] ]]; then
       _install_plugin fd https://gitlab.com/wt0f/asdf-fd.git
       _install fd latest
+    fi
+    if [[ -z $installed_plugins[zoxide] ]]; then
+      _install_plugin zoxide https://gitlab.com/wt0f/asdf-zoxide.git
+      _install zoxide latest
     fi
   fi
 }
