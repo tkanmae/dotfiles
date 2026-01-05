@@ -8,37 +8,43 @@ ignored must be listed in a global variable `EXCLUDE`.  If any dotfiles already
 exist in `HOME` and are not symlinks, they will be saved as their file names
 appended with a ".orig".
 """
+
 import argparse
 import glob
 import os
+from pathlib import Path
 
-HOME = os.path.expandvars("$HOME")
-HERE = os.path.abspath(os.path.dirname(__file__))
+HOME = Path.home()
+HERE = Path(__file__).parent.resolve()
 
 
 def is_exe(filename):
-    return os.path.isfile(filename) and os.access(filename, os.X_OK)
+    return Path(filename).is_file() and os.access(filename, os.X_OK)
 
 
 def create_symlink(src, dst):
-    if not os.path.exists(src):
+    src_path = Path(src)
+    dst_path = Path(dst)
+
+    if not src_path.exists():
         raise ValueError("File not found: %s" % src)
 
-    if os.path.islink(dst):
-        os.remove(dst)
-    elif os.path.exists(dst):
-        os.rename(dst, dst + ".orig")
-    os.symlink(src, dst)
+    if dst_path.is_symlink():
+        dst_path.unlink()
+    elif dst_path.exists():
+        dst_path.rename(str(dst_path) + ".orig")
+    dst_path.symlink_to(src_path)
 
 
 def create_symlinks(srcs, dsts, dryrun):
-    num = max([len(os.path.relpath(_, HOME)) for _ in dsts])
+    num = max([len(str(Path(_).relative_to(HOME))) for _ in dsts])
     fmt = "{{0:<{0}s}} -> {{1}}".format(num + 2)
 
     def display(src, dst):
         print(
             fmt.format(
-                "~/" + os.path.relpath(dst, HOME), "~/" + os.path.relpath(src, HOME)
+                "~/" + str(Path(dst).relative_to(HOME)),
+                "~/" + str(Path(src).relative_to(HOME)),
             )
         )
 
@@ -49,17 +55,17 @@ def create_symlinks(srcs, dsts, dryrun):
 
 
 def install_dotfiles(dotfiles, dryrun):
-    srcs = [os.path.join(HERE, f) for f in dotfiles]
-    dsts = [os.path.join(HOME, os.path.basename(f)) for f in dotfiles]
+    srcs = [HERE / f for f in dotfiles]
+    dsts = [HOME / Path(f).name for f in dotfiles]
     create_symlinks(srcs, dsts, dryrun)
 
 
 def install_binfiles(binfiles, dryrun):
-    dst_dir = os.path.join(HOME, ".local/bin")
-    if not os.path.isdir(dst_dir):
-        os.makedirs(dst_dir)
-    srcs = [os.path.join(HERE, f) for f in binfiles]
-    dsts = [os.path.join(dst_dir, os.path.basename(f)) for f in binfiles]
+    dst_dir = HOME / ".local/bin"
+    if not dst_dir.is_dir():
+        dst_dir.mkdir(parents=True, exist_ok=True)
+    srcs = [HERE / f for f in binfiles]
+    dsts = [dst_dir / Path(f).name for f in binfiles]
     create_symlinks(srcs, dsts, dryrun)
 
 
