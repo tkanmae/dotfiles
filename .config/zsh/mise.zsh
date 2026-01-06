@@ -2,7 +2,7 @@ autoload colors && colors;
 
 function _install() {
   echo "Installing $1..."
-  mise use -g "$1"
+  mise use -g "$1" >/dev/null
   echo "Done!"
 }
 
