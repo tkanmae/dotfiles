@@ -64,5 +64,6 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 
 # Generate and cache completion functions
 command -v uv >/dev/null && znap fpath _uv 'uv --generate-shell-completion zsh'
+command -v mise >/dev/null && znap fpath _mise 'mise completion zsh'
 
 autoload -Uz compinit && compinit

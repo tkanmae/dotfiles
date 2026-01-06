@@ -24,6 +24,10 @@ function() {
     _install "delta@latest"
   fi
 
+  if ! command -v usage >/dev/null; then
+    _install "usage@latest"
+  fi
+
   if ! command -v bat >/dev/null; then
     if [[ $os_arch == 'darwin-arm64' ]] then
       echo "$fg[yellow]Please install bat with Homebrew."
