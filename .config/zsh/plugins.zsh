@@ -11,6 +11,4 @@ function() {
   znap source zsh-users/zsh-completions
   znap source hlissner/zsh-autopair
   znap source trapd00r/LS_COLORS
-
-  znap prompt sindresorhus/pure
 }

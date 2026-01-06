@@ -16,6 +16,9 @@
 !nvim/lua/user/plugin_config/*
 !nvim/coc-settings.json
 
+!starship/
+!starship/*
+
 !zsh/
 !zsh/*
 

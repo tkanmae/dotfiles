@@ -70,6 +70,9 @@ function() {
   # zoxide
   command -v zoxide >/dev/null && znap eval zoxide-init 'zoxide init zsh'
 
+  # starship
+  export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
+
   # fzf
   export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
   export FZF_DEFAULT_OPTS='--height 50% --reverse --border'

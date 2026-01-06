@@ -28,6 +28,11 @@ function() {
     _install "usage@latest"
   fi
 
+  if ! command -v starship >/dev/null; then
+    _install "starship@latest"
+  fi
+  znap eval starthip-init 'starship init zsh'
+
   if ! command -v bat >/dev/null; then
     if [[ $os_arch == 'darwin-arm64' ]] then
       echo "$fg[yellow]Please install bat with Homebrew."
