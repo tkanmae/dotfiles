@@ -56,7 +56,7 @@ function() {
       _install "zoxide@latest"
     fi
   fi
-  command -v zoxide >/dev/null && znap eval zoxide-init 'zoxide init zsh'
+  command -v zoxide >/dev/null && znap eval zoxide-init 'zoxide init --cmd cd zsh'
 }
 
 unfunction _install
